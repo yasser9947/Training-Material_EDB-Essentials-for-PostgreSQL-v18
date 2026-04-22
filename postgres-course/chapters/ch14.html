@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>الوحدة ١٤: تحميل البيانات | EDB PostgreSQL v18</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{fontFamily:{arabic:['IBM Plex Sans Arabic','sans-serif'],mono:['JetBrains Mono','monospace']},colors:{surface:{50:'#f8fafc',100:'#f1f5f9',200:'#e2e8f0',500:'#64748b',600:'#475569',700:'#334155',800:'#1e293b',900:'#0f172a'}}}}}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-sql.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+  <style>body{font-family:'IBM Plex Sans Arabic',sans-serif}html[lang="ar"] .lang-en{display:none!important}html[lang="en"] .lang-ar{display:none!important}pre[class*="language-"]{border-radius:.75rem;font-size:.875rem;direction:ltr}code[class*="language-"]{font-family:'JetBrains Mono',monospace}</style>
+</head>
+<body class="bg-surface-50 text-surface-800 antialiased min-h-screen">
+
+  <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-surface-200 shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
+      <a href="../index.html" class="flex items-center gap-2 text-surface-600 hover:text-pink-600"><i data-lucide="home" class="w-4 h-4"></i><span class="text-sm font-semibold lang-ar">الصفحة الرئيسية</span><span class="text-sm font-semibold lang-en">Home</span></a>
+      <div class="flex items-center gap-2">
+        <button onclick="setLang('ar')" id="btn-ar" class="lang-btn px-3 py-2 rounded-lg text-sm font-semibold">العربية</button>
+        <button onclick="setLang('en')" id="btn-en" class="lang-btn px-3 py-2 rounded-lg text-sm font-semibold">English</button>
+      </div>
+    </div>
+  </nav>
+
+  <header class="bg-gradient-to-br from-pink-900 via-pink-800 to-pink-700 text-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
+      <div class="flex items-center gap-3 text-pink-200 text-sm mb-4">
+        <span class="px-3 py-1 bg-white/10 rounded-full"><span class="lang-ar">الوحدة ١٤</span><span class="lang-en">Module 14</span></span>
+        <span>·</span><span class="font-mono">p. 348–358</span><span>·</span>
+        <span class="lang-ar">١١ صفحة</span><span class="lang-en">11 pages</span>
+      </div>
+      <h1 class="text-3xl md:text-5xl font-bold mb-4"><span class="lang-ar">تحميل البيانات</span><span class="lang-en">Data Loading</span></h1>
+      <p class="text-lg text-pink-100 max-w-3xl lang-ar">تعلم أمر COPY — الطريقة الأسرع لتحميل وتصدير البيانات في PostgreSQL.</p>
+      <p class="text-lg text-pink-100 max-w-3xl lang-en">Master the COPY command — the fastest way to load and export data in PostgreSQL.</p>
+    </div>
+  </header>
+
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 py-10">
+    <div class="bg-white rounded-2xl shadow-sm border border-surface-200 p-6 md:p-8">
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-pink-500 to-pink-700 flex items-center justify-center text-white"><i data-lucide="upload-cloud" class="w-6 h-6"></i></div>
+        <h2 class="text-2xl font-bold"><span class="lang-ar">أهداف الوحدة</span><span class="lang-en">Module Objectives</span></h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+        <div class="flex gap-2 p-3 rounded-xl bg-pink-50 border border-pink-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-pink-600 shrink-0"></i><span class="lang-ar">تحميل الـ Flat Files</span><span class="lang-en">Loading Flat Files</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-pink-50 border border-pink-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-pink-600 shrink-0"></i><span class="lang-ar">استخدام COPY للاستيراد/التصدير</span><span class="lang-en">COPY for import/export</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-pink-50 border border-pink-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-pink-600 shrink-0"></i><span class="lang-ar">أمثلة على COPY</span><span class="lang-en">COPY Examples</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-pink-50 border border-pink-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-pink-600 shrink-0"></i><span class="lang-ar">COPY FREEZE للأداء</span><span class="lang-en">COPY FREEZE for performance</span></div>
+      </div>
+    </div>
+  </section>
+
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 pb-12 space-y-12">
+
+    <section>
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">ما هو Flat File؟</span><span class="lang-en">What is a Flat File?</span></h2>
+      <div class="bg-white rounded-2xl border border-surface-200 p-6 space-y-4">
+        <p class="text-surface-700 lang-ar">الـ <strong>Flat File</strong> هو ملف نصي بسيط يحتوي سجل واحد لكل سطر، مثل CSV أو TSV.</p>
+        <p class="text-surface-700 lang-en">A <strong>Flat File</strong> is a simple text file with one record per line, such as CSV or TSV.</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="bg-pink-50 border border-pink-200 rounded-xl p-5">
+            <h4 class="font-bold text-sm mb-2"><span class="lang-ar">مثال CSV:</span><span class="lang-en">CSV example:</span></h4>
+            <pre class="text-xs font-mono text-surface-700 bg-white p-3 rounded border" dir="ltr">id,name,email
+1,Alice,alice@ex.com
+2,Bob,bob@ex.com
+3,Carol,carol@ex.com</pre>
+          </div>
+          <div class="bg-pink-50 border border-pink-200 rounded-xl p-5">
+            <h4 class="font-bold text-sm mb-2"><span class="lang-ar">مثال TSV (tab-separated):</span><span class="lang-en">TSV example:</span></h4>
+            <pre class="text-xs font-mono text-surface-700 bg-white p-3 rounded border" dir="ltr">1	Alice	alice@ex.com
+2	Bob	bob@ex.com
+3	Carol	carol@ex.com</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">أمر COPY</span><span class="lang-en">The COPY Command</span></h2>
+      <div class="bg-white rounded-2xl border border-surface-200 p-6">
+        <p class="text-surface-700 mb-4 lang-ar"><strong>COPY</strong> أسرع بكثير من INSERT لأنه يتخطى جدول الـ parser ويكتب البيانات مباشرة.</p>
+        <p class="text-surface-700 mb-4 lang-en"><strong>COPY</strong> is much faster than INSERT — it bypasses the parser and writes data directly.</p>
+
+        <div class="relative group" dir="ltr">
+          <button onclick="copyCode(this)" class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 bg-surface-700 text-white text-xs px-2.5 py-1.5 rounded-lg z-10">Copy</button>
+<pre class="!bg-surface-900 !rounded-xl !p-5"><code class="language-sql">-- Import from server-side file (superuser only)
+COPY customers(id, name, email)
+FROM '/var/data/customers.csv'
+WITH (FORMAT csv, HEADER true, DELIMITER ',');
+
+-- Export to server-side file
+COPY customers TO '/var/data/export.csv'
+WITH (FORMAT csv, HEADER true);
+
+-- Import with complex options
+COPY orders FROM '/tmp/orders.csv' WITH (
+  FORMAT csv,
+  HEADER true,
+  DELIMITER ',',
+  NULL 'NULL',
+  QUOTE '"',
+  ESCAPE '\\',
+  ENCODING 'UTF8'
+);
+
+-- From STDIN (used with psql \copy)
+COPY customers FROM STDIN WITH (FORMAT csv, HEADER true);
+-- then type or pipe data, end with \.
+
+-- Export specific columns with WHERE clause
+COPY (SELECT name, email FROM customers WHERE active = true)
+TO '/tmp/active_users.csv'
+WITH (FORMAT csv, HEADER true);</code></pre>
+        </div>
+
+        <div class="mt-4 flex gap-3 p-4 bg-pg-50 border border-pg-200 rounded-xl">
+          <i data-lucide="info" class="w-5 h-5 text-pg-600 shrink-0 mt-0.5"></i>
+          <div>
+            <strong class="text-pg-800 lang-ar">ملاحظة:</strong>
+            <strong class="text-pg-800 lang-en">Note:</strong>
+            <span class="text-pg-700 lang-ar"> <span dir="ltr" class="font-mono">COPY</span> يحتاج صلاحية superuser للوصول لملفات السيرفر. للمستخدمين العاديين، استخدم <span dir="ltr" class="font-mono">\copy</span> في psql (ينقل من client-side).</span>
+            <span class="text-pg-700 lang-en"> <span class="font-mono">COPY</span> requires superuser to access server files. Regular users should use <span class="font-mono">\copy</span> in psql (client-side).</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">\copy في psql</span><span class="lang-en">\copy in psql</span></h2>
+      <div class="bg-white rounded-2xl border border-surface-200 p-6">
+        <div class="relative group" dir="ltr">
+          <button onclick="copyCode(this)" class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 bg-surface-700 text-white text-xs px-2.5 py-1.5 rounded-lg z-10">Copy</button>
+<pre class="!bg-surface-900 !rounded-xl !p-5"><code class="language-bash"># From psql session
+\copy customers FROM 'customers.csv' WITH (FORMAT csv, HEADER true);
+\copy customers TO 'export.csv' WITH (FORMAT csv, HEADER true);
+
+# From command line (one-liner)
+psql -d mydb -c "\copy customers FROM 'customers.csv' CSV HEADER"
+
+# Using pipe (import from URL or other source)
+curl https://example.com/data.csv | \
+  psql -d mydb -c "\copy customers FROM STDIN WITH (FORMAT csv, HEADER true)"</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">COPY FREEZE للأداء</span><span class="lang-en">COPY FREEZE for Performance</span></h2>
+      <div class="bg-white rounded-2xl border border-surface-200 p-6 space-y-4">
+        <p class="text-surface-700 lang-ar"><strong>COPY FREEZE</strong> يضع الصفوف في حالة <span dir="ltr" class="font-mono">frozen</span> مباشرة — يتجنب VACUUM FREEZE لاحقاً، مفيد جداً لتحميل كميات كبيرة دفعة واحدة.</p>
+        <p class="text-surface-700 lang-en"><strong>COPY FREEZE</strong> inserts rows as <span class="font-mono">frozen</span> immediately — avoids later VACUUM FREEZE, great for bulk loads.</p>
+
+        <div class="relative group" dir="ltr">
+          <button onclick="copyCode(this)" class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 bg-surface-700 text-white text-xs px-2.5 py-1.5 rounded-lg z-10">Copy</button>
+<pre class="!bg-surface-900 !rounded-xl !p-5"><code class="language-sql">-- Requirements: table must be created or truncated in same transaction
+BEGIN;
+  TRUNCATE staging_data;  -- or CREATE TABLE
+  COPY staging_data FROM '/data/big_file.csv' WITH (FORMAT csv, FREEZE);
+COMMIT;
+
+-- Bonus: maximize bulk load performance
+BEGIN;
+  CREATE UNLOGGED TABLE bulk_load (...);  -- no WAL
+  COPY bulk_load FROM '/data/huge.csv' WITH (FORMAT csv);
+  -- Index and constraints AFTER load
+  CREATE INDEX ON bulk_load (id);
+  ALTER TABLE bulk_load SET LOGGED;  -- enable WAL after
+COMMIT;</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="bg-gradient-to-br from-pink-600 via-pink-700 to-pink-900 text-white rounded-2xl p-6 md:p-8 shadow-xl">
+        <div class="flex items-center gap-3 mb-6"><div class="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center"><i data-lucide="bookmark-check" class="w-6 h-6"></i></div><h2 class="text-2xl font-bold"><span class="lang-ar">ملخص الوحدة</span><span class="lang-en">Module Summary</span></h2></div>
+        <ul class="grid grid-cols-1 md:grid-cols-2 gap-3">
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-pink-300 shrink-0 mt-0.5"></i><span class="lang-ar">COPY أسرع من INSERT بكثير</span><span class="lang-en">COPY much faster than INSERT</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-pink-300 shrink-0 mt-0.5"></i><span class="lang-ar">COPY (server) vs \copy (client)</span><span class="lang-en">COPY (server) vs \copy (client)</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-pink-300 shrink-0 mt-0.5"></i><span class="lang-ar">دعم CSV، TSV، binary</span><span class="lang-en">Supports CSV, TSV, binary</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-pink-300 shrink-0 mt-0.5"></i><span class="lang-ar">COPY FREEZE للـ bulk loads</span><span class="lang-en">COPY FREEZE for bulk loads</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-pink-300 shrink-0 mt-0.5"></i><span class="lang-ar">UNLOGGED tables لأسرع تحميل</span><span class="lang-en">UNLOGGED tables for fastest load</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-pink-300 shrink-0 mt-0.5"></i><span class="lang-ar">أنشئ Indexes بعد التحميل</span><span class="lang-en">Create indexes after load</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <nav class="flex flex-col md:flex-row gap-4">
+      <a href="ch13.html" class="flex-1 bg-white border border-surface-200 rounded-xl p-4 hover:border-pink-300 hover:shadow-md transition-all">
+        <div class="text-xs text-surface-500 mb-1"><span class="lang-ar">السابق</span><span class="lang-en">Previous</span></div>
+        <div class="flex items-center gap-2 font-bold"><i data-lucide="arrow-right" class="w-4 h-4 lang-ar"></i><i data-lucide="arrow-left" class="w-4 h-4 lang-en"></i><span class="lang-ar">الصيانة</span><span class="lang-en">Maintenance</span></div>
+      </a>
+      <a href="ch15.html" class="flex-1 bg-gradient-to-br from-pink-600 to-pink-700 text-white rounded-xl p-4 hover:shadow-xl transition-all">
+        <div class="text-xs text-pink-200 mb-1 text-end"><span class="lang-ar">التالي</span><span class="lang-en">Next</span></div>
+        <div class="flex items-center justify-end gap-2 font-bold"><span class="lang-ar">النسخ المتماثل والتوافر العالي</span><span class="lang-en">Replication & HA</span><i data-lucide="arrow-left" class="w-4 h-4 lang-ar"></i><i data-lucide="arrow-right" class="w-4 h-4 lang-en"></i></div>
+      </a>
+    </nav>
+  </main>
+
+  <footer class="bg-surface-900 text-surface-400 py-8 text-center text-sm"><p class="lang-ar">الوحدة ١٤ من ١٥</p><p class="lang-en">Module 14 of 15</p></footer>
+
+  <script>
+    function setLang(lang){document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';localStorage.setItem('pgCourseLang',lang);document.querySelectorAll('.lang-btn').forEach(b=>{b.classList.remove('bg-pink-600','text-white','shadow-md');b.classList.add('text-surface-600','hover:bg-surface-100');});const a=document.getElementById('btn-'+lang);a.classList.add('bg-pink-600','text-white','shadow-md');a.classList.remove('text-surface-600','hover:bg-surface-100');}
+    function copyCode(btn){const c=btn.nextElementSibling.querySelector('code').textContent;navigator.clipboard.writeText(c);btn.textContent='✓';setTimeout(()=>btn.textContent='Copy',2000);}
+    setLang(localStorage.getItem('pgCourseLang')||'ar');lucide.createIcons();Prism.highlightAll();
+  </script>
+</body>
+</html>

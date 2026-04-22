@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>الوحدة ٥: كلاسترات قاعدة البيانات | EDB PostgreSQL v18</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{fontFamily:{arabic:['IBM Plex Sans Arabic','sans-serif'],mono:['JetBrains Mono','monospace']},colors:{surface:{50:'#f8fafc',100:'#f1f5f9',200:'#e2e8f0',500:'#64748b',600:'#475569',700:'#334155',800:'#1e293b',900:'#0f172a'}}}}}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+  <style>body{font-family:'IBM Plex Sans Arabic',sans-serif}html[lang="ar"] .lang-en{display:none!important}html[lang="en"] .lang-ar{display:none!important}pre[class*="language-"]{border-radius:.75rem;font-size:.875rem;direction:ltr}code[class*="language-"]{font-family:'JetBrains Mono',monospace}</style>
+</head>
+<body class="bg-surface-50 text-surface-800 antialiased min-h-screen">
+
+  <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-surface-200 shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
+      <a href="../index.html" class="flex items-center gap-2 text-surface-600 hover:text-rose-600"><i data-lucide="home" class="w-4 h-4"></i><span class="text-sm font-semibold lang-ar">الصفحة الرئيسية</span><span class="text-sm font-semibold lang-en">Home</span></a>
+      <div class="flex items-center gap-2">
+        <button onclick="setLang('ar')" id="btn-ar" class="lang-btn px-3 py-2 rounded-lg text-sm font-semibold">العربية</button>
+        <button onclick="setLang('en')" id="btn-en" class="lang-btn px-3 py-2 rounded-lg text-sm font-semibold">English</button>
+      </div>
+    </div>
+  </nav>
+
+  <header class="bg-gradient-to-br from-rose-900 via-rose-800 to-rose-700 text-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
+      <div class="flex items-center gap-3 text-rose-200 text-sm mb-4">
+        <span class="px-3 py-1 bg-white/10 rounded-full"><span class="lang-ar">الوحدة ٥</span><span class="lang-en">Module 5</span></span>
+        <span>·</span><span class="font-mono">p. 84–97</span><span>·</span>
+        <span class="lang-ar">١٤ صفحة</span><span class="lang-en">14 pages</span>
+      </div>
+      <h1 class="text-3xl md:text-5xl font-bold mb-4"><span class="lang-ar">كلاسترات قاعدة البيانات</span><span class="lang-en">Database Clusters</span></h1>
+      <p class="text-lg text-rose-100 max-w-3xl lang-ar">إنشاء وإدارة كلاستر PostgreSQL — الحجر الأساس لكل قواعد بياناتك.</p>
+      <p class="text-lg text-rose-100 max-w-3xl lang-en">Creating and managing PostgreSQL clusters — the foundation for all your databases.</p>
+    </div>
+  </header>
+
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 py-10">
+    <div class="bg-white rounded-2xl shadow-sm border border-surface-200 p-6 md:p-8">
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-rose-500 to-rose-700 flex items-center justify-center text-white"><i data-lucide="database" class="w-6 h-6"></i></div>
+        <h2 class="text-2xl font-bold"><span class="lang-ar">أهداف الوحدة</span><span class="lang-en">Module Objectives</span></h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+        <div class="flex gap-2 p-3 rounded-xl bg-rose-50 border border-rose-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-rose-600 shrink-0"></i><span class="lang-ar">مفهوم الكلاستر</span><span class="lang-en">Database Clusters Concept</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-rose-50 border border-rose-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-rose-600 shrink-0"></i><span class="lang-ar">إنشاء كلاستر جديد</span><span class="lang-en">Creating a Database Cluster</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-rose-50 border border-rose-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-rose-600 shrink-0"></i><span class="lang-ar">تشغيل وإيقاف السيرفر (pg_ctl)</span><span class="lang-en">Starting/Stopping Server (pg_ctl)</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-rose-50 border border-rose-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-rose-600 shrink-0"></i><span class="lang-ar">الاتصال بالسيرفر عبر psql</span><span class="lang-en">Connecting via psql</span></div>
+      </div>
+    </div>
+  </section>
+
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 pb-12 space-y-12">
+
+    <section>
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">ما هو الكلاستر؟</span><span class="lang-en">What is a Cluster?</span></h2>
+      <div class="bg-white rounded-2xl border border-surface-200 p-6 space-y-4">
+        <p class="text-surface-700 leading-relaxed lang-ar"><strong>الكلاستر (Database Cluster)</strong> هو مجموعة من قواعد البيانات تدار بواسطة سيرفر PostgreSQL واحد. يتكون من:</p>
+        <p class="text-surface-700 leading-relaxed lang-en">A <strong>Database Cluster</strong> is a collection of databases managed by a single PostgreSQL server instance. It consists of:</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+          <div class="bg-gradient-to-br from-rose-50 to-rose-100 rounded-xl p-5 border border-rose-200">
+            <i data-lucide="folder-tree" class="w-8 h-8 text-rose-600 mb-3"></i>
+            <h4 class="font-bold mb-2"><span class="lang-ar">مجلد البيانات</span><span class="lang-en">Data Directory</span></h4>
+            <p class="text-sm text-surface-700 lang-ar">المجلد الذي يحتوي على كل ملفات قاعدة البيانات (<span dir="ltr" class="font-mono">PGDATA</span>)</p>
+            <p class="text-sm text-surface-700 lang-en">The folder containing all database files (<span class="font-mono">PGDATA</span>)</p>
+          </div>
+          <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-5 border border-purple-200">
+            <i data-lucide="network" class="w-8 h-8 text-purple-600 mb-3"></i>
+            <h4 class="font-bold mb-2"><span class="lang-ar">منفذ الاتصال</span><span class="lang-en">Port</span></h4>
+            <p class="text-sm text-surface-700 lang-ar">رقم المنفذ للاتصال (الافتراضي: <span dir="ltr" class="font-mono">5432</span>)</p>
+            <p class="text-sm text-surface-700 lang-en">Connection port number (default: <span class="font-mono">5432</span>)</p>
+          </div>
+        </div>
+
+        <div class="flex gap-3 p-4 bg-rose-50 border border-rose-200 rounded-xl">
+          <i data-lucide="lightbulb" class="w-5 h-5 text-rose-600 shrink-0 mt-0.5"></i>
+          <div>
+            <strong class="text-rose-800 lang-ar">قواعد البيانات الافتراضية عند الإنشاء:</strong>
+            <strong class="text-rose-800 lang-en">Default databases created:</strong>
+            <div class="mt-2 flex flex-wrap gap-2">
+              <span class="font-mono bg-white border border-rose-200 px-3 py-1 rounded-lg text-sm">template0</span>
+              <span class="font-mono bg-white border border-rose-200 px-3 py-1 rounded-lg text-sm">template1</span>
+              <span class="font-mono bg-white border border-rose-200 px-3 py-1 rounded-lg text-sm">postgres</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">إنشاء كلاستر جديد</span><span class="lang-en">Creating a Cluster</span></h2>
+      <div class="bg-white rounded-2xl border border-surface-200 p-6 space-y-4">
+        <p class="text-surface-700 lang-ar">استخدم <span dir="ltr" class="font-mono bg-surface-100 px-2 py-0.5 rounded">initdb</span> لإنشاء كلاستر جديد:</p>
+        <p class="text-surface-700 lang-en">Use <span class="font-mono bg-surface-100 px-2 py-0.5 rounded">initdb</span> to create a new cluster:</p>
+
+        <div class="relative group" dir="ltr">
+          <button onclick="copyCode(this)" class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 bg-surface-700 text-white text-xs px-2.5 py-1.5 rounded-lg z-10">Copy</button>
+<pre class="!bg-surface-900 !rounded-xl !p-5"><code class="language-bash"># Create a new cluster at /var/lib/pgsql/18/edbdata
+initdb -D /var/lib/pgsql/18/edbdata \
+       -U postgres \
+       --encoding=UTF8 \
+       --locale=en_US.UTF-8
+
+# With password auth enabled
+initdb -D /var/lib/pgsql/18/edbdata \
+       -U postgres \
+       --pwprompt \
+       --auth-host=md5</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">إدارة السيرفر عبر pg_ctl</span><span class="lang-en">Managing Server via pg_ctl</span></h2>
+      <div class="bg-white rounded-2xl border border-surface-200 p-6">
+        <div class="relative group" dir="ltr">
+          <button onclick="copyCode(this)" class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 bg-surface-700 text-white text-xs px-2.5 py-1.5 rounded-lg z-10">Copy</button>
+<pre class="!bg-surface-900 !rounded-xl !p-5"><code class="language-bash"># Set PGDATA environment variable first
+export PGDATA=/var/lib/pgsql/18/edbdata
+
+# Start the server
+pg_ctl start
+
+# Check status
+pg_ctl status
+
+# Reload configuration (no restart needed)
+pg_ctl reload
+
+# Restart the server
+pg_ctl restart
+
+# Stop (smart = wait for clients, fast = rollback, immediate = crash)
+pg_ctl stop -m smart
+pg_ctl stop -m fast
+pg_ctl stop -m immediate</code></pre>
+        </div>
+
+        <div class="mt-4 grid grid-cols-1 md:grid-cols-3 gap-3">
+          <div class="bg-green-50 border border-green-200 rounded-xl p-4">
+            <h4 class="font-bold text-green-800 text-sm mb-1 lang-ar">smart (ذكي)</h4>
+            <h4 class="font-bold text-green-800 text-sm mb-1 lang-en">smart</h4>
+            <p class="text-xs text-green-700 lang-ar">ينتظر انتهاء العملاء</p>
+            <p class="text-xs text-green-700 lang-en">Waits for clients to finish</p>
+          </div>
+          <div class="bg-amber-50 border border-amber-200 rounded-xl p-4">
+            <h4 class="font-bold text-amber-800 text-sm mb-1 lang-ar">fast (سريع) — افتراضي</h4>
+            <h4 class="font-bold text-amber-800 text-sm mb-1 lang-en">fast (default)</h4>
+            <p class="text-xs text-amber-700 lang-ar">يلغي العمليات الجارية</p>
+            <p class="text-xs text-amber-700 lang-en">Aborts in-flight transactions</p>
+          </div>
+          <div class="bg-red-50 border border-red-200 rounded-xl p-4">
+            <h4 class="font-bold text-red-800 text-sm mb-1 lang-ar">immediate (فوري)</h4>
+            <h4 class="font-bold text-red-800 text-sm mb-1 lang-en">immediate</h4>
+            <p class="text-xs text-red-700 lang-ar">توقف قسري — يتطلب recovery</p>
+            <p class="text-xs text-red-700 lang-en">Abrupt stop — needs recovery</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="bg-gradient-to-br from-rose-600 via-rose-700 to-rose-900 text-white rounded-2xl p-6 md:p-8 shadow-xl">
+        <div class="flex items-center gap-3 mb-6"><div class="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center"><i data-lucide="bookmark-check" class="w-6 h-6"></i></div><h2 class="text-2xl font-bold"><span class="lang-ar">ملخص الوحدة</span><span class="lang-en">Module Summary</span></h2></div>
+        <ul class="grid grid-cols-1 md:grid-cols-2 gap-3">
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-rose-300 shrink-0 mt-0.5"></i><span class="lang-ar">الكلاستر = مجلد بيانات + منفذ</span><span class="lang-en">Cluster = data directory + port</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-rose-300 shrink-0 mt-0.5"></i><span class="lang-ar">initdb لإنشاء كلاستر جديد</span><span class="lang-en">initdb creates a new cluster</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-rose-300 shrink-0 mt-0.5"></i><span class="lang-ar">pg_ctl لإدارة السيرفر</span><span class="lang-en">pg_ctl manages the server</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-rose-300 shrink-0 mt-0.5"></i><span class="lang-ar">ثلاث أوضاع للإيقاف: smart/fast/immediate</span><span class="lang-en">Three shutdown modes</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <nav class="flex flex-col md:flex-row gap-4">
+      <a href="ch04.html" class="flex-1 bg-white border border-surface-200 rounded-xl p-4 hover:border-rose-300 hover:shadow-md transition-all">
+        <div class="text-xs text-surface-500 mb-1"><span class="lang-ar">السابق</span><span class="lang-en">Previous</span></div>
+        <div class="flex items-center gap-2 font-bold"><i data-lucide="arrow-right" class="w-4 h-4 lang-ar"></i><i data-lucide="arrow-left" class="w-4 h-4 lang-en"></i><span class="lang-ar">psql</span><span class="lang-en">psql</span></div>
+      </a>
+      <a href="ch06.html" class="flex-1 bg-gradient-to-br from-rose-600 to-rose-700 text-white rounded-xl p-4 hover:shadow-xl transition-all">
+        <div class="text-xs text-rose-200 mb-1 text-end"><span class="lang-ar">التالي</span><span class="lang-en">Next</span></div>
+        <div class="flex items-center justify-end gap-2 font-bold"><span class="lang-ar">تهيئة قاعدة البيانات</span><span class="lang-en">Database Configuration</span><i data-lucide="arrow-left" class="w-4 h-4 lang-ar"></i><i data-lucide="arrow-right" class="w-4 h-4 lang-en"></i></div>
+      </a>
+    </nav>
+  </main>
+
+  <footer class="bg-surface-900 text-surface-400 py-8 text-center text-sm"><p class="lang-ar">الوحدة ٥ من ١٥</p><p class="lang-en">Module 5 of 15</p></footer>
+
+  <script>
+    function setLang(lang){document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';localStorage.setItem('pgCourseLang',lang);document.querySelectorAll('.lang-btn').forEach(b=>{b.classList.remove('bg-rose-600','text-white','shadow-md');b.classList.add('text-surface-600','hover:bg-surface-100');});const a=document.getElementById('btn-'+lang);a.classList.add('bg-rose-600','text-white','shadow-md');a.classList.remove('text-surface-600','hover:bg-surface-100');}
+    function copyCode(btn){const c=btn.nextElementSibling.querySelector('code').textContent;navigator.clipboard.writeText(c);btn.textContent='✓';setTimeout(()=>btn.textContent='Copy',2000);}
+    setLang(localStorage.getItem('pgCourseLang')||'ar');lucide.createIcons();Prism.highlightAll();
+  </script>
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>الوحدة ٣: التثبيت | EDB PostgreSQL v18</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{fontFamily:{arabic:['IBM Plex Sans Arabic','sans-serif'],mono:['JetBrains Mono','monospace']},colors:{pg:{50:'#f0f9ff',100:'#e0f2fe',200:'#bae6fd',300:'#7dd3fc',500:'#0ea5e9',600:'#0284c7',700:'#0369a1',800:'#075985',900:'#0c4a6e'},surface:{50:'#f8fafc',100:'#f1f5f9',200:'#e2e8f0',500:'#64748b',600:'#475569',700:'#334155',800:'#1e293b',900:'#0f172a'}}}}}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+  <style>
+    body { font-family: 'IBM Plex Sans Arabic', sans-serif; }
+    html[lang="ar"] .lang-en { display: none !important; }
+    html[lang="en"] .lang-ar { display: none !important; }
+    pre[class*="language-"] { border-radius: 0.75rem; font-size: 0.875rem; direction: ltr; }
+    code[class*="language-"] { font-family: 'JetBrains Mono', monospace; }
+  </style>
+</head>
+<body class="bg-surface-50 text-surface-800 antialiased min-h-screen">
+
+  <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-surface-200 shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
+      <a href="../index.html" class="flex items-center gap-2 text-surface-600 hover:text-green-600"><i data-lucide="home" class="w-4 h-4"></i><span class="text-sm font-semibold lang-ar">الصفحة الرئيسية</span><span class="text-sm font-semibold lang-en">Home</span></a>
+      <div class="flex items-center gap-2">
+        <button onclick="setLang('ar')" id="btn-ar" class="lang-btn px-3 py-2 rounded-lg text-sm font-semibold">العربية</button>
+        <button onclick="setLang('en')" id="btn-en" class="lang-btn px-3 py-2 rounded-lg text-sm font-semibold">English</button>
+      </div>
+    </div>
+  </nav>
+
+  <header class="bg-gradient-to-br from-green-900 via-green-800 to-green-700 text-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
+      <div class="flex items-center gap-3 text-green-200 text-sm mb-4">
+        <span class="px-3 py-1 bg-white/10 rounded-full"><span class="lang-ar">الوحدة ٣</span><span class="lang-en">Module 3</span></span>
+        <span>·</span><span class="font-mono">p. 44–62</span><span>·</span>
+        <span class="lang-ar">١٩ صفحة</span><span class="lang-en">19 pages</span>
+      </div>
+      <h1 class="text-3xl md:text-5xl font-bold mb-4"><span class="lang-ar">التثبيت</span><span class="lang-en">Installation</span></h1>
+      <p class="text-lg text-green-100 max-w-3xl lang-ar">خطوة خطوة في تثبيت PostgreSQL على نظامك — من الحزم إلى متغيرات البيئة.</p>
+      <p class="text-lg text-green-100 max-w-3xl lang-en">Step-by-step PostgreSQL installation on your system — from packages to env variables.</p>
+    </div>
+  </header>
+
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 py-10">
+    <div class="bg-white rounded-2xl shadow-sm border border-surface-200 p-6 md:p-8">
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-green-500 to-green-700 flex items-center justify-center text-white"><i data-lucide="target" class="w-6 h-6"></i></div>
+        <h2 class="text-2xl font-bold"><span class="lang-ar">أهداف الوحدة</span><span class="lang-en">Module Objectives</span></h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+        <div class="flex gap-2 p-3 rounded-xl bg-green-50 border border-green-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-green-600 shrink-0"></i><span class="lang-ar">خيارات النشر (Deployment Options)</span><span class="lang-en">Deployment Options</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-green-50 border border-green-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-green-600 shrink-0"></i><span class="lang-ar">المستخدم والصلاحيات في نظام التشغيل</span><span class="lang-en">OS User and Permissions</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-green-50 border border-green-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-green-600 shrink-0"></i><span class="lang-ar">تثبيت الحزم</span><span class="lang-en">Package Installation</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-green-50 border border-green-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-green-600 shrink-0"></i><span class="lang-ar">أمثلة عملية ومعامل</span><span class="lang-en">Installation Examples & Labs</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-green-50 border border-green-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-green-600 shrink-0"></i><span class="lang-ar">ضبط متغيرات البيئة</span><span class="lang-en">Setting Environmental Variables</span></div>
+      </div>
+    </div>
+  </section>
+
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 pb-12 space-y-12">
+
+    <section>
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">خيارات النشر</span><span class="lang-en">Deployment Options</span></h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center text-blue-600 mb-3"><i data-lucide="cloud" class="w-6 h-6"></i></div>
+          <h3 class="font-bold text-lg mb-2"><span class="lang-ar">CloudNativePG</span><span class="lang-en">CloudNativePG</span></h3>
+          <p class="text-sm text-surface-600 lang-ar">Operator لإدارة PostgreSQL على Kubernetes</p>
+          <p class="text-sm text-surface-600 lang-en">Operator for managing PostgreSQL on Kubernetes</p>
+        </div>
+        <div class="bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="w-12 h-12 rounded-xl bg-purple-100 flex items-center justify-center text-purple-600 mb-3"><i data-lucide="server" class="w-6 h-6"></i></div>
+          <h3 class="font-bold text-lg mb-2"><span class="lang-ar">تثبيت محلي (On-Premise)</span><span class="lang-en">On-Premise Install</span></h3>
+          <p class="text-sm text-surface-600 lang-ar">تثبيت تقليدي على خادم فعلي أو افتراضي</p>
+          <p class="text-sm text-surface-600 lang-en">Traditional install on physical or virtual server</p>
+        </div>
+        <div class="bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="w-12 h-12 rounded-xl bg-amber-100 flex items-center justify-center text-amber-600 mb-3"><i data-lucide="box" class="w-6 h-6"></i></div>
+          <h3 class="font-bold text-lg mb-2"><span class="lang-ar">Docker Containers</span><span class="lang-en">Docker Containers</span></h3>
+          <p class="text-sm text-surface-600 lang-ar">سريع للتطوير والاختبار</p>
+          <p class="text-sm text-surface-600 lang-en">Fast for development and testing</p>
+        </div>
+        <div class="bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="w-12 h-12 rounded-xl bg-pg-100 flex items-center justify-center text-pg-600 mb-3"><i data-lucide="cloudy" class="w-6 h-6"></i></div>
+          <h3 class="font-bold text-lg mb-2"><span class="lang-ar">EDB Postgres AI Cloud</span><span class="lang-en">EDB Cloud</span></h3>
+          <p class="text-sm text-surface-600 lang-ar">خدمة PostgreSQL مُدارة من EDB</p>
+          <p class="text-sm text-surface-600 lang-en">EDB managed PostgreSQL service</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">تثبيت على Rocky Linux</span><span class="lang-en">Install on Rocky Linux</span></h2>
+      <div class="bg-white rounded-2xl border border-surface-200 p-6 space-y-4">
+        <p class="text-surface-700 lang-ar">الخطوات الأساسية لتثبيت PostgreSQL 18 على Rocky Linux:</p>
+        <p class="text-surface-700 lang-en">Basic steps to install PostgreSQL 18 on Rocky Linux:</p>
+
+        <div class="relative group" dir="ltr">
+          <button onclick="copyCode(this)" class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 bg-surface-700 text-white text-xs px-2.5 py-1.5 rounded-lg z-10">Copy</button>
+<pre class="!bg-surface-900 !rounded-xl !p-5"><code class="language-bash"># 1. Add PostgreSQL official repository
+sudo dnf install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-9-x86_64/pgdg-redhat-repo-latest.noarch.rpm
+
+# 2. Disable built-in PostgreSQL module
+sudo dnf -qy module disable postgresql
+
+# 3. Install PostgreSQL 18
+sudo dnf install -y postgresql18-server postgresql18-contrib
+
+# 4. Initialize database cluster
+sudo /usr/pgsql-18/bin/postgresql-18-setup initdb
+
+# 5. Enable and start the service
+sudo systemctl enable postgresql-18
+sudo systemctl start postgresql-18
+
+# 6. Verify installation
+sudo -u postgres psql -c "SELECT version();"</code></pre>
+        </div>
+
+        <div class="flex gap-3 p-4 bg-amber-50 border border-amber-200 rounded-xl">
+          <i data-lucide="alert-triangle" class="w-5 h-5 text-amber-600 shrink-0 mt-0.5"></i>
+          <div>
+            <strong class="text-amber-800 lang-ar">تنبيه:</strong><strong class="text-amber-800 lang-en">Warning:</strong>
+            <span class="text-amber-700 lang-ar"> مستخدم <span dir="ltr" class="font-mono">postgres</span> يُنشأ تلقائياً في نظام التشغيل ويمتلك مجلد البيانات. لا تقم بتشغيل السيرفر كـ root!</span>
+            <span class="text-amber-700 lang-en"> The <span class="font-mono">postgres</span> OS user is auto-created and owns the data directory. Never run the server as root!</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">متغيرات البيئة</span><span class="lang-en">Environment Variables</span></h2>
+      <div class="bg-white rounded-2xl border border-surface-200 overflow-hidden">
+        <table class="w-full text-sm">
+          <thead class="bg-green-600 text-white">
+            <tr><th class="p-3 text-right lang-ar">المتغير</th><th class="p-3 text-left lang-en">Variable</th><th class="p-3 text-right lang-ar">الوظيفة</th><th class="p-3 text-left lang-en">Purpose</th></tr>
+          </thead>
+          <tbody class="divide-y divide-surface-100">
+            <tr><td class="p-3 font-mono text-green-700 font-bold" colspan="2">PGDATA</td><td class="p-3 lang-ar">مسار مجلد البيانات</td><td class="p-3 lang-en">Data directory path</td></tr>
+            <tr class="bg-surface-50/50"><td class="p-3 font-mono text-green-700 font-bold" colspan="2">PGPORT</td><td class="p-3 lang-ar">رقم منفذ السيرفر (افتراضي 5432)</td><td class="p-3 lang-en">Server port number (default 5432)</td></tr>
+            <tr><td class="p-3 font-mono text-green-700 font-bold" colspan="2">PGUSER</td><td class="p-3 lang-ar">المستخدم الافتراضي للاتصال</td><td class="p-3 lang-en">Default connection user</td></tr>
+            <tr class="bg-surface-50/50"><td class="p-3 font-mono text-green-700 font-bold" colspan="2">PGDATABASE</td><td class="p-3 lang-ar">اسم قاعدة البيانات الافتراضية</td><td class="p-3 lang-en">Default database name</td></tr>
+            <tr><td class="p-3 font-mono text-green-700 font-bold" colspan="2">PGHOST</td><td class="p-3 lang-ar">عنوان السيرفر</td><td class="p-3 lang-en">Server hostname/IP</td></tr>
+            <tr class="bg-surface-50/50"><td class="p-3 font-mono text-green-700 font-bold" colspan="2">PATH</td><td class="p-3 lang-ar">يجب أن يحتوي مسار /usr/pgsql-18/bin</td><td class="p-3 lang-en">Must include /usr/pgsql-18/bin</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="mt-4 relative group" dir="ltr">
+        <button onclick="copyCode(this)" class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 bg-surface-700 text-white text-xs px-2.5 py-1.5 rounded-lg z-10">Copy</button>
+<pre class="!bg-surface-900 !rounded-xl !p-5"><code class="language-bash"># Add to ~/.bashrc (for postgres user)
+export PGDATA=/var/lib/pgsql/18/data
+export PATH=/usr/pgsql-18/bin:$PATH
+export PGPORT=5432
+
+# Apply changes
+source ~/.bashrc</code></pre>
+      </div>
+    </section>
+
+    <section>
+      <div class="bg-gradient-to-br from-green-600 via-green-700 to-green-900 text-white rounded-2xl p-6 md:p-8 shadow-xl">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center"><i data-lucide="bookmark-check" class="w-6 h-6"></i></div>
+          <h2 class="text-2xl font-bold"><span class="lang-ar">ملخص الوحدة</span><span class="lang-en">Module Summary</span></h2>
+        </div>
+        <ul class="grid grid-cols-1 md:grid-cols-2 gap-3">
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-green-300 shrink-0 mt-0.5"></i><span class="lang-ar">خيارات متعددة للنشر (Cloud، On-Prem، Docker)</span><span class="lang-en">Multiple deployment options</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-green-300 shrink-0 mt-0.5"></i><span class="lang-ar">مستخدم postgres يمتلك كل شيء</span><span class="lang-en">postgres user owns everything</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-green-300 shrink-0 mt-0.5"></i><span class="lang-ar">initdb لتهيئة الكلاستر</span><span class="lang-en">initdb to initialize cluster</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-green-300 shrink-0 mt-0.5"></i><span class="lang-ar">systemctl لإدارة الخدمة</span><span class="lang-en">systemctl to manage service</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-green-300 shrink-0 mt-0.5"></i><span class="lang-ar">متغيرات البيئة PGDATA و PGPORT</span><span class="lang-en">PGDATA and PGPORT env vars</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-green-300 shrink-0 mt-0.5"></i><span class="lang-ar">PostgreSQL 18 متوفر عبر yum/dnf</span><span class="lang-en">PostgreSQL 18 via yum/dnf</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <nav class="flex flex-col md:flex-row gap-4">
+      <a href="ch02.html" class="flex-1 bg-white border border-surface-200 rounded-xl p-4 hover:border-green-300 hover:shadow-md transition-all">
+        <div class="text-xs text-surface-500 mb-1"><span class="lang-ar">الوحدة السابقة</span><span class="lang-en">Previous</span></div>
+        <div class="flex items-center gap-2 font-bold"><i data-lucide="arrow-right" class="w-4 h-4 lang-ar"></i><i data-lucide="arrow-left" class="w-4 h-4 lang-en"></i><span class="lang-ar">معمارية النظام</span><span class="lang-en">System Architecture</span></div>
+      </a>
+      <a href="ch04.html" class="flex-1 bg-gradient-to-br from-green-600 to-green-700 text-white rounded-xl p-4 hover:shadow-xl transition-all">
+        <div class="text-xs text-green-200 mb-1 text-end"><span class="lang-ar">الوحدة التالية</span><span class="lang-en">Next Module</span></div>
+        <div class="flex items-center justify-end gap-2 font-bold"><span class="lang-ar">أدوات المستخدم (psql)</span><span class="lang-en">User Tools (psql)</span><i data-lucide="arrow-left" class="w-4 h-4 lang-ar"></i><i data-lucide="arrow-right" class="w-4 h-4 lang-en"></i></div>
+      </a>
+    </nav>
+
+  </main>
+
+  <footer class="bg-surface-900 text-surface-400 py-8 text-center text-sm">
+    <p class="lang-ar">الوحدة ٣ من ١٥</p><p class="lang-en">Module 3 of 15</p>
+  </footer>
+
+  <script>
+    function setLang(lang) { document.documentElement.lang=lang; document.documentElement.dir=lang==='ar'?'rtl':'ltr'; localStorage.setItem('pgCourseLang',lang); document.querySelectorAll('.lang-btn').forEach(b=>{b.classList.remove('bg-green-600','text-white','shadow-md');b.classList.add('text-surface-600','hover:bg-surface-100');}); const a=document.getElementById('btn-'+lang); a.classList.add('bg-green-600','text-white','shadow-md'); a.classList.remove('text-surface-600','hover:bg-surface-100'); }
+    function copyCode(btn) { const c=btn.nextElementSibling.querySelector('code').textContent; navigator.clipboard.writeText(c); btn.textContent='✓'; setTimeout(()=>btn.textContent='Copy',2000); }
+    setLang(localStorage.getItem('pgCourseLang')||'ar');
+    lucide.createIcons();
+    Prism.highlightAll();
+  </script>
+</body>
+</html>

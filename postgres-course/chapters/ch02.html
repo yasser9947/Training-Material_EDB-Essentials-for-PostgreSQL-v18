@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>الوحدة ٢: معمارية النظام | EDB PostgreSQL v18</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: { fontFamily: { arabic: ['IBM Plex Sans Arabic','sans-serif'], mono: ['JetBrains Mono','monospace'] }, colors: { pg: {50:'#f0f9ff',100:'#e0f2fe',200:'#bae6fd',300:'#7dd3fc',400:'#38bdf8',500:'#0ea5e9',600:'#0284c7',700:'#0369a1',800:'#075985',900:'#0c4a6e',950:'#082f49'}, surface: {50:'#f8fafc',100:'#f1f5f9',200:'#e2e8f0',300:'#cbd5e1',400:'#94a3b8',500:'#64748b',600:'#475569',700:'#334155',800:'#1e293b',900:'#0f172a'} } } } }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-sql.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+  <style>
+    body { font-family: 'IBM Plex Sans Arabic', sans-serif; }
+    html[lang="ar"] .lang-en { display: none !important; }
+    html[lang="en"] .lang-ar { display: none !important; }
+    pre[class*="language-"] { border-radius: 0.75rem; font-size: 0.875rem; margin: 0; direction: ltr; }
+    code[class*="language-"] { font-family: 'JetBrains Mono', monospace; }
+  </style>
+</head>
+<body class="bg-surface-50 text-surface-800 antialiased min-h-screen">
+
+  <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-surface-200 shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
+      <a href="../index.html" class="flex items-center gap-2 text-surface-600 hover:text-pg-600 transition-colors">
+        <i data-lucide="home" class="w-4 h-4"></i>
+        <span class="text-sm font-semibold lang-ar">الصفحة الرئيسية</span>
+        <span class="text-sm font-semibold lang-en">Home</span>
+      </a>
+      <div class="flex items-center gap-2">
+        <button onclick="setLang('ar')" id="btn-ar" class="lang-btn px-3 py-2 rounded-lg text-sm font-semibold transition-all">العربية</button>
+        <button onclick="setLang('en')" id="btn-en" class="lang-btn px-3 py-2 rounded-lg text-sm font-semibold transition-all">English</button>
+      </div>
+    </div>
+  </nav>
+
+  <header class="bg-gradient-to-br from-purple-900 via-purple-800 to-purple-700 text-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
+      <div class="flex items-center gap-3 text-purple-200 text-sm mb-4">
+        <span class="px-3 py-1 bg-white/10 rounded-full"><span class="lang-ar">الوحدة ٢</span><span class="lang-en">Module 2</span></span>
+        <span>·</span><span class="font-mono">p. 19–43</span><span>·</span>
+        <span class="lang-ar">٢٥ صفحة</span><span class="lang-en">25 pages</span>
+      </div>
+      <h1 class="text-3xl md:text-5xl font-bold mb-4">
+        <span class="lang-ar">معمارية النظام</span>
+        <span class="lang-en">System Architecture</span>
+      </h1>
+      <p class="text-lg text-purple-100 max-w-3xl lang-ar">فهم عميق لكيفية عمل PostgreSQL من الداخل — العمليات، الذاكرة، ومعالجة الاستعلامات.</p>
+      <p class="text-lg text-purple-100 max-w-3xl lang-en">Deep dive into how PostgreSQL works internally — processes, memory, and query processing.</p>
+    </div>
+  </header>
+
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 py-10">
+    <div class="bg-white rounded-2xl shadow-sm border border-surface-200 p-6 md:p-8">
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-purple-700 flex items-center justify-center text-white">
+          <i data-lucide="target" class="w-6 h-6"></i>
+        </div>
+        <h2 class="text-2xl font-bold">
+          <span class="lang-ar">أهداف الوحدة</span>
+          <span class="lang-en">Module Objectives</span>
+        </h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+        <div class="flex gap-2 p-3 rounded-xl bg-purple-50 border border-purple-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-purple-600 shrink-0"></i><span class="lang-ar">معمارية العمليات والذاكرة</span><span class="lang-en">Process and Memory Architecture</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-purple-50 border border-purple-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-purple-600 shrink-0"></i><span class="lang-ar">العمليات المساعدة (Utility Processes)</span><span class="lang-en">Utility Processes</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-purple-50 border border-purple-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-purple-600 shrink-0"></i><span class="lang-ar">طلب الاتصال والاستجابة</span><span class="lang-en">Connection Request-Response</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-purple-50 border border-purple-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-purple-600 shrink-0"></i><span class="lang-ar">قراءة وكتابة القرص (Buffering)</span><span class="lang-en">Disk Read/Write Buffering</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-purple-50 border border-purple-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-purple-600 shrink-0"></i><span class="lang-ar">الـ Commit والـ Checkpoint</span><span class="lang-en">Commit and Checkpoint</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-purple-50 border border-purple-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-purple-600 shrink-0"></i><span class="lang-ar">معالجة الاستعلامات</span><span class="lang-en">Statement Processing</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-purple-50 border border-purple-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-purple-600 shrink-0"></i><span class="lang-ar">هيكلة المجلدات والملفات</span><span class="lang-en">Data Directory Layout</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-purple-50 border border-purple-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-purple-600 shrink-0"></i><span class="lang-ar">تخطيط الصفحة (Page Layout)</span><span class="lang-en">Page Layout</span></div>
+      </div>
+    </div>
+  </section>
+
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 pb-12 space-y-12">
+
+    <section>
+      <div class="mb-6">
+        <span class="text-sm font-bold text-purple-600 uppercase tracking-wider"><span class="lang-ar">القسم ١</span><span class="lang-en">Section 1</span></span>
+        <h2 class="text-3xl font-bold text-surface-900 mt-2 mb-3"><span class="lang-ar">الملخص المعماري</span><span class="lang-en">Architectural Summary</span></h2>
+      </div>
+      <div class="bg-white rounded-2xl border border-surface-200 p-6 md:p-8 space-y-4">
+        <div class="flex gap-3 p-4 bg-purple-50 border border-purple-200 rounded-xl">
+          <i data-lucide="key" class="w-5 h-5 text-purple-600 shrink-0 mt-0.5"></i>
+          <div>
+            <strong class="text-purple-800 lang-ar">الفكرة الأساسية:</strong>
+            <strong class="text-purple-800 lang-en">Key Concept:</strong>
+            <p class="text-purple-700 mt-1 lang-ar">PostgreSQL يستخدم <strong>عمليات (Processes)</strong> وليس <strong>خيوط (Threads)</strong>. عملية الـ <span dir="ltr" class="font-mono">Postmaster</span> تعمل كـ<strong>مشرف</strong> يدير كل العمليات الأخرى.</p>
+            <p class="text-purple-700 mt-1 lang-en">PostgreSQL uses <strong>processes</strong>, not <strong>threads</strong>. The <span class="font-mono">Postmaster</span> process acts as a <strong>supervisor</strong> managing all others.</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+          <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-5 border border-purple-200">
+            <i data-lucide="users" class="w-8 h-8 text-purple-600 mb-3"></i>
+            <h4 class="font-bold mb-2"><span class="lang-ar">عمليات العميل</span><span class="lang-en">Client Backends</span></h4>
+            <p class="text-sm text-surface-700 lang-ar">عملية لكل اتصال من التطبيق</p>
+            <p class="text-sm text-surface-700 lang-en">One process per client connection</p>
+          </div>
+          <div class="bg-gradient-to-br from-pg-50 to-pg-100 rounded-xl p-5 border border-pg-200">
+            <i data-lucide="cpu" class="w-8 h-8 text-pg-600 mb-3"></i>
+            <h4 class="font-bold mb-2"><span class="lang-ar">عمليات الخلفية</span><span class="lang-en">Background Processes</span></h4>
+            <p class="text-sm text-surface-700 lang-ar">Checkpointer، Writer، Autovacuum، WAL Writer</p>
+            <p class="text-sm text-surface-700 lang-en">Checkpointer, Writer, Autovacuum, WAL Writer</p>
+          </div>
+          <div class="bg-gradient-to-br from-amber-50 to-amber-100 rounded-xl p-5 border border-amber-200">
+            <i data-lucide="hard-drive" class="w-8 h-8 text-amber-600 mb-3"></i>
+            <h4 class="font-bold mb-2"><span class="lang-ar">الذاكرة المشتركة</span><span class="lang-en">Shared Memory</span></h4>
+            <p class="text-sm text-surface-700 lang-ar">shared_buffers، wal_buffers، CLOG</p>
+            <p class="text-sm text-surface-700 lang-en">shared_buffers, wal_buffers, CLOG</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="mb-6">
+        <span class="text-sm font-bold text-purple-600 uppercase tracking-wider"><span class="lang-ar">القسم ٢</span><span class="lang-en">Section 2</span></span>
+        <h2 class="text-3xl font-bold text-surface-900 mt-2 mb-3"><span class="lang-ar">العمليات المساعدة (Utility Processes)</span><span class="lang-en">Utility Processes</span></h2>
+      </div>
+      <div class="bg-white rounded-2xl border border-surface-200 overflow-hidden">
+        <table class="w-full text-sm">
+          <thead class="bg-purple-600 text-white">
+            <tr>
+              <th class="p-3 text-right lang-ar">العملية</th>
+              <th class="p-3 text-left lang-en">Process</th>
+              <th class="p-3 text-right lang-ar">الوظيفة</th>
+              <th class="p-3 text-left lang-en">Function</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-surface-100">
+            <tr><td class="p-3 font-mono text-pg-700" colspan="2">postmaster</td><td class="p-3 lang-ar">العملية الأم — يستقبل الاتصالات ويولد backends</td><td class="p-3 lang-en">Parent process — accepts connections, spawns backends</td></tr>
+            <tr class="bg-surface-50/50"><td class="p-3 font-mono text-pg-700" colspan="2">checkpointer</td><td class="p-3 lang-ar">ينفذ checkpoints لضمان ثبات البيانات على القرص</td><td class="p-3 lang-en">Performs checkpoints to ensure data durability</td></tr>
+            <tr><td class="p-3 font-mono text-pg-700" colspan="2">background writer</td><td class="p-3 lang-ar">يكتب الصفحات المعدلة (dirty) إلى القرص تدريجياً</td><td class="p-3 lang-en">Gradually writes dirty pages to disk</td></tr>
+            <tr class="bg-surface-50/50"><td class="p-3 font-mono text-pg-700" colspan="2">wal writer</td><td class="p-3 lang-ar">يكتب سجلات WAL من الذاكرة إلى القرص</td><td class="p-3 lang-en">Flushes WAL records from memory to disk</td></tr>
+            <tr><td class="p-3 font-mono text-pg-700" colspan="2">autovacuum launcher</td><td class="p-3 lang-ar">يشغل عمليات VACUUM و ANALYZE تلقائياً</td><td class="p-3 lang-en">Automatically runs VACUUM and ANALYZE</td></tr>
+            <tr class="bg-surface-50/50"><td class="p-3 font-mono text-pg-700" colspan="2">stats collector</td><td class="p-3 lang-ar">يجمع الإحصائيات حول استخدام الجداول والفهارس</td><td class="p-3 lang-en">Collects statistics about table/index usage</td></tr>
+            <tr><td class="p-3 font-mono text-pg-700" colspan="2">logger</td><td class="p-3 lang-ar">يكتب رسائل السيرفر إلى ملفات السجل</td><td class="p-3 lang-en">Writes server messages to log files</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <div class="mb-6">
+        <span class="text-sm font-bold text-purple-600 uppercase tracking-wider"><span class="lang-ar">القسم ٣</span><span class="lang-en">Section 3</span></span>
+        <h2 class="text-3xl font-bold text-surface-900 mt-2 mb-3"><span class="lang-ar">معالجة الاستعلام</span><span class="lang-en">Query Processing</span></h2>
+      </div>
+      <div class="bg-white rounded-2xl border border-surface-200 p-6">
+        <p class="mb-4 text-surface-700 lang-ar">عندما ترسل استعلام إلى PostgreSQL، يمر بعدة مراحل:</p>
+        <p class="mb-4 text-surface-700 lang-en">When you send a query to PostgreSQL, it goes through several stages:</p>
+
+        <div class="space-y-3">
+          <div class="flex items-center gap-4 p-4 bg-gradient-to-l from-purple-50 to-transparent rounded-xl">
+            <div class="w-10 h-10 rounded-full bg-purple-600 text-white flex items-center justify-center font-bold shrink-0">1</div>
+            <div>
+              <div class="font-bold"><span class="lang-ar">Parser (المحلل)</span><span class="lang-en">Parser</span></div>
+              <div class="text-sm text-surface-600 lang-ar">يتحقق من صحة بنية الاستعلام (syntax)</div>
+              <div class="text-sm text-surface-600 lang-en">Validates query syntax</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-4 p-4 bg-gradient-to-l from-pg-50 to-transparent rounded-xl">
+            <div class="w-10 h-10 rounded-full bg-pg-600 text-white flex items-center justify-center font-bold shrink-0">2</div>
+            <div>
+              <div class="font-bold"><span class="lang-ar">Rewriter (المعيد)</span><span class="lang-en">Rewriter</span></div>
+              <div class="text-sm text-surface-600 lang-ar">يطبق قواعد الـ Views والـ Rules</div>
+              <div class="text-sm text-surface-600 lang-en">Applies view and rule transformations</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-4 p-4 bg-gradient-to-l from-amber-50 to-transparent rounded-xl">
+            <div class="w-10 h-10 rounded-full bg-amber-600 text-white flex items-center justify-center font-bold shrink-0">3</div>
+            <div>
+              <div class="font-bold"><span class="lang-ar">Planner/Optimizer (المخطط)</span><span class="lang-en">Planner/Optimizer</span></div>
+              <div class="text-sm text-surface-600 lang-ar">يختار أفضل خطة تنفيذ بناءً على الإحصائيات</div>
+              <div class="text-sm text-surface-600 lang-en">Picks optimal execution plan using statistics</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-4 p-4 bg-gradient-to-l from-green-50 to-transparent rounded-xl">
+            <div class="w-10 h-10 rounded-full bg-green-600 text-white flex items-center justify-center font-bold shrink-0">4</div>
+            <div>
+              <div class="font-bold"><span class="lang-ar">Executor (المنفذ)</span><span class="lang-en">Executor</span></div>
+              <div class="text-sm text-surface-600 lang-ar">ينفذ الخطة ويعيد النتائج</div>
+              <div class="text-sm text-surface-600 lang-en">Executes the plan and returns results</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="mb-6">
+        <span class="text-sm font-bold text-purple-600 uppercase tracking-wider"><span class="lang-ar">القسم ٤</span><span class="lang-en">Section 4</span></span>
+        <h2 class="text-3xl font-bold text-surface-900 mt-2 mb-3"><span class="lang-ar">هيكلة مجلد البيانات</span><span class="lang-en">Data Directory Layout</span></h2>
+      </div>
+      <div class="bg-white rounded-2xl border border-surface-200 p-6">
+        <p class="mb-4 text-surface-700 lang-ar">مجلد <span dir="ltr" class="font-mono bg-surface-100 px-2 py-0.5 rounded">PGDATA</span> يحتوي على كل ملفات قاعدة البيانات:</p>
+        <p class="mb-4 text-surface-700 lang-en">The <span class="font-mono bg-surface-100 px-2 py-0.5 rounded">PGDATA</span> directory contains all database files:</p>
+
+        <div class="relative group" dir="ltr">
+          <button onclick="copyCode(this)" class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 bg-surface-700 text-white text-xs px-2.5 py-1.5 rounded-lg z-10">Copy</button>
+<pre class="!bg-surface-900 !rounded-xl !p-5"><code class="language-bash">$PGDATA/
+├── base/              # Per-database data files
+│   └── &lt;oid&gt;/         # One directory per database
+├── global/            # Cluster-wide tables (pg_database, etc.)
+├── pg_wal/            # Write-Ahead Log files
+├── pg_xact/           # Transaction commit status
+├── pg_multixact/      # Multi-transaction status
+├── pg_stat/           # Statistics subsystem
+├── pg_tblspc/         # Symbolic links to tablespaces
+├── postgresql.conf    # Main configuration file
+├── pg_hba.conf        # Host-based authentication
+├── pg_ident.conf      # Identity mapping
+└── PG_VERSION         # Version number</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="bg-gradient-to-br from-purple-600 via-purple-700 to-purple-900 text-white rounded-2xl p-6 md:p-8 shadow-xl">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-12 h-12 rounded-xl bg-white/20 backdrop-blur-md flex items-center justify-center"><i data-lucide="bookmark-check" class="w-6 h-6"></i></div>
+          <h2 class="text-2xl font-bold"><span class="lang-ar">ملخص الوحدة</span><span class="lang-en">Module Summary</span></h2>
+        </div>
+        <ul class="grid grid-cols-1 md:grid-cols-2 gap-3">
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-purple-300 shrink-0 mt-0.5"></i><span class="lang-ar">PostgreSQL يستخدم العمليات، ليس الخيوط</span><span class="lang-en">PostgreSQL uses processes, not threads</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-purple-300 shrink-0 mt-0.5"></i><span class="lang-ar">Postmaster هو المشرف الرئيسي</span><span class="lang-en">Postmaster is the main supervisor</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-purple-300 shrink-0 mt-0.5"></i><span class="lang-ar">عمليات الخلفية تدير الذاكرة والسجلات</span><span class="lang-en">Background processes manage memory and logs</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-purple-300 shrink-0 mt-0.5"></i><span class="lang-ar">4 مراحل لمعالجة كل استعلام</span><span class="lang-en">4 stages for query processing</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-purple-300 shrink-0 mt-0.5"></i><span class="lang-ar">مجلد PGDATA منظم بعناية</span><span class="lang-en">PGDATA directory is carefully structured</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-purple-300 shrink-0 mt-0.5"></i><span class="lang-ar">WAL يضمن استعادة البيانات</span><span class="lang-en">WAL ensures data recoverability</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <nav class="flex flex-col md:flex-row gap-4">
+      <a href="ch01.html" class="flex-1 bg-white border border-surface-200 rounded-xl p-4 hover:border-purple-300 hover:shadow-md transition-all">
+        <div class="text-xs text-surface-500 mb-1"><span class="lang-ar">الوحدة السابقة</span><span class="lang-en">Previous</span></div>
+        <div class="flex items-center gap-2 font-bold"><i data-lucide="arrow-right" class="w-4 h-4 lang-ar"></i><i data-lucide="arrow-left" class="w-4 h-4 lang-en"></i><span class="lang-ar">مقدمة</span><span class="lang-en">Introduction</span></div>
+      </a>
+      <a href="ch03.html" class="flex-1 bg-gradient-to-br from-purple-600 to-purple-700 text-white rounded-xl p-4 hover:shadow-xl transition-all">
+        <div class="text-xs text-purple-200 mb-1 text-end"><span class="lang-ar">الوحدة التالية</span><span class="lang-en">Next Module</span></div>
+        <div class="flex items-center justify-end gap-2 font-bold"><span class="lang-ar">التثبيت</span><span class="lang-en">Installation</span><i data-lucide="arrow-left" class="w-4 h-4 lang-ar"></i><i data-lucide="arrow-right" class="w-4 h-4 lang-en"></i></div>
+      </a>
+    </nav>
+  </main>
+
+  <footer class="bg-surface-900 text-surface-400 py-8 text-center text-sm">
+    <p class="lang-ar">الوحدة ٢ من ١٥ · EDB PostgreSQL v18</p>
+    <p class="lang-en">Module 2 of 15 · EDB PostgreSQL v18</p>
+  </footer>
+
+  <script>
+    function setLang(lang) {
+      document.documentElement.lang = lang;
+      document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+      localStorage.setItem('pgCourseLang', lang);
+      document.querySelectorAll('.lang-btn').forEach(b => { b.classList.remove('bg-purple-600','text-white','shadow-md'); b.classList.add('text-surface-600','hover:bg-surface-100'); });
+      const a = document.getElementById('btn-' + lang); a.classList.add('bg-purple-600','text-white','shadow-md'); a.classList.remove('text-surface-600','hover:bg-surface-100');
+    }
+    function copyCode(btn) { const c = btn.nextElementSibling.querySelector('code').textContent; navigator.clipboard.writeText(c); btn.textContent='✓'; setTimeout(()=>btn.textContent='Copy',2000); }
+    setLang(localStorage.getItem('pgCourseLang') || 'ar');
+    lucide.createIcons();
+    Prism.highlightAll();
+  </script>
+</body>
+</html>

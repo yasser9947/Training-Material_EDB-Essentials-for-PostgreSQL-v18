@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EDB Essentials for PostgreSQL v18 — الدورة التدريبية الشاملة</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            arabic: ['IBM Plex Sans Arabic', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            pg: {
+              50: '#f0f9ff', 100: '#e0f2fe', 200: '#bae6fd',
+              300: '#7dd3fc', 400: '#38bdf8', 500: '#0ea5e9',
+              600: '#0284c7', 700: '#0369a1', 800: '#075985',
+              900: '#0c4a6e', 950: '#082f49',
+            },
+            edb: {
+              500: '#f97316', 600: '#ea580c', 700: '#c2410c',
+            },
+            surface: {
+              50: '#f8fafc', 100: '#f1f5f9', 200: '#e2e8f0',
+              300: '#cbd5e1', 400: '#94a3b8', 500: '#64748b',
+              600: '#475569', 700: '#334155', 800: '#1e293b',
+              900: '#0f172a', 950: '#020617',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+  <style>
+    body { font-family: 'IBM Plex Sans Arabic', sans-serif; }
+    html[lang="ar"] .lang-en { display: none !important; }
+    html[lang="en"] .lang-ar { display: none !important; }
+
+    .chapter-card {
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .chapter-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px -12px rgba(3, 105, 161, 0.25);
+    }
+    .chapter-card:hover .chapter-icon {
+      transform: scale(1.1) rotate(-5deg);
+    }
+    .chapter-icon {
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in-up { animation: fadeInUp 0.6s ease-out forwards; }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #0ea5e9 0%, #f97316 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .bg-grid {
+      background-image:
+        linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+  </style>
+</head>
+<body class="bg-surface-50 text-surface-800 antialiased min-h-screen">
+
+  <!-- Sticky Top Bar with Language Toggle -->
+  <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-surface-200 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-pg-500 to-edb-500 flex items-center justify-center text-white shadow-lg">
+          <i data-lucide="database" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <div class="font-bold text-surface-900 text-sm lang-ar">دورة EDB PostgreSQL v18</div>
+          <div class="font-bold text-surface-900 text-sm lang-en">EDB PostgreSQL v18 Course</div>
+          <div class="text-xs text-surface-500 lang-ar">١٥ وحدة تعليمية</div>
+          <div class="text-xs text-surface-500 lang-en">15 Modules</div>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <button onclick="setLang('ar')" id="btn-ar" class="lang-btn px-3 py-2 rounded-lg text-sm font-semibold transition-all">
+          <span class="inline-flex items-center gap-1.5">
+            <i data-lucide="languages" class="w-4 h-4"></i>
+            العربية
+          </span>
+        </button>
+        <button onclick="setLang('en')" id="btn-en" class="lang-btn px-3 py-2 rounded-lg text-sm font-semibold transition-all">
+          <span class="inline-flex items-center gap-1.5">
+            <i data-lucide="languages" class="w-4 h-4"></i>
+            English
+          </span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Header -->
+  <header class="relative overflow-hidden bg-gradient-to-br from-pg-900 via-pg-800 to-surface-900 text-white">
+    <div class="absolute inset-0 bg-grid opacity-30"></div>
+    <div class="absolute top-0 right-0 w-96 h-96 bg-edb-500/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+    <div class="absolute bottom-0 left-0 w-96 h-96 bg-pg-400/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 py-16 md:py-24">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-white/10 backdrop-blur-md rounded-full border border-white/20 mb-6 animate-fade-in-up">
+        <i data-lucide="sparkles" class="w-4 h-4 text-edb-500"></i>
+        <span class="text-sm font-medium lang-ar">EDB Postgres® AI · الإصدار ١٨</span>
+        <span class="text-sm font-medium lang-en">EDB Postgres® AI · Version 18</span>
+      </div>
+
+      <h1 class="text-4xl md:text-6xl font-bold mb-4 leading-tight animate-fade-in-up">
+        <span class="lang-ar">أساسيات <span class="gradient-text">PostgreSQL v18</span></span>
+        <span class="lang-en"><span class="gradient-text">PostgreSQL v18</span> Essentials</span>
+      </h1>
+
+      <p class="text-lg md:text-xl text-pg-100 max-w-3xl leading-relaxed mb-8 animate-fade-in-up lang-ar">
+        دورة تدريبية شاملة من EDB لإتقان إدارة قواعد بيانات PostgreSQL من الصفر إلى الاحتراف — ١٥ وحدة تعليمية تغطي كل ما يحتاجه مدير قواعد البيانات.
+      </p>
+      <p class="text-lg md:text-xl text-pg-100 max-w-3xl leading-relaxed mb-8 animate-fade-in-up lang-en">
+        Comprehensive EDB training course to master PostgreSQL database administration from zero to hero — 15 modules covering everything a DBA needs.
+      </p>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-10 animate-fade-in-up">
+        <div class="bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20">
+          <div class="text-3xl font-bold text-white mb-1">15</div>
+          <div class="text-sm text-pg-200 lang-ar">وحدة تعليمية</div>
+          <div class="text-sm text-pg-200 lang-en">Modules</div>
+        </div>
+        <div class="bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20">
+          <div class="text-3xl font-bold text-white mb-1">414</div>
+          <div class="text-sm text-pg-200 lang-ar">صفحة</div>
+          <div class="text-sm text-pg-200 lang-en">Pages</div>
+        </div>
+        <div class="bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20">
+          <div class="text-3xl font-bold text-white mb-1">50+</div>
+          <div class="text-sm text-pg-200 lang-ar">موضوع</div>
+          <div class="text-sm text-pg-200 lang-en">Topics</div>
+        </div>
+        <div class="bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20">
+          <div class="text-3xl font-bold text-white mb-1">2</div>
+          <div class="text-sm text-pg-200 lang-ar">لغة</div>
+          <div class="text-sm text-pg-200 lang-en">Languages</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Course Agenda Overview -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 py-12 md:py-16">
+    <div class="text-center mb-12">
+      <div class="inline-flex items-center gap-2 text-pg-600 font-semibold text-sm mb-3">
+        <i data-lucide="book-open" class="w-4 h-4"></i>
+        <span class="lang-ar">جدول الدورة</span>
+        <span class="lang-en">Course Agenda</span>
+      </div>
+      <h2 class="text-3xl md:text-4xl font-bold text-surface-900 mb-3">
+        <span class="lang-ar">ما ستتعلمه في هذه الدورة</span>
+        <span class="lang-en">What You Will Learn</span>
+      </h2>
+      <p class="text-surface-600 max-w-2xl mx-auto lang-ar">
+        كل وحدة مصممة بعناية لتأخذك خطوة بخطوة في رحلتك لإتقان PostgreSQL
+      </p>
+      <p class="text-surface-600 max-w-2xl mx-auto lang-en">
+        Each module is carefully designed to take you step-by-step on your journey to mastering PostgreSQL
+      </p>
+    </div>
+
+    <!-- Chapter Cards Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="chapters-grid">
+
+      <!-- Chapter 1 -->
+      <a href="chapters/ch01.html" class="chapter-card group bg-white rounded-2xl border border-surface-200 overflow-hidden block">
+        <div class="p-6">
+          <div class="flex items-start justify-between mb-4">
+            <div class="chapter-icon w-14 h-14 rounded-2xl bg-gradient-to-br from-pg-500 to-pg-700 flex items-center justify-center text-white shadow-lg">
+              <i data-lucide="flag" class="w-7 h-7"></i>
+            </div>
+            <span class="text-xs font-mono bg-surface-100 text-surface-600 px-2 py-1 rounded-lg">p. 3-18</span>
+          </div>
+          <div class="text-xs font-semibold text-pg-600 mb-2">
+            <span class="lang-ar">الوحدة ١</span><span class="lang-en">Module 1</span>
+          </div>
+          <h3 class="text-lg font-bold text-surface-900 mb-2 leading-snug">
+            <span class="lang-ar">مقدمة ونظرة معمارية عامة</span>
+            <span class="lang-en">Introduction & Architectural Overview</span>
+          </h3>
+          <p class="text-sm text-surface-600 leading-relaxed lang-ar">
+            تاريخ PostgreSQL، المميزات الرئيسية، منصة EDB Postgres AI وحدود قاعدة البيانات
+          </p>
+          <p class="text-sm text-surface-600 leading-relaxed lang-en">
+            PostgreSQL history, major features, EDB Postgres AI platform and database limits
+          </p>
+        </div>
+        <div class="px-6 py-3 bg-surface-50 border-t border-surface-100 flex items-center justify-between">
+          <span class="text-xs text-surface-500 lang-ar">١٦ صفحة</span>
+          <span class="text-xs text-surface-500 lang-en">16 pages</span>
+          <i data-lucide="arrow-left" class="w-4 h-4 text-pg-600 group-hover:-translate-x-1 transition-transform lang-ar"></i>
+          <i data-lucide="arrow-right" class="w-4 h-4 text-pg-600 group-hover:translate-x-1 transition-transform lang-en"></i>
+        </div>
+      </a>
+
+      <!-- Chapter 2 -->
+      <a href="chapters/ch02.html" class="chapter-card group bg-white rounded-2xl border border-surface-200 overflow-hidden block">
+        <div class="p-6">
+          <div class="flex items-start justify-between mb-4">
+            <div class="chapter-icon w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-500 to-purple-700 flex items-center justify-center text-white shadow-lg">
+              <i data-lucide="cpu" class="w-7 h-7"></i>
+            </div>
+            <span class="text-xs font-mono bg-surface-100 text-surface-600 px-2 py-1 rounded-lg">p. 19-43</span>
+          </div>
+          <div class="text-xs font-semibold text-purple-600 mb-2">
+            <span class="lang-ar">الوحدة ٢</span><span class="lang-en">Module 2</span>
+          </div>
+          <h3 class="text-lg font-bold text-surface-900 mb-2 leading-snug">
+            <span class="lang-ar">معمارية النظام</span>
+            <span class="lang-en">System Architecture</span>
+          </h3>
+          <p class="text-sm text-surface-600 leading-relaxed lang-ar">
+            العمليات والذاكرة، Postmaster، الـ Buffer Cache، معالجة الاستعلامات وتخطيط الصفحات
+          </p>
+          <p class="text-sm text-surface-600 leading-relaxed lang-en">
+            Processes and memory, Postmaster, buffer cache, query processing and page layout
+          </p>
+        </div>
+        <div class="px-6 py-3 bg-surface-50 border-t border-surface-100 flex items-center justify-between">
+          <span class="text-xs text-surface-500 lang-ar">٢٥ صفحة</span>
+          <span class="text-xs text-surface-500 lang-en">25 pages</span>
+          <i data-lucide="arrow-left" class="w-4 h-4 text-purple-600 group-hover:-translate-x-1 transition-transform lang-ar"></i>
+          <i data-lucide="arrow-right" class="w-4 h-4 text-purple-600 group-hover:translate-x-1 transition-transform lang-en"></i>
+        </div>
+      </a>
+
+      <!-- Chapter 3 -->
+      <a href="chapters/ch03.html" class="chapter-card group bg-white rounded-2xl border border-surface-200 overflow-hidden block">
+        <div class="p-6">
+          <div class="flex items-start justify-between mb-4">
+            <div class="chapter-icon w-14 h-14 rounded-2xl bg-gradient-to-br from-green-500 to-green-700 flex items-center justify-center text-white shadow-lg">
+              <i data-lucide="download" class="w-7 h-7"></i>
+            </div>
+            <span class="text-xs font-mono bg-surface-100 text-surface-600 px-2 py-1 rounded-lg">p. 44-62</span>
+          </div>
+          <div class="text-xs font-semibold text-green-600 mb-2">
+            <span class="lang-ar">الوحدة ٣</span><span class="lang-en">Module 3</span>
+          </div>
+          <h3 class="text-lg font-bold text-surface-900 mb-2 leading-snug">
+            <span class="lang-ar">التثبيت</span>
+            <span class="lang-en">Installation</span>
+          </h3>
+          <p class="text-sm text-surface-600 leading-relaxed lang-ar">
+            خيارات النشر، المستخدم والصلاحيات، تثبيت الحزم ومتغيرات البيئة
+          </p>
+          <p class="text-sm text-surface-600 leading-relaxed lang-en">
+            Deployment options, OS user and permissions, package installation and env variables
+          </p>
+        </div>
+        <div class="px-6 py-3 bg-surface-50 border-t border-surface-100 flex items-center justify-between">
+          <span class="text-xs text-surface-500 lang-ar">١٩ صفحة</span>
+          <span class="text-xs text-surface-500 lang-en">19 pages</span>
+          <i data-lucide="arrow-left" class="w-4 h-4 text-green-600 group-hover:-translate-x-1 transition-transform lang-ar"></i>
+          <i data-lucide="arrow-right" class="w-4 h-4 text-green-600 group-hover:translate-x-1 transition-transform lang-en"></i>
+        </div>
+      </a>
+
+      <!-- Chapter 4 -->
+      <a href="chapters/ch04.html" class="chapter-card group bg-white rounded-2xl border border-surface-200 overflow-hidden block">
+        <div class="p-6">
+          <div class="flex items-start justify-between mb-4">
+            <div class="chapter-icon w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center text-white shadow-lg">
+              <i data-lucide="terminal" class="w-7 h-7"></i>
+            </div>
+            <span class="text-xs font-mono bg-surface-100 text-surface-600 px-2 py-1 rounded-lg">p. 63-83</span>
+          </div>
+          <div class="text-xs font-semibold text-amber-600 mb-2">
+            <span class="lang-ar">الوحدة ٤</span><span class="lang-en">Module 4</span>
+          </div>
+          <h3 class="text-lg font-bold text-surface-900 mb-2 leading-snug">
+            <span class="lang-ar">أدوات المستخدم — واجهات سطر الأوامر</span>
+            <span class="lang-en">User Tools — Command Line Interfaces</span>
+          </h3>
+          <p class="text-sm text-surface-600 leading-relaxed lang-ar">
+            psql، الاتصال بقاعدة البيانات، معاملات وأوامر psql Meta والمعلومات
+          </p>
+          <p class="text-sm text-surface-600 leading-relaxed lang-en">
+            psql, database connection, command parameters and meta-commands
+          </p>
+        </div>
+        <div class="px-6 py-3 bg-surface-50 border-t border-surface-100 flex items-center justify-between">
+          <span class="text-xs text-surface-500 lang-ar">٢١ صفحة</span>
+          <span class="text-xs text-surface-500 lang-en">21 pages</span>
+          <i data-lucide="arrow-left" class="w-4 h-4 text-amber-600 group-hover:-translate-x-1 transition-transform lang-ar"></i>
+          <i data-lucide="arrow-right" class="w-4 h-4 text-amber-600 group-hover:translate-x-1 transition-transform lang-en"></i>
+        </div>
+      </a>
+
+      <!-- Chapter 5 -->
+      <a href="chapters/ch05.html" class="chapter-card group bg-white rounded-2xl border border-surface-200 overflow-hidden block">
+        <div class="p-6">
+          <div class="flex items-start justify-between mb-4">
+            <div class="chapter-icon w-14 h-14 rounded-2xl bg-gradient-to-br from-rose-500 to-rose-700 flex items-center justify-center text-white shadow-lg">
+              <i data-lucide="database" class="w-7 h-7"></i>
+            </div>
+            <span class="text-xs font-mono bg-surface-100 text-surface-600 px-2 py-1 rounded-lg">p. 84-97</span>
+          </div>
+          <div class="text-xs font-semibold text-rose-600 mb-2">
+            <span class="lang-ar">الوحدة ٥</span><span class="lang-en">Module 5</span>
+          </div>
+          <h3 class="text-lg font-bold text-surface-900 mb-2 leading-snug">
+            <span class="lang-ar">كلاسترات قاعدة البيانات</span>
+            <span class="lang-en">Database Clusters</span>
+          </h3>
+          <p class="text-sm text-surface-600 leading-relaxed lang-ar">
+            إنشاء الكلاستر، تشغيل وإيقاف السيرفر باستخدام pg_ctl والاتصال عبر psql
+          </p>
+          <p class="text-sm text-surface-600 leading-relaxed lang-en">
+            Creating clusters, starting/stopping server using pg_ctl and connecting via psql
+          </p>
+        </div>
+        <div class="px-6 py-3 bg-surface-50 border-t border-surface-100 flex items-center justify-between">
+          <span class="text-xs text-surface-500 lang-ar">١٤ صفحة</span>
+          <span class="text-xs text-surface-500 lang-en">14 pages</span>
+          <i data-lucide="arrow-left" class="w-4 h-4 text-rose-600 group-hover:-translate-x-1 transition-transform lang-ar"></i>
+          <i data-lucide="arrow-right" class="w-4 h-4 text-rose-600 group-hover:translate-x-1 transition-transform lang-en"></i>
+        </div>
+      </a>
+
+      <!-- Chapter 6 -->
+      <a href="chapters/ch06.html" class="chapter-card group bg-white rounded-2xl border border-surface-200 overflow-hidden block">
+        <div class="p-6">
+          <div class="flex items-start justify-between mb-4">
+            <div class="chapter-icon w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-500 to-indigo-700 flex items-center justify-center text-white shadow-lg">
+              <i data-lucide="sliders-horizontal" class="w-7 h-7"></i>
+            </div>
+            <span class="text-xs font-mono bg-surface-100 text-surface-600 px-2 py-1 rounded-lg">p. 98-126</span>
+          </div>
+          <div class="text-xs font-semibold text-indigo-600 mb-2">
+            <span class="lang-ar">الوحدة ٦</span><span class="lang-en">Module 6</span>
+          </div>
+          <h3 class="text-lg font-bold text-surface-900 mb-2 leading-snug">
+            <span class="lang-ar">تهيئة قاعدة البيانات</span>
+            <span class="lang-en">Database Configuration</span>
+          </h3>
+          <p class="text-sm text-surface-600 leading-relaxed lang-ar">
+            ملف postgresql.conf، عرض وتغيير الباراميترز، إعدادات الأمان والـ WAL والـ Logging
+          </p>
+          <p class="text-sm text-surface-600 leading-relaxed lang-en">
+            postgresql.conf, viewing/changing parameters, security, WAL and logging settings
+          </p>
+        </div>
+        <div class="px-6 py-3 bg-surface-50 border-t border-surface-100 flex items-center justify-between">
+          <span class="text-xs text-surface-500 lang-ar">٢٩ صفحة</span>
+          <span class="text-xs text-surface-500 lang-en">29 pages</span>
+          <i data-lucide="arrow-left" class="w-4 h-4 text-indigo-600 group-hover:-translate-x-1 transition-transform lang-ar"></i>
+          <i data-lucide="arrow-right" class="w-4 h-4 text-indigo-600 group-hover:translate-x-1 transition-transform lang-en"></i>
+        </div>
+      </a>
+
+      <!-- Chapter 7 -->
+      <a href="chapters/ch07.html" class="chapter-card group bg-white rounded-2xl border border-surface-200 overflow-hidden block">
+        <div class="p-6">
+          <div class="flex items-start justify-between mb-4">
+            <div class="chapter-icon w-14 h-14 rounded-2xl bg-gradient-to-br from-teal-500 to-teal-700 flex items-center justify-center text-white shadow-lg">
+              <i data-lucide="book" class="w-7 h-7"></i>
+            </div>
+            <span class="text-xs font-mono bg-surface-100 text-surface-600 px-2 py-1 rounded-lg">p. 127-140</span>
+          </div>
+          <div class="text-xs font-semibold text-teal-600 mb-2">
+            <span class="lang-ar">الوحدة ٧</span><span class="lang-en">Module 7</span>
+          </div>
+          <h3 class="text-lg font-bold text-surface-900 mb-2 leading-snug">
+            <span class="lang-ar">قاموس البيانات</span>
+            <span class="lang-en">Data Dictionary</span>
+          </h3>
+          <p class="text-sm text-surface-600 leading-relaxed lang-ar">
+            System Catalog، جداول وفيوز المعلومات والدوال الإدارية في pg_catalog
+          </p>
+          <p class="text-sm text-surface-600 leading-relaxed lang-en">
+            System Catalog, information tables/views and administration functions
+          </p>
+        </div>
+        <div class="px-6 py-3 bg-surface-50 border-t border-surface-100 flex items-center justify-between">
+          <span class="text-xs text-surface-500 lang-ar">١٤ صفحة</span>
+          <span class="text-xs text-surface-500 lang-en">14 pages</span>
+          <i data-lucide="arrow-left" class="w-4 h-4 text-teal-600 group-hover:-translate-x-1 transition-transform lang-ar"></i>
+          <i data-lucide="arrow-right" class="w-4 h-4 text-teal-600 group-hover:translate-x-1 transition-transform lang-en"></i>
+        </div>
+      </a>
+
+      <!-- Chapter 8 -->
+      <a href="chapters/ch08.html" class="chapter-card group bg-white rounded-2xl border border-surface-200 overflow-hidden block">
+        <div class="p-6">
+          <div class="flex items-start justify-between mb-4">
+            <div class="chapter-icon w-14 h-14 rounded-2xl bg-gradient-to-br from-cyan-500 to-cyan-700 flex items-center justify-center text-white shadow-lg">
+              <i data-lucide="layers" class="w-7 h-7"></i>
+            </div>
+            <span class="text-xs font-mono bg-surface-100 text-surface-600 px-2 py-1 rounded-lg">p. 141-180</span>
+          </div>
+          <div class="text-xs font-semibold text-cyan-600 mb-2">
+            <span class="lang-ar">الوحدة ٨</span><span class="lang-en">Module 8</span>
+          </div>
+          <h3 class="text-lg font-bold text-surface-900 mb-2 leading-snug">
+            <span class="lang-ar">إنشاء وإدارة كائنات قاعدة البيانات</span>
+            <span class="lang-en">Creating & Managing Database Objects</span>
+          </h3>
+          <p class="text-sm text-surface-600 leading-relaxed lang-ar">
+            هرمية الكائنات، المستخدمون والأدوار، Tablespaces، Schemas وصلاحيات الوصول
+          </p>
+          <p class="text-sm text-surface-600 leading-relaxed lang-en">
+            Object hierarchy, users, roles, tablespaces, schemas and access control
+          </p>
+        </div>
+        <div class="px-6 py-3 bg-surface-50 border-t border-surface-100 flex items-center justify-between">
+          <span class="text-xs text-surface-500 lang-ar">٤٠ صفحة</span>
+          <span class="text-xs text-surface-500 lang-en">40 pages</span>
+          <i data-lucide="arrow-left" class="w-4 h-4 text-cyan-600 group-hover:-translate-x-1 transition-transform lang-ar"></i>
+          <i data-lucide="arrow-right" class="w-4 h-4 text-cyan-600 group-hover:translate-x-1 transition-transform lang-en"></i>
+        </div>
+      </a>
+
+      <!-- Chapter 9 -->
+      <a href="chapters/ch09.html" class="chapter-card group bg-white rounded-2xl border border-surface-200 overflow-hidden block">
+        <div class="p-6">
+          <div class="flex items-start justify-between mb-4">
+            <div class="chapter-icon w-14 h-14 rounded-2xl bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center text-white shadow-lg">
+              <i data-lucide="shield-check" class="w-7 h-7"></i>
+            </div>
+            <span class="text-xs font-mono bg-surface-100 text-surface-600 px-2 py-1 rounded-lg">p. 181-210</span>
+          </div>
+          <div class="text-xs font-semibold text-red-600 mb-2">
+            <span class="lang-ar">الوحدة ٩</span><span class="lang-en">Module 9</span>
+          </div>
+          <h3 class="text-lg font-bold text-surface-900 mb-2 leading-snug">
+            <span class="lang-ar">أمان قاعدة البيانات</span>
+            <span class="lang-en">Database Security</span>
+          </h3>
+          <p class="text-sm text-surface-600 leading-relaxed lang-ar">
+            مستويات الأمان، pg_hba.conf، Row Level Security، تشفير البيانات والتوصيات العامة
+          </p>
+          <p class="text-sm text-surface-600 leading-relaxed lang-en">
+            Security levels, pg_hba.conf, Row Level Security, data encryption and recommendations
+          </p>
+        </div>
+        <div class="px-6 py-3 bg-surface-50 border-t border-surface-100 flex items-center justify-between">
+          <span class="text-xs text-surface-500 lang-ar">٣٠ صفحة</span>
+          <span class="text-xs text-surface-500 lang-en">30 pages</span>
+          <i data-lucide="arrow-left" class="w-4 h-4 text-red-600 group-hover:-translate-x-1 transition-transform lang-ar"></i>
+          <i data-lucide="arrow-right" class="w-4 h-4 text-red-600 group-hover:translate-x-1 transition-transform lang-en"></i>
+        </div>
+      </a>
+
+      <!-- Chapter 10 -->
+      <a href="chapters/ch10.html" class="chapter-card group bg-white rounded-2xl border border-surface-200 overflow-hidden block">
+        <div class="p-6">
+          <div class="flex items-start justify-between mb-4">
+            <div class="chapter-icon w-14 h-14 rounded-2xl bg-gradient-to-br from-violet-500 to-violet-700 flex items-center justify-center text-white shadow-lg">
+              <i data-lucide="activity" class="w-7 h-7"></i>
+            </div>
+            <span class="text-xs font-mono bg-surface-100 text-surface-600 px-2 py-1 rounded-lg">p. 211-247</span>
+          </div>
+          <div class="text-xs font-semibold text-violet-600 mb-2">
+            <span class="lang-ar">الوحدة ١٠</span><span class="lang-en">Module 10</span>
+          </div>
+          <h3 class="text-lg font-bold text-surface-900 mb-2 leading-snug">
+            <span class="lang-ar">المراقبة وأدوات الإدارة</span>
+            <span class="lang-en">Monitoring & Admin Tools</span>
+          </h3>
+          <p class="text-sm text-surface-600 leading-relaxed lang-ar">
+            pgAdmin، Object Browser، Query Tool، Server Status و Postgres Enterprise Manager
+          </p>
+          <p class="text-sm text-surface-600 leading-relaxed lang-en">
+            pgAdmin, Object Browser, Query Tool, Server Status and Postgres Enterprise Manager
+          </p>
+        </div>
+        <div class="px-6 py-3 bg-surface-50 border-t border-surface-100 flex items-center justify-between">
+          <span class="text-xs text-surface-500 lang-ar">٣٧ صفحة</span>
+          <span class="text-xs text-surface-500 lang-en">37 pages</span>
+          <i data-lucide="arrow-left" class="w-4 h-4 text-violet-600 group-hover:-translate-x-1 transition-transform lang-ar"></i>
+          <i data-lucide="arrow-right" class="w-4 h-4 text-violet-600 group-hover:translate-x-1 transition-transform lang-en"></i>
+        </div>
+      </a>
+
+      <!-- Chapter 11 -->
+      <a href="chapters/ch11.html" class="chapter-card group bg-white rounded-2xl border border-surface-200 overflow-hidden block">
+        <div class="p-6">
+          <div class="flex items-start justify-between mb-4">
+            <div class="chapter-icon w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center text-white shadow-lg">
+              <i data-lucide="code" class="w-7 h-7"></i>
+            </div>
+            <span class="text-xs font-mono bg-surface-100 text-surface-600 px-2 py-1 rounded-lg">p. 248-277</span>
+          </div>
+          <div class="text-xs font-semibold text-blue-600 mb-2">
+            <span class="lang-ar">الوحدة ١١</span><span class="lang-en">Module 11</span>
+          </div>
+          <h3 class="text-lg font-bold text-surface-900 mb-2 leading-snug">
+            <span class="lang-ar">مقدمة في SQL</span>
+            <span class="lang-en">SQL Primer</span>
+          </h3>
+          <p class="text-sm text-surface-600 leading-relaxed lang-ar">
+            أنواع البيانات، DDL, DML, DCL، الترانزكشن، Views، Joins، Indexes و Explain Plans
+          </p>
+          <p class="text-sm text-surface-600 leading-relaxed lang-en">
+            Data types, DDL/DML/DCL, transactions, views, joins, indexes and explain plans
+          </p>
+        </div>
+        <div class="px-6 py-3 bg-surface-50 border-t border-surface-100 flex items-center justify-between">
+          <span class="text-xs text-surface-500 lang-ar">٣٠ صفحة</span>
+          <span class="text-xs text-surface-500 lang-en">30 pages</span>
+          <i data-lucide="arrow-left" class="w-4 h-4 text-blue-600 group-hover:-translate-x-1 transition-transform lang-ar"></i>
+          <i data-lucide="arrow-right" class="w-4 h-4 text-blue-600 group-hover:translate-x-1 transition-transform lang-en"></i>
+        </div>
+      </a>
+
+      <!-- Chapter 12 -->
+      <a href="chapters/ch12.html" class="chapter-card group bg-white rounded-2xl border border-surface-200 overflow-hidden block">
+        <div class="p-6">
+          <div class="flex items-start justify-between mb-4">
+            <div class="chapter-icon w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center text-white shadow-lg">
+              <i data-lucide="save" class="w-7 h-7"></i>
+            </div>
+            <span class="text-xs font-mono bg-surface-100 text-surface-600 px-2 py-1 rounded-lg">p. 278-320</span>
+          </div>
+          <div class="text-xs font-semibold text-emerald-600 mb-2">
+            <span class="lang-ar">الوحدة ١٢</span><span class="lang-en">Module 12</span>
+          </div>
+          <h3 class="text-lg font-bold text-surface-900 mb-2 leading-snug">
+            <span class="lang-ar">النسخ الاحتياطي والاستعادة</span>
+            <span class="lang-en">Backup & Recovery</span>
+          </h3>
+          <p class="text-sm text-surface-600 leading-relaxed lang-ar">
+            أنواع النسخ، pg_dump، pg_basebackup، Point-in-Time Recovery، Barman و pgBackRest
+          </p>
+          <p class="text-sm text-surface-600 leading-relaxed lang-en">
+            Backup types, pg_dump, pg_basebackup, PITR, Barman and pgBackRest
+          </p>
+        </div>
+        <div class="px-6 py-3 bg-surface-50 border-t border-surface-100 flex items-center justify-between">
+          <span class="text-xs text-surface-500 lang-ar">٤٣ صفحة</span>
+          <span class="text-xs text-surface-500 lang-en">43 pages</span>
+          <i data-lucide="arrow-left" class="w-4 h-4 text-emerald-600 group-hover:-translate-x-1 transition-transform lang-ar"></i>
+          <i data-lucide="arrow-right" class="w-4 h-4 text-emerald-600 group-hover:translate-x-1 transition-transform lang-en"></i>
+        </div>
+      </a>
+
+      <!-- Chapter 13 -->
+      <a href="chapters/ch13.html" class="chapter-card group bg-white rounded-2xl border border-surface-200 overflow-hidden block">
+        <div class="p-6">
+          <div class="flex items-start justify-between mb-4">
+            <div class="chapter-icon w-14 h-14 rounded-2xl bg-gradient-to-br from-yellow-500 to-yellow-700 flex items-center justify-center text-white shadow-lg">
+              <i data-lucide="wrench" class="w-7 h-7"></i>
+            </div>
+            <span class="text-xs font-mono bg-surface-100 text-surface-600 px-2 py-1 rounded-lg">p. 321-347</span>
+          </div>
+          <div class="text-xs font-semibold text-yellow-600 mb-2">
+            <span class="lang-ar">الوحدة ١٣</span><span class="lang-en">Module 13</span>
+          </div>
+          <h3 class="text-lg font-bold text-surface-900 mb-2 leading-snug">
+            <span class="lang-ar">مهام الصيانة الدورية</span>
+            <span class="lang-en">Routine Maintenance Tasks</span>
+          </h3>
+          <p class="text-sm text-surface-600 leading-relaxed lang-ar">
+            Optimizer Statistics، Vacuuming، Transaction ID Wraparound، Autovacuum و Re-indexing
+          </p>
+          <p class="text-sm text-surface-600 leading-relaxed lang-en">
+            Optimizer stats, vacuuming, transaction ID wraparound, autovacuum and reindexing
+          </p>
+        </div>
+        <div class="px-6 py-3 bg-surface-50 border-t border-surface-100 flex items-center justify-between">
+          <span class="text-xs text-surface-500 lang-ar">٢٧ صفحة</span>
+          <span class="text-xs text-surface-500 lang-en">27 pages</span>
+          <i data-lucide="arrow-left" class="w-4 h-4 text-yellow-600 group-hover:-translate-x-1 transition-transform lang-ar"></i>
+          <i data-lucide="arrow-right" class="w-4 h-4 text-yellow-600 group-hover:translate-x-1 transition-transform lang-en"></i>
+        </div>
+      </a>
+
+      <!-- Chapter 14 -->
+      <a href="chapters/ch14.html" class="chapter-card group bg-white rounded-2xl border border-surface-200 overflow-hidden block">
+        <div class="p-6">
+          <div class="flex items-start justify-between mb-4">
+            <div class="chapter-icon w-14 h-14 rounded-2xl bg-gradient-to-br from-pink-500 to-pink-700 flex items-center justify-center text-white shadow-lg">
+              <i data-lucide="upload-cloud" class="w-7 h-7"></i>
+            </div>
+            <span class="text-xs font-mono bg-surface-100 text-surface-600 px-2 py-1 rounded-lg">p. 348-358</span>
+          </div>
+          <div class="text-xs font-semibold text-pink-600 mb-2">
+            <span class="lang-ar">الوحدة ١٤</span><span class="lang-en">Module 14</span>
+          </div>
+          <h3 class="text-lg font-bold text-surface-900 mb-2 leading-snug">
+            <span class="lang-ar">تحميل البيانات</span>
+            <span class="lang-en">Data Loading</span>
+          </h3>
+          <p class="text-sm text-surface-600 leading-relaxed lang-ar">
+            تحميل الـ Flat Files، استخدام COPY للاستيراد والتصدير و COPY FREEZE للأداء
+          </p>
+          <p class="text-sm text-surface-600 leading-relaxed lang-en">
+            Loading flat files, COPY for import/export and COPY FREEZE for performance
+          </p>
+        </div>
+        <div class="px-6 py-3 bg-surface-50 border-t border-surface-100 flex items-center justify-between">
+          <span class="text-xs text-surface-500 lang-ar">١١ صفحة</span>
+          <span class="text-xs text-surface-500 lang-en">11 pages</span>
+          <i data-lucide="arrow-left" class="w-4 h-4 text-pink-600 group-hover:-translate-x-1 transition-transform lang-ar"></i>
+          <i data-lucide="arrow-right" class="w-4 h-4 text-pink-600 group-hover:translate-x-1 transition-transform lang-en"></i>
+        </div>
+      </a>
+
+      <!-- Chapter 15 -->
+      <a href="chapters/ch15.html" class="chapter-card group bg-white rounded-2xl border border-surface-200 overflow-hidden block">
+        <div class="p-6">
+          <div class="flex items-start justify-between mb-4">
+            <div class="chapter-icon w-14 h-14 rounded-2xl bg-gradient-to-br from-orange-500 to-edb-600 flex items-center justify-center text-white shadow-lg">
+              <i data-lucide="git-branch" class="w-7 h-7"></i>
+            </div>
+            <span class="text-xs font-mono bg-surface-100 text-surface-600 px-2 py-1 rounded-lg">p. 359-411</span>
+          </div>
+          <div class="text-xs font-semibold text-orange-600 mb-2">
+            <span class="lang-ar">الوحدة ١٥</span><span class="lang-en">Module 15</span>
+          </div>
+          <h3 class="text-lg font-bold text-surface-900 mb-2 leading-snug">
+            <span class="lang-ar">النسخ المتماثل والتوافر العالي</span>
+            <span class="lang-en">Data Replication & High Availability</span>
+          </h3>
+          <p class="text-sm text-surface-600 leading-relaxed lang-ar">
+            Streaming Replication، Synchronous/Async، Logical Replication، EFM و repmgr
+          </p>
+          <p class="text-sm text-surface-600 leading-relaxed lang-en">
+            Streaming replication, sync/async, logical replication, EFM and repmgr
+          </p>
+        </div>
+        <div class="px-6 py-3 bg-surface-50 border-t border-surface-100 flex items-center justify-between">
+          <span class="text-xs text-surface-500 lang-ar">٥٣ صفحة</span>
+          <span class="text-xs text-surface-500 lang-en">53 pages</span>
+          <i data-lucide="arrow-left" class="w-4 h-4 text-orange-600 group-hover:-translate-x-1 transition-transform lang-ar"></i>
+          <i data-lucide="arrow-right" class="w-4 h-4 text-orange-600 group-hover:translate-x-1 transition-transform lang-en"></i>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="bg-white py-16 border-t border-surface-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-surface-900 mb-3">
+          <span class="lang-ar">لماذا هذه الدورة؟</span>
+          <span class="lang-en">Why This Course?</span>
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="text-center p-6">
+          <div class="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-pg-100 to-pg-200 flex items-center justify-center mb-4">
+            <i data-lucide="graduation-cap" class="w-8 h-8 text-pg-700"></i>
+          </div>
+          <h3 class="font-bold text-lg mb-2">
+            <span class="lang-ar">منهج EDB الرسمي</span>
+            <span class="lang-en">Official EDB Curriculum</span>
+          </h3>
+          <p class="text-sm text-surface-600 lang-ar">
+            محتوى مبني على المنهج الرسمي لشركة EDB المعتمد عالمياً
+          </p>
+          <p class="text-sm text-surface-600 lang-en">
+            Content based on EDB's officially certified global curriculum
+          </p>
+        </div>
+
+        <div class="text-center p-6">
+          <div class="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-edb-500/20 to-edb-500/30 flex items-center justify-center mb-4">
+            <i data-lucide="layers-3" class="w-8 h-8 text-edb-600"></i>
+          </div>
+          <h3 class="font-bold text-lg mb-2">
+            <span class="lang-ar">شامل وتفاعلي</span>
+            <span class="lang-en">Comprehensive & Interactive</span>
+          </h3>
+          <p class="text-sm text-surface-600 lang-ar">
+            ١٥ وحدة تعليمية مع أمثلة عملية وأكواد حقيقية جاهزة للنسخ
+          </p>
+          <p class="text-sm text-surface-600 lang-en">
+            15 modules with practical examples and ready-to-copy code
+          </p>
+        </div>
+
+        <div class="text-center p-6">
+          <div class="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-green-100 to-green-200 flex items-center justify-center mb-4">
+            <i data-lucide="globe" class="w-8 h-8 text-green-700"></i>
+          </div>
+          <h3 class="font-bold text-lg mb-2">
+            <span class="lang-ar">ثنائية اللغة</span>
+            <span class="lang-en">Bilingual Content</span>
+          </h3>
+          <p class="text-sm text-surface-600 lang-ar">
+            شرح كامل بالعربية والإنجليزية مع التبديل الفوري بين اللغتين
+          </p>
+          <p class="text-sm text-surface-600 lang-en">
+            Full Arabic and English explanations with instant language switching
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-surface-900 text-surface-400 py-10 px-4 sm:px-6">
+    <div class="max-w-7xl mx-auto text-center">
+      <div class="flex justify-center items-center gap-3 mb-4">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-pg-500 to-edb-500 flex items-center justify-center text-white">
+          <i data-lucide="database" class="w-5 h-5"></i>
+        </div>
+        <span class="font-bold text-white text-lg">EDB PostgreSQL v18</span>
+      </div>
+      <p class="text-sm mb-2 lang-ar">
+        دورة تعليمية شاملة مبنية على منهج EDB Essentials for PostgreSQL v18
+      </p>
+      <p class="text-sm mb-2 lang-en">
+        Comprehensive educational course based on EDB Essentials for PostgreSQL v18
+      </p>
+      <p class="text-xs text-surface-500 mt-4">
+        © EDB 2026 — ALL RIGHTS RESERVED · Created with 🎓
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    function setLang(lang) {
+      document.documentElement.lang = lang;
+      document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+      localStorage.setItem('pgCourseLang', lang);
+
+      document.querySelectorAll('.lang-btn').forEach(b => {
+        b.classList.remove('bg-pg-600', 'text-white', 'shadow-md');
+        b.classList.add('text-surface-600', 'hover:bg-surface-100');
+      });
+      const activeBtn = document.getElementById('btn-' + lang);
+      activeBtn.classList.add('bg-pg-600', 'text-white', 'shadow-md');
+      activeBtn.classList.remove('text-surface-600', 'hover:bg-surface-100');
+    }
+
+    const savedLang = localStorage.getItem('pgCourseLang') || 'ar';
+    setLang(savedLang);
+    lucide.createIcons();
+  </script>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>الوحدة ٧: قاموس البيانات | EDB PostgreSQL v18</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{fontFamily:{arabic:['IBM Plex Sans Arabic','sans-serif'],mono:['JetBrains Mono','monospace']},colors:{surface:{50:'#f8fafc',100:'#f1f5f9',200:'#e2e8f0',500:'#64748b',600:'#475569',700:'#334155',800:'#1e293b',900:'#0f172a'}}}}}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-sql.min.js"></script>
+  <style>body{font-family:'IBM Plex Sans Arabic',sans-serif}html[lang="ar"] .lang-en{display:none!important}html[lang="en"] .lang-ar{display:none!important}pre[class*="language-"]{border-radius:.75rem;font-size:.875rem;direction:ltr}code[class*="language-"]{font-family:'JetBrains Mono',monospace}</style>
+</head>
+<body class="bg-surface-50 text-surface-800 antialiased min-h-screen">
+
+  <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-surface-200 shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
+      <a href="../index.html" class="flex items-center gap-2 text-surface-600 hover:text-teal-600"><i data-lucide="home" class="w-4 h-4"></i><span class="text-sm font-semibold lang-ar">الصفحة الرئيسية</span><span class="text-sm font-semibold lang-en">Home</span></a>
+      <div class="flex items-center gap-2">
+        <button onclick="setLang('ar')" id="btn-ar" class="lang-btn px-3 py-2 rounded-lg text-sm font-semibold">العربية</button>
+        <button onclick="setLang('en')" id="btn-en" class="lang-btn px-3 py-2 rounded-lg text-sm font-semibold">English</button>
+      </div>
+    </div>
+  </nav>
+
+  <header class="bg-gradient-to-br from-teal-900 via-teal-800 to-teal-700 text-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
+      <div class="flex items-center gap-3 text-teal-200 text-sm mb-4">
+        <span class="px-3 py-1 bg-white/10 rounded-full"><span class="lang-ar">الوحدة ٧</span><span class="lang-en">Module 7</span></span>
+        <span>·</span><span class="font-mono">p. 127–140</span><span>·</span>
+        <span class="lang-ar">١٤ صفحة</span><span class="lang-en">14 pages</span>
+      </div>
+      <h1 class="text-3xl md:text-5xl font-bold mb-4"><span class="lang-ar">قاموس البيانات</span><span class="lang-en">Data Dictionary</span></h1>
+      <p class="text-lg text-teal-100 max-w-3xl lang-ar">كتالوج النظام — مكان تخزين PostgreSQL لكل المعلومات الإدارية.</p>
+      <p class="text-lg text-teal-100 max-w-3xl lang-en">The System Catalog — where PostgreSQL stores all administrative metadata.</p>
+    </div>
+  </header>
+
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 py-10">
+    <div class="bg-white rounded-2xl shadow-sm border border-surface-200 p-6 md:p-8">
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-teal-500 to-teal-700 flex items-center justify-center text-white"><i data-lucide="book" class="w-6 h-6"></i></div>
+        <h2 class="text-2xl font-bold"><span class="lang-ar">أهداف الوحدة</span><span class="lang-en">Module Objectives</span></h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+        <div class="flex gap-2 p-3 rounded-xl bg-teal-50 border border-teal-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-teal-600 shrink-0"></i><span class="lang-ar">System Catalog Schema</span><span class="lang-en">System Catalog Schema</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-teal-50 border border-teal-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-teal-600 shrink-0"></i><span class="lang-ar">جداول وفيوز المعلومات</span><span class="lang-en">Information Tables & Views</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-teal-50 border border-teal-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-teal-600 shrink-0"></i><span class="lang-ar">دوال النظام والإدارة</span><span class="lang-en">System & Administration Functions</span></div>
+      </div>
+    </div>
+  </section>
+
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 pb-12 space-y-12">
+
+    <section>
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">ما هو pg_catalog؟</span><span class="lang-en">What is pg_catalog?</span></h2>
+      <div class="bg-white rounded-2xl border border-surface-200 p-6 space-y-4">
+        <p class="text-surface-700 leading-relaxed lang-ar"><strong>pg_catalog</strong> هو schema خاص يحتوي على كل ميتاداتا قاعدة البيانات — الجداول، الأعمدة، الفهارس، المستخدمين، والدوال. يُنشأ تلقائياً ودائماً جزء من <span dir="ltr" class="font-mono">search_path</span>.</p>
+        <p class="text-surface-700 leading-relaxed lang-en"><strong>pg_catalog</strong> is a special schema containing all database metadata — tables, columns, indexes, users, and functions. Auto-created and always part of the <span class="font-mono">search_path</span>.</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+          <div class="bg-teal-50 border border-teal-200 rounded-xl p-4">
+            <i data-lucide="table" class="w-6 h-6 text-teal-600 mb-2"></i>
+            <h4 class="font-bold text-sm lang-ar">جداول النظام</h4>
+            <h4 class="font-bold text-sm lang-en">System Tables</h4>
+            <p class="text-xs text-surface-600 lang-ar">pg_class, pg_attribute, pg_index</p>
+            <p class="text-xs text-surface-600 lang-en">pg_class, pg_attribute, pg_index</p>
+          </div>
+          <div class="bg-teal-50 border border-teal-200 rounded-xl p-4">
+            <i data-lucide="eye" class="w-6 h-6 text-teal-600 mb-2"></i>
+            <h4 class="font-bold text-sm lang-ar">فيوز المعلومات</h4>
+            <h4 class="font-bold text-sm lang-en">Info Views</h4>
+            <p class="text-xs text-surface-600 lang-ar">pg_tables, pg_views, pg_indexes</p>
+            <p class="text-xs text-surface-600 lang-en">pg_tables, pg_views, pg_indexes</p>
+          </div>
+          <div class="bg-teal-50 border border-teal-200 rounded-xl p-4">
+            <i data-lucide="function-square" class="w-6 h-6 text-teal-600 mb-2"></i>
+            <h4 class="font-bold text-sm lang-ar">دوال النظام</h4>
+            <h4 class="font-bold text-sm lang-en">System Functions</h4>
+            <p class="text-xs text-surface-600 lang-ar">pg_database_size(), version()</p>
+            <p class="text-xs text-surface-600 lang-en">pg_database_size(), version()</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">الجداول المهمة</span><span class="lang-en">Important Tables</span></h2>
+      <div class="bg-white rounded-2xl border border-surface-200 overflow-hidden">
+        <table class="w-full text-sm">
+          <thead class="bg-teal-600 text-white">
+            <tr><th class="p-3 text-left font-mono">Table</th><th class="p-3 text-right lang-ar">الغرض</th><th class="p-3 text-left lang-en">Purpose</th></tr>
+          </thead>
+          <tbody class="divide-y divide-surface-100">
+            <tr><td class="p-3 font-mono text-teal-700 font-bold">pg_database</td><td class="p-3 lang-ar">كل قواعد البيانات في الكلاستر</td><td class="p-3 lang-en">All databases in the cluster</td></tr>
+            <tr class="bg-surface-50/50"><td class="p-3 font-mono text-teal-700 font-bold">pg_class</td><td class="p-3 lang-ar">الجداول، الفيوز، الفهارس، السيكوينس</td><td class="p-3 lang-en">Tables, views, indexes, sequences</td></tr>
+            <tr><td class="p-3 font-mono text-teal-700 font-bold">pg_attribute</td><td class="p-3 lang-ar">أعمدة كل جدول</td><td class="p-3 lang-en">Columns of each table</td></tr>
+            <tr class="bg-surface-50/50"><td class="p-3 font-mono text-teal-700 font-bold">pg_index</td><td class="p-3 lang-ar">معلومات الفهارس</td><td class="p-3 lang-en">Index information</td></tr>
+            <tr><td class="p-3 font-mono text-teal-700 font-bold">pg_roles</td><td class="p-3 lang-ar">الأدوار والمستخدمين</td><td class="p-3 lang-en">Roles and users</td></tr>
+            <tr class="bg-surface-50/50"><td class="p-3 font-mono text-teal-700 font-bold">pg_stat_activity</td><td class="p-3 lang-ar">الاستعلامات النشطة حالياً</td><td class="p-3 lang-en">Currently running queries</td></tr>
+            <tr><td class="p-3 font-mono text-teal-700 font-bold">pg_stat_user_tables</td><td class="p-3 lang-ar">إحصائيات الاستخدام للجداول</td><td class="p-3 lang-en">Table usage statistics</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">استعلامات مفيدة</span><span class="lang-en">Useful Queries</span></h2>
+      <div class="bg-white rounded-2xl border border-surface-200 p-6">
+        <div class="relative group" dir="ltr">
+          <button onclick="copyCode(this)" class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 bg-surface-700 text-white text-xs px-2.5 py-1.5 rounded-lg z-10">Copy</button>
+<pre class="!bg-surface-900 !rounded-xl !p-5"><code class="language-sql">-- Database sizes
+SELECT datname,
+       pg_size_pretty(pg_database_size(datname)) AS size
+FROM pg_database
+ORDER BY pg_database_size(datname) DESC;
+
+-- Largest tables
+SELECT schemaname, tablename,
+       pg_size_pretty(pg_total_relation_size(schemaname||'.'||tablename)) AS size
+FROM pg_tables
+WHERE schemaname NOT IN ('pg_catalog','information_schema')
+ORDER BY pg_total_relation_size(schemaname||'.'||tablename) DESC
+LIMIT 10;
+
+-- Active connections
+SELECT pid, usename, application_name, state, query_start, query
+FROM pg_stat_activity
+WHERE state != 'idle';
+
+-- Unused indexes
+SELECT schemaname, relname, indexrelname
+FROM pg_stat_user_indexes
+WHERE idx_scan = 0;
+
+-- Table bloat estimate
+SELECT schemaname, relname,
+       n_dead_tup, n_live_tup,
+       ROUND(100.0 * n_dead_tup / NULLIF(n_live_tup + n_dead_tup, 0), 2) AS dead_pct
+FROM pg_stat_user_tables
+WHERE n_dead_tup > 1000
+ORDER BY dead_pct DESC;</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="bg-gradient-to-br from-teal-600 via-teal-700 to-teal-900 text-white rounded-2xl p-6 md:p-8 shadow-xl">
+        <div class="flex items-center gap-3 mb-6"><div class="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center"><i data-lucide="bookmark-check" class="w-6 h-6"></i></div><h2 class="text-2xl font-bold"><span class="lang-ar">ملخص الوحدة</span><span class="lang-en">Module Summary</span></h2></div>
+        <ul class="grid grid-cols-1 md:grid-cols-2 gap-3">
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-teal-300 shrink-0 mt-0.5"></i><span class="lang-ar">pg_catalog = كل ميتاداتا النظام</span><span class="lang-en">pg_catalog = all system metadata</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-teal-300 shrink-0 mt-0.5"></i><span class="lang-ar">pg_stat_activity لرؤية العمليات الجارية</span><span class="lang-en">pg_stat_activity for current activity</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-teal-300 shrink-0 mt-0.5"></i><span class="lang-ar">information_schema للمعلومات القياسية</span><span class="lang-en">information_schema for standard info</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-teal-300 shrink-0 mt-0.5"></i><span class="lang-ar">دوال النظام لمعلومات الأحجام والأداء</span><span class="lang-en">System functions for sizes/performance</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <nav class="flex flex-col md:flex-row gap-4">
+      <a href="ch06.html" class="flex-1 bg-white border border-surface-200 rounded-xl p-4 hover:border-teal-300 hover:shadow-md transition-all">
+        <div class="text-xs text-surface-500 mb-1"><span class="lang-ar">السابق</span><span class="lang-en">Previous</span></div>
+        <div class="flex items-center gap-2 font-bold"><i data-lucide="arrow-right" class="w-4 h-4 lang-ar"></i><i data-lucide="arrow-left" class="w-4 h-4 lang-en"></i><span class="lang-ar">التهيئة</span><span class="lang-en">Configuration</span></div>
+      </a>
+      <a href="ch08.html" class="flex-1 bg-gradient-to-br from-teal-600 to-teal-700 text-white rounded-xl p-4 hover:shadow-xl transition-all">
+        <div class="text-xs text-teal-200 mb-1 text-end"><span class="lang-ar">التالي</span><span class="lang-en">Next</span></div>
+        <div class="flex items-center justify-end gap-2 font-bold"><span class="lang-ar">إدارة كائنات قاعدة البيانات</span><span class="lang-en">Managing DB Objects</span><i data-lucide="arrow-left" class="w-4 h-4 lang-ar"></i><i data-lucide="arrow-right" class="w-4 h-4 lang-en"></i></div>
+      </a>
+    </nav>
+  </main>
+
+  <footer class="bg-surface-900 text-surface-400 py-8 text-center text-sm"><p class="lang-ar">الوحدة ٧ من ١٥</p><p class="lang-en">Module 7 of 15</p></footer>
+
+  <script>
+    function setLang(lang){document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';localStorage.setItem('pgCourseLang',lang);document.querySelectorAll('.lang-btn').forEach(b=>{b.classList.remove('bg-teal-600','text-white','shadow-md');b.classList.add('text-surface-600','hover:bg-surface-100');});const a=document.getElementById('btn-'+lang);a.classList.add('bg-teal-600','text-white','shadow-md');a.classList.remove('text-surface-600','hover:bg-surface-100');}
+    function copyCode(btn){const c=btn.nextElementSibling.querySelector('code').textContent;navigator.clipboard.writeText(c);btn.textContent='✓';setTimeout(()=>btn.textContent='Copy',2000);}
+    setLang(localStorage.getItem('pgCourseLang')||'ar');lucide.createIcons();Prism.highlightAll();
+  </script>
+</body>
+</html>
