@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>الوحدة ١٠: المراقبة وأدوات الإدارة | EDB PostgreSQL v18</title>
+  <title>الوحدة ١٠: المراقبة والأدوات | EDB PostgreSQL v18</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>tailwind.config={theme:{extend:{fontFamily:{arabic:['IBM Plex Sans Arabic','sans-serif'],mono:['JetBrains Mono','monospace']},colors:{surface:{50:'#f8fafc',100:'#f1f5f9',200:'#e2e8f0',500:'#64748b',600:'#475569',700:'#334155',800:'#1e293b',900:'#0f172a'}}}}}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,7 +12,7 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-sql.min.js"></script>
-  <style>body{font-family:'IBM Plex Sans Arabic',sans-serif}html[lang="ar"] .lang-en{display:none!important}html[lang="en"] .lang-ar{display:none!important}pre[class*="language-"]{border-radius:.75rem;font-size:.875rem;direction:ltr}code[class*="language-"]{font-family:'JetBrains Mono',monospace}</style>
+  <style>body{font-family:'IBM Plex Sans Arabic',sans-serif}html[lang="ar"] .lang-en{display:none!important}html[lang="en"] .lang-ar{display:none!important}pre[class*="language-"]{border-radius:.75rem;font-size:.875rem;direction:ltr}code[class*="language-"]{font-family:'JetBrains Mono',monospace}.quiz-opt.correct{border-color:#059669!important;background:#ecfdf5!important}.quiz-opt.wrong{border-color:#dc2626!important;background:#fef2f2!important}.quiz-opt:disabled{cursor:not-allowed}</style>
 </head>
 <body class="bg-surface-50 text-surface-800 antialiased min-h-screen">
 
@@ -34,22 +34,20 @@
         <span class="lang-ar">٣٧ صفحة</span><span class="lang-en">37 pages</span>
       </div>
       <h1 class="text-3xl md:text-5xl font-bold mb-4"><span class="lang-ar">المراقبة وأدوات الإدارة</span><span class="lang-en">Monitoring & Admin Tools</span></h1>
-      <p class="text-lg text-violet-100 max-w-3xl lang-ar">pgAdmin و Postgres Enterprise Manager — أدوات رسومية قوية لإدارة قواعد البيانات.</p>
-      <p class="text-lg text-violet-100 max-w-3xl lang-en">pgAdmin and Postgres Enterprise Manager — powerful GUI tools for database management.</p>
+      <p class="text-lg text-violet-100 max-w-3xl lang-ar">pgAdmin، PEM، pg_stat_statements، استعلامات المراقبة، ومؤشرات الأداء الأساسية.</p>
+      <p class="text-lg text-violet-100 max-w-3xl lang-en">pgAdmin, PEM, pg_stat_statements, monitoring queries, and key performance indicators.</p>
     </div>
   </header>
 
   <section class="max-w-6xl mx-auto px-4 sm:px-6 py-10">
     <div class="bg-white rounded-2xl shadow-sm border border-surface-200 p-6 md:p-8">
-      <div class="flex items-center gap-3 mb-6">
-        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-violet-500 to-violet-700 flex items-center justify-center text-white"><i data-lucide="activity" class="w-6 h-6"></i></div>
-        <h2 class="text-2xl font-bold"><span class="lang-ar">أهداف الوحدة</span><span class="lang-en">Module Objectives</span></h2>
-      </div>
+      <div class="flex items-center gap-3 mb-6"><div class="w-12 h-12 rounded-xl bg-gradient-to-br from-violet-500 to-violet-700 flex items-center justify-center text-white"><i data-lucide="activity" class="w-6 h-6"></i></div><h2 class="text-2xl font-bold"><span class="lang-ar">أهداف الوحدة</span><span class="lang-en">Module Objectives</span></h2></div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
-        <div class="flex gap-2 p-3 rounded-xl bg-violet-50 border border-violet-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-violet-600 shrink-0"></i><span class="lang-ar">نظرة على pgAdmin</span><span class="lang-en">pgAdmin Overview</span></div>
-        <div class="flex gap-2 p-3 rounded-xl bg-violet-50 border border-violet-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-violet-600 shrink-0"></i><span class="lang-ar">الوصول والتسجيل</span><span class="lang-en">Access and Register Servers</span></div>
-        <div class="flex gap-2 p-3 rounded-xl bg-violet-50 border border-violet-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-violet-600 shrink-0"></i><span class="lang-ar">الإدارة العامة</span><span class="lang-en">General Administration</span></div>
-        <div class="flex gap-2 p-3 rounded-xl bg-violet-50 border border-violet-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-violet-600 shrink-0"></i><span class="lang-ar">Object Browser و Query Tool</span><span class="lang-en">Object Browser & Query Tool</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-violet-50 border border-violet-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-violet-600 shrink-0"></i><span class="lang-ar">pgAdmin والبدائل</span><span class="lang-en">pgAdmin & alternatives</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-violet-50 border border-violet-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-violet-600 shrink-0"></i><span class="lang-ar">pg_stat_statements للأداء</span><span class="lang-en">pg_stat_statements for perf</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-violet-50 border border-violet-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-violet-600 shrink-0"></i><span class="lang-ar">المؤشرات الذهبية للمراقبة</span><span class="lang-en">Golden monitoring signals</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-violet-50 border border-violet-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-violet-600 shrink-0"></i><span class="lang-ar">إدارة الأقفال والـ blocking</span><span class="lang-en">Lock & blocking management</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-violet-50 border border-violet-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-violet-600 shrink-0"></i><span class="lang-ar">Prometheus + Grafana</span><span class="lang-en">Prometheus + Grafana</span></div>
         <div class="flex gap-2 p-3 rounded-xl bg-violet-50 border border-violet-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-violet-600 shrink-0"></i><span class="lang-ar">Postgres Enterprise Manager</span><span class="lang-en">Postgres Enterprise Manager</span></div>
       </div>
     </div>
@@ -58,79 +56,292 @@
   <main class="max-w-6xl mx-auto px-4 sm:px-6 pb-12 space-y-12">
 
     <section>
-      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">pgAdmin</span><span class="lang-en">pgAdmin</span></h2>
-      <div class="bg-white rounded-2xl border border-surface-200 p-6">
-        <p class="text-surface-700 mb-4 lang-ar"><strong>pgAdmin</strong> هي الأداة الرسومية الرسمية والأكثر شعبية لإدارة PostgreSQL. مفتوحة المصدر وتعمل على جميع المنصات.</p>
-        <p class="text-surface-700 mb-4 lang-en"><strong>pgAdmin</strong> is the official and most popular GUI for PostgreSQL. Open-source and cross-platform.</p>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-          <div class="bg-violet-50 border border-violet-200 rounded-xl p-4"><i data-lucide="folder-tree" class="w-6 h-6 text-violet-600 mb-2"></i><h4 class="font-bold text-sm lang-ar">Object Browser</h4><h4 class="font-bold text-sm lang-en">Object Browser</h4><p class="text-xs text-surface-600 mt-1 lang-ar">تصفح شجرة الكائنات</p><p class="text-xs text-surface-600 mt-1 lang-en">Browse object tree</p></div>
-          <div class="bg-violet-50 border border-violet-200 rounded-xl p-4"><i data-lucide="terminal-square" class="w-6 h-6 text-violet-600 mb-2"></i><h4 class="font-bold text-sm lang-ar">Query Tool</h4><h4 class="font-bold text-sm lang-en">Query Tool</h4><p class="text-xs text-surface-600 mt-1 lang-ar">تنفيذ استعلامات SQL</p><p class="text-xs text-surface-600 mt-1 lang-en">Execute SQL queries</p></div>
-          <div class="bg-violet-50 border border-violet-200 rounded-xl p-4"><i data-lucide="gauge" class="w-6 h-6 text-violet-600 mb-2"></i><h4 class="font-bold text-sm lang-ar">Dashboard</h4><h4 class="font-bold text-sm lang-en">Dashboard</h4><p class="text-xs text-surface-600 mt-1 lang-ar">مراقبة الأداء الحي</p><p class="text-xs text-surface-600 mt-1 lang-en">Live performance monitoring</p></div>
-          <div class="bg-violet-50 border border-violet-200 rounded-xl p-4"><i data-lucide="edit-3" class="w-6 h-6 text-violet-600 mb-2"></i><h4 class="font-bold text-sm lang-ar">Edit Data</h4><h4 class="font-bold text-sm lang-en">Edit Data</h4><p class="text-xs text-surface-600 mt-1 lang-ar">تحرير الصفوف مباشرة</p><p class="text-xs text-surface-600 mt-1 lang-en">Edit rows directly</p></div>
-          <div class="bg-violet-50 border border-violet-200 rounded-xl p-4"><i data-lucide="file-search" class="w-6 h-6 text-violet-600 mb-2"></i><h4 class="font-bold text-sm lang-ar">Explain Analyze</h4><h4 class="font-bold text-sm lang-en">Explain Analyze</h4><p class="text-xs text-surface-600 mt-1 lang-ar">تحليل خطط الاستعلام بصرياً</p><p class="text-xs text-surface-600 mt-1 lang-en">Visual query plan analysis</p></div>
-          <div class="bg-violet-50 border border-violet-200 rounded-xl p-4"><i data-lucide="backup" class="w-6 h-6 text-violet-600 mb-2"></i><h4 class="font-bold text-sm lang-ar">Backup/Restore</h4><h4 class="font-bold text-sm lang-en">Backup/Restore</h4><p class="text-xs text-surface-600 mt-1 lang-ar">نسخ احتياطي واستعادة</p><p class="text-xs text-surface-600 mt-1 lang-en">Backup and restore</p></div>
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">خريطة أدوات المراقبة</span><span class="lang-en">Monitoring Tools Map</span></h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="bg-white rounded-2xl border-2 border-violet-200 p-5">
+          <div class="w-12 h-12 rounded-xl bg-violet-100 flex items-center justify-center text-violet-600 mb-3"><i data-lucide="layout-dashboard" class="w-6 h-6"></i></div>
+          <h3 class="font-bold mb-1">pgAdmin 4</h3>
+          <p class="text-sm text-surface-600 mb-2 lang-ar">الأداة الرسومية الرسمية. Web UI يدعم المراقبة، الاستعلامات، والإدارة.</p>
+          <p class="text-sm text-surface-600 mb-2 lang-en">Official GUI. Web UI for monitoring, querying, admin.</p>
+          <div class="flex gap-1"><span class="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded">Open source</span><span class="text-xs bg-blue-100 text-blue-700 px-2 py-0.5 rounded">Web/Desktop</span></div>
+        </div>
+        <div class="bg-white rounded-2xl border-2 border-violet-200 p-5">
+          <div class="w-12 h-12 rounded-xl bg-violet-100 flex items-center justify-center text-violet-600 mb-3"><i data-lucide="building" class="w-6 h-6"></i></div>
+          <h3 class="font-bold mb-1">PEM (Postgres Enterprise Manager)</h3>
+          <p class="text-sm text-surface-600 mb-2 lang-ar">حل EDB الاحترافي — مراقبة multi-server، alerting، tuning.</p>
+          <p class="text-sm text-surface-600 mb-2 lang-en">EDB's enterprise solution — multi-server monitoring, alerts, tuning.</p>
+          <div class="flex gap-1"><span class="text-xs bg-amber-100 text-amber-700 px-2 py-0.5 rounded">Commercial</span></div>
+        </div>
+        <div class="bg-white rounded-2xl border-2 border-violet-200 p-5">
+          <div class="w-12 h-12 rounded-xl bg-violet-100 flex items-center justify-center text-violet-600 mb-3"><i data-lucide="line-chart" class="w-6 h-6"></i></div>
+          <h3 class="font-bold mb-1">Prometheus + Grafana</h3>
+          <p class="text-sm text-surface-600 mb-2 lang-ar">postgres_exporter + dashboards جاهزة. المعيار الصناعي.</p>
+          <p class="text-sm text-surface-600 mb-2 lang-en">postgres_exporter + ready dashboards. Industry standard.</p>
+          <div class="flex gap-1"><span class="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded">Open source</span></div>
+        </div>
+        <div class="bg-white rounded-2xl border-2 border-violet-200 p-5">
+          <div class="w-12 h-12 rounded-xl bg-violet-100 flex items-center justify-center text-violet-600 mb-3"><i data-lucide="terminal" class="w-6 h-6"></i></div>
+          <h3 class="font-bold mb-1">pg_top / pgcenter</h3>
+          <p class="text-sm text-surface-600 mb-2 lang-ar">top-style CLI. يعرض الاستعلامات النشطة، الأقفال، ومستخدمي الموارد.</p>
+          <p class="text-sm text-surface-600 mb-2 lang-en">top-style CLI. Shows active queries, locks, and resource hogs.</p>
+          <div class="flex gap-1"><span class="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded">Open source</span></div>
+        </div>
+        <div class="bg-white rounded-2xl border-2 border-violet-200 p-5">
+          <div class="w-12 h-12 rounded-xl bg-violet-100 flex items-center justify-center text-violet-600 mb-3"><i data-lucide="search-code" class="w-6 h-6"></i></div>
+          <h3 class="font-bold mb-1">pg_stat_statements</h3>
+          <p class="text-sm text-surface-600 mb-2 lang-ar">extension رسمي — أبطأ وأكثر الاستعلامات تكراراً.</p>
+          <p class="text-sm text-surface-600 mb-2 lang-en">Official extension — slowest and most-run queries.</p>
+          <div class="flex gap-1"><span class="text-xs bg-purple-100 text-purple-700 px-2 py-0.5 rounded">Must-have</span></div>
+        </div>
+        <div class="bg-white rounded-2xl border-2 border-violet-200 p-5">
+          <div class="w-12 h-12 rounded-xl bg-violet-100 flex items-center justify-center text-violet-600 mb-3"><i data-lucide="file-search" class="w-6 h-6"></i></div>
+          <h3 class="font-bold mb-1">pgBadger</h3>
+          <p class="text-sm text-surface-600 mb-2 lang-ar">يحلل ملفات log ويولد تقارير HTML تفصيلية.</p>
+          <p class="text-sm text-surface-600 mb-2 lang-en">Parses log files, generates detailed HTML reports.</p>
+          <div class="flex gap-1"><span class="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded">Open source</span></div>
         </div>
       </div>
     </section>
 
     <section>
-      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">مراقبة النظام عبر SQL</span><span class="lang-en">System Monitoring via SQL</span></h2>
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">pg_stat_statements — الأساسي!</span><span class="lang-en">pg_stat_statements — Essential!</span></h2>
+      <div class="bg-white rounded-2xl border border-surface-200 p-6 space-y-4">
+        <p class="text-surface-700 lang-ar">هذا الـ extension يعطيك <strong>أكثر الاستعلامات استهلاكاً للوقت</strong> في قاعدة بياناتك — لا يوجد DBA محترف بدونه.</p>
+        <p class="text-surface-700 lang-en">This extension gives you the <strong>top time-consuming queries</strong> in your DB — no serious DBA works without it.</p>
+
+        <div class="relative group" dir="ltr">
+          <button onclick="copyCode(this)" class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 bg-surface-700 text-white text-xs px-2.5 py-1.5 rounded-lg z-10">Copy</button>
+<pre class="!bg-surface-900 !rounded-xl !p-5"><code class="language-sql">-- Install
+CREATE EXTENSION pg_stat_statements;
+
+-- Add to postgresql.conf:
+-- shared_preload_libraries = 'pg_stat_statements'
+-- pg_stat_statements.max = 10000
+-- pg_stat_statements.track = all
+-- (restart required)
+
+-- Top 10 slowest queries (by total time)
+SELECT substring(query, 1, 80) AS query,
+       calls,
+       ROUND(total_exec_time::numeric, 2) AS total_ms,
+       ROUND(mean_exec_time::numeric, 2) AS avg_ms,
+       rows
+FROM pg_stat_statements
+ORDER BY total_exec_time DESC
+LIMIT 10;
+
+-- Top queries by average time (find inefficient ones)
+SELECT substring(query, 1, 80) AS query,
+       calls, ROUND(mean_exec_time::numeric, 2) AS avg_ms
+FROM pg_stat_statements
+WHERE calls &gt; 50
+ORDER BY mean_exec_time DESC
+LIMIT 10;
+
+-- Query patterns consuming most I/O
+SELECT substring(query, 1, 80) AS query,
+       shared_blks_read + shared_blks_hit AS total_blocks,
+       ROUND(100.0 * shared_blks_hit / NULLIF(shared_blks_read + shared_blks_hit, 0), 2) AS cache_hit
+FROM pg_stat_statements
+ORDER BY shared_blks_read DESC
+LIMIT 10;
+
+-- Reset statistics
+SELECT pg_stat_statements_reset();</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">مؤشرات الأداء الذهبية (KPIs)</span><span class="lang-en">Golden Performance KPIs</span></h2>
+      <div class="bg-white rounded-2xl border border-surface-200 overflow-hidden">
+        <table class="w-full text-sm">
+          <thead class="bg-violet-600 text-white">
+            <tr><th class="p-3 text-right lang-ar">المؤشر</th><th class="p-3 text-left lang-en">Metric</th><th class="p-3 text-right lang-ar">الهدف</th><th class="p-3 text-left lang-en">Target</th><th class="p-3 text-right lang-ar">مؤشر مشكلة</th><th class="p-3 text-left lang-en">Alert if</th></tr>
+          </thead>
+          <tbody class="divide-y divide-surface-100">
+            <tr><td class="p-3 lang-ar">نسبة الـ cache</td><td class="p-3 lang-en">Cache hit ratio</td><td class="p-3 text-green-700 font-mono" colspan="2">&gt; 99%</td><td class="p-3 text-red-600" colspan="2">&lt; 95%</td></tr>
+            <tr class="bg-surface-50/50"><td class="p-3 lang-ar">الاتصالات النشطة</td><td class="p-3 lang-en">Active connections</td><td class="p-3 text-green-700 font-mono" colspan="2">&lt; 80% من max_connections</td><td class="p-3 text-red-600" colspan="2">&gt; 90%</td></tr>
+            <tr><td class="p-3 lang-ar">Replication lag</td><td class="p-3 lang-en">Replication lag</td><td class="p-3 text-green-700 font-mono" colspan="2">&lt; 10 MB</td><td class="p-3 text-red-600" colspan="2">&gt; 100 MB</td></tr>
+            <tr class="bg-surface-50/50"><td class="p-3 lang-ar">Dead tuples %</td><td class="p-3 lang-en">Dead tuples ratio</td><td class="p-3 text-green-700 font-mono" colspan="2">&lt; 10%</td><td class="p-3 text-red-600" colspan="2">&gt; 20%</td></tr>
+            <tr><td class="p-3 lang-ar">TX wraparound</td><td class="p-3 lang-en">TXID age</td><td class="p-3 text-green-700 font-mono" colspan="2">&lt; 50% of 2 billion</td><td class="p-3 text-red-600" colspan="2">&gt; 80%</td></tr>
+            <tr class="bg-surface-50/50"><td class="p-3 lang-ar">Checkpoint timed</td><td class="p-3 lang-en">Timed checkpoints %</td><td class="p-3 text-green-700 font-mono" colspan="2">&gt; 90%</td><td class="p-3 text-red-600" colspan="2">&lt; 50% (rise max_wal_size)</td></tr>
+            <tr><td class="p-3 lang-ar">استعلامات بطيئة</td><td class="p-3 lang-en">Slow queries</td><td class="p-3 text-green-700 font-mono" colspan="2">&lt; 1% &gt; 1s</td><td class="p-3 text-red-600" colspan="2">&gt; 5%</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">إدارة الأقفال (Locks)</span><span class="lang-en">Lock Management</span></h2>
+      <div class="bg-white rounded-2xl border border-surface-200 p-6">
+        <p class="text-surface-700 mb-4 lang-ar">عند توقف التطبيق مفاجئاً، غالباً السبب <strong>blocking lock</strong>. هذه استعلامات لتشخيصها:</p>
+        <p class="text-surface-700 mb-4 lang-en">When the app hangs suddenly, it's often a <strong>blocking lock</strong>. Use these to diagnose:</p>
+
+        <div class="relative group" dir="ltr">
+          <button onclick="copyCode(this)" class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 bg-surface-700 text-white text-xs px-2.5 py-1.5 rounded-lg z-10">Copy</button>
+<pre class="!bg-surface-900 !rounded-xl !p-5"><code class="language-sql">-- 1. Find who is blocking whom (single query — PG9.6+)
+SELECT blocked.pid         AS blocked_pid,
+       blocked.usename     AS blocked_user,
+       blocked.state       AS blocked_state,
+       blocking.pid        AS blocking_pid,
+       blocking.usename    AS blocking_user,
+       blocking.state      AS blocking_state,
+       NOW() - blocked.query_start AS blocked_duration,
+       LEFT(blocked.query, 60)  AS blocked_query,
+       LEFT(blocking.query, 60) AS blocking_query
+FROM pg_stat_activity AS blocked
+JOIN pg_stat_activity AS blocking
+     ON blocking.pid = ANY(pg_blocking_pids(blocked.pid))
+ORDER BY blocked.query_start;
+
+-- 2. All locks overview
+SELECT locktype, relation::regclass AS table,
+       mode, transactionid, virtualtransaction,
+       pid, granted
+FROM pg_locks
+WHERE NOT granted
+ORDER BY pid;
+
+-- 3. Cancel the blocker (graceful)
+SELECT pg_cancel_backend(&lt;blocking_pid&gt;);
+
+-- 4. If won't cancel — terminate
+SELECT pg_terminate_backend(&lt;blocking_pid&gt;);
+
+-- 5. Find long-running idle-in-transaction (dangerous!)
+SELECT pid, usename, state, NOW() - xact_start AS tx_age, query
+FROM pg_stat_activity
+WHERE state = 'idle in transaction'
+  AND NOW() - xact_start &gt; interval '5 minutes';</code></pre>
+        </div>
+
+        <div class="mt-4 flex gap-3 p-4 bg-amber-50 border border-amber-200 rounded-xl">
+          <i data-lucide="alert-triangle" class="w-5 h-5 text-amber-600 shrink-0 mt-0.5"></i>
+          <div class="text-sm">
+            <strong class="text-amber-800 lang-ar">خطر خفي:</strong>
+            <strong class="text-amber-800 lang-en">Hidden danger:</strong>
+            <span class="text-amber-700 lang-ar"> <span dir="ltr" class="font-mono">idle in transaction</span> — عميل فتح transaction ولم يكمل. يمنع VACUUM ويعطل الأداء. استخدم <span dir="ltr" class="font-mono">idle_in_transaction_session_timeout</span> لإغلاقها تلقائياً.</span>
+            <span class="text-amber-700 lang-en"> <span class="font-mono">idle in transaction</span> — client opened a transaction but never finished. Blocks VACUUM and hurts performance. Use <span class="font-mono">idle_in_transaction_session_timeout</span> to auto-kill.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">إعداد Prometheus + Grafana</span><span class="lang-en">Prometheus + Grafana Setup</span></h2>
       <div class="bg-white rounded-2xl border border-surface-200 p-6">
         <div class="relative group" dir="ltr">
           <button onclick="copyCode(this)" class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 bg-surface-700 text-white text-xs px-2.5 py-1.5 rounded-lg z-10">Copy</button>
-<pre class="!bg-surface-900 !rounded-xl !p-5"><code class="language-sql">-- Active connections count
-SELECT state, COUNT(*)
-FROM pg_stat_activity
-GROUP BY state;
+<pre class="!bg-surface-900 !rounded-xl !p-5"><code class="language-bash"># 1. Install postgres_exporter
+docker run -d --name pg_exporter \
+  -e DATA_SOURCE_NAME="postgresql://monitor:pw@db:5432/postgres?sslmode=disable" \
+  -p 9187:9187 \
+  quay.io/prometheuscommunity/postgres-exporter
 
--- Long-running queries (&gt; 1 minute)
-SELECT pid, usename, query_start,
-       NOW() - query_start AS duration, query
-FROM pg_stat_activity
-WHERE state = 'active'
-  AND NOW() - query_start &gt; interval '1 minute'
-ORDER BY duration DESC;
+# 2. Create monitor user in Postgres
+CREATE USER monitor WITH PASSWORD 'pw';
+GRANT pg_monitor TO monitor;  -- built-in role with read access
 
--- Cache hit ratio (should be &gt; 99%)
-SELECT datname,
-       ROUND(100.0 * sum(blks_hit) / NULLIF(sum(blks_hit + blks_read), 0), 2) AS cache_hit_pct
-FROM pg_stat_database
-GROUP BY datname;
+# 3. Prometheus config (prometheus.yml)
+# scrape_configs:
+#   - job_name: 'postgres'
+#     static_configs:
+#       - targets: ['pg_exporter:9187']
 
--- Lock monitoring
-SELECT blocked_locks.pid AS blocked_pid,
-       blocked_activity.usename AS blocked_user,
-       blocking_locks.pid AS blocking_pid,
-       blocking_activity.query AS blocking_query
-FROM pg_catalog.pg_locks blocked_locks
-JOIN pg_catalog.pg_stat_activity blocked_activity
-  ON blocked_activity.pid = blocked_locks.pid
-JOIN pg_catalog.pg_locks blocking_locks
-  ON blocking_locks.locktype = blocked_locks.locktype
-  AND blocking_locks.granted
-JOIN pg_catalog.pg_stat_activity blocking_activity
-  ON blocking_activity.pid = blocking_locks.pid
-WHERE NOT blocked_locks.granted;
-
--- Kill a problematic query
-SELECT pg_cancel_backend(12345);  -- graceful
-SELECT pg_terminate_backend(12345);  -- forceful</code></pre>
+# 4. Grafana — import ready dashboard ID 9628 or 455
+# Full monitoring with &lt; 10 minutes of setup!</code></pre>
         </div>
       </div>
     </section>
 
+    <!-- QUIZ -->
     <section>
-      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">Postgres Enterprise Manager (PEM)</span><span class="lang-en">Postgres Enterprise Manager (PEM)</span></h2>
-      <div class="bg-white rounded-2xl border border-surface-200 p-6 space-y-4">
-        <p class="text-surface-700 lang-ar"><strong>PEM</strong> هو أداة EDB الاحترافية للمراقبة المتقدمة — مصممة للبيئات الإنتاجية الكبيرة.</p>
-        <p class="text-surface-700 lang-en"><strong>PEM</strong> is EDB's professional tool for advanced monitoring — designed for large production environments.</p>
+      <div class="mb-6">
+        <span class="text-sm font-bold text-violet-600 uppercase tracking-wider"><span class="lang-ar">اختبر فهمك</span><span class="lang-en">Test Your Knowledge</span></span>
+        <h2 class="text-3xl font-bold text-surface-900 mt-2 mb-3"><span class="lang-ar">كويز الوحدة ١٠ 🎯</span><span class="lang-en">Module 10 Quiz 🎯</span></h2>
+      </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-          <div class="flex gap-3 p-3 bg-violet-50 border border-violet-200 rounded-xl"><i data-lucide="bell-ring" class="w-5 h-5 text-violet-600 shrink-0 mt-0.5"></i><div><strong class="lang-ar">Alerting:</strong><strong class="lang-en">Alerting:</strong><span class="lang-ar"> تنبيهات عند تجاوز حدود معينة</span><span class="lang-en"> alerts on threshold breaches</span></div></li></div>
-          <div class="flex gap-3 p-3 bg-violet-50 border border-violet-200 rounded-xl"><i data-lucide="bar-chart-3" class="w-5 h-5 text-violet-600 shrink-0 mt-0.5"></i><div><strong class="lang-ar">Dashboards:</strong><strong class="lang-en">Dashboards:</strong><span class="lang-ar"> لوحات قابلة للتخصيص</span><span class="lang-en"> customizable dashboards</span></div></li></div>
-          <div class="flex gap-3 p-3 bg-violet-50 border border-violet-200 rounded-xl"><i data-lucide="database" class="w-5 h-5 text-violet-600 shrink-0 mt-0.5"></i><div><strong class="lang-ar">Multi-server:</strong><strong class="lang-en">Multi-server:</strong><span class="lang-ar"> إدارة عدة كلاسترات من مكان واحد</span><span class="lang-en"> manage multiple clusters</span></div></li></div>
-          <div class="flex gap-3 p-3 bg-violet-50 border border-violet-200 rounded-xl"><i data-lucide="trending-up" class="w-5 h-5 text-violet-600 shrink-0 mt-0.5"></i><div><strong class="lang-ar">Capacity Planning:</strong><strong class="lang-en">Capacity Planning:</strong><span class="lang-ar"> تنبؤ بالاحتياجات المستقبلية</span><span class="lang-en"> predict future needs</span></div></li></div>
+      <div id="quiz" class="space-y-4">
+        <div class="quiz-card bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="flex items-center gap-2 mb-3"><span class="w-7 h-7 rounded-full bg-violet-600 text-white font-bold text-sm flex items-center justify-center">1</span></div>
+          <p class="font-semibold mb-4 lang-ar">أي extension يعتبر "أساسي" لأي DBA محترف؟</p>
+          <p class="font-semibold mb-4 lang-en">Which extension is essential for any serious DBA?</p>
+          <div class="space-y-2">
+            <button onclick="pick(this,1)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-violet-300"><span class="font-mono">pgcrypto</span></button>
+            <button onclick="pick(this,1)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-violet-300" data-correct="true"><span class="font-mono">pg_stat_statements</span></button>
+            <button onclick="pick(this,1)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-violet-300"><span class="font-mono">uuid-ossp</span></button>
+          </div>
+          <div class="feedback hidden mt-3 p-3 rounded-xl text-sm"></div>
+        </div>
+
+        <div class="quiz-card bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="flex items-center gap-2 mb-3"><span class="w-7 h-7 rounded-full bg-violet-600 text-white font-bold text-sm flex items-center justify-center">2</span></div>
+          <p class="font-semibold mb-4 lang-ar">نسبة cache hit الصحية يجب أن تكون:</p>
+          <p class="font-semibold mb-4 lang-en">A healthy cache hit ratio should be:</p>
+          <div class="space-y-2">
+            <button onclick="pick(this,2)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-violet-300">&lt; 50%</button>
+            <button onclick="pick(this,2)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-violet-300">~ 80%</button>
+            <button onclick="pick(this,2)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-violet-300" data-correct="true">&gt; 99%</button>
+          </div>
+          <div class="feedback hidden mt-3 p-3 rounded-xl text-sm"></div>
+        </div>
+
+        <div class="quiz-card bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="flex items-center gap-2 mb-3"><span class="w-7 h-7 rounded-full bg-violet-600 text-white font-bold text-sm flex items-center justify-center">3</span></div>
+          <p class="font-semibold mb-4 lang-ar">"idle in transaction" يعني:</p>
+          <p class="font-semibold mb-4 lang-en">"idle in transaction" means:</p>
+          <div class="space-y-2">
+            <button onclick="pick(this,3)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-violet-300"><span class="lang-ar">السيرفر معطل</span><span class="lang-en">Server is down</span></button>
+            <button onclick="pick(this,3)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-violet-300" data-correct="true"><span class="lang-ar">transaction مفتوحة لكن لا يُنفذ شيء — خطر للأداء</span><span class="lang-en">Transaction open, nothing executing — perf hazard</span></button>
+            <button onclick="pick(this,3)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-violet-300"><span class="lang-ar">backup قيد التنفيذ</span><span class="lang-en">Backup running</span></button>
+          </div>
+          <div class="feedback hidden mt-3 p-3 rounded-xl text-sm"></div>
+        </div>
+
+        <div class="quiz-card bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="flex items-center gap-2 mb-3"><span class="w-7 h-7 rounded-full bg-violet-600 text-white font-bold text-sm flex items-center justify-center">4</span></div>
+          <p class="font-semibold mb-4 lang-ar">أي role مدمج يعطي صلاحيات قراءة للمراقبة؟</p>
+          <p class="font-semibold mb-4 lang-en">Which built-in role grants read access for monitoring?</p>
+          <div class="space-y-2">
+            <button onclick="pick(this,4)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-violet-300"><span class="font-mono">pg_read_all_data</span></button>
+            <button onclick="pick(this,4)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-violet-300" data-correct="true"><span class="font-mono">pg_monitor</span></button>
+            <button onclick="pick(this,4)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-violet-300"><span class="font-mono">pg_readonly</span></button>
+          </div>
+          <div class="feedback hidden mt-3 p-3 rounded-xl text-sm"></div>
+        </div>
+
+        <div class="quiz-card bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="flex items-center gap-2 mb-3"><span class="w-7 h-7 rounded-full bg-violet-600 text-white font-bold text-sm flex items-center justify-center">5</span></div>
+          <p class="font-semibold mb-4 lang-ar">أي أداة لتوليد تقارير HTML من ملفات log؟</p>
+          <p class="font-semibold mb-4 lang-en">Which tool generates HTML reports from log files?</p>
+          <div class="space-y-2">
+            <button onclick="pick(this,5)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-violet-300"><span class="font-mono">pgAdmin</span></button>
+            <button onclick="pick(this,5)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-violet-300"><span class="font-mono">pg_top</span></button>
+            <button onclick="pick(this,5)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-violet-300" data-correct="true"><span class="font-mono">pgBadger</span></button>
+            <button onclick="pick(this,5)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-violet-300"><span class="font-mono">Grafana</span></button>
+          </div>
+          <div class="feedback hidden mt-3 p-3 rounded-xl text-sm"></div>
+        </div>
+
+        <div class="quiz-card bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="flex items-center gap-2 mb-3"><span class="w-7 h-7 rounded-full bg-violet-600 text-white font-bold text-sm flex items-center justify-center">6</span></div>
+          <p class="font-semibold mb-4 lang-ar">لإلغاء استعلام متوقف (بلطف):</p>
+          <p class="font-semibold mb-4 lang-en">To gracefully cancel a stuck query:</p>
+          <div class="space-y-2">
+            <button onclick="pick(this,6)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-violet-300" data-correct="true"><span class="font-mono">SELECT pg_cancel_backend(pid);</span></button>
+            <button onclick="pick(this,6)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-violet-300"><span class="font-mono">KILL pid;</span></button>
+            <button onclick="pick(this,6)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-violet-300"><span class="font-mono">DROP BACKEND pid;</span></button>
+          </div>
+          <div class="feedback hidden mt-3 p-3 rounded-xl text-sm"></div>
+        </div>
+
+        <div id="quiz-result" class="hidden bg-gradient-to-br from-violet-600 to-violet-800 text-white rounded-2xl p-6 text-center">
+          <i data-lucide="award" class="w-12 h-12 mx-auto mb-3"></i>
+          <h3 class="text-2xl font-bold mb-2"><span class="lang-ar">نتيجتك</span><span class="lang-en">Your Score</span></h3>
+          <div class="text-5xl font-bold my-3"><span id="score">0</span><span class="text-2xl opacity-70">/6</span></div>
+          <p id="result-msg" class="text-violet-100"></p>
+          <button onclick="resetQuiz()" class="mt-4 bg-white text-violet-700 font-semibold px-6 py-2 rounded-lg hover:bg-violet-50"><span class="lang-ar">إعادة المحاولة</span><span class="lang-en">Try Again</span></button>
         </div>
       </div>
     </section>
@@ -139,12 +350,12 @@ SELECT pg_terminate_backend(12345);  -- forceful</code></pre>
       <div class="bg-gradient-to-br from-violet-600 via-violet-700 to-violet-900 text-white rounded-2xl p-6 md:p-8 shadow-xl">
         <div class="flex items-center gap-3 mb-6"><div class="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center"><i data-lucide="bookmark-check" class="w-6 h-6"></i></div><h2 class="text-2xl font-bold"><span class="lang-ar">ملخص الوحدة</span><span class="lang-en">Module Summary</span></h2></div>
         <ul class="grid grid-cols-1 md:grid-cols-2 gap-3">
-          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-violet-300 shrink-0 mt-0.5"></i><span class="lang-ar">pgAdmin هو الأداة الرسومية الرسمية</span><span class="lang-en">pgAdmin is the official GUI</span></li>
-          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-violet-300 shrink-0 mt-0.5"></i><span class="lang-ar">Query Tool للاستعلامات</span><span class="lang-en">Query Tool for queries</span></li>
-          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-violet-300 shrink-0 mt-0.5"></i><span class="lang-ar">Dashboard للمراقبة الحية</span><span class="lang-en">Dashboard for live monitoring</span></li>
-          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-violet-300 shrink-0 mt-0.5"></i><span class="lang-ar">pg_stat_activity للعمليات</span><span class="lang-en">pg_stat_activity for processes</span></li>
-          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-violet-300 shrink-0 mt-0.5"></i><span class="lang-ar">PEM للمراقبة الاحترافية</span><span class="lang-en">PEM for enterprise monitoring</span></li>
-          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-violet-300 shrink-0 mt-0.5"></i><span class="lang-ar">Cache hit ratio يجب &gt; 99%</span><span class="lang-en">Cache hit ratio should &gt; 99%</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-violet-300 shrink-0 mt-0.5"></i><span class="lang-ar">pgAdmin = الأداة الرسومية الرسمية</span><span class="lang-en">pgAdmin = official GUI</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-violet-300 shrink-0 mt-0.5"></i><span class="lang-ar">pg_stat_statements أساسي</span><span class="lang-en">pg_stat_statements is essential</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-violet-300 shrink-0 mt-0.5"></i><span class="lang-ar">Prometheus+Grafana للإنتاج</span><span class="lang-en">Prometheus+Grafana for prod</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-violet-300 shrink-0 mt-0.5"></i><span class="lang-ar">Cache hit &gt; 99%</span><span class="lang-en">Cache hit &gt; 99%</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-violet-300 shrink-0 mt-0.5"></i><span class="lang-ar">pg_blocking_pids() للأقفال</span><span class="lang-en">pg_blocking_pids() for locks</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-violet-300 shrink-0 mt-0.5"></i><span class="lang-ar">idle in transaction = خطر</span><span class="lang-en">idle in transaction = danger</span></li>
         </ul>
       </div>
     </section>
@@ -166,6 +377,10 @@ SELECT pg_terminate_backend(12345);  -- forceful</code></pre>
   <script>
     function setLang(lang){document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';localStorage.setItem('pgCourseLang',lang);document.querySelectorAll('.lang-btn').forEach(b=>{b.classList.remove('bg-violet-600','text-white','shadow-md');b.classList.add('text-surface-600','hover:bg-surface-100');});const a=document.getElementById('btn-'+lang);a.classList.add('bg-violet-600','text-white','shadow-md');a.classList.remove('text-surface-600','hover:bg-surface-100');}
     function copyCode(btn){const c=btn.nextElementSibling.querySelector('code').textContent;navigator.clipboard.writeText(c);btn.textContent='✓';setTimeout(()=>btn.textContent='Copy',2000);}
+    const total=6;const answers={};
+    function pick(btn,q){const card=btn.closest('.quiz-card');card.querySelectorAll('.quiz-opt').forEach(o=>o.disabled=true);const correct=btn.dataset.correct==='true';btn.classList.add(correct?'correct':'wrong');if(!correct)card.querySelector('[data-correct="true"]').classList.add('correct');const fb=card.querySelector('.feedback');fb.classList.remove('hidden');const lang=document.documentElement.lang;fb.className='feedback mt-3 p-3 rounded-xl text-sm '+(correct?'bg-green-50 text-green-800 border border-green-200':'bg-red-50 text-red-800 border border-red-200');fb.innerHTML=correct?(lang==='ar'?'✓ ممتاز!':'✓ Correct!'):(lang==='ar'?'✗ خطأ — الإجابة بالأخضر':'✗ Wrong — answer in green');answers[q]=correct;if(Object.keys(answers).length===total)showResult();}
+    function showResult(){const s=Object.values(answers).filter(Boolean).length;document.getElementById('score').textContent=s;const m=document.getElementById('result-msg');const l=document.documentElement.lang;m.textContent=s===total?(l==='ar'?'🎉 إتقان كامل!':'🎉 Perfect!'):s>=Math.ceil(total*0.7)?(l==='ar'?'👍 ممتاز!':'👍 Great!'):(l==='ar'?'📚 راجع':'📚 Review');const r=document.getElementById('quiz-result');r.classList.remove('hidden');r.scrollIntoView({behavior:'smooth',block:'center'});}
+    function resetQuiz(){Object.keys(answers).forEach(k=>delete answers[k]);document.querySelectorAll('.quiz-opt').forEach(b=>{b.disabled=false;b.classList.remove('correct','wrong');});document.querySelectorAll('.feedback').forEach(f=>f.classList.add('hidden'));document.getElementById('quiz-result').classList.add('hidden');document.getElementById('quiz').scrollIntoView({behavior:'smooth',block:'start'});}
     setLang(localStorage.getItem('pgCourseLang')||'ar');lucide.createIcons();Prism.highlightAll();
   </script>
 </body>

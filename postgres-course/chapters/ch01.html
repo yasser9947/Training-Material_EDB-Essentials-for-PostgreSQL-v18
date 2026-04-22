@@ -32,22 +32,21 @@
     html[lang="en"] .lang-ar { display: none !important; }
     pre[class*="language-"] { border-radius: 0.75rem; font-size: 0.875rem; margin: 0; direction: ltr; }
     code[class*="language-"] { font-family: 'JetBrains Mono', monospace; }
-    .content-section { animation: fadeIn 0.5s ease-out; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     .timeline-dot { position: relative; }
     .timeline-dot::before { content: ''; position: absolute; top: 24px; bottom: -24px; right: 15px; width: 2px; background: linear-gradient(to bottom, #0ea5e9, #cbd5e1); }
     html[dir="ltr"] .timeline-dot::before { right: auto; left: 15px; }
     .timeline-dot:last-child::before { display: none; }
+    .quiz-opt.correct { border-color: #059669 !important; background: #ecfdf5 !important; }
+    .quiz-opt.wrong { border-color: #dc2626 !important; background: #fef2f2 !important; }
+    .quiz-opt:disabled { cursor: not-allowed; }
   </style>
 </head>
 <body class="bg-surface-50 text-surface-800 antialiased min-h-screen">
 
-  <!-- Top Nav -->
   <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-surface-200 shadow-sm">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
       <a href="../index.html" class="flex items-center gap-2 text-surface-600 hover:text-pg-600 transition-colors">
-        <i data-lucide="arrow-right" class="w-4 h-4 lang-ar"></i>
-        <i data-lucide="arrow-left" class="w-4 h-4 lang-en"></i>
+        <i data-lucide="home" class="w-4 h-4"></i>
         <span class="text-sm font-semibold lang-ar">الصفحة الرئيسية</span>
         <span class="text-sm font-semibold lang-en">Home</span>
       </a>
@@ -58,78 +57,36 @@
     </div>
   </nav>
 
-  <!-- Hero -->
   <header class="bg-gradient-to-br from-pg-900 via-pg-800 to-pg-700 text-white">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
       <div class="flex items-center gap-3 text-pg-200 text-sm mb-4">
-        <span class="px-3 py-1 bg-white/10 rounded-full">
-          <span class="lang-ar">الوحدة ١</span><span class="lang-en">Module 1</span>
-        </span>
-        <span class="text-pg-300">·</span>
-        <span class="font-mono">p. 3–18</span>
-        <span class="text-pg-300">·</span>
-        <span class="lang-ar">١٦ صفحة</span><span class="lang-en">16 pages</span>
+        <span class="px-3 py-1 bg-white/10 rounded-full"><span class="lang-ar">الوحدة ١</span><span class="lang-en">Module 1</span></span>
+        <span class="text-pg-300">·</span><span class="font-mono">p. 3–18</span>
+        <span class="text-pg-300">·</span><span class="lang-ar">١٦ صفحة</span><span class="lang-en">16 pages</span>
       </div>
       <h1 class="text-3xl md:text-5xl font-bold mb-4 leading-tight">
         <span class="lang-ar">مقدمة ونظرة معمارية عامة</span>
         <span class="lang-en">Introduction & Architectural Overview</span>
       </h1>
-      <p class="text-lg text-pg-100 max-w-3xl lang-ar">
-        نبدأ رحلتنا مع PostgreSQL — تاريخه، مميزاته الرئيسية، منصة EDB Postgres AI وحدود قاعدة البيانات.
-      </p>
-      <p class="text-lg text-pg-100 max-w-3xl lang-en">
-        We begin our PostgreSQL journey — its history, major features, EDB Postgres AI platform, and database limits.
-      </p>
+      <p class="text-lg text-pg-100 max-w-3xl lang-ar">نبدأ رحلتنا مع PostgreSQL — تاريخه، مميزاته، معماريته، وحدوده. أساس متين قبل ما نغوص في التفاصيل.</p>
+      <p class="text-lg text-pg-100 max-w-3xl lang-en">Starting our PostgreSQL journey — history, features, architecture, and limits. A solid foundation before diving deeper.</p>
     </div>
   </header>
 
-  <!-- Learning Objectives -->
+  <!-- Objectives -->
   <section class="max-w-6xl mx-auto px-4 sm:px-6 py-10">
     <div class="bg-white rounded-2xl shadow-sm border border-surface-200 p-6 md:p-8">
       <div class="flex items-center gap-3 mb-6">
-        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-pg-500 to-pg-700 flex items-center justify-center text-white">
-          <i data-lucide="target" class="w-6 h-6"></i>
-        </div>
-        <div>
-          <h2 class="text-2xl font-bold text-surface-900">
-            <span class="lang-ar">أهداف الوحدة</span>
-            <span class="lang-en">Module Objectives</span>
-          </h2>
-          <p class="text-sm text-surface-500 lang-ar">ما الذي ستتعلمه؟</p>
-          <p class="text-sm text-surface-500 lang-en">What will you learn?</p>
-        </div>
+        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-pg-500 to-pg-700 flex items-center justify-center text-white"><i data-lucide="target" class="w-6 h-6"></i></div>
+        <h2 class="text-2xl font-bold"><span class="lang-ar">أهداف الوحدة</span><span class="lang-en">Module Objectives</span></h2>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-        <div class="flex items-start gap-3 p-3 rounded-xl bg-pg-50 border border-pg-100">
-          <i data-lucide="check-circle-2" class="w-5 h-5 text-pg-600 shrink-0 mt-0.5"></i>
-          <span class="text-sm lang-ar">منصة EDB Postgres AI</span>
-          <span class="text-sm lang-en">EDB Postgres AI Platform</span>
-        </div>
-        <div class="flex items-start gap-3 p-3 rounded-xl bg-pg-50 border border-pg-100">
-          <i data-lucide="check-circle-2" class="w-5 h-5 text-pg-600 shrink-0 mt-0.5"></i>
-          <span class="text-sm lang-ar">تاريخ PostgreSQL</span>
-          <span class="text-sm lang-en">PostgreSQL History</span>
-        </div>
-        <div class="flex items-start gap-3 p-3 rounded-xl bg-pg-50 border border-pg-100">
-          <i data-lucide="check-circle-2" class="w-5 h-5 text-pg-600 shrink-0 mt-0.5"></i>
-          <span class="text-sm lang-ar">المميزات الرئيسية</span>
-          <span class="text-sm lang-en">Major Features</span>
-        </div>
-        <div class="flex items-start gap-3 p-3 rounded-xl bg-pg-50 border border-pg-100">
-          <i data-lucide="check-circle-2" class="w-5 h-5 text-pg-600 shrink-0 mt-0.5"></i>
-          <span class="text-sm lang-ar">النظرة المعمارية</span>
-          <span class="text-sm lang-en">Architectural Overview</span>
-        </div>
-        <div class="flex items-start gap-3 p-3 rounded-xl bg-pg-50 border border-pg-100">
-          <i data-lucide="check-circle-2" class="w-5 h-5 text-pg-600 shrink-0 mt-0.5"></i>
-          <span class="text-sm lang-ar">حدود قاعدة البيانات</span>
-          <span class="text-sm lang-en">General Database Limits</span>
-        </div>
-        <div class="flex items-start gap-3 p-3 rounded-xl bg-pg-50 border border-pg-100">
-          <i data-lucide="check-circle-2" class="w-5 h-5 text-pg-600 shrink-0 mt-0.5"></i>
-          <span class="text-sm lang-ar">أسماء الكائنات الشائعة</span>
-          <span class="text-sm lang-en">Common Object Names</span>
-        </div>
+        <div class="flex items-start gap-3 p-3 rounded-xl bg-pg-50 border border-pg-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-pg-600 shrink-0 mt-0.5"></i><span class="text-sm lang-ar">تاريخ وتطور PostgreSQL</span><span class="text-sm lang-en">PostgreSQL history & evolution</span></div>
+        <div class="flex items-start gap-3 p-3 rounded-xl bg-pg-50 border border-pg-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-pg-600 shrink-0 mt-0.5"></i><span class="text-sm lang-ar">المميزات الرئيسية بالتفصيل</span><span class="text-sm lang-en">Major features in detail</span></div>
+        <div class="flex items-start gap-3 p-3 rounded-xl bg-pg-50 border border-pg-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-pg-600 shrink-0 mt-0.5"></i><span class="text-sm lang-ar">فهم ACID وأهميته</span><span class="text-sm lang-en">Understanding ACID properties</span></div>
+        <div class="flex items-start gap-3 p-3 rounded-xl bg-pg-50 border border-pg-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-pg-600 shrink-0 mt-0.5"></i><span class="text-sm lang-ar">النظرة المعمارية ودورة الاستعلام</span><span class="text-sm lang-en">Architecture & query lifecycle</span></div>
+        <div class="flex items-start gap-3 p-3 rounded-xl bg-pg-50 border border-pg-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-pg-600 shrink-0 mt-0.5"></i><span class="text-sm lang-ar">حدود قاعدة البيانات</span><span class="text-sm lang-en">Database limits</span></div>
+        <div class="flex items-start gap-3 p-3 rounded-xl bg-pg-50 border border-pg-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-pg-600 shrink-0 mt-0.5"></i><span class="text-sm lang-ar">مصطلحات PostgreSQL الخاصة</span><span class="text-sm lang-en">PostgreSQL-specific terminology</span></div>
       </div>
     </div>
   </section>
@@ -137,30 +94,36 @@
   <main class="max-w-6xl mx-auto px-4 sm:px-6 pb-12 space-y-12">
 
     <!-- Section 1: What is PostgreSQL -->
-    <section class="content-section">
+    <section>
       <div class="mb-6">
-        <span class="text-sm font-bold text-pg-600 uppercase tracking-wider">
-          <span class="lang-ar">القسم ١</span><span class="lang-en">Section 1</span>
-        </span>
-        <h2 class="text-3xl font-bold text-surface-900 mt-2 mb-3">
-          <span class="lang-ar">ما هو PostgreSQL؟</span>
-          <span class="lang-en">What is PostgreSQL?</span>
-        </h2>
+        <span class="text-sm font-bold text-pg-600 uppercase tracking-wider"><span class="lang-ar">القسم ١</span><span class="lang-en">Section 1</span></span>
+        <h2 class="text-3xl font-bold text-surface-900 mt-2 mb-3"><span class="lang-ar">ما هو PostgreSQL؟</span><span class="lang-en">What is PostgreSQL?</span></h2>
       </div>
 
-      <div class="bg-white rounded-2xl border border-surface-200 p-6 md:p-8 space-y-4">
+      <div class="bg-white rounded-2xl border border-surface-200 p-6 md:p-8 space-y-5">
         <p class="text-lg leading-relaxed text-surface-700 lang-ar">
-          <strong class="text-pg-700">PostgreSQL</strong> هو نظام إدارة قواعد بيانات علائقية <span dir="ltr" class="font-mono text-surface-600">(ORDBMS)</span> مفتوح المصدر، يعتبر الأكثر تقدماً في العالم. يتميز بالموثوقية والأداء العالي ودعم واسع للمعايير، ويستخدم من قبل الآلاف من الشركات حول العالم.
+          <strong class="text-pg-700">PostgreSQL</strong> نظام إدارة قواعد بيانات علائقية-كائنية <span dir="ltr" class="font-mono text-surface-600">(ORDBMS)</span> مفتوح المصدر، يعتبر الأكثر تقدماً في العالم من ناحية المميزات. مطوّر منذ أكثر من ٣٠ سنة ويدعم تقريباً كل ما يخطر ببالك: العلائقية الكلاسيكية، JSON/NoSQL، بيانات جغرافية (PostGIS)، Time-series، البحث النصي الكامل، والآن Vector data للـ AI.
         </p>
         <p class="text-lg leading-relaxed text-surface-700 lang-en">
-          <strong class="text-pg-700">PostgreSQL</strong> is the world's most advanced open-source object-relational database management system (ORDBMS). Known for reliability, performance, and standards compliance, it is used by thousands of companies worldwide.
+          <strong class="text-pg-700">PostgreSQL</strong> is the world's most advanced open-source object-relational database management system (ORDBMS). Developed for over 30 years, it supports virtually everything: classical relational, JSON/NoSQL, geospatial (PostGIS), time-series, full-text search, and now vector data for AI.
         </p>
 
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
+        <!-- ORDBMS Breakdown -->
+        <div class="bg-gradient-to-br from-pg-50 to-white rounded-xl p-5 border border-pg-200">
+          <h3 class="font-bold text-pg-900 mb-3 flex items-center gap-2"><i data-lucide="puzzle" class="w-5 h-5"></i><span class="lang-ar">ليش نقول ORDBMS وليس فقط RDBMS؟</span><span class="lang-en">Why ORDBMS, not just RDBMS?</span></h3>
+          <p class="text-sm text-surface-700 leading-relaxed lang-ar">
+            PostgreSQL يجمع بين العلائقية (الجداول، الأعمدة، المفاتيح) ومفاهيم الكائنية مثل: <strong>الوراثة</strong> في الجداول، <strong>أنواع بيانات مخصصة</strong>، <strong>دوال</strong> مكتوبة بلغات متعددة، و<strong>عمليات (operators)</strong> قابلة للتحميل الزائد. هذا الدمج هو ما يعطيه المرونة الاستثنائية.
+          </p>
+          <p class="text-sm text-surface-700 leading-relaxed lang-en">
+            PostgreSQL combines relational features (tables, columns, keys) with object-oriented concepts: <strong>table inheritance</strong>, <strong>custom data types</strong>, <strong>functions</strong> in multiple languages, and <strong>overloadable operators</strong>. This hybrid design is what gives it exceptional flexibility.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div class="text-center p-4 bg-gradient-to-br from-pg-50 to-pg-100 rounded-xl border border-pg-200">
             <div class="text-2xl font-bold text-pg-700">30+</div>
-            <div class="text-xs text-pg-600 mt-1 lang-ar">سنة من التطوير</div>
-            <div class="text-xs text-pg-600 mt-1 lang-en">Years of development</div>
+            <div class="text-xs text-pg-600 mt-1 lang-ar">سنة تطوير</div>
+            <div class="text-xs text-pg-600 mt-1 lang-en">Years dev</div>
           </div>
           <div class="text-center p-4 bg-gradient-to-br from-green-50 to-green-100 rounded-xl border border-green-200">
             <div class="text-2xl font-bold text-green-700">ACID</div>
@@ -170,39 +133,74 @@
           <div class="text-center p-4 bg-gradient-to-br from-amber-50 to-amber-100 rounded-xl border border-amber-200">
             <div class="text-2xl font-bold text-amber-700">ANSI</div>
             <div class="text-xs text-amber-600 mt-1 lang-ar">معايير SQL</div>
-            <div class="text-xs text-amber-600 mt-1 lang-en">SQL standards</div>
+            <div class="text-xs text-amber-600 mt-1 lang-en">SQL standard</div>
           </div>
           <div class="text-center p-4 bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl border border-purple-200">
-            <div class="text-2xl font-bold text-purple-700">Open</div>
-            <div class="text-xs text-purple-600 mt-1 lang-ar">مفتوح المصدر</div>
-            <div class="text-xs text-purple-600 mt-1 lang-en">Open source</div>
+            <div class="text-2xl font-bold text-purple-700">MIT-like</div>
+            <div class="text-xs text-purple-600 mt-1 lang-ar">رخصة حرة</div>
+            <div class="text-xs text-purple-600 mt-1 lang-en">Free license</div>
           </div>
         </div>
 
-        <div class="flex gap-3 p-4 bg-pg-50 border border-pg-200 rounded-xl mt-4">
+        <div class="flex gap-3 p-4 bg-pg-50 border border-pg-200 rounded-xl">
           <i data-lucide="lightbulb" class="w-5 h-5 text-pg-600 shrink-0 mt-0.5"></i>
-          <div>
-            <strong class="text-pg-800 lang-ar">معلومة مهمة:</strong>
-            <strong class="text-pg-800 lang-en">Key fact:</strong>
-            <span class="text-pg-700 lang-ar"> PostgreSQL مصمم ليكون قابلاً للامتداد والتخصيص، مما يعني أنه يمكنك إضافة أنواع بيانات جديدة، دوال، عمليات، وحتى لغات إجرائية خاصة بك!</span>
-            <span class="text-pg-700 lang-en"> PostgreSQL is designed for extensibility — you can add new data types, functions, operators, and even custom procedural languages!</span>
+          <div class="text-sm">
+            <strong class="text-pg-800 lang-ar">هل تعلم؟</strong>
+            <strong class="text-pg-800 lang-en">Did you know?</strong>
+            <span class="text-pg-700 lang-ar"> شركات مثل Apple, Instagram, Netflix, Uber, Reddit, وحتى ناسا تستخدم PostgreSQL في أنظمتها الإنتاجية. نجاح PostgreSQL سببه المجتمع المفتوح والبنية القابلة للامتداد.</span>
+            <span class="text-pg-700 lang-en"> Companies like Apple, Instagram, Netflix, Uber, Reddit, and even NASA rely on PostgreSQL in production. Its success stems from the open community and extensible architecture.</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Section 2: History Timeline -->
-    <section class="content-section">
+    <!-- Section 2: ACID -->
+    <section>
       <div class="mb-6">
-        <span class="text-sm font-bold text-pg-600 uppercase tracking-wider">
-          <span class="lang-ar">القسم ٢</span><span class="lang-en">Section 2</span>
-        </span>
-        <h2 class="text-3xl font-bold text-surface-900 mt-2 mb-3">
-          <span class="lang-ar">تاريخ PostgreSQL</span>
-          <span class="lang-en">PostgreSQL History</span>
-        </h2>
-        <p class="text-surface-600 lang-ar">رحلة أكثر من ٣٠ عاماً من التطوير والابتكار</p>
-        <p class="text-surface-600 lang-en">A journey of over 30 years of development and innovation</p>
+        <span class="text-sm font-bold text-pg-600 uppercase tracking-wider"><span class="lang-ar">القسم ٢</span><span class="lang-en">Section 2</span></span>
+        <h2 class="text-3xl font-bold text-surface-900 mt-2 mb-3"><span class="lang-ar">فهم ACID — أساس الموثوقية</span><span class="lang-en">Understanding ACID — The Reliability Foundation</span></h2>
+        <p class="text-surface-600 lang-ar">كل transaction في PostgreSQL يضمن هذه الخصائص الأربعة</p>
+        <p class="text-surface-600 lang-en">Every PostgreSQL transaction guarantees these four properties</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-white rounded-2xl border border-surface-200 p-6 hover:shadow-lg transition-shadow">
+          <div class="w-12 h-12 rounded-xl bg-red-100 flex items-center justify-center text-red-600 mb-3 text-2xl font-bold">A</div>
+          <h3 class="text-xl font-bold mb-2"><span class="lang-ar">Atomicity — الذرية</span><span class="lang-en">Atomicity</span></h3>
+          <p class="text-sm text-surface-700 leading-relaxed lang-ar">العملية كاملها تنفذ أو ولا شيء. إذا تحويل بنكي من حساب لحساب فشل في المنتصف، لا يحدث نصف التحويل — إما الكامل أو لا شيء.</p>
+          <p class="text-sm text-surface-700 leading-relaxed lang-en">All operations complete or none do. If a bank transfer fails mid-way, no partial transfer occurs — all-or-nothing.</p>
+          <div class="mt-3 text-xs font-mono bg-surface-50 p-2 rounded" dir="ltr">BEGIN → work → COMMIT ✓ or ROLLBACK ✗</div>
+        </div>
+
+        <div class="bg-white rounded-2xl border border-surface-200 p-6 hover:shadow-lg transition-shadow">
+          <div class="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center text-blue-600 mb-3 text-2xl font-bold">C</div>
+          <h3 class="text-xl font-bold mb-2"><span class="lang-ar">Consistency — الاتساق</span><span class="lang-en">Consistency</span></h3>
+          <p class="text-sm text-surface-700 leading-relaxed lang-ar">قاعدة البيانات تنتقل من حالة صحيحة إلى حالة صحيحة أخرى. كل القيود (PRIMARY KEY, FOREIGN KEY, CHECK) تحترم دائماً.</p>
+          <p class="text-sm text-surface-700 leading-relaxed lang-en">Database moves from valid state to valid state. All constraints (PK, FK, CHECK) are always respected.</p>
+          <div class="mt-3 text-xs font-mono bg-surface-50 p-2 rounded" dir="ltr">CHECK (balance &gt;= 0) — always true</div>
+        </div>
+
+        <div class="bg-white rounded-2xl border border-surface-200 p-6 hover:shadow-lg transition-shadow">
+          <div class="w-12 h-12 rounded-xl bg-green-100 flex items-center justify-center text-green-600 mb-3 text-2xl font-bold">I</div>
+          <h3 class="text-xl font-bold mb-2"><span class="lang-ar">Isolation — العزل</span><span class="lang-en">Isolation</span></h3>
+          <p class="text-sm text-surface-700 leading-relaxed lang-ar">العمليات المتزامنة لا تتداخل — كل transaction يرى قاعدة البيانات كأنه الوحيد. PostgreSQL يدعم ٤ مستويات: Read Uncommitted، Read Committed (الافتراضي)، Repeatable Read، و Serializable.</p>
+          <p class="text-sm text-surface-700 leading-relaxed lang-en">Concurrent operations don't interfere — each transaction sees the DB as if alone. PostgreSQL supports 4 levels: Read Uncommitted, Read Committed (default), Repeatable Read, Serializable.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl border border-surface-200 p-6 hover:shadow-lg transition-shadow">
+          <div class="w-12 h-12 rounded-xl bg-amber-100 flex items-center justify-center text-amber-600 mb-3 text-2xl font-bold">D</div>
+          <h3 class="text-xl font-bold mb-2"><span class="lang-ar">Durability — الديمومة</span><span class="lang-en">Durability</span></h3>
+          <p class="text-sm text-surface-700 leading-relaxed lang-ar">بعد COMMIT، البيانات تُحفظ على القرص ولن تُفقد حتى لو انقطعت الكهرباء أو تعطل السيرفر. PostgreSQL يحقق هذا عبر <strong>WAL (Write-Ahead Logging)</strong>.</p>
+          <p class="text-sm text-surface-700 leading-relaxed lang-en">After COMMIT, data is persisted and won't be lost even on power failure or server crash. PostgreSQL achieves this via <strong>WAL (Write-Ahead Logging)</strong>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: History Timeline -->
+    <section>
+      <div class="mb-6">
+        <span class="text-sm font-bold text-pg-600 uppercase tracking-wider"><span class="lang-ar">القسم ٣</span><span class="lang-en">Section 3</span></span>
+        <h2 class="text-3xl font-bold text-surface-900 mt-2 mb-3"><span class="lang-ar">الخط الزمني التاريخي</span><span class="lang-en">Historical Timeline</span></h2>
       </div>
 
       <div class="bg-white rounded-2xl border border-surface-200 p-6 md:p-8">
@@ -210,13 +208,10 @@
           <div class="timeline-dot flex gap-4">
             <div class="shrink-0 w-8 h-8 rounded-full bg-gradient-to-br from-surface-600 to-surface-800 flex items-center justify-center text-white text-xs font-bold shadow-lg">1</div>
             <div class="flex-1 pb-6">
-              <div class="text-xs font-mono text-pg-600 font-bold mb-1">1975 – 1985</div>
-              <h3 class="font-bold text-lg text-surface-900 mb-1">
-                <span class="lang-ar">مشروع Ingres</span>
-                <span class="lang-en">Ingres Project</span>
-              </h3>
-              <p class="text-sm text-surface-600 lang-ar">بداية الفكرة في جامعة كاليفورنيا في بيركلي <span dir="ltr" class="font-mono">(UC Berkeley)</span> — قاعدة البيانات العلائقية المبكرة.</p>
-              <p class="text-sm text-surface-600 lang-en">The idea began at UC Berkeley — the early relational database.</p>
+              <div class="text-xs font-mono text-pg-600 font-bold mb-1">1973 – 1985</div>
+              <h3 class="font-bold text-lg text-surface-900 mb-1"><span class="lang-ar">مشروع Ingres</span><span class="lang-en">Ingres Project</span></h3>
+              <p class="text-sm text-surface-600 lang-ar">بدأ في جامعة كاليفورنيا في بيركلي من قبل <strong>Michael Stonebraker</strong>. كان أول قاعدة بيانات علائقية تجارية. الاسم اختصار <em>"INteractive GRaphics and REtrieval System"</em>.</p>
+              <p class="text-sm text-surface-600 lang-en">Started at UC Berkeley by <strong>Michael Stonebraker</strong>. It was the first commercial relational database. Name stands for <em>"INteractive GRaphics and REtrieval System"</em>.</p>
             </div>
           </div>
 
@@ -224,12 +219,9 @@
             <div class="shrink-0 w-8 h-8 rounded-full bg-gradient-to-br from-pg-500 to-pg-700 flex items-center justify-center text-white text-xs font-bold shadow-lg">2</div>
             <div class="flex-1 pb-6">
               <div class="text-xs font-mono text-pg-600 font-bold mb-1">1986 – 1993</div>
-              <h3 class="font-bold text-lg text-surface-900 mb-1">
-                <span class="lang-ar">University Postgres</span>
-                <span class="lang-en">University Postgres</span>
-              </h3>
-              <p class="text-sm text-surface-600 lang-ar">المشروع التالي لـ Ingres، بقيادة <strong>Michael Stonebraker</strong> — أضاف مفاهيم الكائنات <span dir="ltr" class="font-mono">(Object-Oriented)</span>.</p>
-              <p class="text-sm text-surface-600 lang-en">The successor to Ingres, led by <strong>Michael Stonebraker</strong> — added object-oriented concepts.</p>
+              <h3 class="font-bold text-lg text-surface-900 mb-1"><span class="lang-ar">University Postgres</span><span class="lang-en">University Postgres</span></h3>
+              <p class="text-sm text-surface-600 lang-ar">"Post-Ingres" أضاف مفاهيم الكائنية: أنواع بيانات مخصصة، دوال، قواعد، ووراثة الجداول. استخدم لغة QUEL الخاصة.</p>
+              <p class="text-sm text-surface-600 lang-en">"Post-Ingres" added object concepts: custom types, functions, rules, table inheritance. Used proprietary QUEL language.</p>
             </div>
           </div>
 
@@ -237,267 +229,143 @@
             <div class="shrink-0 w-8 h-8 rounded-full bg-gradient-to-br from-edb-500 to-edb-700 flex items-center justify-center text-white text-xs font-bold shadow-lg">3</div>
             <div class="flex-1 pb-6">
               <div class="text-xs font-mono text-edb-600 font-bold mb-1">1994 – 1995</div>
-              <h3 class="font-bold text-lg text-surface-900 mb-1">
-                <span class="lang-ar">Postgres95</span>
-                <span class="lang-en">Postgres95</span>
-              </h3>
-              <p class="text-sm text-surface-600 lang-ar">إضافة مفسر <span dir="ltr" class="font-mono">SQL</span> لأول مرة — استبدال لغة <span dir="ltr" class="font-mono">QUEL</span> القديمة.</p>
-              <p class="text-sm text-surface-600 lang-en">SQL interpreter added for the first time — replacing the older QUEL language.</p>
+              <h3 class="font-bold text-lg text-surface-900 mb-1"><span class="lang-ar">Postgres95</span><span class="lang-en">Postgres95</span></h3>
+              <p class="text-sm text-surface-600 lang-ar">طالبين <strong>Andrew Yu</strong> و <strong>Jolly Chen</strong> استبدلوا QUEL بـ SQL. أعلن للعامة تحت رخصة مفتوحة.</p>
+              <p class="text-sm text-surface-600 lang-en">Students <strong>Andrew Yu</strong> and <strong>Jolly Chen</strong> replaced QUEL with SQL. Released publicly under open license.</p>
             </div>
           </div>
 
           <div class="timeline-dot flex gap-4">
             <div class="shrink-0 w-8 h-8 rounded-full bg-gradient-to-br from-green-500 to-green-700 flex items-center justify-center text-white text-xs font-bold shadow-lg">4</div>
+            <div class="flex-1 pb-6">
+              <div class="text-xs font-mono text-green-600 font-bold mb-1">1996 – 2005</div>
+              <h3 class="font-bold text-lg text-surface-900 mb-1"><span class="lang-ar">PostgreSQL تولد</span><span class="lang-en">PostgreSQL is Born</span></h3>
+              <p class="text-sm text-surface-600 lang-ar">تم تأسيس <strong>PostgreSQL Global Development Group</strong>. الإصدار 6.0 أصدر في يناير 1997. إضافات مهمة: Write-Ahead Logging، B-tree Indexes، MVCC، ودعم Windows (8.0).</p>
+              <p class="text-sm text-surface-600 lang-en">The <strong>PostgreSQL Global Development Group</strong> was formed. Version 6.0 released January 1997. Key additions: WAL, B-tree indexes, MVCC, Windows support (8.0).</p>
+            </div>
+          </div>
+
+          <div class="timeline-dot flex gap-4">
+            <div class="shrink-0 w-8 h-8 rounded-full bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center text-white text-xs font-bold shadow-lg">5</div>
             <div class="flex-1">
-              <div class="text-xs font-mono text-green-600 font-bold mb-1">1996 – <span class="lang-ar">الآن</span><span class="lang-en">Present</span></div>
-              <h3 class="font-bold text-lg text-surface-900 mb-1">
-                <span class="lang-ar">PostgreSQL</span>
-                <span class="lang-en">PostgreSQL</span>
-              </h3>
-              <p class="text-sm text-surface-600 lang-ar">الاسم الحالي — يدار من قبل مجتمع عالمي من المطورين، مع إصدارات سنوية منتظمة وتطور مستمر.</p>
-              <p class="text-sm text-surface-600 lang-en">The current name — managed by a global community of developers with regular annual releases.</p>
+              <div class="text-xs font-mono text-amber-600 font-bold mb-1">2010 – <span class="lang-ar">الآن</span><span class="lang-en">Now</span></div>
+              <h3 class="font-bold text-lg text-surface-900 mb-1"><span class="lang-ar">العصر الذهبي</span><span class="lang-en">The Golden Age</span></h3>
+              <p class="text-sm text-surface-600 lang-ar">Streaming Replication (9.0)، JSON (9.2)، JSONB (9.4)، Parallel Query (9.6)، Logical Replication (10)، Partitioning (10)، Stored Procedures (11)، Just-in-Time compilation (11)، ثم v18 مع دعم AI وvector.</p>
+              <p class="text-sm text-surface-600 lang-en">Streaming Replication (9.0), JSON (9.2), JSONB (9.4), Parallel Query (9.6), Logical Replication (10), Partitioning (10), Stored Procedures (11), JIT (11), and now v18 with AI/vector support.</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Section 3: Major Features -->
-    <section class="content-section">
+    <!-- Section 4: Major Features -->
+    <section>
       <div class="mb-6">
-        <span class="text-sm font-bold text-pg-600 uppercase tracking-wider">
-          <span class="lang-ar">القسم ٣</span><span class="lang-en">Section 3</span>
-        </span>
-        <h2 class="text-3xl font-bold text-surface-900 mt-2 mb-3">
-          <span class="lang-ar">المميزات الرئيسية</span>
-          <span class="lang-en">Major Features</span>
-        </h2>
+        <span class="text-sm font-bold text-pg-600 uppercase tracking-wider"><span class="lang-ar">القسم ٤</span><span class="lang-en">Section 4</span></span>
+        <h2 class="text-3xl font-bold text-surface-900 mt-2 mb-3"><span class="lang-ar">المميزات الرئيسية</span><span class="lang-en">Major Features</span></h2>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <!-- Portable -->
-        <div class="bg-white rounded-2xl border border-surface-200 p-6 hover:shadow-lg transition-shadow">
-          <div class="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center text-blue-600 mb-4">
-            <i data-lucide="laptop" class="w-6 h-6"></i>
-          </div>
-          <h3 class="text-xl font-bold mb-2">
-            <span class="lang-ar">محمول <span class="text-surface-400 text-base font-normal">(Portable)</span></span>
-            <span class="lang-en">Portable</span>
-          </h3>
-          <ul class="space-y-2 text-sm text-surface-600">
-            <li class="lang-ar">· مكتوب بلغة <span dir="ltr" class="font-mono">ANSI C</span></li>
-            <li class="lang-en">· Written in <span class="font-mono">ANSI C</span></li>
-            <li class="lang-ar">· يدعم <span dir="ltr" class="font-mono">Windows, Linux, Mac OS/X</span></li>
-            <li class="lang-en">· Supports Windows, Linux, Mac OS/X</li>
-            <li class="lang-ar">· يعمل على معظم أنظمة <span dir="ltr" class="font-mono">UNIX</span></li>
-            <li class="lang-en">· Works on major UNIX systems</li>
-          </ul>
+        <div class="bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center text-blue-600 mb-4"><i data-lucide="laptop" class="w-6 h-6"></i></div>
+          <h3 class="text-xl font-bold mb-2"><span class="lang-ar">محمول (Portable)</span><span class="lang-en">Portable</span></h3>
+          <p class="text-sm text-surface-600 lang-ar">مكتوب بـ ANSI C، يعمل على Linux, Windows, macOS, FreeBSD, Solaris. أي نظام يدعم C قياسي — PostgreSQL يعمل عليه.</p>
+          <p class="text-sm text-surface-600 lang-en">Written in ANSI C, runs on Linux, Windows, macOS, FreeBSD, Solaris. Any OS supporting standard C — PostgreSQL runs on it.</p>
         </div>
 
-        <!-- Reliable -->
-        <div class="bg-white rounded-2xl border border-surface-200 p-6 hover:shadow-lg transition-shadow">
-          <div class="w-12 h-12 rounded-xl bg-green-100 flex items-center justify-center text-green-600 mb-4">
-            <i data-lucide="shield-check" class="w-6 h-6"></i>
-          </div>
-          <h3 class="text-xl font-bold mb-2">
-            <span class="lang-ar">موثوق <span class="text-surface-400 text-base font-normal">(Reliable)</span></span>
-            <span class="lang-en">Reliable</span>
-          </h3>
-          <ul class="space-y-2 text-sm text-surface-600">
-            <li class="lang-ar">· متوافق مع <span dir="ltr" class="font-mono">ACID</span> بالكامل</li>
-            <li class="lang-en">· Fully ACID compliant</li>
-            <li class="lang-ar">· يدعم <span dir="ltr" class="font-mono">Transactions</span> و <span dir="ltr" class="font-mono">Savepoints</span></li>
-            <li class="lang-en">· Supports Transactions and Savepoints</li>
-            <li class="lang-ar">· يستخدم <span dir="ltr" class="font-mono">Write Ahead Logging (WAL)</span></li>
-            <li class="lang-en">· Uses Write Ahead Logging (WAL)</li>
-          </ul>
+        <div class="bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="w-12 h-12 rounded-xl bg-green-100 flex items-center justify-center text-green-600 mb-4"><i data-lucide="shield-check" class="w-6 h-6"></i></div>
+          <h3 class="text-xl font-bold mb-2"><span class="lang-ar">موثوق (Reliable)</span><span class="lang-en">Reliable</span></h3>
+          <p class="text-sm text-surface-600 lang-ar">ACID كامل، WAL يحمي من انقطاع الكهرباء، Checksums على الصفحات، Savepoints للتراجع الجزئي داخل transaction.</p>
+          <p class="text-sm text-surface-600 lang-en">Full ACID, WAL protects from power loss, page checksums, savepoints for partial rollback inside transaction.</p>
         </div>
 
-        <!-- Scalable -->
-        <div class="bg-white rounded-2xl border border-surface-200 p-6 hover:shadow-lg transition-shadow">
-          <div class="w-12 h-12 rounded-xl bg-purple-100 flex items-center justify-center text-purple-600 mb-4">
-            <i data-lucide="trending-up" class="w-6 h-6"></i>
-          </div>
-          <h3 class="text-xl font-bold mb-2">
-            <span class="lang-ar">قابل للتوسع <span class="text-surface-400 text-base font-normal">(Scalable)</span></span>
-            <span class="lang-en">Scalable</span>
-          </h3>
-          <ul class="space-y-2 text-sm text-surface-600">
-            <li class="lang-ar">· <span dir="ltr" class="font-mono">Multi-version Concurrency Control (MVCC)</span></li>
-            <li class="lang-en">· Multi-version Concurrency Control (MVCC)</li>
-            <li class="lang-ar">· تقسيم الجداول <span dir="ltr" class="font-mono">(Partitioning)</span></li>
-            <li class="lang-en">· Table Partitioning and Tablespaces</li>
-            <li class="lang-ar">· مسح متوازي <span dir="ltr" class="font-mono">(Parallel Scans)</span></li>
-            <li class="lang-en">· Parallel Sequential Scans, Async I/O</li>
-          </ul>
+        <div class="bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="w-12 h-12 rounded-xl bg-purple-100 flex items-center justify-center text-purple-600 mb-4"><i data-lucide="trending-up" class="w-6 h-6"></i></div>
+          <h3 class="text-xl font-bold mb-2"><span class="lang-ar">قابل للتوسع (Scalable)</span><span class="lang-en">Scalable</span></h3>
+          <p class="text-sm text-surface-600 lang-ar">MVCC يسمح بالقراءة والكتابة المتزامنة بدون قفل، Partitioning للجداول العملاقة، Parallel Query، Async I/O. جداول TB بدون مشاكل.</p>
+          <p class="text-sm text-surface-600 lang-en">MVCC allows concurrent read/write without locking, partitioning for huge tables, parallel query, async I/O. TB-sized tables work fine.</p>
         </div>
 
-        <!-- Secure -->
-        <div class="bg-white rounded-2xl border border-surface-200 p-6 hover:shadow-lg transition-shadow">
-          <div class="w-12 h-12 rounded-xl bg-red-100 flex items-center justify-center text-red-600 mb-4">
-            <i data-lucide="lock" class="w-6 h-6"></i>
-          </div>
-          <h3 class="text-xl font-bold mb-2">
-            <span class="lang-ar">آمن <span class="text-surface-400 text-base font-normal">(Secure)</span></span>
-            <span class="lang-en">Secure</span>
-          </h3>
-          <ul class="space-y-2 text-sm text-surface-600">
-            <li class="lang-ar">· <span dir="ltr" class="font-mono">Host-Based Access Control</span></li>
-            <li class="lang-en">· Host-Based Access Control, SSL</li>
-            <li class="lang-ar">· اتصالات <span dir="ltr" class="font-mono">SSL</span> وتسجيل</li>
-            <li class="lang-en">· Connections and Logging</li>
-            <li class="lang-ar">· أمان على مستوى الصفوف <span dir="ltr" class="font-mono">(RLS)</span></li>
-            <li class="lang-en">· Object-Level and Row Level Security</li>
-          </ul>
+        <div class="bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="w-12 h-12 rounded-xl bg-red-100 flex items-center justify-center text-red-600 mb-4"><i data-lucide="lock" class="w-6 h-6"></i></div>
+          <h3 class="text-xl font-bold mb-2"><span class="lang-ar">آمن (Secure)</span><span class="lang-en">Secure</span></h3>
+          <p class="text-sm text-surface-600 lang-ar">Host-Based Access Control، SCRAM-SHA-256، SSL/TLS، Row Level Security، Column encryption عبر pgcrypto.</p>
+          <p class="text-sm text-surface-600 lang-en">Host-Based Access Control, SCRAM-SHA-256, SSL/TLS, Row Level Security, column encryption via pgcrypto.</p>
         </div>
 
-        <!-- Recovery -->
-        <div class="bg-white rounded-2xl border border-surface-200 p-6 hover:shadow-lg transition-shadow">
-          <div class="w-12 h-12 rounded-xl bg-amber-100 flex items-center justify-center text-amber-600 mb-4">
-            <i data-lucide="rotate-ccw" class="w-6 h-6"></i>
-          </div>
-          <h3 class="text-xl font-bold mb-2">
-            <span class="lang-ar">استعادة وتوافر <span class="text-surface-400 text-base font-normal">(Recovery)</span></span>
-            <span class="lang-en">Recovery & Availability</span>
-          </h3>
-          <ul class="space-y-2 text-sm text-surface-600">
-            <li class="lang-ar">· نسخ متماثل <span dir="ltr" class="font-mono">Physical & Logical Streaming</span></li>
-            <li class="lang-en">· Physical and Logical Streaming Replication</li>
-            <li class="lang-ar">· يدعم <span dir="ltr" class="font-mono">Sync, Async, Cascaded</span></li>
-            <li class="lang-en">· Sync, Async and Cascaded Replication</li>
-            <li class="lang-ar">· <span dir="ltr" class="font-mono">pg_basebackup</span> و <span dir="ltr" class="font-mono">PITR</span></li>
-            <li class="lang-en">· Hot-Backup and Point-in-Time Recovery</li>
-          </ul>
+        <div class="bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="w-12 h-12 rounded-xl bg-amber-100 flex items-center justify-center text-amber-600 mb-4"><i data-lucide="rotate-ccw" class="w-6 h-6"></i></div>
+          <h3 class="text-xl font-bold mb-2"><span class="lang-ar">استعادة عالية (Recovery)</span><span class="lang-en">Recovery & HA</span></h3>
+          <p class="text-sm text-surface-600 lang-ar">Physical و Logical Streaming Replication، Point-in-Time Recovery، Hot Standby، Sync/Async/Cascaded replication.</p>
+          <p class="text-sm text-surface-600 lang-en">Physical and Logical Streaming Replication, PITR, Hot Standby, Sync/Async/Cascaded replication.</p>
         </div>
 
-        <!-- Advanced -->
-        <div class="bg-white rounded-2xl border border-surface-200 p-6 hover:shadow-lg transition-shadow">
-          <div class="w-12 h-12 rounded-xl bg-cyan-100 flex items-center justify-center text-cyan-600 mb-4">
-            <i data-lucide="sparkles" class="w-6 h-6"></i>
-          </div>
-          <h3 class="text-xl font-bold mb-2">
-            <span class="lang-ar">متقدم <span class="text-surface-400 text-base font-normal">(Advanced)</span></span>
-            <span class="lang-en">Advanced</span>
-          </h3>
-          <ul class="space-y-2 text-sm text-surface-600">
-            <li class="lang-ar">· <span dir="ltr" class="font-mono">Triggers, Functions, Procedures</span></li>
-            <li class="lang-en">· Triggers, Functions and Procedures</li>
-            <li class="lang-ar">· لغات إجرائية مخصصة</li>
-            <li class="lang-en">· Custom Procedural Languages</li>
-            <li class="lang-ar">· ترقية الإصدارات عبر <span dir="ltr" class="font-mono">pg_upgrade</span></li>
-            <li class="lang-en">· Version upgrades via pg_upgrade</li>
-          </ul>
+        <div class="bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="w-12 h-12 rounded-xl bg-cyan-100 flex items-center justify-center text-cyan-600 mb-4"><i data-lucide="sparkles" class="w-6 h-6"></i></div>
+          <h3 class="text-xl font-bold mb-2"><span class="lang-ar">متقدم (Advanced)</span><span class="lang-en">Advanced</span></h3>
+          <p class="text-sm text-surface-600 lang-ar">Triggers، Stored Procedures بـ PL/pgSQL و PL/Python و PL/Perl، Custom types/operators، Foreign Data Wrappers للاتصال بقواعد أخرى.</p>
+          <p class="text-sm text-surface-600 lang-en">Triggers, stored procedures in PL/pgSQL, PL/Python, PL/Perl, custom types/operators, Foreign Data Wrappers to connect to other databases.</p>
         </div>
       </div>
     </section>
 
-    <!-- Section 4: Architectural Overview -->
-    <section class="content-section">
+    <!-- Section 5: Architecture -->
+    <section>
       <div class="mb-6">
-        <span class="text-sm font-bold text-pg-600 uppercase tracking-wider">
-          <span class="lang-ar">القسم ٤</span><span class="lang-en">Section 4</span>
-        </span>
-        <h2 class="text-3xl font-bold text-surface-900 mt-2 mb-3">
-          <span class="lang-ar">النظرة المعمارية العامة</span>
-          <span class="lang-en">Architectural Overview</span>
-        </h2>
-        <p class="text-surface-600 lang-ar">كيف يعمل PostgreSQL من الداخل؟</p>
-        <p class="text-surface-600 lang-en">How does PostgreSQL work under the hood?</p>
+        <span class="text-sm font-bold text-pg-600 uppercase tracking-wider"><span class="lang-ar">القسم ٥</span><span class="lang-en">Section 5</span></span>
+        <h2 class="text-3xl font-bold text-surface-900 mt-2 mb-3"><span class="lang-ar">دورة حياة الاستعلام</span><span class="lang-en">Query Lifecycle</span></h2>
+        <p class="text-surface-600 lang-ar">ماذا يحدث عندما ترسل استعلام؟</p>
+        <p class="text-surface-600 lang-en">What happens when you send a query?</p>
       </div>
 
       <div class="bg-white rounded-2xl border border-surface-200 p-6 md:p-8">
-        <!-- Architecture Diagram -->
-        <div class="bg-gradient-to-br from-surface-50 to-surface-100 rounded-xl p-6 mb-6 border border-surface-200">
-          <div class="text-center mb-4 text-xs font-semibold text-surface-500 uppercase tracking-wider">
-            <span class="lang-ar">مخطط المعمارية</span>
-            <span class="lang-en">Architecture Diagram</span>
+        <div class="bg-gradient-to-br from-surface-50 to-surface-100 rounded-xl p-6 border border-surface-200 space-y-4">
+          <div class="bg-blue-600 text-white rounded-xl p-4">
+            <div class="flex items-center gap-2 mb-1"><i data-lucide="user" class="w-5 h-5"></i><span class="font-bold text-sm">1. Client App</span></div>
+            <div class="text-xs text-blue-100 lang-ar">التطبيق يرسل استعلام عبر libpq / JDBC / ODBC</div>
+            <div class="text-xs text-blue-100 lang-en">App sends query via libpq / JDBC / ODBC</div>
           </div>
+          <div class="flex justify-center"><i data-lucide="arrow-down" class="w-5 h-5 text-pg-500"></i></div>
 
-          <!-- Connectors row -->
-          <div class="mb-4">
-            <div class="text-xs text-surface-500 mb-2 text-center font-semibold">
-              <span class="lang-ar">واجهات الاتصال</span>
-              <span class="lang-en">Connectors</span>
-            </div>
-            <div class="flex flex-wrap gap-2 justify-center">
-              <span class="px-3 py-1 bg-blue-100 text-blue-700 text-xs font-mono rounded-lg">JDBC</span>
-              <span class="px-3 py-1 bg-blue-100 text-blue-700 text-xs font-mono rounded-lg">ODBC</span>
-              <span class="px-3 py-1 bg-blue-100 text-blue-700 text-xs font-mono rounded-lg">LIBPQ</span>
-              <span class="px-3 py-1 bg-blue-100 text-blue-700 text-xs font-mono rounded-lg">.NET</span>
-              <span class="px-3 py-1 bg-blue-100 text-blue-700 text-xs font-mono rounded-lg">Node.js</span>
-              <span class="px-3 py-1 bg-blue-100 text-blue-700 text-xs font-mono rounded-lg">Python</span>
-              <span class="px-3 py-1 bg-blue-100 text-blue-700 text-xs font-mono rounded-lg">Perl DBI</span>
-            </div>
+          <div class="bg-pg-600 text-white rounded-xl p-4">
+            <div class="flex items-center gap-2 mb-1"><i data-lucide="shield" class="w-5 h-5"></i><span class="font-bold text-sm">2. Postmaster</span></div>
+            <div class="text-xs text-pg-100 lang-ar">يستقبل الاتصال، يصادق (pg_hba.conf)، وينشئ Backend Process</div>
+            <div class="text-xs text-pg-100 lang-en">Accepts connection, authenticates (pg_hba.conf), forks Backend Process</div>
           </div>
+          <div class="flex justify-center"><i data-lucide="arrow-down" class="w-5 h-5 text-pg-500"></i></div>
 
-          <!-- Arrow -->
-          <div class="flex justify-center my-2">
-            <i data-lucide="arrow-down" class="w-6 h-6 text-pg-500"></i>
+          <div class="bg-purple-600 text-white rounded-xl p-4">
+            <div class="flex items-center gap-2 mb-1"><i data-lucide="file-search" class="w-5 h-5"></i><span class="font-bold text-sm">3. Parser → Analyzer → Rewriter → Planner → Executor</span></div>
+            <div class="text-xs text-purple-100 lang-ar">كل مرحلة تحول الاستعلام لشكل أكثر تفصيلاً — تنتهي بخطة تنفيذ محسّنة</div>
+            <div class="text-xs text-purple-100 lang-en">Each stage transforms the query — ends with an optimized execution plan</div>
           </div>
+          <div class="flex justify-center"><i data-lucide="arrow-down" class="w-5 h-5 text-pg-500"></i></div>
 
-          <!-- PostgreSQL core -->
-          <div class="bg-gradient-to-r from-pg-600 to-pg-800 text-white rounded-xl p-6 text-center mb-4">
-            <div class="text-lg font-bold mb-3">PostgreSQL</div>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-2 text-xs">
-              <div class="bg-white/10 p-2 rounded-lg">
-                <div class="font-mono">User Process</div>
-                <div class="text-pg-200 mt-1 lang-ar">عملية المستخدم</div>
-                <div class="text-pg-200 mt-1 lang-en">Connection backend</div>
-              </div>
-              <div class="bg-white/10 p-2 rounded-lg">
-                <div class="font-mono">Shared Memory</div>
-                <div class="text-pg-200 mt-1 lang-ar">الذاكرة المشتركة</div>
-                <div class="text-pg-200 mt-1 lang-en">Buffer cache</div>
-              </div>
-              <div class="bg-white/10 p-2 rounded-lg">
-                <div class="font-mono">Background Procs</div>
-                <div class="text-pg-200 mt-1 lang-ar">عمليات الخلفية</div>
-                <div class="text-pg-200 mt-1 lang-en">Background workers</div>
-              </div>
-              <div class="bg-white/10 p-2 rounded-lg">
-                <div class="font-mono">OS Kernel Cache</div>
-                <div class="text-pg-200 mt-1 lang-ar">ذاكرة النظام</div>
-                <div class="text-pg-200 mt-1 lang-en">OS kernel cache</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Arrow -->
-          <div class="flex justify-center my-2">
-            <i data-lucide="arrow-down" class="w-6 h-6 text-pg-500"></i>
-          </div>
-
-          <!-- Storage -->
-          <div class="bg-surface-700 text-white rounded-xl p-4 text-center">
-            <i data-lucide="hard-drive" class="w-6 h-6 inline mb-1"></i>
-            <div class="font-bold">Storage</div>
-            <div class="text-xs text-surface-300 mt-1 lang-ar">التخزين (ملفات قاعدة البيانات)</div>
-            <div class="text-xs text-surface-300 mt-1 lang-en">Database files on disk</div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <div class="bg-amber-500 text-white rounded-xl p-3 text-center"><i data-lucide="zap" class="w-5 h-5 inline"></i><div class="text-xs mt-1 font-mono">Shared Buffers</div><div class="text-xs text-amber-100 lang-ar">الذاكرة المشتركة</div><div class="text-xs text-amber-100 lang-en">Shared memory</div></div>
+            <div class="bg-green-600 text-white rounded-xl p-3 text-center"><i data-lucide="file-clock" class="w-5 h-5 inline"></i><div class="text-xs mt-1 font-mono">WAL</div><div class="text-xs text-green-100 lang-ar">سجل الكتابة</div><div class="text-xs text-green-100 lang-en">Write-ahead log</div></div>
+            <div class="bg-surface-700 text-white rounded-xl p-3 text-center"><i data-lucide="hard-drive" class="w-5 h-5 inline"></i><div class="text-xs mt-1 font-mono">Data Files</div><div class="text-xs text-surface-200 lang-ar">ملفات البيانات</div><div class="text-xs text-surface-200 lang-en">On disk</div></div>
           </div>
         </div>
 
-        <div class="flex gap-3 p-4 bg-amber-50 border border-amber-200 rounded-xl">
+        <div class="mt-6 flex gap-3 p-4 bg-amber-50 border border-amber-200 rounded-xl">
           <i data-lucide="alert-circle" class="w-5 h-5 text-amber-600 shrink-0 mt-0.5"></i>
-          <div>
-            <strong class="text-amber-800 lang-ar">نقطة مهمة:</strong>
-            <strong class="text-amber-800 lang-en">Important:</strong>
-            <span class="text-amber-700 lang-ar"> PostgreSQL يستخدم <strong>العمليات (Processes)</strong> وليس <strong>الخيوط (Threads)</strong> — كل اتصال جديد ينشئ عملية مستقلة. هذا يعطي الاستقرار لكنه يستهلك ذاكرة أكثر.</span>
-            <span class="text-amber-700 lang-en"> PostgreSQL uses <strong>processes</strong>, not <strong>threads</strong> — each new connection spawns its own process. This gives stability but uses more memory.</span>
+          <div class="text-sm">
+            <strong class="text-amber-800 lang-ar">نقطة مهمة جداً:</strong>
+            <strong class="text-amber-800 lang-en">Very important:</strong>
+            <span class="text-amber-700 lang-ar"> PostgreSQL يستخدم <strong>Process Model</strong> — كل اتصال جديد = عملية مستقلة (fork). هذا يعطي استقرار ممتاز (عملية واحدة تتعطل لا تؤثر على الباقي) لكن استهلاك ذاكرة أعلى مقارنة بنموذج Threading. لهذا السبب <strong>Connection Pooling (PgBouncer)</strong> مهم في تطبيقات كبيرة.</span>
+            <span class="text-amber-700 lang-en"> PostgreSQL uses a <strong>process model</strong> — each new connection = separate process (fork). This gives excellent stability (one crash doesn't affect others) but higher memory use vs threading. That's why <strong>connection pooling (PgBouncer)</strong> is critical at scale.</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Section 5: Database Limits -->
-    <section class="content-section">
+    <!-- Section 6: Database Limits -->
+    <section>
       <div class="mb-6">
-        <span class="text-sm font-bold text-pg-600 uppercase tracking-wider">
-          <span class="lang-ar">القسم ٥</span><span class="lang-en">Section 5</span>
-        </span>
-        <h2 class="text-3xl font-bold text-surface-900 mt-2 mb-3">
-          <span class="lang-ar">حدود قاعدة البيانات</span>
-          <span class="lang-en">General Database Limits</span>
-        </h2>
+        <span class="text-sm font-bold text-pg-600 uppercase tracking-wider"><span class="lang-ar">القسم ٦</span><span class="lang-en">Section 6</span></span>
+        <h2 class="text-3xl font-bold text-surface-900 mt-2 mb-3"><span class="lang-ar">حدود قاعدة البيانات</span><span class="lang-en">Database Limits</span></h2>
       </div>
 
       <div class="bg-white rounded-2xl border border-surface-200 overflow-hidden">
@@ -511,240 +379,179 @@
             </tr>
           </thead>
           <tbody class="divide-y divide-surface-100">
-            <tr class="hover:bg-surface-50 transition-colors">
-              <td class="p-4 font-semibold lang-ar">حجم قاعدة البيانات الأقصى</td>
-              <td class="p-4 font-semibold lang-en">Maximum Database Size</td>
-              <td class="p-4 text-pg-700 font-mono font-bold lang-ar">غير محدود</td>
-              <td class="p-4 text-pg-700 font-mono font-bold lang-en">Unlimited</td>
-            </tr>
-            <tr class="hover:bg-surface-50 transition-colors bg-surface-50/50">
-              <td class="p-4 font-semibold lang-ar">حجم الجدول الأقصى</td>
-              <td class="p-4 font-semibold lang-en">Maximum Table Size</td>
-              <td class="p-4 text-pg-700 font-mono font-bold" colspan="2">32 TB (Partitioned: 32 TB / Partition)</td>
-            </tr>
-            <tr class="hover:bg-surface-50 transition-colors">
-              <td class="p-4 font-semibold lang-ar">حجم الصف الأقصى</td>
-              <td class="p-4 font-semibold lang-en">Maximum Row Size</td>
-              <td class="p-4 text-pg-700 font-mono font-bold" colspan="2">1.6 TB</td>
-            </tr>
-            <tr class="hover:bg-surface-50 transition-colors bg-surface-50/50">
-              <td class="p-4 font-semibold lang-ar">حجم الحقل الأقصى</td>
-              <td class="p-4 font-semibold lang-en">Maximum Field Size</td>
-              <td class="p-4 text-pg-700 font-mono font-bold" colspan="2">1 GB</td>
-            </tr>
-            <tr class="hover:bg-surface-50 transition-colors">
-              <td class="p-4 font-semibold lang-ar">عدد الصفوف لكل جدول</td>
-              <td class="p-4 font-semibold lang-en">Maximum Rows per Table</td>
-              <td class="p-4 text-pg-700 font-mono font-bold lang-ar">غير محدود</td>
-              <td class="p-4 text-pg-700 font-mono font-bold lang-en">Unlimited</td>
-            </tr>
-            <tr class="hover:bg-surface-50 transition-colors bg-surface-50/50">
-              <td class="p-4 font-semibold lang-ar">الأعمدة لكل جدول</td>
-              <td class="p-4 font-semibold lang-en">Maximum Columns per Table</td>
-              <td class="p-4 text-pg-700 font-mono font-bold" colspan="2">250–1600</td>
-            </tr>
-            <tr class="hover:bg-surface-50 transition-colors">
-              <td class="p-4 font-semibold lang-ar">الفهارس لكل جدول</td>
-              <td class="p-4 font-semibold lang-en">Maximum Indexes per Table</td>
-              <td class="p-4 text-pg-700 font-mono font-bold lang-ar">غير محدود</td>
-              <td class="p-4 text-pg-700 font-mono font-bold lang-en">Unlimited</td>
-            </tr>
+            <tr class="hover:bg-surface-50"><td class="p-4 font-semibold lang-ar">حجم قاعدة البيانات</td><td class="p-4 font-semibold lang-en">Database Size</td><td class="p-4 text-pg-700 font-mono font-bold lang-ar">غير محدود</td><td class="p-4 text-pg-700 font-mono font-bold lang-en">Unlimited</td></tr>
+            <tr class="hover:bg-surface-50 bg-surface-50/50"><td class="p-4 font-semibold lang-ar">حجم الجدول</td><td class="p-4 font-semibold lang-en">Table Size</td><td class="p-4 text-pg-700 font-mono font-bold" colspan="2">32 TB (per partition)</td></tr>
+            <tr class="hover:bg-surface-50"><td class="p-4 font-semibold lang-ar">حجم الصف</td><td class="p-4 font-semibold lang-en">Row Size</td><td class="p-4 text-pg-700 font-mono font-bold" colspan="2">1.6 TB</td></tr>
+            <tr class="hover:bg-surface-50 bg-surface-50/50"><td class="p-4 font-semibold lang-ar">حجم الحقل</td><td class="p-4 font-semibold lang-en">Field Size</td><td class="p-4 text-pg-700 font-mono font-bold" colspan="2">1 GB</td></tr>
+            <tr class="hover:bg-surface-50"><td class="p-4 font-semibold lang-ar">الصفوف/الجدول</td><td class="p-4 font-semibold lang-en">Rows per Table</td><td class="p-4 text-pg-700 font-mono font-bold lang-ar">غير محدود</td><td class="p-4 text-pg-700 font-mono font-bold lang-en">Unlimited</td></tr>
+            <tr class="hover:bg-surface-50 bg-surface-50/50"><td class="p-4 font-semibold lang-ar">الأعمدة/الجدول</td><td class="p-4 font-semibold lang-en">Columns/Table</td><td class="p-4 text-pg-700 font-mono font-bold" colspan="2">250–1600</td></tr>
+            <tr class="hover:bg-surface-50"><td class="p-4 font-semibold lang-ar">الفهارس/الجدول</td><td class="p-4 font-semibold lang-en">Indexes/Table</td><td class="p-4 text-pg-700 font-mono font-bold lang-ar">غير محدود</td><td class="p-4 text-pg-700 font-mono font-bold lang-en">Unlimited</td></tr>
           </tbody>
         </table>
       </div>
     </section>
 
-    <!-- Section 6: Terminology -->
-    <section class="content-section">
+    <!-- Best Practices -->
+    <section>
       <div class="mb-6">
-        <span class="text-sm font-bold text-pg-600 uppercase tracking-wider">
-          <span class="lang-ar">القسم ٦</span><span class="lang-en">Section 6</span>
-        </span>
-        <h2 class="text-3xl font-bold text-surface-900 mt-2 mb-3">
-          <span class="lang-ar">مصطلحات PostgreSQL</span>
-          <span class="lang-en">PostgreSQL Terminology</span>
-        </h2>
-        <p class="text-surface-600 lang-ar">PostgreSQL يستخدم بعض المصطلحات المختلفة عن المصطلحات الصناعية الشائعة</p>
-        <p class="text-surface-600 lang-en">PostgreSQL uses some terms that differ from common industry terminology</p>
+        <span class="text-sm font-bold text-pg-600 uppercase tracking-wider"><span class="lang-ar">أفضل الممارسات</span><span class="lang-en">Best Practices</span></span>
+        <h2 class="text-3xl font-bold text-surface-900 mt-2 mb-3"><span class="lang-ar">توصيات ذهبية للمبتدئين</span><span class="lang-en">Golden Rules for Beginners</span></h2>
       </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+        <div class="bg-green-50 border border-green-200 rounded-xl p-4 flex gap-3"><i data-lucide="thumbs-up" class="w-5 h-5 text-green-600 shrink-0 mt-0.5"></i><div class="text-sm"><strong class="text-green-800 lang-ar">استخدم UTF-8 دائماً:</strong><strong class="text-green-800 lang-en">Always use UTF-8:</strong><span class="text-green-700 lang-ar"> عند إنشاء الـ Cluster اجعل الترميز UTF-8 للعربية والـ emoji وأي نص عالمي.</span><span class="text-green-700 lang-en"> Initialize cluster with UTF-8 to support Arabic, emoji, and international text.</span></div></div>
+        <div class="bg-green-50 border border-green-200 rounded-xl p-4 flex gap-3"><i data-lucide="thumbs-up" class="w-5 h-5 text-green-600 shrink-0 mt-0.5"></i><div class="text-sm"><strong class="text-green-800 lang-ar">استخدم timestamptz:</strong><strong class="text-green-800 lang-en">Use timestamptz:</strong><span class="text-green-700 lang-ar"> بدل timestamp العادي — يحفظ المنطقة الزمنية تلقائياً.</span><span class="text-green-700 lang-en"> Not plain timestamp — stores timezone automatically.</span></div></div>
+        <div class="bg-green-50 border border-green-200 rounded-xl p-4 flex gap-3"><i data-lucide="thumbs-up" class="w-5 h-5 text-green-600 shrink-0 mt-0.5"></i><div class="text-sm"><strong class="text-green-800 lang-ar">text أفضل من varchar:</strong><strong class="text-green-800 lang-en">Prefer text over varchar:</strong><span class="text-green-700 lang-ar"> نفس الأداء والمرونة أعلى. لا تحدد طول إلا لسبب عمل حقيقي.</span><span class="text-green-700 lang-en"> Same performance, more flexible. Don't limit length without real business reason.</span></div></div>
+        <div class="bg-red-50 border border-red-200 rounded-xl p-4 flex gap-3"><i data-lucide="thumbs-down" class="w-5 h-5 text-red-600 shrink-0 mt-0.5"></i><div class="text-sm"><strong class="text-red-800 lang-ar">لا تشغل كـ root:</strong><strong class="text-red-800 lang-en">Never run as root:</strong><span class="text-red-700 lang-ar"> PostgreSQL يرفض العمل كـ root لأسباب أمنية.</span><span class="text-red-700 lang-en"> PostgreSQL refuses to run as root for security.</span></div></div>
+      </div>
+    </section>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div class="bg-white rounded-2xl border border-surface-200 p-6">
-          <div class="flex items-center justify-between mb-2">
-            <span class="text-xs font-semibold text-surface-500 uppercase tracking-wider lang-ar">المصطلح الصناعي</span>
-            <span class="text-xs font-semibold text-surface-500 uppercase tracking-wider lang-en">Industry Term</span>
-            <i data-lucide="arrow-right" class="w-4 h-4 text-pg-500 lang-en"></i>
-            <i data-lucide="arrow-left" class="w-4 h-4 text-pg-500 lang-ar"></i>
-            <span class="text-xs font-semibold text-pg-600 uppercase tracking-wider lang-ar">مصطلح PostgreSQL</span>
-            <span class="text-xs font-semibold text-pg-600 uppercase tracking-wider lang-en">Postgres Term</span>
-          </div>
-          <div class="flex items-center justify-between py-3 border-t border-surface-100">
-            <span class="font-mono text-surface-700">Table / Index</span>
-            <i data-lucide="arrow-right" class="w-4 h-4 text-pg-400 lang-en"></i>
-            <i data-lucide="arrow-left" class="w-4 h-4 text-pg-400 lang-ar"></i>
-            <span class="font-mono font-bold text-pg-700">Relation</span>
-          </div>
-          <div class="flex items-center justify-between py-3 border-t border-surface-100">
-            <span class="font-mono text-surface-700">Row</span>
-            <i data-lucide="arrow-right" class="w-4 h-4 text-pg-400 lang-en"></i>
-            <i data-lucide="arrow-left" class="w-4 h-4 text-pg-400 lang-ar"></i>
-            <span class="font-mono font-bold text-pg-700">Tuple</span>
-          </div>
-          <div class="flex items-center justify-between py-3 border-t border-surface-100">
-            <span class="font-mono text-surface-700">Column</span>
-            <i data-lucide="arrow-right" class="w-4 h-4 text-pg-400 lang-en"></i>
-            <i data-lucide="arrow-left" class="w-4 h-4 text-pg-400 lang-ar"></i>
-            <span class="font-mono font-bold text-pg-700">Attribute</span>
-          </div>
-          <div class="flex items-center justify-between py-3 border-t border-surface-100">
-            <span class="font-mono text-surface-700">Data Block</span>
-            <i data-lucide="arrow-right" class="w-4 h-4 text-pg-400 lang-en"></i>
-            <i data-lucide="arrow-left" class="w-4 h-4 text-pg-400 lang-ar"></i>
-            <span class="font-mono font-bold text-pg-700">Page <span class="text-xs text-surface-400">(on disk)</span></span>
-          </div>
-          <div class="flex items-center justify-between py-3 border-t border-surface-100">
-            <span class="font-mono text-surface-700">Page</span>
-            <i data-lucide="arrow-right" class="w-4 h-4 text-pg-400 lang-en"></i>
-            <i data-lucide="arrow-left" class="w-4 h-4 text-pg-400 lang-ar"></i>
-            <span class="font-mono font-bold text-pg-700">Buffer <span class="text-xs text-surface-400">(in memory)</span></span>
-          </div>
-        </div>
-
-        <div class="bg-gradient-to-br from-pg-50 to-pg-100 rounded-2xl border border-pg-200 p-6">
-          <i data-lucide="info" class="w-8 h-8 text-pg-600 mb-3"></i>
-          <h3 class="font-bold text-lg mb-2 text-pg-900">
-            <span class="lang-ar">لماذا المصطلحات مختلفة؟</span>
-            <span class="lang-en">Why Different Terms?</span>
-          </h3>
-          <p class="text-sm text-pg-800 leading-relaxed lang-ar">
-            PostgreSQL جاء من عالم الأكاديميا وقواعد البيانات الكائنية <span dir="ltr" class="font-mono">(Object-Relational)</span>. المصطلحات مثل <strong>Tuple</strong> و <strong>Relation</strong> من نظرية قواعد البيانات العلائقية الرياضية.
-          </p>
-          <p class="text-sm text-pg-800 leading-relaxed lang-en">
-            PostgreSQL comes from academia and object-relational database theory. Terms like <strong>Tuple</strong> and <strong>Relation</strong> come from the mathematical theory of relational databases.
-          </p>
+    <!-- Terminology -->
+    <section>
+      <div class="mb-6">
+        <span class="text-sm font-bold text-pg-600 uppercase tracking-wider"><span class="lang-ar">مصطلحات</span><span class="lang-en">Terminology</span></span>
+        <h2 class="text-3xl font-bold text-surface-900 mt-2 mb-3"><span class="lang-ar">مصطلحات PostgreSQL الخاصة</span><span class="lang-en">PostgreSQL-Specific Terms</span></h2>
+      </div>
+      <div class="bg-white rounded-2xl border border-surface-200 p-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+          <div class="flex items-center justify-between border-b border-surface-100 py-2"><span class="font-mono text-surface-700">Table / Index</span><i data-lucide="arrow-left-right" class="w-4 h-4 text-pg-400"></i><span class="font-mono font-bold text-pg-700">Relation</span></div>
+          <div class="flex items-center justify-between border-b border-surface-100 py-2"><span class="font-mono text-surface-700">Row</span><i data-lucide="arrow-left-right" class="w-4 h-4 text-pg-400"></i><span class="font-mono font-bold text-pg-700">Tuple</span></div>
+          <div class="flex items-center justify-between border-b border-surface-100 py-2"><span class="font-mono text-surface-700">Column</span><i data-lucide="arrow-left-right" class="w-4 h-4 text-pg-400"></i><span class="font-mono font-bold text-pg-700">Attribute</span></div>
+          <div class="flex items-center justify-between border-b border-surface-100 py-2"><span class="font-mono text-surface-700">Data Block (disk)</span><i data-lucide="arrow-left-right" class="w-4 h-4 text-pg-400"></i><span class="font-mono font-bold text-pg-700">Page (8KB)</span></div>
+          <div class="flex items-center justify-between border-b border-surface-100 py-2"><span class="font-mono text-surface-700">Page (memory)</span><i data-lucide="arrow-left-right" class="w-4 h-4 text-pg-400"></i><span class="font-mono font-bold text-pg-700">Buffer</span></div>
+          <div class="flex items-center justify-between border-b border-surface-100 py-2"><span class="font-mono text-surface-700">Stored Procedure</span><i data-lucide="arrow-left-right" class="w-4 h-4 text-pg-400"></i><span class="font-mono font-bold text-pg-700">Function / Procedure</span></div>
         </div>
       </div>
     </section>
 
-    <!-- Section 7: Practical Example -->
-    <section class="content-section">
+    <!-- QUIZ SECTION -->
+    <section>
       <div class="mb-6">
-        <span class="text-sm font-bold text-pg-600 uppercase tracking-wider">
-          <span class="lang-ar">القسم ٧</span><span class="lang-en">Section 7</span>
-        </span>
-        <h2 class="text-3xl font-bold text-surface-900 mt-2 mb-3">
-          <span class="lang-ar">مثال عملي: أول اتصال</span>
-          <span class="lang-en">Practical Example: First Connection</span>
-        </h2>
+        <span class="text-sm font-bold text-edb-600 uppercase tracking-wider"><span class="lang-ar">اختبر فهمك</span><span class="lang-en">Test Your Knowledge</span></span>
+        <h2 class="text-3xl font-bold text-surface-900 mt-2 mb-3"><span class="lang-ar">كويز الوحدة ١ 🎯</span><span class="lang-en">Module 1 Quiz 🎯</span></h2>
+        <p class="text-surface-600 lang-ar">٦ أسئلة — تحقق من استيعابك قبل الانتقال للوحدة التالية</p>
+        <p class="text-surface-600 lang-en">6 questions — check your understanding before moving on</p>
       </div>
 
-      <div class="bg-white rounded-2xl border border-surface-200 p-6 md:p-8">
-        <p class="mb-4 text-surface-700 lang-ar">
-          بعد تثبيت PostgreSQL، يمكنك الاتصال به وعرض معلومات الإصدار:
-        </p>
-        <p class="mb-4 text-surface-700 lang-en">
-          Once PostgreSQL is installed, you can connect and view version info:
-        </p>
-
-        <div class="relative group mb-4" dir="ltr">
-          <button onclick="copyCode(this)" class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity bg-surface-700 hover:bg-surface-600 text-white text-xs px-2.5 py-1.5 rounded-lg z-10">
-            <span class="lang-ar">نسخ</span>
-            <span class="lang-en">Copy</span>
-          </button>
-<pre class="!bg-surface-900 !rounded-xl !p-5"><code class="language-bash"># Connect to PostgreSQL as postgres user
-sudo -u postgres psql
-
-# Inside psql:
-postgres=# SELECT version();
-postgres=# \l          -- list databases
-postgres=# \q          -- quit</code></pre>
+      <div id="quiz-ch01" class="space-y-4">
+        <!-- Q1 -->
+        <div class="quiz-card bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="flex items-center gap-2 mb-3"><span class="w-7 h-7 rounded-full bg-pg-600 text-white font-bold text-sm flex items-center justify-center">1</span><span class="text-sm text-surface-500 lang-ar">سؤال ١</span><span class="text-sm text-surface-500 lang-en">Question 1</span></div>
+          <p class="font-semibold mb-4 lang-ar">ما معنى اختصار ACID في قواعد البيانات؟</p>
+          <p class="font-semibold mb-4 lang-en">What does ACID stand for in databases?</p>
+          <div class="space-y-2" data-q="1">
+            <button onclick="pick(this,1,0)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-pg-300 transition-all"><span class="lang-ar">Authentication, Caching, Indexing, Durability</span><span class="lang-en">Authentication, Caching, Indexing, Durability</span></button>
+            <button onclick="pick(this,1,1)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-pg-300 transition-all" data-correct="true"><span class="lang-ar">Atomicity, Consistency, Isolation, Durability</span><span class="lang-en">Atomicity, Consistency, Isolation, Durability</span></button>
+            <button onclick="pick(this,1,2)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-pg-300 transition-all"><span class="lang-ar">Access, Control, Integrity, Data</span><span class="lang-en">Access, Control, Integrity, Data</span></button>
+          </div>
+          <div class="feedback hidden mt-3 p-3 rounded-xl text-sm"></div>
         </div>
 
-        <div class="flex gap-3 p-4 bg-green-50 border border-green-200 rounded-xl">
-          <i data-lucide="check-circle-2" class="w-5 h-5 text-green-600 shrink-0 mt-0.5"></i>
-          <div class="text-sm">
-            <strong class="text-green-800 lang-ar">ناتج متوقع:</strong>
-            <strong class="text-green-800 lang-en">Expected Output:</strong>
-            <div class="mt-1 font-mono text-green-700 text-xs" dir="ltr">PostgreSQL 18.0 on x86_64-pc-linux-gnu, compiled by gcc...</div>
+        <!-- Q2 -->
+        <div class="quiz-card bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="flex items-center gap-2 mb-3"><span class="w-7 h-7 rounded-full bg-pg-600 text-white font-bold text-sm flex items-center justify-center">2</span><span class="text-sm text-surface-500 lang-ar">سؤال ٢</span><span class="text-sm text-surface-500 lang-en">Question 2</span></div>
+          <p class="font-semibold mb-4 lang-ar">أي مصطلح PostgreSQL يقابل كلمة "Row" الصناعية؟</p>
+          <p class="font-semibold mb-4 lang-en">Which PostgreSQL term corresponds to the industry term "Row"?</p>
+          <div class="space-y-2" data-q="2">
+            <button onclick="pick(this,2,0)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-pg-300 transition-all"><span class="font-mono">Attribute</span></button>
+            <button onclick="pick(this,2,1)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-pg-300 transition-all"><span class="font-mono">Relation</span></button>
+            <button onclick="pick(this,2,2)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-pg-300 transition-all" data-correct="true"><span class="font-mono">Tuple</span></button>
+            <button onclick="pick(this,2,3)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-pg-300 transition-all"><span class="font-mono">Page</span></button>
           </div>
+          <div class="feedback hidden mt-3 p-3 rounded-xl text-sm"></div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="quiz-card bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="flex items-center gap-2 mb-3"><span class="w-7 h-7 rounded-full bg-pg-600 text-white font-bold text-sm flex items-center justify-center">3</span><span class="text-sm text-surface-500 lang-ar">سؤال ٣</span><span class="text-sm text-surface-500 lang-en">Question 3</span></div>
+          <p class="font-semibold mb-4 lang-ar">PostgreSQL يستخدم لكل اتصال جديد:</p>
+          <p class="font-semibold mb-4 lang-en">For every new connection, PostgreSQL uses:</p>
+          <div class="space-y-2" data-q="3">
+            <button onclick="pick(this,3,0)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-pg-300 transition-all"><span class="lang-ar">Thread جديد (أسرع وأقل ذاكرة)</span><span class="lang-en">A new thread (faster, less memory)</span></button>
+            <button onclick="pick(this,3,1)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-pg-300 transition-all" data-correct="true"><span class="lang-ar">Process جديد (أكثر استقراراً)</span><span class="lang-en">A new process (more stable)</span></button>
+            <button onclick="pick(this,3,2)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-pg-300 transition-all"><span class="lang-ar">نفس العملية مع coroutines</span><span class="lang-en">Same process with coroutines</span></button>
+          </div>
+          <div class="feedback hidden mt-3 p-3 rounded-xl text-sm"></div>
+        </div>
+
+        <!-- Q4 -->
+        <div class="quiz-card bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="flex items-center gap-2 mb-3"><span class="w-7 h-7 rounded-full bg-pg-600 text-white font-bold text-sm flex items-center justify-center">4</span><span class="text-sm text-surface-500 lang-ar">سؤال ٤</span><span class="text-sm text-surface-500 lang-en">Question 4</span></div>
+          <p class="font-semibold mb-4 lang-ar">ما حجم الـ Page الافتراضي في PostgreSQL؟</p>
+          <p class="font-semibold mb-4 lang-en">What's the default PostgreSQL page size?</p>
+          <div class="space-y-2" data-q="4">
+            <button onclick="pick(this,4,0)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-pg-300 transition-all">4 KB</button>
+            <button onclick="pick(this,4,1)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-pg-300 transition-all" data-correct="true">8 KB</button>
+            <button onclick="pick(this,4,2)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-pg-300 transition-all">16 KB</button>
+            <button onclick="pick(this,4,3)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-pg-300 transition-all">64 KB</button>
+          </div>
+          <div class="feedback hidden mt-3 p-3 rounded-xl text-sm"></div>
+        </div>
+
+        <!-- Q5 -->
+        <div class="quiz-card bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="flex items-center gap-2 mb-3"><span class="w-7 h-7 rounded-full bg-pg-600 text-white font-bold text-sm flex items-center justify-center">5</span><span class="text-sm text-surface-500 lang-ar">سؤال ٥</span><span class="text-sm text-surface-500 lang-en">Question 5</span></div>
+          <p class="font-semibold mb-4 lang-ar">ما الحد الأقصى لحجم جدول واحد في PostgreSQL (لكل Partition)؟</p>
+          <p class="font-semibold mb-4 lang-en">What's the maximum size of a single table in PostgreSQL (per partition)?</p>
+          <div class="space-y-2" data-q="5">
+            <button onclick="pick(this,5,0)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-pg-300 transition-all">1 TB</button>
+            <button onclick="pick(this,5,1)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-pg-300 transition-all">4 TB</button>
+            <button onclick="pick(this,5,2)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-pg-300 transition-all" data-correct="true">32 TB</button>
+            <button onclick="pick(this,5,3)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-pg-300 transition-all"><span class="lang-ar">غير محدود</span><span class="lang-en">Unlimited</span></button>
+          </div>
+          <div class="feedback hidden mt-3 p-3 rounded-xl text-sm"></div>
+        </div>
+
+        <!-- Q6 -->
+        <div class="quiz-card bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="flex items-center gap-2 mb-3"><span class="w-7 h-7 rounded-full bg-pg-600 text-white font-bold text-sm flex items-center justify-center">6</span><span class="text-sm text-surface-500 lang-ar">سؤال ٦</span><span class="text-sm text-surface-500 lang-en">Question 6</span></div>
+          <p class="font-semibold mb-4 lang-ar">أي خاصية ACID تضمن أن البيانات لن تُفقد بعد COMMIT حتى لو انقطعت الكهرباء؟</p>
+          <p class="font-semibold mb-4 lang-en">Which ACID property guarantees data won't be lost after COMMIT even on power loss?</p>
+          <div class="space-y-2" data-q="6">
+            <button onclick="pick(this,6,0)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-pg-300 transition-all"><span class="lang-ar">Atomicity — الذرية</span><span class="lang-en">Atomicity</span></button>
+            <button onclick="pick(this,6,1)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-pg-300 transition-all"><span class="lang-ar">Consistency — الاتساق</span><span class="lang-en">Consistency</span></button>
+            <button onclick="pick(this,6,2)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-pg-300 transition-all"><span class="lang-ar">Isolation — العزل</span><span class="lang-en">Isolation</span></button>
+            <button onclick="pick(this,6,3)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-pg-300 transition-all" data-correct="true"><span class="lang-ar">Durability — الديمومة</span><span class="lang-en">Durability</span></button>
+          </div>
+          <div class="feedback hidden mt-3 p-3 rounded-xl text-sm"></div>
+        </div>
+
+        <!-- Result -->
+        <div id="quiz-result" class="hidden bg-gradient-to-br from-pg-600 to-pg-800 text-white rounded-2xl p-6 text-center">
+          <i data-lucide="award" class="w-12 h-12 mx-auto mb-3"></i>
+          <h3 class="text-2xl font-bold mb-2"><span class="lang-ar">نتيجتك</span><span class="lang-en">Your Score</span></h3>
+          <div class="text-5xl font-bold my-3"><span id="score">0</span><span class="text-2xl opacity-70">/6</span></div>
+          <p id="result-msg" class="text-pg-100"></p>
+          <button onclick="resetQuiz()" class="mt-4 bg-white text-pg-700 font-semibold px-6 py-2 rounded-lg hover:bg-pg-50 transition"><span class="lang-ar">إعادة المحاولة</span><span class="lang-en">Try Again</span></button>
         </div>
       </div>
     </section>
 
-    <!-- Module Summary -->
-    <section class="content-section">
+    <!-- Summary -->
+    <section>
       <div class="bg-gradient-to-br from-pg-600 via-pg-700 to-pg-900 text-white rounded-2xl p-6 md:p-8 shadow-xl">
-        <div class="flex items-center gap-3 mb-6">
-          <div class="w-12 h-12 rounded-xl bg-white/20 backdrop-blur-md flex items-center justify-center">
-            <i data-lucide="bookmark-check" class="w-6 h-6"></i>
-          </div>
-          <h2 class="text-2xl font-bold">
-            <span class="lang-ar">ملخص الوحدة</span>
-            <span class="lang-en">Module Summary</span>
-          </h2>
-        </div>
+        <div class="flex items-center gap-3 mb-6"><div class="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center"><i data-lucide="bookmark-check" class="w-6 h-6"></i></div><h2 class="text-2xl font-bold"><span class="lang-ar">ملخص الوحدة</span><span class="lang-en">Module Summary</span></h2></div>
         <ul class="grid grid-cols-1 md:grid-cols-2 gap-3">
-          <li class="flex items-start gap-2">
-            <i data-lucide="check" class="w-5 h-5 text-pg-300 shrink-0 mt-0.5"></i>
-            <span class="lang-ar">تعرفنا على PostgreSQL وتاريخه الطويل</span>
-            <span class="lang-en">Learned about PostgreSQL and its long history</span>
-          </li>
-          <li class="flex items-start gap-2">
-            <i data-lucide="check" class="w-5 h-5 text-pg-300 shrink-0 mt-0.5"></i>
-            <span class="lang-ar">استعرضنا منصة EDB Postgres AI</span>
-            <span class="lang-en">Explored the EDB Postgres AI platform</span>
-          </li>
-          <li class="flex items-start gap-2">
-            <i data-lucide="check" class="w-5 h-5 text-pg-300 shrink-0 mt-0.5"></i>
-            <span class="lang-ar">تعلمنا المميزات الرئيسية الست</span>
-            <span class="lang-en">Learned the six major feature categories</span>
-          </li>
-          <li class="flex items-start gap-2">
-            <i data-lucide="check" class="w-5 h-5 text-pg-300 shrink-0 mt-0.5"></i>
-            <span class="lang-ar">فهمنا المعمارية العامة للنظام</span>
-            <span class="lang-en">Understood the overall system architecture</span>
-          </li>
-          <li class="flex items-start gap-2">
-            <i data-lucide="check" class="w-5 h-5 text-pg-300 shrink-0 mt-0.5"></i>
-            <span class="lang-ar">عرفنا حدود قاعدة البيانات</span>
-            <span class="lang-en">Knew the database limits</span>
-          </li>
-          <li class="flex items-start gap-2">
-            <i data-lucide="check" class="w-5 h-5 text-pg-300 shrink-0 mt-0.5"></i>
-            <span class="lang-ar">استعرضنا المصطلحات الخاصة بـ PostgreSQL</span>
-            <span class="lang-en">Reviewed PostgreSQL-specific terminology</span>
-          </li>
+          <li class="flex items-start gap-2"><i data-lucide="check" class="w-5 h-5 text-pg-300 shrink-0 mt-0.5"></i><span class="lang-ar">PostgreSQL = ORDBMS مفتوح المصدر</span><span class="lang-en">PostgreSQL = open-source ORDBMS</span></li>
+          <li class="flex items-start gap-2"><i data-lucide="check" class="w-5 h-5 text-pg-300 shrink-0 mt-0.5"></i><span class="lang-ar">ACID كامل عبر WAL و MVCC</span><span class="lang-en">Full ACID via WAL & MVCC</span></li>
+          <li class="flex items-start gap-2"><i data-lucide="check" class="w-5 h-5 text-pg-300 shrink-0 mt-0.5"></i><span class="lang-ar">٣٠+ سنة تطوير من بيركلي</span><span class="lang-en">30+ years dev from Berkeley</span></li>
+          <li class="flex items-start gap-2"><i data-lucide="check" class="w-5 h-5 text-pg-300 shrink-0 mt-0.5"></i><span class="lang-ar">Process-based، ليس Thread</span><span class="lang-en">Process-based, not thread</span></li>
+          <li class="flex items-start gap-2"><i data-lucide="check" class="w-5 h-5 text-pg-300 shrink-0 mt-0.5"></i><span class="lang-ar">حدود هائلة (32 TB/جدول)</span><span class="lang-en">Huge limits (32 TB/table)</span></li>
+          <li class="flex items-start gap-2"><i data-lucide="check" class="w-5 h-5 text-pg-300 shrink-0 mt-0.5"></i><span class="lang-ar">مصطلحات: Relation, Tuple, Attribute</span><span class="lang-en">Terms: Relation, Tuple, Attribute</span></li>
         </ul>
       </div>
     </section>
 
     <!-- Navigation -->
     <nav class="flex flex-col md:flex-row gap-4">
-      <a href="../index.html" class="flex-1 bg-white border border-surface-200 rounded-xl p-4 hover:border-pg-300 hover:shadow-md transition-all group">
-        <div class="text-xs text-surface-500 mb-1">
-          <span class="lang-ar">العودة للصفحة الرئيسية</span>
-          <span class="lang-en">Back to Home</span>
-        </div>
-        <div class="flex items-center gap-2 font-bold text-surface-900">
-          <i data-lucide="home" class="w-4 h-4"></i>
-          <span class="lang-ar">الصفحة الرئيسية</span>
-          <span class="lang-en">Course Home</span>
-        </div>
+      <a href="../index.html" class="flex-1 bg-white border border-surface-200 rounded-xl p-4 hover:border-pg-300 hover:shadow-md transition-all">
+        <div class="text-xs text-surface-500 mb-1"><span class="lang-ar">العودة للصفحة الرئيسية</span><span class="lang-en">Back to Home</span></div>
+        <div class="flex items-center gap-2 font-bold"><i data-lucide="home" class="w-4 h-4"></i><span class="lang-ar">الصفحة الرئيسية</span><span class="lang-en">Course Home</span></div>
       </a>
-      <a href="ch02.html" class="flex-1 bg-gradient-to-br from-pg-600 to-pg-700 text-white rounded-xl p-4 hover:shadow-xl transition-all group">
-        <div class="text-xs text-pg-200 mb-1 text-end">
-          <span class="lang-ar">الوحدة التالية</span>
-          <span class="lang-en">Next Module</span>
-        </div>
-        <div class="flex items-center justify-end gap-2 font-bold">
-          <span class="lang-ar">معمارية النظام</span>
-          <span class="lang-en">System Architecture</span>
-          <i data-lucide="arrow-left" class="w-4 h-4 group-hover:-translate-x-1 transition-transform lang-ar"></i>
-          <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform lang-en"></i>
-        </div>
+      <a href="ch02.html" class="flex-1 bg-gradient-to-br from-pg-600 to-pg-700 text-white rounded-xl p-4 hover:shadow-xl transition-all">
+        <div class="text-xs text-pg-200 mb-1 text-end"><span class="lang-ar">الوحدة التالية</span><span class="lang-en">Next Module</span></div>
+        <div class="flex items-center justify-end gap-2 font-bold"><span class="lang-ar">معمارية النظام</span><span class="lang-en">System Architecture</span><i data-lucide="arrow-left" class="w-4 h-4 lang-ar"></i><i data-lucide="arrow-right" class="w-4 h-4 lang-en"></i></div>
       </a>
     </nav>
-
   </main>
 
   <footer class="bg-surface-900 text-surface-400 py-8 text-center text-sm">
@@ -757,21 +564,47 @@ postgres=# \q          -- quit</code></pre>
       document.documentElement.lang = lang;
       document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
       localStorage.setItem('pgCourseLang', lang);
-      document.querySelectorAll('.lang-btn').forEach(b => {
-        b.classList.remove('bg-pg-600', 'text-white', 'shadow-md');
-        b.classList.add('text-surface-600', 'hover:bg-surface-100');
-      });
-      const activeBtn = document.getElementById('btn-' + lang);
-      activeBtn.classList.add('bg-pg-600', 'text-white', 'shadow-md');
-      activeBtn.classList.remove('text-surface-600', 'hover:bg-surface-100');
+      document.querySelectorAll('.lang-btn').forEach(b => { b.classList.remove('bg-pg-600','text-white','shadow-md'); b.classList.add('text-surface-600','hover:bg-surface-100'); });
+      const a = document.getElementById('btn-' + lang); a.classList.add('bg-pg-600','text-white','shadow-md'); a.classList.remove('text-surface-600','hover:bg-surface-100');
     }
+    function copyCode(btn){const c=btn.nextElementSibling.querySelector('code').textContent;navigator.clipboard.writeText(c);btn.textContent='✓';setTimeout(()=>btn.textContent='Copy',2000);}
 
-    function copyCode(btn) {
-      const code = btn.nextElementSibling.querySelector('code').textContent;
-      navigator.clipboard.writeText(code);
-      const original = btn.innerHTML;
-      btn.innerHTML = '<span>✓</span>';
-      setTimeout(() => btn.innerHTML = original, 2000);
+    const answers = {};
+    function pick(btn, q, i) {
+      const card = btn.closest('.quiz-card');
+      const opts = card.querySelectorAll('.quiz-opt');
+      opts.forEach(o => o.disabled = true);
+      const correct = btn.dataset.correct === 'true';
+      btn.classList.add(correct ? 'correct' : 'wrong');
+      if (!correct) card.querySelector('[data-correct="true"]').classList.add('correct');
+      const fb = card.querySelector('.feedback');
+      fb.classList.remove('hidden');
+      fb.className = 'feedback mt-3 p-3 rounded-xl text-sm ' + (correct ? 'bg-green-50 text-green-800 border border-green-200' : 'bg-red-50 text-red-800 border border-red-200');
+      const lang = document.documentElement.lang;
+      fb.innerHTML = correct
+        ? (lang === 'ar' ? '✓ ممتاز! إجابة صحيحة' : '✓ Excellent! Correct answer')
+        : (lang === 'ar' ? '✗ خطأ — الإجابة الصحيحة مميزة بالأخضر' : '✗ Wrong — correct answer highlighted in green');
+      answers[q] = correct;
+      if (Object.keys(answers).length === 6) showResult();
+    }
+    function showResult() {
+      const score = Object.values(answers).filter(Boolean).length;
+      document.getElementById('score').textContent = score;
+      const msg = document.getElementById('result-msg');
+      const lang = document.documentElement.lang;
+      if (score === 6) msg.textContent = lang === 'ar' ? '🎉 ممتاز! إتقان كامل' : '🎉 Perfect! Complete mastery';
+      else if (score >= 4) msg.textContent = lang === 'ar' ? '👍 جيد جداً! راجع الأخطاء' : '👍 Great! Review mistakes';
+      else msg.textContent = lang === 'ar' ? '📚 راجع الوحدة مرة أخرى' : '📚 Review the module again';
+      const result = document.getElementById('quiz-result');
+      result.classList.remove('hidden');
+      result.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+    function resetQuiz() {
+      Object.keys(answers).forEach(k => delete answers[k]);
+      document.querySelectorAll('.quiz-opt').forEach(b => { b.disabled = false; b.classList.remove('correct','wrong'); });
+      document.querySelectorAll('.feedback').forEach(f => f.classList.add('hidden'));
+      document.getElementById('quiz-result').classList.add('hidden');
+      document.getElementById('quiz-ch01').scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
     setLang(localStorage.getItem('pgCourseLang') || 'ar');

@@ -13,7 +13,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-sql.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
-  <style>body{font-family:'IBM Plex Sans Arabic',sans-serif}html[lang="ar"] .lang-en{display:none!important}html[lang="en"] .lang-ar{display:none!important}pre[class*="language-"]{border-radius:.75rem;font-size:.875rem;direction:ltr}code[class*="language-"]{font-family:'JetBrains Mono',monospace}</style>
+  <style>body{font-family:'IBM Plex Sans Arabic',sans-serif}html[lang="ar"] .lang-en{display:none!important}html[lang="en"] .lang-ar{display:none!important}pre[class*="language-"]{border-radius:.75rem;font-size:.875rem;direction:ltr}code[class*="language-"]{font-family:'JetBrains Mono',monospace}.quiz-opt.correct{border-color:#059669!important;background:#ecfdf5!important}.quiz-opt.wrong{border-color:#dc2626!important;background:#fef2f2!important}.quiz-opt:disabled{cursor:not-allowed}</style>
 </head>
 <body class="bg-surface-50 text-surface-800 antialiased min-h-screen">
 
@@ -35,23 +35,21 @@
         <span class="lang-ar">٢٩ صفحة</span><span class="lang-en">29 pages</span>
       </div>
       <h1 class="text-3xl md:text-5xl font-bold mb-4"><span class="lang-ar">تهيئة قاعدة البيانات</span><span class="lang-en">Database Configuration</span></h1>
-      <p class="text-lg text-indigo-100 max-w-3xl lang-ar">إتقان ملفات التهيئة — تحكم كامل في سلوك سيرفر PostgreSQL.</p>
-      <p class="text-lg text-indigo-100 max-w-3xl lang-en">Master configuration files — full control over PostgreSQL server behavior.</p>
+      <p class="text-lg text-indigo-100 max-w-3xl lang-ar">ضبط postgresql.conf، الباراميترز الأساسية، ALTER SYSTEM، والقيم المناسبة لإنتاجك.</p>
+      <p class="text-lg text-indigo-100 max-w-3xl lang-en">Tuning postgresql.conf, key parameters, ALTER SYSTEM, and production-ready values.</p>
     </div>
   </header>
 
   <section class="max-w-6xl mx-auto px-4 sm:px-6 py-10">
     <div class="bg-white rounded-2xl shadow-sm border border-surface-200 p-6 md:p-8">
-      <div class="flex items-center gap-3 mb-6">
-        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500 to-indigo-700 flex items-center justify-center text-white"><i data-lucide="sliders-horizontal" class="w-6 h-6"></i></div>
-        <h2 class="text-2xl font-bold"><span class="lang-ar">أهداف الوحدة</span><span class="lang-en">Module Objectives</span></h2>
-      </div>
+      <div class="flex items-center gap-3 mb-6"><div class="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500 to-indigo-700 flex items-center justify-center text-white"><i data-lucide="sliders-horizontal" class="w-6 h-6"></i></div><h2 class="text-2xl font-bold"><span class="lang-ar">أهداف الوحدة</span><span class="lang-en">Module Objectives</span></h2></div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
-        <div class="flex gap-2 p-3 rounded-xl bg-indigo-50 border border-indigo-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-indigo-600 shrink-0"></i><span class="lang-ar">ملف postgresql.conf</span><span class="lang-en">postgresql.conf file</span></div>
-        <div class="flex gap-2 p-3 rounded-xl bg-indigo-50 border border-indigo-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-indigo-600 shrink-0"></i><span class="lang-ar">عرض وتغيير الباراميترز</span><span class="lang-en">View & change parameters</span></div>
-        <div class="flex gap-2 p-3 rounded-xl bg-indigo-50 border border-indigo-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-indigo-600 shrink-0"></i><span class="lang-ar">إعدادات الأمان والموارد والـ WAL</span><span class="lang-en">Security, Resources & WAL settings</span></div>
-        <div class="flex gap-2 p-3 rounded-xl bg-indigo-50 border border-indigo-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-indigo-600 shrink-0"></i><span class="lang-ar">الـ Error Logging والصيانة</span><span class="lang-en">Error Logging & Maintenance</span></div>
-        <div class="flex gap-2 p-3 rounded-xl bg-indigo-50 border border-indigo-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-indigo-600 shrink-0"></i><span class="lang-ar">استخدام File Includes</span><span class="lang-en">Using File Includes</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-indigo-50 border border-indigo-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-indigo-600 shrink-0"></i><span class="lang-ar">ملف postgresql.conf وبنيته</span><span class="lang-en">postgresql.conf structure</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-indigo-50 border border-indigo-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-indigo-600 shrink-0"></i><span class="lang-ar">أنواع الباراميترز الخمسة</span><span class="lang-en">5 parameter types</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-indigo-50 border border-indigo-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-indigo-600 shrink-0"></i><span class="lang-ar">SET vs ALTER SYSTEM</span><span class="lang-en">SET vs ALTER SYSTEM</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-indigo-50 border border-indigo-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-indigo-600 shrink-0"></i><span class="lang-ar">مستويات النطاق (scope)</span><span class="lang-en">Parameter contexts/scopes</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-indigo-50 border border-indigo-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-indigo-600 shrink-0"></i><span class="lang-ar">الذاكرة، WAL، الـ Logging، الـ Planner</span><span class="lang-en">Memory, WAL, logging, planner</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-indigo-50 border border-indigo-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-indigo-600 shrink-0"></i><span class="lang-ar">File includes والتنظيم</span><span class="lang-en">File includes & organization</span></div>
       </div>
     </div>
   </section>
@@ -59,109 +57,349 @@
   <main class="max-w-6xl mx-auto px-4 sm:px-6 pb-12 space-y-12">
 
     <section>
-      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">أنواع الباراميترز</span><span class="lang-en">Parameter Types</span></h2>
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">الملفات الثلاثة</span><span class="lang-en">The Three Config Files</span></h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="bg-white rounded-2xl border-2 border-indigo-200 p-5">
+          <div class="w-12 h-12 rounded-xl bg-indigo-100 flex items-center justify-center text-indigo-600 mb-3"><i data-lucide="file-cog" class="w-6 h-6"></i></div>
+          <h3 class="font-bold mb-2 font-mono text-sm">postgresql.conf</h3>
+          <p class="text-sm text-surface-600 lang-ar">الملف الرئيسي — كل إعدادات السيرفر (ذاكرة، أداء، سجلات...)</p>
+          <p class="text-sm text-surface-600 lang-en">Main file — all server settings (memory, perf, logging...)</p>
+        </div>
+        <div class="bg-white rounded-2xl border-2 border-indigo-200 p-5">
+          <div class="w-12 h-12 rounded-xl bg-indigo-100 flex items-center justify-center text-indigo-600 mb-3"><i data-lucide="file-edit" class="w-6 h-6"></i></div>
+          <h3 class="font-bold mb-2 font-mono text-sm">postgresql.auto.conf</h3>
+          <p class="text-sm text-surface-600 lang-ar"><span dir="ltr" class="font-mono">ALTER SYSTEM</span> يكتب هنا — يعيد تعريف قيم postgresql.conf</p>
+          <p class="text-sm text-surface-600 lang-en">Written by <span class="font-mono">ALTER SYSTEM</span> — overrides postgresql.conf</p>
+        </div>
+        <div class="bg-white rounded-2xl border-2 border-indigo-200 p-5">
+          <div class="w-12 h-12 rounded-xl bg-indigo-100 flex items-center justify-center text-indigo-600 mb-3"><i data-lucide="shield" class="w-6 h-6"></i></div>
+          <h3 class="font-bold mb-2 font-mono text-sm">pg_hba.conf</h3>
+          <p class="text-sm text-surface-600 lang-ar">قواعد المصادقة — من يتصل ومن أين وكيف يصادق</p>
+          <p class="text-sm text-surface-600 lang-en">Authentication rules — who connects, from where, how</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">أنواع الباراميترز الخمسة</span><span class="lang-en">The 5 Parameter Types</span></h2>
       <div class="bg-white rounded-2xl border border-surface-200 p-6">
-        <p class="text-surface-700 mb-4 lang-ar">كل باراميتر في PostgreSQL له واحد من خمسة أنواع:</p>
-        <p class="text-surface-700 mb-4 lang-en">Every PostgreSQL parameter has one of five types:</p>
-
         <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
-          <div class="bg-indigo-50 border border-indigo-200 rounded-xl p-3 text-center"><i data-lucide="toggle-left" class="w-6 h-6 text-indigo-600 mx-auto mb-1"></i><div class="font-mono font-bold text-sm">boolean</div><div class="text-xs text-surface-600 mt-1 lang-ar">on/off</div><div class="text-xs text-surface-600 mt-1 lang-en">on/off</div></div>
-          <div class="bg-indigo-50 border border-indigo-200 rounded-xl p-3 text-center"><i data-lucide="hash" class="w-6 h-6 text-indigo-600 mx-auto mb-1"></i><div class="font-mono font-bold text-sm">integer</div><div class="text-xs text-surface-600 mt-1 lang-ar">رقم صحيح</div><div class="text-xs text-surface-600 mt-1 lang-en">whole number</div></div>
-          <div class="bg-indigo-50 border border-indigo-200 rounded-xl p-3 text-center"><i data-lucide="sigma" class="w-6 h-6 text-indigo-600 mx-auto mb-1"></i><div class="font-mono font-bold text-sm">floating</div><div class="text-xs text-surface-600 mt-1 lang-ar">رقم عشري</div><div class="text-xs text-surface-600 mt-1 lang-en">decimal</div></div>
-          <div class="bg-indigo-50 border border-indigo-200 rounded-xl p-3 text-center"><i data-lucide="type" class="w-6 h-6 text-indigo-600 mx-auto mb-1"></i><div class="font-mono font-bold text-sm">string</div><div class="text-xs text-surface-600 mt-1 lang-ar">نص</div><div class="text-xs text-surface-600 mt-1 lang-en">text</div></div>
-          <div class="bg-indigo-50 border border-indigo-200 rounded-xl p-3 text-center"><i data-lucide="list" class="w-6 h-6 text-indigo-600 mx-auto mb-1"></i><div class="font-mono font-bold text-sm">enum</div><div class="text-xs text-surface-600 mt-1 lang-ar">قائمة</div><div class="text-xs text-surface-600 mt-1 lang-en">list</div></div>
+          <div class="bg-indigo-50 border border-indigo-200 rounded-xl p-4 text-center"><i data-lucide="toggle-left" class="w-6 h-6 text-indigo-600 mx-auto mb-1"></i><div class="font-mono font-bold text-sm">boolean</div><div class="text-xs text-surface-600 mt-1">on/off, true/false, 1/0</div></div>
+          <div class="bg-indigo-50 border border-indigo-200 rounded-xl p-4 text-center"><i data-lucide="hash" class="w-6 h-6 text-indigo-600 mx-auto mb-1"></i><div class="font-mono font-bold text-sm">integer</div><div class="text-xs text-surface-600 mt-1">100, 2GB, 5min</div></div>
+          <div class="bg-indigo-50 border border-indigo-200 rounded-xl p-4 text-center"><i data-lucide="sigma" class="w-6 h-6 text-indigo-600 mx-auto mb-1"></i><div class="font-mono font-bold text-sm">floating</div><div class="text-xs text-surface-600 mt-1">0.25, 2.5</div></div>
+          <div class="bg-indigo-50 border border-indigo-200 rounded-xl p-4 text-center"><i data-lucide="type" class="w-6 h-6 text-indigo-600 mx-auto mb-1"></i><div class="font-mono font-bold text-sm">string</div><div class="text-xs text-surface-600 mt-1">'/path', 'UTF8'</div></div>
+          <div class="bg-indigo-50 border border-indigo-200 rounded-xl p-4 text-center"><i data-lucide="list" class="w-6 h-6 text-indigo-600 mx-auto mb-1"></i><div class="font-mono font-bold text-sm">enum</div><div class="text-xs text-surface-600 mt-1">replica, logical, minimal</div></div>
+        </div>
+
+        <div class="mt-4 p-4 bg-pg-50 border border-pg-200 rounded-xl text-sm">
+          <strong class="lang-ar">وحدات الأحجام:</strong>
+          <strong class="lang-en">Size units:</strong>
+          <span class="font-mono" dir="ltr">kB, MB, GB, TB</span>
+          <span class="mx-2">·</span>
+          <strong class="lang-ar">وحدات الوقت:</strong>
+          <strong class="lang-en">Time units:</strong>
+          <span class="font-mono" dir="ltr">ms, s, min, h, d</span>
         </div>
       </div>
     </section>
 
     <section>
-      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">الباراميترز الأساسية</span><span class="lang-en">Essential Parameters</span></h2>
-      <div class="space-y-4">
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">مستويات النطاق (Context)</span><span class="lang-en">Parameter Contexts (Scope)</span></h2>
+      <div class="bg-white rounded-2xl border border-surface-200 overflow-hidden">
+        <table class="w-full text-sm">
+          <thead class="bg-indigo-600 text-white">
+            <tr><th class="p-3 text-left">Context</th><th class="p-3 text-right lang-ar">يتطلب</th><th class="p-3 text-left lang-en">Requires</th><th class="p-3 text-right lang-ar">أمثلة</th><th class="p-3 text-left lang-en">Examples</th></tr>
+          </thead>
+          <tbody class="divide-y divide-surface-100">
+            <tr><td class="p-3 font-mono text-indigo-700 font-bold">postmaster</td><td class="p-3 lang-ar">إعادة تشغيل</td><td class="p-3 lang-en">Server restart</td><td class="p-3 font-mono text-xs" colspan="2">shared_buffers, max_connections, port</td></tr>
+            <tr class="bg-surface-50/50"><td class="p-3 font-mono text-indigo-700 font-bold">sighup</td><td class="p-3 lang-ar">reload فقط</td><td class="p-3 lang-en">Just reload</td><td class="p-3 font-mono text-xs" colspan="2">work_mem, log_*, autovacuum_*</td></tr>
+            <tr><td class="p-3 font-mono text-indigo-700 font-bold">superuser</td><td class="p-3 lang-ar">SET من superuser</td><td class="p-3 lang-en">SET by superuser</td><td class="p-3 font-mono text-xs" colspan="2">log_min_duration_statement</td></tr>
+            <tr class="bg-surface-50/50"><td class="p-3 font-mono text-indigo-700 font-bold">user</td><td class="p-3 lang-ar">SET من أي مستخدم</td><td class="p-3 lang-en">SET by any user</td><td class="p-3 font-mono text-xs" colspan="2">work_mem, search_path, statement_timeout</td></tr>
+            <tr><td class="p-3 font-mono text-indigo-700 font-bold">internal</td><td class="p-3 lang-ar">compile-time فقط</td><td class="p-3 lang-en">Compile-time only</td><td class="p-3 font-mono text-xs" colspan="2">block_size, max_function_args</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
 
-        <div class="bg-white rounded-2xl border border-surface-200 p-6">
-          <h3 class="font-bold text-lg mb-3 flex items-center gap-2"><i data-lucide="memory-stick" class="w-5 h-5 text-indigo-600"></i><span class="lang-ar">الذاكرة والموارد</span><span class="lang-en">Memory & Resources</span></h3>
-          <div class="overflow-x-auto">
-            <table class="w-full text-sm">
-              <tbody class="divide-y divide-surface-100">
-                <tr><td class="p-2 font-mono text-indigo-700 font-bold">shared_buffers</td><td class="p-2 lang-ar">كمية الذاكرة المشتركة (عادة 25% من RAM)</td><td class="p-2 lang-en">Shared memory size (typically 25% of RAM)</td></tr>
-                <tr><td class="p-2 font-mono text-indigo-700 font-bold">work_mem</td><td class="p-2 lang-ar">ذاكرة الفرز لكل عملية</td><td class="p-2 lang-en">Memory for sort operations per connection</td></tr>
-                <tr><td class="p-2 font-mono text-indigo-700 font-bold">maintenance_work_mem</td><td class="p-2 lang-ar">ذاكرة VACUUM و CREATE INDEX</td><td class="p-2 lang-en">Memory for VACUUM and CREATE INDEX</td></tr>
-                <tr><td class="p-2 font-mono text-indigo-700 font-bold">effective_cache_size</td><td class="p-2 lang-ar">تقدير الـ cache للـ planner</td><td class="p-2 lang-en">Planner's cache size estimate</td></tr>
-                <tr><td class="p-2 font-mono text-indigo-700 font-bold">max_connections</td><td class="p-2 lang-ar">عدد الاتصالات المتزامنة الأقصى</td><td class="p-2 lang-en">Maximum concurrent connections</td></tr>
-              </tbody>
-            </table>
+    <section>
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">الذاكرة — القيم المهمة</span><span class="lang-en">Memory — The Key Settings</span></h2>
+      <div class="bg-white rounded-2xl border border-surface-200 p-6">
+        <div class="space-y-4">
+          <div class="border-b border-surface-100 pb-4">
+            <div class="flex items-start justify-between mb-2"><h4 class="font-mono text-indigo-700 font-bold">shared_buffers</h4><span class="text-xs bg-red-100 text-red-700 px-2 py-0.5 rounded">restart</span></div>
+            <p class="text-sm text-surface-700 mb-2 lang-ar">ذاكرة مشتركة لـ page cache. توصية: <strong>25% من RAM</strong> (لكن لا تزيد عن 8-16 GB حتى مع RAM كبير).</p>
+            <p class="text-sm text-surface-700 mb-2 lang-en">Shared page cache memory. Recommended: <strong>25% of RAM</strong> (but cap at 8-16 GB even with large RAM).</p>
+            <div class="font-mono text-xs bg-surface-50 p-2 rounded" dir="ltr">Default: 128MB &nbsp;·&nbsp; Production: 2GB – 16GB</div>
           </div>
-        </div>
 
-        <div class="bg-white rounded-2xl border border-surface-200 p-6">
-          <h3 class="font-bold text-lg mb-3 flex items-center gap-2"><i data-lucide="file-clock" class="w-5 h-5 text-indigo-600"></i><span class="lang-ar">الـ WAL والنسخ الاحتياطي</span><span class="lang-en">WAL & Backup</span></h3>
-          <div class="overflow-x-auto">
-            <table class="w-full text-sm">
-              <tbody class="divide-y divide-surface-100">
-                <tr><td class="p-2 font-mono text-indigo-700 font-bold">wal_level</td><td class="p-2 lang-ar">مستوى التفاصيل (minimal/replica/logical)</td><td class="p-2 lang-en">Detail level (minimal/replica/logical)</td></tr>
-                <tr><td class="p-2 font-mono text-indigo-700 font-bold">archive_mode</td><td class="p-2 lang-ar">تفعيل أرشفة الـ WAL</td><td class="p-2 lang-en">Enable WAL archiving</td></tr>
-                <tr><td class="p-2 font-mono text-indigo-700 font-bold">archive_command</td><td class="p-2 lang-ar">أمر نسخ ملفات WAL</td><td class="p-2 lang-en">Command to archive WAL files</td></tr>
-                <tr><td class="p-2 font-mono text-indigo-700 font-bold">checkpoint_timeout</td><td class="p-2 lang-ar">المدة بين checkpoints</td><td class="p-2 lang-en">Interval between checkpoints</td></tr>
-              </tbody>
-            </table>
+          <div class="border-b border-surface-100 pb-4">
+            <div class="flex items-start justify-between mb-2"><h4 class="font-mono text-indigo-700 font-bold">work_mem</h4><span class="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded">reload</span></div>
+            <p class="text-sm text-surface-700 mb-2 lang-ar">ذاكرة لكل <strong>sort/hash/group</strong> لكل backend. تعددت في استعلام واحد! استعلام بـ 3 sorts = 3 × work_mem.</p>
+            <p class="text-sm text-surface-700 mb-2 lang-en">Memory per <strong>sort/hash/group</strong> per backend. Multiplies within one query! Query with 3 sorts = 3 × work_mem.</p>
+            <div class="font-mono text-xs bg-surface-50 p-2 rounded" dir="ltr">Default: 4MB &nbsp;·&nbsp; Production: 16-64MB</div>
           </div>
-        </div>
 
-        <div class="bg-white rounded-2xl border border-surface-200 p-6">
-          <h3 class="font-bold text-lg mb-3 flex items-center gap-2"><i data-lucide="file-text" class="w-5 h-5 text-indigo-600"></i><span class="lang-ar">السجلات (Logging)</span><span class="lang-en">Logging</span></h3>
-          <div class="overflow-x-auto">
-            <table class="w-full text-sm">
-              <tbody class="divide-y divide-surface-100">
-                <tr><td class="p-2 font-mono text-indigo-700 font-bold">logging_collector</td><td class="p-2 lang-ar">تفعيل جامع السجلات</td><td class="p-2 lang-en">Enable log collector</td></tr>
-                <tr><td class="p-2 font-mono text-indigo-700 font-bold">log_directory</td><td class="p-2 lang-ar">مسار ملفات السجل</td><td class="p-2 lang-en">Log files directory</td></tr>
-                <tr><td class="p-2 font-mono text-indigo-700 font-bold">log_statement</td><td class="p-2 lang-ar">نوع الاستعلامات المسجلة (none/ddl/mod/all)</td><td class="p-2 lang-en">Statements to log</td></tr>
-                <tr><td class="p-2 font-mono text-indigo-700 font-bold">log_min_duration_statement</td><td class="p-2 lang-ar">سجل الاستعلامات الأبطأ من كذا ms</td><td class="p-2 lang-en">Log slow queries threshold</td></tr>
-              </tbody>
-            </table>
+          <div class="border-b border-surface-100 pb-4">
+            <div class="flex items-start justify-between mb-2"><h4 class="font-mono text-indigo-700 font-bold">maintenance_work_mem</h4><span class="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded">reload</span></div>
+            <p class="text-sm text-surface-700 mb-2 lang-ar">لـ VACUUM، CREATE INDEX، ALTER TABLE. يمكن أن يكون كبيراً — عملية واحدة فقط.</p>
+            <p class="text-sm text-surface-700 mb-2 lang-en">For VACUUM, CREATE INDEX, ALTER TABLE. Can be large — only one operation at a time.</p>
+            <div class="font-mono text-xs bg-surface-50 p-2 rounded" dir="ltr">Default: 64MB &nbsp;·&nbsp; Production: 512MB – 2GB</div>
+          </div>
+
+          <div class="border-b border-surface-100 pb-4">
+            <div class="flex items-start justify-between mb-2"><h4 class="font-mono text-indigo-700 font-bold">effective_cache_size</h4><span class="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded">reload</span></div>
+            <p class="text-sm text-surface-700 mb-2 lang-ar"><strong>تقدير</strong> للـ planner (لا يحجز ذاكرة). كم من الـ cache متاح؟ توصية: <strong>50-75% من RAM</strong>.</p>
+            <p class="text-sm text-surface-700 mb-2 lang-en"><strong>Hint</strong> for the planner (not actual allocation). Recommendation: <strong>50-75% of RAM</strong>.</p>
+            <div class="font-mono text-xs bg-surface-50 p-2 rounded" dir="ltr">Default: 4GB &nbsp;·&nbsp; Production: 50-75% of RAM</div>
+          </div>
+
+          <div>
+            <div class="flex items-start justify-between mb-2"><h4 class="font-mono text-indigo-700 font-bold">max_connections</h4><span class="text-xs bg-red-100 text-red-700 px-2 py-0.5 rounded">restart</span></div>
+            <p class="text-sm text-surface-700 mb-2 lang-ar">عدد الاتصالات المتزامنة. <strong>لا تبالغ!</strong> كل اتصال = عملية. استخدم PgBouncer بدلاً من رفع الرقم.</p>
+            <p class="text-sm text-surface-700 mb-2 lang-en">Concurrent connections. <strong>Don't overdo it!</strong> Each connection = one process. Use PgBouncer instead of increasing.</p>
+            <div class="font-mono text-xs bg-surface-50 p-2 rounded" dir="ltr">Default: 100 &nbsp;·&nbsp; Production: 100-300 (use pooler!)</div>
           </div>
         </div>
       </div>
     </section>
 
     <section>
-      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">عرض وتغيير الباراميترز</span><span class="lang-en">Viewing & Changing Parameters</span></h2>
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">WAL والنسخ الاحتياطي</span><span class="lang-en">WAL & Backup Settings</span></h2>
+      <div class="bg-white rounded-2xl border border-surface-200 p-6">
+        <div class="relative group mb-4" dir="ltr">
+          <button onclick="copyCode(this)" class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 bg-surface-700 text-white text-xs px-2.5 py-1.5 rounded-lg z-10">Copy</button>
+<pre class="!bg-surface-900 !rounded-xl !p-5"><code class="language-bash"># WAL level determines what's logged
+wal_level = replica          # minimal | replica | logical
+# minimal = only crash recovery
+# replica = + physical replication and PITR
+# logical = + logical replication (pub/sub)
+
+# Archive for PITR
+archive_mode = on
+archive_command = 'test ! -f /archive/%f &amp;&amp; cp %p /archive/%f'
+
+# Checkpoint tuning
+checkpoint_timeout = 15min   # default 5min — longer reduces I/O
+max_wal_size = 4GB           # soft limit before forcing checkpoint
+min_wal_size = 1GB           # keep this many for reuse
+checkpoint_completion_target = 0.9  # spread I/O over 90% of timeout
+
+# WAL writer
+wal_writer_delay = 200ms     # how often to flush WAL
+synchronous_commit = on      # off = faster but risk data loss on crash</code></pre>
+        </div>
+
+        <div class="flex gap-3 p-4 bg-amber-50 border border-amber-200 rounded-xl">
+          <i data-lucide="zap" class="w-5 h-5 text-amber-600 shrink-0 mt-0.5"></i>
+          <div class="text-sm">
+            <strong class="text-amber-800 lang-ar">حيلة أداء:</strong>
+            <strong class="text-amber-800 lang-en">Performance trick:</strong>
+            <span class="text-amber-700 lang-ar"> <span dir="ltr" class="font-mono">synchronous_commit = off</span> يجعل COMMIT أسرع بكثير، لكن قد تفقد آخر ~200ms من التغييرات في حال crash. مناسب لبعض الأحمال (analytics) وليس للأخرى (payments).</span>
+            <span class="text-amber-700 lang-en"> <span class="font-mono">synchronous_commit = off</span> makes COMMIT much faster but risks losing last ~200ms on crash. OK for some workloads (analytics), not others (payments).</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">Logging — التسجيل الفعّال</span><span class="lang-en">Logging — Effective Logs</span></h2>
       <div class="bg-white rounded-2xl border border-surface-200 p-6">
         <div class="relative group" dir="ltr">
           <button onclick="copyCode(this)" class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 bg-surface-700 text-white text-xs px-2.5 py-1.5 rounded-lg z-10">Copy</button>
-<pre class="!bg-surface-900 !rounded-xl !p-5"><code class="language-sql">-- View a single parameter
-SHOW shared_buffers;
+<pre class="!bg-surface-900 !rounded-xl !p-5"><code class="language-bash">logging_collector = on
+log_directory = 'log'
+log_filename = 'postgresql-%Y-%m-%d_%H%M%S.log'
+log_rotation_age = 1d
+log_rotation_size = 100MB
 
--- View all parameters
-SHOW ALL;
+# What to log
+log_line_prefix = '%t [%p]: user=%u,db=%d,app=%a,client=%h '
+log_statement = 'ddl'            # none | ddl | mod | all
+log_duration = off
+log_min_duration_statement = 1000   # log queries &gt;1s
+log_checkpoints = on
+log_connections = on
+log_disconnections = on
+log_lock_waits = on
+log_temp_files = 0               # log any temp file creation
+log_autovacuum_min_duration = 0  # log all autovacuum runs
 
--- View via system catalog (more details)
-SELECT name, setting, unit, context, short_desc
-FROM pg_settings
-WHERE name LIKE 'wal%';
-
--- Change parameter at session level
-SET work_mem = '16MB';
-
--- Change at cluster level (persistent)
-ALTER SYSTEM SET shared_buffers = '2GB';
-
--- Reload to apply without restart
-SELECT pg_reload_conf();
-
--- Check if restart is needed
-SELECT name, setting, pending_restart
-FROM pg_settings
-WHERE pending_restart = true;</code></pre>
+# Error log levels
+log_min_error_statement = error
+client_min_messages = warning</code></pre>
         </div>
 
-        <div class="mt-4 flex gap-3 p-4 bg-amber-50 border border-amber-200 rounded-xl">
-          <i data-lucide="alert-triangle" class="w-5 h-5 text-amber-600 shrink-0 mt-0.5"></i>
-          <div>
-            <strong class="text-amber-800 lang-ar">تنبيه:</strong>
-            <strong class="text-amber-800 lang-en">Warning:</strong>
-            <span class="text-amber-700 lang-ar"> بعض الباراميترز (مثل <span dir="ltr" class="font-mono">shared_buffers</span>) تتطلب إعادة تشغيل السيرفر لتفعيل التغيير.</span>
-            <span class="text-amber-700 lang-en"> Some parameters (like <span class="font-mono">shared_buffers</span>) require server restart to take effect.</span>
+        <div class="mt-4 text-sm space-y-1">
+          <p class="lang-ar"><strong>نصيحة:</strong> <span dir="ltr" class="font-mono">log_min_duration_statement = 1000</span> يسجل فقط الاستعلامات البطيئة. مفيد جداً لاستكشاف الأخطاء دون ضغط هائل على الـ log.</p>
+          <p class="lang-en"><strong>Tip:</strong> <span class="font-mono">log_min_duration_statement = 1000</span> logs only slow queries — great for troubleshooting without log overload.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">SET vs ALTER SYSTEM vs ALTER DATABASE/ROLE</span><span class="lang-en">SET vs ALTER SYSTEM vs ALTER DATABASE/ROLE</span></h2>
+      <div class="bg-white rounded-2xl border border-surface-200 p-6">
+        <div class="relative group" dir="ltr">
+          <button onclick="copyCode(this)" class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 bg-surface-700 text-white text-xs px-2.5 py-1.5 rounded-lg z-10">Copy</button>
+<pre class="!bg-surface-900 !rounded-xl !p-5"><code class="language-sql">-- View current value
+SHOW work_mem;
+
+-- View all with details
+SELECT name, setting, unit, context, pending_restart
+FROM pg_settings
+WHERE name LIKE '%wal%';
+
+-- Change for CURRENT SESSION only
+SET work_mem = '64MB';
+
+-- Change for CURRENT TRANSACTION only
+BEGIN;
+  SET LOCAL work_mem = '256MB';  -- reverts after COMMIT
+  -- heavy query here
+COMMIT;
+
+-- Change GLOBALLY (persists, writes to postgresql.auto.conf)
+ALTER SYSTEM SET shared_buffers = '2GB';
+SELECT pg_reload_conf();  -- if reload-able param
+-- ... or restart if postmaster-level
+
+-- Reset to default
+ALTER SYSTEM RESET shared_buffers;
+ALTER SYSTEM RESET ALL;
+
+-- Per-database default
+ALTER DATABASE sales SET work_mem = '128MB';
+
+-- Per-role default (applies whenever alice connects)
+ALTER ROLE alice SET search_path TO sales, public;
+
+-- Check what requires restart
+SELECT name, setting FROM pg_settings WHERE pending_restart;</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">تنظيم الإعدادات بـ includes</span><span class="lang-en">Organizing with Includes</span></h2>
+      <div class="bg-white rounded-2xl border border-surface-200 p-6">
+        <p class="text-surface-700 mb-4 lang-ar">لملف postgresql.conf طويل، قسّمه إلى ملفات صغيرة واستخدم <span dir="ltr" class="font-mono">include</span>:</p>
+        <p class="text-surface-700 mb-4 lang-en">For a long postgresql.conf, split into smaller files using <span class="font-mono">include</span>:</p>
+        <div class="relative group" dir="ltr">
+          <button onclick="copyCode(this)" class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 bg-surface-700 text-white text-xs px-2.5 py-1.5 rounded-lg z-10">Copy</button>
+<pre class="!bg-surface-900 !rounded-xl !p-5"><code class="language-bash"># In postgresql.conf:
+include = 'conf.d/memory.conf'
+include_dir = 'conf.d'               # all .conf files in dir
+include_if_exists = 'local.conf'     # silent if missing
+
+# conf.d/memory.conf:
+shared_buffers = 2GB
+work_mem = 32MB
+
+# conf.d/logging.conf:
+logging_collector = on
+log_filename = 'postgresql-%a.log'</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUIZ -->
+    <section>
+      <div class="mb-6">
+        <span class="text-sm font-bold text-indigo-600 uppercase tracking-wider"><span class="lang-ar">اختبر فهمك</span><span class="lang-en">Test Your Knowledge</span></span>
+        <h2 class="text-3xl font-bold text-surface-900 mt-2 mb-3"><span class="lang-ar">كويز الوحدة ٦ 🎯</span><span class="lang-en">Module 6 Quiz 🎯</span></h2>
+      </div>
+
+      <div id="quiz" class="space-y-4">
+        <div class="quiz-card bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="flex items-center gap-2 mb-3"><span class="w-7 h-7 rounded-full bg-indigo-600 text-white font-bold text-sm flex items-center justify-center">1</span></div>
+          <p class="font-semibold mb-4 lang-ar">أي ملف يكتب فيه ALTER SYSTEM؟</p>
+          <p class="font-semibold mb-4 lang-en">Which file does ALTER SYSTEM write to?</p>
+          <div class="space-y-2">
+            <button onclick="pick(this,1)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-indigo-300"><span class="font-mono">postgresql.conf</span></button>
+            <button onclick="pick(this,1)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-indigo-300" data-correct="true"><span class="font-mono">postgresql.auto.conf</span></button>
+            <button onclick="pick(this,1)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-indigo-300"><span class="font-mono">pg_hba.conf</span></button>
           </div>
+          <div class="feedback hidden mt-3 p-3 rounded-xl text-sm"></div>
+        </div>
+
+        <div class="quiz-card bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="flex items-center gap-2 mb-3"><span class="w-7 h-7 rounded-full bg-indigo-600 text-white font-bold text-sm flex items-center justify-center">2</span></div>
+          <p class="font-semibold mb-4 lang-ar">تغيير shared_buffers يتطلب:</p>
+          <p class="font-semibold mb-4 lang-en">Changing shared_buffers requires:</p>
+          <div class="space-y-2">
+            <button onclick="pick(this,2)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-indigo-300"><span class="lang-ar">لا شيء — يسري فوراً</span><span class="lang-en">Nothing — takes effect immediately</span></button>
+            <button onclick="pick(this,2)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-indigo-300"><span class="lang-ar">reload فقط</span><span class="lang-en">Reload only</span></button>
+            <button onclick="pick(this,2)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-indigo-300" data-correct="true"><span class="lang-ar">إعادة تشغيل السيرفر</span><span class="lang-en">Server restart</span></button>
+          </div>
+          <div class="feedback hidden mt-3 p-3 rounded-xl text-sm"></div>
+        </div>
+
+        <div class="quiz-card bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="flex items-center gap-2 mb-3"><span class="w-7 h-7 rounded-full bg-indigo-600 text-white font-bold text-sm flex items-center justify-center">3</span></div>
+          <p class="font-semibold mb-4 lang-ar">ما التوصية لـ shared_buffers؟</p>
+          <p class="font-semibold mb-4 lang-en">Recommended shared_buffers setting?</p>
+          <div class="space-y-2">
+            <button onclick="pick(this,3)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-indigo-300"><span class="lang-ar">5% من RAM</span><span class="lang-en">5% of RAM</span></button>
+            <button onclick="pick(this,3)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-indigo-300" data-correct="true"><span class="lang-ar">~25% من RAM</span><span class="lang-en">~25% of RAM</span></button>
+            <button onclick="pick(this,3)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-indigo-300"><span class="lang-ar">80-90% من RAM</span><span class="lang-en">80-90% of RAM</span></button>
+          </div>
+          <div class="feedback hidden mt-3 p-3 rounded-xl text-sm"></div>
+        </div>
+
+        <div class="quiz-card bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="flex items-center gap-2 mb-3"><span class="w-7 h-7 rounded-full bg-indigo-600 text-white font-bold text-sm flex items-center justify-center">4</span></div>
+          <p class="font-semibold mb-4 lang-ar">ماذا يفعل SET LOCAL داخل transaction؟</p>
+          <p class="font-semibold mb-4 lang-en">What does SET LOCAL do inside a transaction?</p>
+          <div class="space-y-2">
+            <button onclick="pick(this,4)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-indigo-300"><span class="lang-ar">يغير الإعداد للجلسة كلها</span><span class="lang-en">Changes setting for the whole session</span></button>
+            <button onclick="pick(this,4)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-indigo-300" data-correct="true"><span class="lang-ar">يغير داخل الـ transaction فقط ويُلغى بعد COMMIT/ROLLBACK</span><span class="lang-en">Changes only inside transaction; reverts after COMMIT/ROLLBACK</span></button>
+            <button onclick="pick(this,4)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-indigo-300"><span class="lang-ar">يغير عالمياً</span><span class="lang-en">Changes globally</span></button>
+          </div>
+          <div class="feedback hidden mt-3 p-3 rounded-xl text-sm"></div>
+        </div>
+
+        <div class="quiz-card bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="flex items-center gap-2 mb-3"><span class="w-7 h-7 rounded-full bg-indigo-600 text-white font-bold text-sm flex items-center justify-center">5</span></div>
+          <p class="font-semibold mb-4 lang-ar">ما wal_level المطلوب للـ logical replication؟</p>
+          <p class="font-semibold mb-4 lang-en">Required wal_level for logical replication?</p>
+          <div class="space-y-2">
+            <button onclick="pick(this,5)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-indigo-300"><span class="font-mono">minimal</span></button>
+            <button onclick="pick(this,5)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-indigo-300"><span class="font-mono">replica</span></button>
+            <button onclick="pick(this,5)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-indigo-300" data-correct="true"><span class="font-mono">logical</span></button>
+          </div>
+          <div class="feedback hidden mt-3 p-3 rounded-xl text-sm"></div>
+        </div>
+
+        <div class="quiz-card bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="flex items-center gap-2 mb-3"><span class="w-7 h-7 rounded-full bg-indigo-600 text-white font-bold text-sm flex items-center justify-center">6</span></div>
+          <p class="font-semibold mb-4 lang-ar">ما الخطر من رفع max_connections لأرقام عالية جداً؟</p>
+          <p class="font-semibold mb-4 lang-en">What's the danger of setting max_connections very high?</p>
+          <div class="space-y-2">
+            <button onclick="pick(this,6)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-indigo-300" data-correct="true"><span class="lang-ar">كل اتصال = عملية = استهلاك ذاكرة كبير</span><span class="lang-en">Each connection = process = big memory use</span></button>
+            <button onclick="pick(this,6)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-indigo-300"><span class="lang-ar">لا خطر أبداً</span><span class="lang-en">No danger at all</span></button>
+            <button onclick="pick(this,6)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-indigo-300"><span class="lang-ar">قد يتسبب في عطل WAL</span><span class="lang-en">May cause WAL failure</span></button>
+          </div>
+          <div class="feedback hidden mt-3 p-3 rounded-xl text-sm"></div>
+        </div>
+
+        <div class="quiz-card bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="flex items-center gap-2 mb-3"><span class="w-7 h-7 rounded-full bg-indigo-600 text-white font-bold text-sm flex items-center justify-center">7</span></div>
+          <p class="font-semibold mb-4 lang-ar">للعثور على الاستعلامات الأبطأ من ثانية واحدة، أي إعداد تستخدم؟</p>
+          <p class="font-semibold mb-4 lang-en">To find queries slower than 1 second, which setting?</p>
+          <div class="space-y-2">
+            <button onclick="pick(this,7)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-indigo-300"><span class="font-mono">log_statement = 'all'</span></button>
+            <button onclick="pick(this,7)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-indigo-300" data-correct="true"><span class="font-mono">log_min_duration_statement = 1000</span></button>
+            <button onclick="pick(this,7)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-indigo-300"><span class="font-mono">log_duration = on</span></button>
+          </div>
+          <div class="feedback hidden mt-3 p-3 rounded-xl text-sm"></div>
+        </div>
+
+        <div id="quiz-result" class="hidden bg-gradient-to-br from-indigo-600 to-indigo-800 text-white rounded-2xl p-6 text-center">
+          <i data-lucide="award" class="w-12 h-12 mx-auto mb-3"></i>
+          <h3 class="text-2xl font-bold mb-2"><span class="lang-ar">نتيجتك</span><span class="lang-en">Your Score</span></h3>
+          <div class="text-5xl font-bold my-3"><span id="score">0</span><span class="text-2xl opacity-70">/7</span></div>
+          <p id="result-msg" class="text-indigo-100"></p>
+          <button onclick="resetQuiz()" class="mt-4 bg-white text-indigo-700 font-semibold px-6 py-2 rounded-lg hover:bg-indigo-50"><span class="lang-ar">إعادة المحاولة</span><span class="lang-en">Try Again</span></button>
         </div>
       </div>
     </section>
@@ -170,12 +408,12 @@ WHERE pending_restart = true;</code></pre>
       <div class="bg-gradient-to-br from-indigo-600 via-indigo-700 to-indigo-900 text-white rounded-2xl p-6 md:p-8 shadow-xl">
         <div class="flex items-center gap-3 mb-6"><div class="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center"><i data-lucide="bookmark-check" class="w-6 h-6"></i></div><h2 class="text-2xl font-bold"><span class="lang-ar">ملخص الوحدة</span><span class="lang-en">Module Summary</span></h2></div>
         <ul class="grid grid-cols-1 md:grid-cols-2 gap-3">
-          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-indigo-300 shrink-0 mt-0.5"></i><span class="lang-ar">postgresql.conf هو الملف الرئيسي للتهيئة</span><span class="lang-en">postgresql.conf is the main config file</span></li>
-          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-indigo-300 shrink-0 mt-0.5"></i><span class="lang-ar">5 أنواع من الباراميترز</span><span class="lang-en">5 parameter types</span></li>
-          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-indigo-300 shrink-0 mt-0.5"></i><span class="lang-ar">ALTER SYSTEM لتغيير دائم</span><span class="lang-en">ALTER SYSTEM for persistent change</span></li>
-          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-indigo-300 shrink-0 mt-0.5"></i><span class="lang-ar">SET للتغيير في الجلسة فقط</span><span class="lang-en">SET for session-only change</span></li>
-          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-indigo-300 shrink-0 mt-0.5"></i><span class="lang-ar">pg_settings يعطي تفاصيل كل باراميتر</span><span class="lang-en">pg_settings gives parameter details</span></li>
-          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-indigo-300 shrink-0 mt-0.5"></i><span class="lang-ar">بعض التغييرات تحتاج restart</span><span class="lang-en">Some changes need restart</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-indigo-300 shrink-0 mt-0.5"></i><span class="lang-ar">٣ ملفات config رئيسية</span><span class="lang-en">3 main config files</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-indigo-300 shrink-0 mt-0.5"></i><span class="lang-ar">٥ أنواع من الباراميترز</span><span class="lang-en">5 parameter types</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-indigo-300 shrink-0 mt-0.5"></i><span class="lang-ar">Context يحدد متى يسري التغيير</span><span class="lang-en">Context defines when change applies</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-indigo-300 shrink-0 mt-0.5"></i><span class="lang-ar">shared_buffers ~25% من RAM</span><span class="lang-en">shared_buffers ~25% of RAM</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-indigo-300 shrink-0 mt-0.5"></i><span class="lang-ar">ALTER SYSTEM للتغيير الدائم</span><span class="lang-en">ALTER SYSTEM for persistent change</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-indigo-300 shrink-0 mt-0.5"></i><span class="lang-ar">log_min_duration_statement للبطيء</span><span class="lang-en">log_min_duration_statement for slow queries</span></li>
         </ul>
       </div>
     </section>
@@ -197,6 +435,10 @@ WHERE pending_restart = true;</code></pre>
   <script>
     function setLang(lang){document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';localStorage.setItem('pgCourseLang',lang);document.querySelectorAll('.lang-btn').forEach(b=>{b.classList.remove('bg-indigo-600','text-white','shadow-md');b.classList.add('text-surface-600','hover:bg-surface-100');});const a=document.getElementById('btn-'+lang);a.classList.add('bg-indigo-600','text-white','shadow-md');a.classList.remove('text-surface-600','hover:bg-surface-100');}
     function copyCode(btn){const c=btn.nextElementSibling.querySelector('code').textContent;navigator.clipboard.writeText(c);btn.textContent='✓';setTimeout(()=>btn.textContent='Copy',2000);}
+    const total=7;const answers={};
+    function pick(btn,q){const card=btn.closest('.quiz-card');card.querySelectorAll('.quiz-opt').forEach(o=>o.disabled=true);const correct=btn.dataset.correct==='true';btn.classList.add(correct?'correct':'wrong');if(!correct)card.querySelector('[data-correct="true"]').classList.add('correct');const fb=card.querySelector('.feedback');fb.classList.remove('hidden');const lang=document.documentElement.lang;fb.className='feedback mt-3 p-3 rounded-xl text-sm '+(correct?'bg-green-50 text-green-800 border border-green-200':'bg-red-50 text-red-800 border border-red-200');fb.innerHTML=correct?(lang==='ar'?'✓ ممتاز!':'✓ Correct!'):(lang==='ar'?'✗ خطأ — الإجابة بالأخضر':'✗ Wrong — answer in green');answers[q]=correct;if(Object.keys(answers).length===total)showResult();}
+    function showResult(){const s=Object.values(answers).filter(Boolean).length;document.getElementById('score').textContent=s;const m=document.getElementById('result-msg');const l=document.documentElement.lang;m.textContent=s===total?(l==='ar'?'🎉 إتقان كامل!':'🎉 Perfect!'):s>=Math.ceil(total*0.7)?(l==='ar'?'👍 ممتاز!':'👍 Great!'):(l==='ar'?'📚 راجع':'📚 Review');const r=document.getElementById('quiz-result');r.classList.remove('hidden');r.scrollIntoView({behavior:'smooth',block:'center'});}
+    function resetQuiz(){Object.keys(answers).forEach(k=>delete answers[k]);document.querySelectorAll('.quiz-opt').forEach(b=>{b.disabled=false;b.classList.remove('correct','wrong');});document.querySelectorAll('.feedback').forEach(f=>f.classList.add('hidden'));document.getElementById('quiz-result').classList.add('hidden');document.getElementById('quiz').scrollIntoView({behavior:'smooth',block:'start'});}
     setLang(localStorage.getItem('pgCourseLang')||'ar');lucide.createIcons();Prism.highlightAll();
   </script>
 </body>

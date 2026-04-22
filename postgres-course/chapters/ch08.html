@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>الوحدة ٨: إنشاء وإدارة كائنات قاعدة البيانات | EDB PostgreSQL v18</title>
+  <title>الوحدة ٨: إنشاء وإدارة الكائنات | EDB PostgreSQL v18</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>tailwind.config={theme:{extend:{fontFamily:{arabic:['IBM Plex Sans Arabic','sans-serif'],mono:['JetBrains Mono','monospace']},colors:{surface:{50:'#f8fafc',100:'#f1f5f9',200:'#e2e8f0',500:'#64748b',600:'#475569',700:'#334155',800:'#1e293b',900:'#0f172a'}}}}}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,7 +12,7 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-sql.min.js"></script>
-  <style>body{font-family:'IBM Plex Sans Arabic',sans-serif}html[lang="ar"] .lang-en{display:none!important}html[lang="en"] .lang-ar{display:none!important}pre[class*="language-"]{border-radius:.75rem;font-size:.875rem;direction:ltr}code[class*="language-"]{font-family:'JetBrains Mono',monospace}</style>
+  <style>body{font-family:'IBM Plex Sans Arabic',sans-serif}html[lang="ar"] .lang-en{display:none!important}html[lang="en"] .lang-ar{display:none!important}pre[class*="language-"]{border-radius:.75rem;font-size:.875rem;direction:ltr}code[class*="language-"]{font-family:'JetBrains Mono',monospace}.quiz-opt.correct{border-color:#059669!important;background:#ecfdf5!important}.quiz-opt.wrong{border-color:#dc2626!important;background:#fef2f2!important}.quiz-opt:disabled{cursor:not-allowed}</style>
 </head>
 <body class="bg-surface-50 text-surface-800 antialiased min-h-screen">
 
@@ -33,25 +33,24 @@
         <span>·</span><span class="font-mono">p. 141–180</span><span>·</span>
         <span class="lang-ar">٤٠ صفحة</span><span class="lang-en">40 pages</span>
       </div>
-      <h1 class="text-3xl md:text-5xl font-bold mb-4"><span class="lang-ar">إنشاء وإدارة كائنات قاعدة البيانات</span><span class="lang-en">Creating & Managing Database Objects</span></h1>
-      <p class="text-lg text-cyan-100 max-w-3xl lang-ar">هرمية الكائنات، المستخدمين، الأدوار، Tablespaces والـ Schemas.</p>
-      <p class="text-lg text-cyan-100 max-w-3xl lang-en">Object hierarchy, users, roles, tablespaces, and schemas.</p>
+      <h1 class="text-3xl md:text-5xl font-bold mb-4"><span class="lang-ar">إنشاء وإدارة كائنات قاعدة البيانات</span><span class="lang-en">Creating & Managing DB Objects</span></h1>
+      <p class="text-lg text-cyan-100 max-w-3xl lang-ar">هرمية الكائنات، الأدوار، Tablespaces، Schemas، GRANT/REVOKE — ركائز تنظيم قاعدة البيانات.</p>
+      <p class="text-lg text-cyan-100 max-w-3xl lang-en">Object hierarchy, roles, tablespaces, schemas, GRANT/REVOKE — the foundation of DB organization.</p>
     </div>
   </header>
 
   <section class="max-w-6xl mx-auto px-4 sm:px-6 py-10">
     <div class="bg-white rounded-2xl shadow-sm border border-surface-200 p-6 md:p-8">
-      <div class="flex items-center gap-3 mb-6">
-        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500 to-cyan-700 flex items-center justify-center text-white"><i data-lucide="layers" class="w-6 h-6"></i></div>
-        <h2 class="text-2xl font-bold"><span class="lang-ar">أهداف الوحدة</span><span class="lang-en">Module Objectives</span></h2>
-      </div>
+      <div class="flex items-center gap-3 mb-6"><div class="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500 to-cyan-700 flex items-center justify-center text-white"><i data-lucide="layers" class="w-6 h-6"></i></div><h2 class="text-2xl font-bold"><span class="lang-ar">أهداف الوحدة</span><span class="lang-en">Module Objectives</span></h2></div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
-        <div class="flex gap-2 p-3 rounded-xl bg-cyan-50 border border-cyan-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-cyan-600 shrink-0"></i><span class="lang-ar">هرمية الكائنات</span><span class="lang-en">Object Hierarchy</span></div>
-        <div class="flex gap-2 p-3 rounded-xl bg-cyan-50 border border-cyan-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-cyan-600 shrink-0"></i><span class="lang-ar">المستخدمون والأدوار</span><span class="lang-en">Users & Roles</span></div>
-        <div class="flex gap-2 p-3 rounded-xl bg-cyan-50 border border-cyan-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-cyan-600 shrink-0"></i><span class="lang-ar">Tablespaces</span><span class="lang-en">Tablespaces</span></div>
-        <div class="flex gap-2 p-3 rounded-xl bg-cyan-50 border border-cyan-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-cyan-600 shrink-0"></i><span class="lang-ar">قواعد البيانات</span><span class="lang-en">Databases</span></div>
-        <div class="flex gap-2 p-3 rounded-xl bg-cyan-50 border border-cyan-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-cyan-600 shrink-0"></i><span class="lang-ar">التحكم بالوصول</span><span class="lang-en">Access Control</span></div>
-        <div class="flex gap-2 p-3 rounded-xl bg-cyan-50 border border-cyan-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-cyan-600 shrink-0"></i><span class="lang-ar">إنشاء Schemas و search_path</span><span class="lang-en">Creating Schemas & search_path</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-cyan-50 border border-cyan-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-cyan-600 shrink-0"></i><span class="lang-ar">هرمية الكائنات الكاملة</span><span class="lang-en">Complete object hierarchy</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-cyan-50 border border-cyan-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-cyan-600 shrink-0"></i><span class="lang-ar">Roles vs Users vs Groups</span><span class="lang-en">Roles vs Users vs Groups</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-cyan-50 border border-cyan-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-cyan-600 shrink-0"></i><span class="lang-ar">Tablespaces للتوزيع</span><span class="lang-en">Tablespaces for distribution</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-cyan-50 border border-cyan-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-cyan-600 shrink-0"></i><span class="lang-ar">CREATE / DROP DATABASE</span><span class="lang-en">CREATE / DROP DATABASE</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-cyan-50 border border-cyan-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-cyan-600 shrink-0"></i><span class="lang-ar">Schemas و search_path</span><span class="lang-en">Schemas & search_path</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-cyan-50 border border-cyan-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-cyan-600 shrink-0"></i><span class="lang-ar">GRANT / REVOKE والصلاحيات</span><span class="lang-en">GRANT/REVOKE & privileges</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-cyan-50 border border-cyan-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-cyan-600 shrink-0"></i><span class="lang-ar">Default privileges</span><span class="lang-en">Default privileges</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-cyan-50 border border-cyan-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-cyan-600 shrink-0"></i><span class="lang-ar">أفضل ممارسات الأمان</span><span class="lang-en">Security best practices</span></div>
       </div>
     </div>
   </section>
@@ -59,170 +58,393 @@
   <main class="max-w-6xl mx-auto px-4 sm:px-6 pb-12 space-y-12">
 
     <section>
-      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">هرمية الكائنات</span><span class="lang-en">Object Hierarchy</span></h2>
-      <div class="bg-white rounded-2xl border border-surface-200 p-6">
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">الهرمية الكاملة</span><span class="lang-en">The Full Hierarchy</span></h2>
+      <div class="bg-white rounded-2xl border border-surface-200 p-6 md:p-8">
         <div class="bg-gradient-to-b from-surface-50 to-white rounded-xl p-6 border border-surface-200 space-y-3">
-          <div class="bg-cyan-600 text-white rounded-xl p-4 text-center font-bold">
-            <i data-lucide="database" class="w-5 h-5 inline"></i>
-            <span class="lang-ar"> الكلاستر</span><span class="lang-en"> Database Cluster</span>
-          </div>
+          <div class="bg-cyan-600 text-white rounded-xl p-4 text-center font-bold"><i data-lucide="database" class="w-5 h-5 inline"></i><span class="lang-ar"> الكلاستر</span><span class="lang-en"> Cluster</span></div>
           <div class="flex justify-center"><i data-lucide="arrow-down" class="w-5 h-5 text-cyan-500"></i></div>
 
           <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-            <div class="bg-purple-100 border border-purple-300 text-purple-800 rounded-lg p-3 text-center font-semibold"><i data-lucide="users" class="w-4 h-4 inline"></i><span class="lang-ar"> Users / Roles</span><span class="lang-en"> Users / Roles</span></div>
-            <div class="bg-pg-100 border border-pg-300 text-pg-800 rounded-lg p-3 text-center font-semibold"><i data-lucide="database" class="w-4 h-4 inline"></i><span class="lang-ar"> Databases</span><span class="lang-en"> Databases</span></div>
-            <div class="bg-amber-100 border border-amber-300 text-amber-800 rounded-lg p-3 text-center font-semibold"><i data-lucide="hard-drive" class="w-4 h-4 inline"></i><span class="lang-ar"> Tablespaces</span><span class="lang-en"> Tablespaces</span></div>
+            <div class="bg-purple-100 border-2 border-purple-300 text-purple-800 rounded-lg p-3 text-center font-semibold"><i data-lucide="users" class="w-4 h-4 inline"></i><span class="lang-ar"> الأدوار (Roles)</span><span class="lang-en"> Roles</span></div>
+            <div class="bg-pg-100 border-2 border-pg-300 text-pg-800 rounded-lg p-3 text-center font-semibold"><i data-lucide="database" class="w-4 h-4 inline"></i><span class="lang-ar"> قواعد البيانات</span><span class="lang-en"> Databases</span></div>
+            <div class="bg-amber-100 border-2 border-amber-300 text-amber-800 rounded-lg p-3 text-center font-semibold"><i data-lucide="hard-drive" class="w-4 h-4 inline"></i><span class="lang-ar"> Tablespaces</span><span class="lang-en"> Tablespaces</span></div>
           </div>
 
           <div class="flex justify-center"><i data-lucide="arrow-down" class="w-5 h-5 text-cyan-500"></i></div>
 
-          <div class="bg-pg-600 text-white rounded-xl p-4 text-center font-bold">
-            <i data-lucide="folder" class="w-5 h-5 inline"></i>
-            <span class="lang-ar"> Schemas (مخططات)</span><span class="lang-en"> Schemas</span>
-          </div>
+          <div class="bg-cyan-500 text-white rounded-xl p-4 text-center font-bold"><i data-lucide="folder" class="w-5 h-5 inline"></i><span class="lang-ar"> Schemas (مخططات داخل كل قاعدة)</span><span class="lang-en"> Schemas (inside each database)</span></div>
           <div class="flex justify-center"><i data-lucide="arrow-down" class="w-5 h-5 text-cyan-500"></i></div>
 
           <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
-            <div class="bg-white border border-surface-200 rounded-lg p-2 text-center text-sm">Tables</div>
-            <div class="bg-white border border-surface-200 rounded-lg p-2 text-center text-sm">Views</div>
-            <div class="bg-white border border-surface-200 rounded-lg p-2 text-center text-sm">Indexes</div>
-            <div class="bg-white border border-surface-200 rounded-lg p-2 text-center text-sm">Functions</div>
-            <div class="bg-white border border-surface-200 rounded-lg p-2 text-center text-sm">Sequences</div>
-            <div class="bg-white border border-surface-200 rounded-lg p-2 text-center text-sm">Triggers</div>
-            <div class="bg-white border border-surface-200 rounded-lg p-2 text-center text-sm">Types</div>
-            <div class="bg-white border border-surface-200 rounded-lg p-2 text-center text-sm">Domains</div>
+            <div class="bg-white border border-surface-200 rounded-lg p-2 text-center text-sm font-mono">Tables</div>
+            <div class="bg-white border border-surface-200 rounded-lg p-2 text-center text-sm font-mono">Views</div>
+            <div class="bg-white border border-surface-200 rounded-lg p-2 text-center text-sm font-mono">Indexes</div>
+            <div class="bg-white border border-surface-200 rounded-lg p-2 text-center text-sm font-mono">Functions</div>
+            <div class="bg-white border border-surface-200 rounded-lg p-2 text-center text-sm font-mono">Sequences</div>
+            <div class="bg-white border border-surface-200 rounded-lg p-2 text-center text-sm font-mono">Triggers</div>
+            <div class="bg-white border border-surface-200 rounded-lg p-2 text-center text-sm font-mono">Types</div>
+            <div class="bg-white border border-surface-200 rounded-lg p-2 text-center text-sm font-mono">Domains</div>
+          </div>
+        </div>
+
+        <div class="mt-4 flex gap-3 p-4 bg-cyan-50 border border-cyan-200 rounded-xl">
+          <i data-lucide="info" class="w-5 h-5 text-cyan-600 shrink-0 mt-0.5"></i>
+          <div class="text-sm">
+            <strong class="text-cyan-800 lang-ar">نقطة مهمة:</strong>
+            <strong class="text-cyan-800 lang-en">Key point:</strong>
+            <span class="text-cyan-700 lang-ar"> الأدوار والـ Tablespaces <strong>على مستوى الكلاستر</strong> — مشتركة بين كل قواعد البيانات. الـ Schemas <strong>على مستوى قاعدة البيانات</strong>.</span>
+            <span class="text-cyan-700 lang-en"> Roles and Tablespaces are <strong>cluster-level</strong> — shared across all databases. Schemas are <strong>database-level</strong>.</span>
           </div>
         </div>
       </div>
     </section>
 
     <section>
-      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">إدارة المستخدمين والأدوار</span><span class="lang-en">Managing Users & Roles</span></h2>
-      <div class="bg-white rounded-2xl border border-surface-200 p-6">
-        <div class="flex gap-3 p-4 bg-cyan-50 border border-cyan-200 rounded-xl mb-4">
-          <i data-lucide="info" class="w-5 h-5 text-cyan-600 shrink-0 mt-0.5"></i>
-          <div>
-            <strong class="text-cyan-800 lang-ar">فكرة مهمة:</strong>
-            <strong class="text-cyan-800 lang-en">Key idea:</strong>
-            <span class="text-cyan-700 lang-ar"> في PostgreSQL، <strong>User</strong> هو <strong>Role</strong> له صلاحية <span dir="ltr" class="font-mono">LOGIN</span>. الأدوار بدون LOGIN تعمل كمجموعات.</span>
-            <span class="text-cyan-700 lang-en"> In PostgreSQL, a <strong>User</strong> is a <strong>Role</strong> with <span class="font-mono">LOGIN</span> privilege. Roles without LOGIN act as groups.</span>
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">الأدوار (Roles) بالتفصيل</span><span class="lang-en">Roles Explained</span></h2>
+      <div class="bg-white rounded-2xl border border-surface-200 p-6 space-y-4">
+        <p class="text-surface-700 lang-ar">في PostgreSQL، <strong>User = Role + LOGIN</strong>. منذ الإصدار 8.1، لا فرق حقيقي بين "مستخدم" و"مجموعة" — كلها أدوار (roles). الفرق فقط في الخصائص:</p>
+        <p class="text-surface-700 lang-en">In PostgreSQL, <strong>User = Role + LOGIN</strong>. Since 8.1, no real difference between "user" and "group" — they're all roles, just with different attributes:</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="bg-purple-50 border-2 border-purple-200 rounded-xl p-5">
+            <h4 class="font-bold mb-3 flex items-center gap-2"><i data-lucide="user" class="w-5 h-5 text-purple-600"></i><span class="lang-ar">User (دور مع LOGIN)</span><span class="lang-en">User (role WITH LOGIN)</span></h4>
+            <p class="text-sm text-surface-700 lang-ar">يستطيع الاتصال بقاعدة البيانات.</p>
+            <p class="text-sm text-surface-700 lang-en">Can connect to the database.</p>
+            <code class="block mt-2 text-xs bg-white p-2 rounded border border-purple-100" dir="ltr">CREATE USER alice PASSWORD 'pass';</code>
+          </div>
+          <div class="bg-pg-50 border-2 border-pg-200 rounded-xl p-5">
+            <h4 class="font-bold mb-3 flex items-center gap-2"><i data-lucide="users" class="w-5 h-5 text-pg-600"></i><span class="lang-ar">Group (دور بدون LOGIN)</span><span class="lang-en">Group (role WITHOUT LOGIN)</span></h4>
+            <p class="text-sm text-surface-700 lang-ar">حاوية للصلاحيات — users آخرون يُعطون عضوية فيه.</p>
+            <p class="text-sm text-surface-700 lang-en">Privilege container — users are granted membership.</p>
+            <code class="block mt-2 text-xs bg-white p-2 rounded border border-pg-100" dir="ltr">CREATE ROLE developers NOLOGIN;</code>
           </div>
         </div>
 
+        <h3 class="font-bold text-lg mt-6 mb-3"><span class="lang-ar">خصائص الدور</span><span class="lang-en">Role Attributes</span></h3>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-2 text-sm">
+          <div class="bg-surface-50 border border-surface-200 rounded-lg p-2"><span class="font-mono text-cyan-700 font-bold">LOGIN</span><span class="text-xs text-surface-600 lang-ar"> قدرة الاتصال</span><span class="text-xs text-surface-600 lang-en"> can connect</span></div>
+          <div class="bg-surface-50 border border-surface-200 rounded-lg p-2"><span class="font-mono text-cyan-700 font-bold">SUPERUSER</span><span class="text-xs text-surface-600 lang-ar"> قوة كاملة!</span><span class="text-xs text-surface-600 lang-en"> full power!</span></div>
+          <div class="bg-surface-50 border border-surface-200 rounded-lg p-2"><span class="font-mono text-cyan-700 font-bold">CREATEDB</span><span class="text-xs text-surface-600 lang-ar"> ينشئ قواعد</span><span class="text-xs text-surface-600 lang-en"> create DBs</span></div>
+          <div class="bg-surface-50 border border-surface-200 rounded-lg p-2"><span class="font-mono text-cyan-700 font-bold">CREATEROLE</span><span class="text-xs text-surface-600 lang-ar"> ينشئ أدوار</span><span class="text-xs text-surface-600 lang-en"> create roles</span></div>
+          <div class="bg-surface-50 border border-surface-200 rounded-lg p-2"><span class="font-mono text-cyan-700 font-bold">REPLICATION</span><span class="text-xs text-surface-600 lang-ar"> للـ replicas</span><span class="text-xs text-surface-600 lang-en"> for replicas</span></div>
+          <div class="bg-surface-50 border border-surface-200 rounded-lg p-2"><span class="font-mono text-cyan-700 font-bold">CONNECTION LIMIT</span><span class="text-xs text-surface-600 lang-ar"> حد أقصى</span><span class="text-xs text-surface-600 lang-en"> max connections</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">إدارة الأدوار — أمثلة عملية</span><span class="lang-en">Role Management — Practical Examples</span></h2>
+      <div class="bg-white rounded-2xl border border-surface-200 p-6">
         <div class="relative group" dir="ltr">
           <button onclick="copyCode(this)" class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 bg-surface-700 text-white text-xs px-2.5 py-1.5 rounded-lg z-10">Copy</button>
-<pre class="!bg-surface-900 !rounded-xl !p-5"><code class="language-sql">-- Create a user (role with LOGIN)
-CREATE USER alice WITH PASSWORD 'secret123';
+<pre class="!bg-surface-900 !rounded-xl !p-5"><code class="language-sql">-- Create group role (no login)
+CREATE ROLE app_readers;
+CREATE ROLE app_writers;
+CREATE ROLE app_admins;
 
--- Create a group role (no login)
-CREATE ROLE developers;
+-- Create users with login
+CREATE USER alice WITH PASSWORD 'alice_pw'
+  VALID UNTIL '2026-12-31'
+  CONNECTION LIMIT 10;
 
--- Add user to group
-GRANT developers TO alice;
+CREATE USER bob WITH PASSWORD 'bob_pw' IN ROLE app_readers;
 
--- Grant privileges to a role
-GRANT SELECT, INSERT ON ALL TABLES IN SCHEMA public TO developers;
+-- Grant group memberships
+GRANT app_writers TO alice;
+GRANT app_admins TO alice WITH ADMIN OPTION;  -- Alice can grant further
 
--- Create superuser
-CREATE USER admin WITH SUPERUSER PASSWORD 'admin_pass';
+-- Grant privileges to GROUP (simpler management)
+GRANT SELECT ON ALL TABLES IN SCHEMA public TO app_readers;
+GRANT INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO app_writers;
 
--- Change password
-ALTER USER alice WITH PASSWORD 'newpass';
+-- Remove membership
+REVOKE app_writers FROM alice;
 
--- Set connection limit
-ALTER ROLE alice CONNECTION LIMIT 5;
+-- Password management
+ALTER USER alice WITH PASSWORD 'new_password';
+ALTER USER alice VALID UNTIL 'infinity';       -- no expiry
+ALTER USER alice VALID UNTIL '2026-06-30';     -- with expiry
 
--- Drop user (must remove ownership first)
-REASSIGN OWNED BY alice TO postgres;
-DROP OWNED BY alice;
+-- Disable/enable login
+ALTER USER alice NOLOGIN;   -- locks account
+ALTER USER alice LOGIN;     -- unlocks
+
+-- Drop user (handle ownership first!)
+REASSIGN OWNED BY alice TO postgres;    -- transfer ownership
+DROP OWNED BY alice;                     -- drop what alice owns
 DROP USER alice;</code></pre>
         </div>
+
+        <div class="mt-4 flex gap-3 p-4 bg-red-50 border border-red-200 rounded-xl">
+          <i data-lucide="alert-octagon" class="w-5 h-5 text-red-600 shrink-0 mt-0.5"></i>
+          <div class="text-sm">
+            <strong class="text-red-800 lang-ar">تحذير أمني:</strong>
+            <strong class="text-red-800 lang-en">Security warning:</strong>
+            <span class="text-red-700 lang-ar"> استخدم SUPERUSER بحذر شديد — هذا الدور يتجاوز كل فحوصات الأمان! للتطبيقات استخدم أدوار محدودة.</span>
+            <span class="text-red-700 lang-en"> Use SUPERUSER carefully — it bypasses ALL security checks! For apps use limited roles.</span>
+          </div>
+        </div>
       </div>
     </section>
 
     <section>
-      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">Tablespaces</span><span class="lang-en">Tablespaces</span></h2>
-      <div class="bg-white rounded-2xl border border-surface-200 p-6">
-        <p class="text-surface-700 mb-4 lang-ar">الـ <strong>Tablespace</strong> هو مسار على القرص تخزن فيه قواعد البيانات. يسمح لك بتوزيع البيانات على أقراص مختلفة لتحسين الأداء.</p>
-        <p class="text-surface-700 mb-4 lang-en">A <strong>Tablespace</strong> is a disk location where databases store files. Useful for distributing data across disks for performance.</p>
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">Tablespaces — التوزيع المادي</span><span class="lang-en">Tablespaces — Physical Distribution</span></h2>
+      <div class="bg-white rounded-2xl border border-surface-200 p-6 space-y-4">
+        <p class="text-surface-700 lang-ar">الـ <strong>Tablespace</strong> موقع على القرص. يسمح بتوزيع البيانات على أقراص مختلفة — مثلاً جدول سريع على SSD والأرشيف على HDD.</p>
+        <p class="text-surface-700 lang-en">A <strong>Tablespace</strong> is a disk location. Allows distributing data across disks — e.g., hot tables on SSD, archive on HDD.</p>
 
         <div class="relative group" dir="ltr">
           <button onclick="copyCode(this)" class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 bg-surface-700 text-white text-xs px-2.5 py-1.5 rounded-lg z-10">Copy</button>
-<pre class="!bg-surface-900 !rounded-xl !p-5"><code class="language-sql">-- Create tablespace (directory must exist and be owned by postgres)
+<pre class="!bg-surface-900 !rounded-xl !p-5"><code class="language-sql">-- On OS first: create directory, chown to postgres
+-- sudo mkdir /mnt/ssd/pgdata &amp;&amp; sudo chown postgres:postgres /mnt/ssd/pgdata
+
+-- Create tablespace
 CREATE TABLESPACE fast_ssd
+  OWNER postgres
   LOCATION '/mnt/ssd/pgdata';
 
--- Create table in a tablespace
-CREATE TABLE large_table (id serial, data text)
+-- Create table in that tablespace
+CREATE TABLE hot_orders (id SERIAL, data jsonb)
   TABLESPACE fast_ssd;
 
 -- Move existing table
-ALTER TABLE large_table SET TABLESPACE fast_ssd;
+ALTER TABLE big_logs SET TABLESPACE archive_hdd;
 
--- Set default tablespace for current session
+-- Set session default
 SET default_tablespace = 'fast_ssd';
 
+-- Database-level default
+CREATE DATABASE analytics TABLESPACE ssd_analytics;
+
 -- List tablespaces
-SELECT spcname, pg_tablespace_location(oid) FROM pg_tablespace;</code></pre>
+SELECT spcname,
+       pg_tablespace_location(oid) AS location,
+       pg_size_pretty(pg_tablespace_size(oid)) AS size
+FROM pg_tablespace;
+
+-- Drop (must be empty first)
+DROP TABLESPACE fast_ssd;</code></pre>
         </div>
       </div>
     </section>
 
     <section>
-      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">الـ Schemas و search_path</span><span class="lang-en">Schemas & search_path</span></h2>
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">Databases و Schemas</span><span class="lang-en">Databases & Schemas</span></h2>
       <div class="bg-white rounded-2xl border border-surface-200 p-6">
-        <div class="relative group" dir="ltr">
+        <div class="relative group mb-4" dir="ltr">
           <button onclick="copyCode(this)" class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 bg-surface-700 text-white text-xs px-2.5 py-1.5 rounded-lg z-10">Copy</button>
-<pre class="!bg-surface-900 !rounded-xl !p-5"><code class="language-sql">-- Create schema
+<pre class="!bg-surface-900 !rounded-xl !p-5"><code class="language-sql">-- Create database with options
+CREATE DATABASE sales
+  OWNER alice
+  ENCODING 'UTF8'
+  LC_COLLATE 'en_US.UTF-8'
+  LC_CTYPE 'en_US.UTF-8'
+  TEMPLATE template0
+  CONNECTION LIMIT 50;
+
+-- List databases
+\l  -- in psql
+SELECT datname FROM pg_database;
+
+-- Drop database (must have no connections!)
+DROP DATABASE sales;
+DROP DATABASE sales WITH (FORCE);  -- kills connections (PG13+)
+
+-- ===== Schemas =====
+-- Create schemas
 CREATE SCHEMA sales;
 CREATE SCHEMA marketing AUTHORIZATION alice;
+CREATE SCHEMA IF NOT EXISTS temp_work;
 
--- Create tables in specific schemas
-CREATE TABLE sales.orders (...);
-CREATE TABLE marketing.campaigns (...);
-
--- Qualified name access
+-- Use fully qualified names
+CREATE TABLE sales.orders (id SERIAL PRIMARY KEY, ...);
 SELECT * FROM sales.orders;
 
--- View current search_path
-SHOW search_path;
-
--- Change search_path (in order of search)
+-- search_path (order of lookup)
+SHOW search_path;             -- default: "$user", public
 SET search_path TO sales, public;
+ALTER DATABASE sales SET search_path TO sales, public;
 
--- Set default for database
-ALTER DATABASE mydb SET search_path TO sales, public;
+-- Drop schema
+DROP SCHEMA temp_work;               -- only if empty
+DROP SCHEMA temp_work CASCADE;       -- drops all contents!</code></pre>
+        </div>
 
--- Drop schema (CASCADE removes all objects!)
-DROP SCHEMA marketing CASCADE;</code></pre>
+        <div class="flex gap-3 p-4 bg-amber-50 border border-amber-200 rounded-xl">
+          <i data-lucide="alert-triangle" class="w-5 h-5 text-amber-600 shrink-0 mt-0.5"></i>
+          <div class="text-sm">
+            <strong class="text-amber-800 lang-ar">schema "public" الآن ليس مكشوفاً!</strong>
+            <strong class="text-amber-800 lang-en">schema "public" is no longer open!</strong>
+            <span class="text-amber-700 lang-ar"> منذ PG 15، schema <span dir="ltr" class="font-mono">public</span> لم يعد يُعطي CREATE للـ <span dir="ltr" class="font-mono">PUBLIC</span>. امنح صلاحيات صريحة: <span dir="ltr" class="font-mono">GRANT CREATE ON SCHEMA public TO appuser;</span></span>
+            <span class="text-amber-700 lang-en"> Since PG 15, <span class="font-mono">public</span> no longer grants CREATE to <span class="font-mono">PUBLIC</span>. Grant explicitly: <span class="font-mono">GRANT CREATE ON SCHEMA public TO appuser;</span></span>
+          </div>
         </div>
       </div>
     </section>
 
     <section>
-      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">صلاحيات الوصول (GRANT/REVOKE)</span><span class="lang-en">Access Control</span></h2>
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">GRANT / REVOKE — نظام الصلاحيات</span><span class="lang-en">GRANT / REVOKE — Privilege System</span></h2>
       <div class="bg-white rounded-2xl border border-surface-200 p-6">
+        <p class="text-surface-700 mb-4 lang-ar">PostgreSQL له نظام صلاحيات متعدد المستويات. لكي يقرأ مستخدم من جدول، يحتاج:</p>
+        <p class="text-surface-700 mb-4 lang-en">PostgreSQL has a layered privilege system. To read a table, a user needs:</p>
+
+        <ol class="list-decimal list-inside text-sm space-y-1 text-surface-700 mb-4">
+          <li class="lang-ar"><strong>CONNECT</strong> على قاعدة البيانات</li>
+          <li class="lang-en"><strong>CONNECT</strong> on the database</li>
+          <li class="lang-ar"><strong>USAGE</strong> على الـ schema</li>
+          <li class="lang-en"><strong>USAGE</strong> on the schema</li>
+          <li class="lang-ar"><strong>SELECT</strong> على الجدول</li>
+          <li class="lang-en"><strong>SELECT</strong> on the table</li>
+        </ol>
+
         <div class="relative group" dir="ltr">
           <button onclick="copyCode(this)" class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 bg-surface-700 text-white text-xs px-2.5 py-1.5 rounded-lg z-10">Copy</button>
-<pre class="!bg-surface-900 !rounded-xl !p-5"><code class="language-sql">-- Grant object-level privileges
-GRANT SELECT, INSERT, UPDATE ON customers TO alice;
-GRANT ALL PRIVILEGES ON orders TO developers;
+<pre class="!bg-surface-900 !rounded-xl !p-5"><code class="language-sql">-- Database privileges
+GRANT CONNECT ON DATABASE sales TO analyst;
+REVOKE CONNECT ON DATABASE sales FROM PUBLIC;  -- close to public
 
--- Grant on all tables in schema
-GRANT SELECT ON ALL TABLES IN SCHEMA sales TO analyst;
+-- Schema privileges (USAGE = open the schema)
+GRANT USAGE ON SCHEMA sales TO analyst;
+GRANT CREATE ON SCHEMA sales TO developer;  -- can create objects
 
--- Default privileges for future tables
-ALTER DEFAULT PRIVILEGES IN SCHEMA sales
+-- Table privileges
+GRANT SELECT ON customers TO analyst;
+GRANT SELECT, INSERT, UPDATE, DELETE ON orders TO app_writers;
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA sales TO app_admins;
+
+-- Column-level (restrict to specific columns)
+GRANT SELECT (name, email) ON customers TO marketing;
+
+-- Sequence privileges (for AUTO-INCREMENT)
+GRANT USAGE, SELECT ON SEQUENCE orders_id_seq TO app_writers;
+
+-- Function privileges
+GRANT EXECUTE ON FUNCTION calculate_tax TO app_users;
+
+-- ===== DEFAULT PRIVILEGES for future objects =====
+-- When alice creates a table in sales, analyst auto-gets SELECT
+ALTER DEFAULT PRIVILEGES FOR ROLE alice
+  IN SCHEMA sales
   GRANT SELECT ON TABLES TO analyst;
 
--- Revoke privileges
-REVOKE INSERT ON customers FROM alice;
+-- Revoke
+REVOKE INSERT ON orders FROM alice;
 
--- Grant USAGE on schema (needed before table access)
-GRANT USAGE ON SCHEMA sales TO analyst;
+-- See who has what (in psql)
+\dp customers
+\z sales.*</code></pre>
+        </div>
+      </div>
+    </section>
 
--- Check current privileges
-\dp customers</code></pre>
+    <section>
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">أفضل ممارسات التنظيم</span><span class="lang-en">Organization Best Practices</span></h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+        <div class="bg-green-50 border border-green-200 rounded-xl p-4 flex gap-3"><i data-lucide="check" class="w-5 h-5 text-green-600 shrink-0 mt-0.5"></i><div class="text-sm"><strong class="text-green-800 lang-ar">استخدم مجموعات (group roles):</strong><strong class="text-green-800 lang-en">Use group roles:</strong><span class="text-green-700 lang-ar"> أعط الصلاحيات للمجموعات، ثم ضع المستخدمين فيها.</span><span class="text-green-700 lang-en"> Grant to groups, then add users to them.</span></div></div>
+        <div class="bg-green-50 border border-green-200 rounded-xl p-4 flex gap-3"><i data-lucide="check" class="w-5 h-5 text-green-600 shrink-0 mt-0.5"></i><div class="text-sm"><strong class="text-green-800 lang-ar">schema لكل تطبيق:</strong><strong class="text-green-800 lang-en">Schema per app:</strong><span class="text-green-700 lang-ar"> لا تخلط جداول تطبيقات مختلفة في public.</span><span class="text-green-700 lang-en"> Don't mix different apps' tables in public.</span></div></div>
+        <div class="bg-green-50 border border-green-200 rounded-xl p-4 flex gap-3"><i data-lucide="check" class="w-5 h-5 text-green-600 shrink-0 mt-0.5"></i><div class="text-sm"><strong class="text-green-800 lang-ar">least privilege:</strong><strong class="text-green-800 lang-en">Least privilege:</strong><span class="text-green-700 lang-ar"> لا تستخدم superuser للتطبيقات.</span><span class="text-green-700 lang-en"> Never use superuser for apps.</span></div></div>
+        <div class="bg-green-50 border border-green-200 rounded-xl p-4 flex gap-3"><i data-lucide="check" class="w-5 h-5 text-green-600 shrink-0 mt-0.5"></i><div class="text-sm"><strong class="text-green-800 lang-ar">كلمات مرور تنتهي:</strong><strong class="text-green-800 lang-en">Password expiration:</strong><span class="text-green-700 lang-ar"> استخدم VALID UNTIL للضغط على التدوير.</span><span class="text-green-700 lang-en"> Use VALID UNTIL to enforce rotation.</span></div></div>
+      </div>
+    </section>
+
+    <!-- QUIZ -->
+    <section>
+      <div class="mb-6">
+        <span class="text-sm font-bold text-cyan-600 uppercase tracking-wider"><span class="lang-ar">اختبر فهمك</span><span class="lang-en">Test Your Knowledge</span></span>
+        <h2 class="text-3xl font-bold text-surface-900 mt-2 mb-3"><span class="lang-ar">كويز الوحدة ٨ 🎯</span><span class="lang-en">Module 8 Quiz 🎯</span></h2>
+      </div>
+
+      <div id="quiz" class="space-y-4">
+        <div class="quiz-card bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="flex items-center gap-2 mb-3"><span class="w-7 h-7 rounded-full bg-cyan-600 text-white font-bold text-sm flex items-center justify-center">1</span></div>
+          <p class="font-semibold mb-4 lang-ar">الفرق بين User و Role في PostgreSQL:</p>
+          <p class="font-semibold mb-4 lang-en">Difference between User and Role in PostgreSQL:</p>
+          <div class="space-y-2">
+            <button onclick="pick(this,1)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-cyan-300"><span class="lang-ar">مفهومان مختلفان تماماً</span><span class="lang-en">Entirely different concepts</span></button>
+            <button onclick="pick(this,1)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-cyan-300" data-correct="true"><span class="lang-ar">User = Role مع خاصية LOGIN</span><span class="lang-en">User = Role with LOGIN attribute</span></button>
+            <button onclick="pick(this,1)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-cyan-300"><span class="lang-ar">Role فقط للـ apps</span><span class="lang-en">Role is only for apps</span></button>
+          </div>
+          <div class="feedback hidden mt-3 p-3 rounded-xl text-sm"></div>
+        </div>
+
+        <div class="quiz-card bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="flex items-center gap-2 mb-3"><span class="w-7 h-7 rounded-full bg-cyan-600 text-white font-bold text-sm flex items-center justify-center">2</span></div>
+          <p class="font-semibold mb-4 lang-ar">لقراءة جدول في schema "sales"، ما الصلاحيات المطلوبة؟</p>
+          <p class="font-semibold mb-4 lang-en">To read a table in schema "sales", what's needed?</p>
+          <div class="space-y-2">
+            <button onclick="pick(this,2)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-cyan-300"><span class="font-mono">SELECT on table only</span></button>
+            <button onclick="pick(this,2)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-cyan-300" data-correct="true"><span class="font-mono">CONNECT + USAGE on schema + SELECT on table</span></button>
+            <button onclick="pick(this,2)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-cyan-300"><span class="font-mono">Just GRANT ALL PRIVILEGES</span></button>
+          </div>
+          <div class="feedback hidden mt-3 p-3 rounded-xl text-sm"></div>
+        </div>
+
+        <div class="quiz-card bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="flex items-center gap-2 mb-3"><span class="w-7 h-7 rounded-full bg-cyan-600 text-white font-bold text-sm flex items-center justify-center">3</span></div>
+          <p class="font-semibold mb-4 lang-ar">الـ Tablespace خاص بـ:</p>
+          <p class="font-semibold mb-4 lang-en">A tablespace belongs to:</p>
+          <div class="space-y-2">
+            <button onclick="pick(this,3)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-cyan-300"><span class="lang-ar">قاعدة بيانات واحدة</span><span class="lang-en">One database</span></button>
+            <button onclick="pick(this,3)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-cyan-300" data-correct="true"><span class="lang-ar">الكلاستر كاملاً (قابل للاستخدام من أي قاعدة)</span><span class="lang-en">The whole cluster (usable from any DB)</span></button>
+            <button onclick="pick(this,3)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-cyan-300"><span class="lang-ar">schema محدد</span><span class="lang-en">A specific schema</span></button>
+          </div>
+          <div class="feedback hidden mt-3 p-3 rounded-xl text-sm"></div>
+        </div>
+
+        <div class="quiz-card bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="flex items-center gap-2 mb-3"><span class="w-7 h-7 rounded-full bg-cyan-600 text-white font-bold text-sm flex items-center justify-center">4</span></div>
+          <p class="font-semibold mb-4 lang-ar">ماذا يفعل ALTER DEFAULT PRIVILEGES؟</p>
+          <p class="font-semibold mb-4 lang-en">What does ALTER DEFAULT PRIVILEGES do?</p>
+          <div class="space-y-2">
+            <button onclick="pick(this,4)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-cyan-300"><span class="lang-ar">يغير صلاحيات الجداول الموجودة</span><span class="lang-en">Changes privileges on existing tables</span></button>
+            <button onclick="pick(this,4)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-cyan-300" data-correct="true"><span class="lang-ar">يحدد الصلاحيات التي ستُعطى للكائنات الجديدة مستقبلاً</span><span class="lang-en">Sets privileges granted to future new objects</span></button>
+            <button onclick="pick(this,4)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-cyan-300"><span class="lang-ar">يعيد الصلاحيات للقيم الافتراضية</span><span class="lang-en">Resets privileges to defaults</span></button>
+          </div>
+          <div class="feedback hidden mt-3 p-3 rounded-xl text-sm"></div>
+        </div>
+
+        <div class="quiz-card bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="flex items-center gap-2 mb-3"><span class="w-7 h-7 rounded-full bg-cyan-600 text-white font-bold text-sm flex items-center justify-center">5</span></div>
+          <p class="font-semibold mb-4 lang-ar">قبل حذف مستخدم يملك جداول، يجب:</p>
+          <p class="font-semibold mb-4 lang-en">Before dropping a user who owns tables, you should:</p>
+          <div class="space-y-2">
+            <button onclick="pick(this,5)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-cyan-300"><span class="font-mono">DROP USER alice CASCADE</span></button>
+            <button onclick="pick(this,5)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-cyan-300" data-correct="true"><span class="font-mono">REASSIGN OWNED BY + DROP OWNED BY + DROP USER</span></button>
+            <button onclick="pick(this,5)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-cyan-300"><span class="lang-ar">لا شيء — DROP USER كافٍ</span><span class="lang-en">Nothing — DROP USER alone suffices</span></button>
+          </div>
+          <div class="feedback hidden mt-3 p-3 rounded-xl text-sm"></div>
+        </div>
+
+        <div class="quiz-card bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="flex items-center gap-2 mb-3"><span class="w-7 h-7 rounded-full bg-cyan-600 text-white font-bold text-sm flex items-center justify-center">6</span></div>
+          <p class="font-semibold mb-4 lang-ar">ما دور search_path؟</p>
+          <p class="font-semibold mb-4 lang-en">What's the role of search_path?</p>
+          <div class="space-y-2">
+            <button onclick="pick(this,6)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-cyan-300" data-correct="true"><span class="lang-ar">ترتيب البحث عن الكائنات بدون qualification</span><span class="lang-en">Order to search for unqualified objects</span></button>
+            <button onclick="pick(this,6)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-cyan-300"><span class="lang-ar">مسار مجلد البيانات</span><span class="lang-en">Data directory path</span></button>
+            <button onclick="pick(this,6)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-cyan-300"><span class="lang-ar">مسار الـ extensions</span><span class="lang-en">Extensions path</span></button>
+          </div>
+          <div class="feedback hidden mt-3 p-3 rounded-xl text-sm"></div>
+        </div>
+
+        <div class="quiz-card bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="flex items-center gap-2 mb-3"><span class="w-7 h-7 rounded-full bg-cyan-600 text-white font-bold text-sm flex items-center justify-center">7</span></div>
+          <p class="font-semibold mb-4 lang-ar">أي أمر يعرض صلاحيات جدول في psql؟</p>
+          <p class="font-semibold mb-4 lang-en">Which psql command shows table privileges?</p>
+          <div class="space-y-2">
+            <button onclick="pick(this,7)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-cyan-300"><span class="font-mono">\dt</span></button>
+            <button onclick="pick(this,7)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-cyan-300" data-correct="true"><span class="font-mono">\dp or \z</span></button>
+            <button onclick="pick(this,7)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-cyan-300"><span class="font-mono">\du</span></button>
+          </div>
+          <div class="feedback hidden mt-3 p-3 rounded-xl text-sm"></div>
+        </div>
+
+        <div id="quiz-result" class="hidden bg-gradient-to-br from-cyan-600 to-cyan-800 text-white rounded-2xl p-6 text-center">
+          <i data-lucide="award" class="w-12 h-12 mx-auto mb-3"></i>
+          <h3 class="text-2xl font-bold mb-2"><span class="lang-ar">نتيجتك</span><span class="lang-en">Your Score</span></h3>
+          <div class="text-5xl font-bold my-3"><span id="score">0</span><span class="text-2xl opacity-70">/7</span></div>
+          <p id="result-msg" class="text-cyan-100"></p>
+          <button onclick="resetQuiz()" class="mt-4 bg-white text-cyan-700 font-semibold px-6 py-2 rounded-lg hover:bg-cyan-50"><span class="lang-ar">إعادة المحاولة</span><span class="lang-en">Try Again</span></button>
         </div>
       </div>
     </section>
@@ -231,12 +453,12 @@ GRANT USAGE ON SCHEMA sales TO analyst;
       <div class="bg-gradient-to-br from-cyan-600 via-cyan-700 to-cyan-900 text-white rounded-2xl p-6 md:p-8 shadow-xl">
         <div class="flex items-center gap-3 mb-6"><div class="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center"><i data-lucide="bookmark-check" class="w-6 h-6"></i></div><h2 class="text-2xl font-bold"><span class="lang-ar">ملخص الوحدة</span><span class="lang-en">Module Summary</span></h2></div>
         <ul class="grid grid-cols-1 md:grid-cols-2 gap-3">
-          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-cyan-300 shrink-0 mt-0.5"></i><span class="lang-ar">Cluster &gt; Database &gt; Schema &gt; Objects</span><span class="lang-en">Cluster &gt; Database &gt; Schema &gt; Objects</span></li>
-          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-cyan-300 shrink-0 mt-0.5"></i><span class="lang-ar">User = Role مع LOGIN</span><span class="lang-en">User = Role with LOGIN</span></li>
-          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-cyan-300 shrink-0 mt-0.5"></i><span class="lang-ar">Tablespaces لتوزيع البيانات</span><span class="lang-en">Tablespaces for data distribution</span></li>
-          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-cyan-300 shrink-0 mt-0.5"></i><span class="lang-ar">search_path يحدد ترتيب البحث</span><span class="lang-en">search_path determines search order</span></li>
-          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-cyan-300 shrink-0 mt-0.5"></i><span class="lang-ar">GRANT/REVOKE للصلاحيات</span><span class="lang-en">GRANT/REVOKE for privileges</span></li>
-          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-cyan-300 shrink-0 mt-0.5"></i><span class="lang-ar">USAGE ضروري على الـ Schema</span><span class="lang-en">USAGE required on schema</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-cyan-300 shrink-0 mt-0.5"></i><span class="lang-ar">Cluster &gt; DB &gt; Schema &gt; Objects</span><span class="lang-en">Cluster &gt; DB &gt; Schema &gt; Objects</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-cyan-300 shrink-0 mt-0.5"></i><span class="lang-ar">User = Role + LOGIN</span><span class="lang-en">User = Role + LOGIN</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-cyan-300 shrink-0 mt-0.5"></i><span class="lang-ar">Tablespace = موقع على القرص</span><span class="lang-en">Tablespace = disk location</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-cyan-300 shrink-0 mt-0.5"></i><span class="lang-ar">Schema = نمرة تنظيم</span><span class="lang-en">Schema = namespace</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-cyan-300 shrink-0 mt-0.5"></i><span class="lang-ar">GRANT/REVOKE + DEFAULT PRIVILEGES</span><span class="lang-en">GRANT/REVOKE + DEFAULT PRIVILEGES</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-cyan-300 shrink-0 mt-0.5"></i><span class="lang-ar">REASSIGN + DROP OWNED قبل DROP USER</span><span class="lang-en">REASSIGN + DROP OWNED before DROP USER</span></li>
         </ul>
       </div>
     </section>
@@ -248,7 +470,7 @@ GRANT USAGE ON SCHEMA sales TO analyst;
       </a>
       <a href="ch09.html" class="flex-1 bg-gradient-to-br from-cyan-600 to-cyan-700 text-white rounded-xl p-4 hover:shadow-xl transition-all">
         <div class="text-xs text-cyan-200 mb-1 text-end"><span class="lang-ar">التالي</span><span class="lang-en">Next</span></div>
-        <div class="flex items-center justify-end gap-2 font-bold"><span class="lang-ar">أمان قاعدة البيانات</span><span class="lang-en">Database Security</span><i data-lucide="arrow-left" class="w-4 h-4 lang-ar"></i><i data-lucide="arrow-right" class="w-4 h-4 lang-en"></i></div>
+        <div class="flex items-center justify-end gap-2 font-bold"><span class="lang-ar">الأمان</span><span class="lang-en">Security</span><i data-lucide="arrow-left" class="w-4 h-4 lang-ar"></i><i data-lucide="arrow-right" class="w-4 h-4 lang-en"></i></div>
       </a>
     </nav>
   </main>
@@ -258,6 +480,10 @@ GRANT USAGE ON SCHEMA sales TO analyst;
   <script>
     function setLang(lang){document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';localStorage.setItem('pgCourseLang',lang);document.querySelectorAll('.lang-btn').forEach(b=>{b.classList.remove('bg-cyan-600','text-white','shadow-md');b.classList.add('text-surface-600','hover:bg-surface-100');});const a=document.getElementById('btn-'+lang);a.classList.add('bg-cyan-600','text-white','shadow-md');a.classList.remove('text-surface-600','hover:bg-surface-100');}
     function copyCode(btn){const c=btn.nextElementSibling.querySelector('code').textContent;navigator.clipboard.writeText(c);btn.textContent='✓';setTimeout(()=>btn.textContent='Copy',2000);}
+    const total=7;const answers={};
+    function pick(btn,q){const card=btn.closest('.quiz-card');card.querySelectorAll('.quiz-opt').forEach(o=>o.disabled=true);const correct=btn.dataset.correct==='true';btn.classList.add(correct?'correct':'wrong');if(!correct)card.querySelector('[data-correct="true"]').classList.add('correct');const fb=card.querySelector('.feedback');fb.classList.remove('hidden');const lang=document.documentElement.lang;fb.className='feedback mt-3 p-3 rounded-xl text-sm '+(correct?'bg-green-50 text-green-800 border border-green-200':'bg-red-50 text-red-800 border border-red-200');fb.innerHTML=correct?(lang==='ar'?'✓ ممتاز!':'✓ Correct!'):(lang==='ar'?'✗ خطأ — الإجابة بالأخضر':'✗ Wrong — answer in green');answers[q]=correct;if(Object.keys(answers).length===total)showResult();}
+    function showResult(){const s=Object.values(answers).filter(Boolean).length;document.getElementById('score').textContent=s;const m=document.getElementById('result-msg');const l=document.documentElement.lang;m.textContent=s===total?(l==='ar'?'🎉 إتقان كامل!':'🎉 Perfect!'):s>=Math.ceil(total*0.7)?(l==='ar'?'👍 ممتاز!':'👍 Great!'):(l==='ar'?'📚 راجع':'📚 Review');const r=document.getElementById('quiz-result');r.classList.remove('hidden');r.scrollIntoView({behavior:'smooth',block:'center'});}
+    function resetQuiz(){Object.keys(answers).forEach(k=>delete answers[k]);document.querySelectorAll('.quiz-opt').forEach(b=>{b.disabled=false;b.classList.remove('correct','wrong');});document.querySelectorAll('.feedback').forEach(f=>f.classList.add('hidden'));document.getElementById('quiz-result').classList.add('hidden');document.getElementById('quiz').scrollIntoView({behavior:'smooth',block:'start'});}
     setLang(localStorage.getItem('pgCourseLang')||'ar');lucide.createIcons();Prism.highlightAll();
   </script>
 </body>

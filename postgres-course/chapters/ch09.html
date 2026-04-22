@@ -13,7 +13,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-sql.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
-  <style>body{font-family:'IBM Plex Sans Arabic',sans-serif}html[lang="ar"] .lang-en{display:none!important}html[lang="en"] .lang-ar{display:none!important}pre[class*="language-"]{border-radius:.75rem;font-size:.875rem;direction:ltr}code[class*="language-"]{font-family:'JetBrains Mono',monospace}</style>
+  <style>body{font-family:'IBM Plex Sans Arabic',sans-serif}html[lang="ar"] .lang-en{display:none!important}html[lang="en"] .lang-ar{display:none!important}pre[class*="language-"]{border-radius:.75rem;font-size:.875rem;direction:ltr}code[class*="language-"]{font-family:'JetBrains Mono',monospace}.quiz-opt.correct{border-color:#059669!important;background:#ecfdf5!important}.quiz-opt.wrong{border-color:#dc2626!important;background:#fef2f2!important}.quiz-opt:disabled{cursor:not-allowed}</style>
 </head>
 <body class="bg-surface-50 text-surface-800 antialiased min-h-screen">
 
@@ -35,24 +35,23 @@
         <span class="lang-ar">٣٠ صفحة</span><span class="lang-en">30 pages</span>
       </div>
       <h1 class="text-3xl md:text-5xl font-bold mb-4"><span class="lang-ar">أمان قاعدة البيانات</span><span class="lang-en">Database Security</span></h1>
-      <p class="text-lg text-red-100 max-w-3xl lang-ar">حماية بياناتك — من الاتصال إلى التشفير، كل ما تحتاج لمعرفته عن أمان PostgreSQL.</p>
-      <p class="text-lg text-red-100 max-w-3xl lang-en">Protect your data — from connections to encryption, everything you need about PostgreSQL security.</p>
+      <p class="text-lg text-red-100 max-w-3xl lang-ar">طبقات الأمان الكاملة — pg_hba.conf، SCRAM، SSL/TLS، Row Level Security، التشفير، والتدقيق.</p>
+      <p class="text-lg text-red-100 max-w-3xl lang-en">Full security stack — pg_hba.conf, SCRAM, SSL/TLS, Row Level Security, encryption, and auditing.</p>
     </div>
   </header>
 
   <section class="max-w-6xl mx-auto px-4 sm:px-6 py-10">
     <div class="bg-white rounded-2xl shadow-sm border border-surface-200 p-6 md:p-8">
-      <div class="flex items-center gap-3 mb-6">
-        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center text-white"><i data-lucide="shield-check" class="w-6 h-6"></i></div>
-        <h2 class="text-2xl font-bold"><span class="lang-ar">أهداف الوحدة</span><span class="lang-en">Module Objectives</span></h2>
-      </div>
+      <div class="flex items-center gap-3 mb-6"><div class="w-12 h-12 rounded-xl bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center text-white"><i data-lucide="shield-check" class="w-6 h-6"></i></div><h2 class="text-2xl font-bold"><span class="lang-ar">أهداف الوحدة</span><span class="lang-en">Module Objectives</span></h2></div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
-        <div class="flex gap-2 p-3 rounded-xl bg-red-50 border border-red-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-red-600 shrink-0"></i><span class="lang-ar">متطلبات أمان قواعد البيانات</span><span class="lang-en">Security Requirements</span></div>
-        <div class="flex gap-2 p-3 rounded-xl bg-red-50 border border-red-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-red-600 shrink-0"></i><span class="lang-ar">مستويات الأمان في Postgres</span><span class="lang-en">Levels of Security</span></div>
-        <div class="flex gap-2 p-3 rounded-xl bg-red-50 border border-red-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-red-600 shrink-0"></i><span class="lang-ar">pg_hba.conf</span><span class="lang-en">pg_hba.conf</span></div>
-        <div class="flex gap-2 p-3 rounded-xl bg-red-50 border border-red-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-red-600 shrink-0"></i><span class="lang-ar">Row Level Security (RLS)</span><span class="lang-en">Row Level Security</span></div>
-        <div class="flex gap-2 p-3 rounded-xl bg-red-50 border border-red-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-red-600 shrink-0"></i><span class="lang-ar">تشفير البيانات</span><span class="lang-en">Data Encryption</span></div>
-        <div class="flex gap-2 p-3 rounded-xl bg-red-50 border border-red-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-red-600 shrink-0"></i><span class="lang-ar">توصيات الأمان العامة</span><span class="lang-en">Security Recommendations</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-red-50 border border-red-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-red-600 shrink-0"></i><span class="lang-ar">الطبقات الأربع للأمان</span><span class="lang-en">4 layers of security</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-red-50 border border-red-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-red-600 shrink-0"></i><span class="lang-ar">pg_hba.conf بالتفصيل</span><span class="lang-en">pg_hba.conf in depth</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-red-50 border border-red-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-red-600 shrink-0"></i><span class="lang-ar">طرق المصادقة المتاحة</span><span class="lang-en">Authentication methods</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-red-50 border border-red-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-red-600 shrink-0"></i><span class="lang-ar">SSL/TLS للاتصالات</span><span class="lang-en">SSL/TLS for connections</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-red-50 border border-red-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-red-600 shrink-0"></i><span class="lang-ar">Row Level Security متقدم</span><span class="lang-en">Advanced Row Level Security</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-red-50 border border-red-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-red-600 shrink-0"></i><span class="lang-ar">تشفير البيانات</span><span class="lang-en">Data encryption</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-red-50 border border-red-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-red-600 shrink-0"></i><span class="lang-ar">التدقيق بـ pgaudit</span><span class="lang-en">Auditing with pgaudit</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-red-50 border border-red-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-red-600 shrink-0"></i><span class="lang-ar">قائمة تحقق للأمان</span><span class="lang-en">Security checklist</span></div>
       </div>
     </div>
   </section>
@@ -60,119 +59,402 @@
   <main class="max-w-6xl mx-auto px-4 sm:px-6 pb-12 space-y-12">
 
     <section>
-      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">مستويات الأمان</span><span class="lang-en">Security Levels</span></h2>
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">طبقات الأمان الأربع</span><span class="lang-en">The 4 Security Layers</span></h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div class="bg-white rounded-2xl border-2 border-red-200 p-5">
           <div class="w-10 h-10 rounded-lg bg-red-100 flex items-center justify-center text-red-600 mb-3"><i data-lucide="network" class="w-5 h-5"></i></div>
           <h3 class="font-bold mb-2"><span class="lang-ar">١. أمان الشبكة</span><span class="lang-en">1. Network Security</span></h3>
-          <p class="text-sm text-surface-600 lang-ar">Firewall، SSL/TLS، listen_addresses</p>
-          <p class="text-sm text-surface-600 lang-en">Firewall, SSL/TLS, listen_addresses</p>
+          <p class="text-sm text-surface-600 lang-ar">Firewall، listen_addresses، SSL، فصل الشبكات</p>
+          <p class="text-sm text-surface-600 lang-en">Firewall, listen_addresses, SSL, network segmentation</p>
         </div>
         <div class="bg-white rounded-2xl border-2 border-orange-200 p-5">
           <div class="w-10 h-10 rounded-lg bg-orange-100 flex items-center justify-center text-orange-600 mb-3"><i data-lucide="key-round" class="w-5 h-5"></i></div>
-          <h3 class="font-bold mb-2"><span class="lang-ar">٢. المصادقة</span><span class="lang-en">2. Authentication</span></h3>
-          <p class="text-sm text-surface-600 lang-ar">pg_hba.conf، md5، scram-sha-256، LDAP</p>
-          <p class="text-sm text-surface-600 lang-en">pg_hba.conf, scram-sha-256, LDAP</p>
+          <h3 class="font-bold mb-2"><span class="lang-ar">٢. المصادقة (Authentication)</span><span class="lang-en">2. Authentication</span></h3>
+          <p class="text-sm text-surface-600 lang-ar">من أنت؟ pg_hba.conf، SCRAM، LDAP، شهادات</p>
+          <p class="text-sm text-surface-600 lang-en">Who are you? pg_hba.conf, SCRAM, LDAP, certs</p>
         </div>
         <div class="bg-white rounded-2xl border-2 border-amber-200 p-5">
           <div class="w-10 h-10 rounded-lg bg-amber-100 flex items-center justify-center text-amber-600 mb-3"><i data-lucide="user-check" class="w-5 h-5"></i></div>
-          <h3 class="font-bold mb-2"><span class="lang-ar">٣. الصلاحيات</span><span class="lang-en">3. Authorization</span></h3>
-          <p class="text-sm text-surface-600 lang-ar">GRANT/REVOKE، Roles، RLS</p>
-          <p class="text-sm text-surface-600 lang-en">GRANT/REVOKE, Roles, RLS</p>
+          <h3 class="font-bold mb-2"><span class="lang-ar">٣. الصلاحيات (Authorization)</span><span class="lang-en">3. Authorization</span></h3>
+          <p class="text-sm text-surface-600 lang-ar">ماذا يستطيع؟ GRANT/REVOKE، Roles، RLS</p>
+          <p class="text-sm text-surface-600 lang-en">What can you do? GRANT/REVOKE, roles, RLS</p>
         </div>
         <div class="bg-white rounded-2xl border-2 border-purple-200 p-5">
           <div class="w-10 h-10 rounded-lg bg-purple-100 flex items-center justify-center text-purple-600 mb-3"><i data-lucide="file-lock" class="w-5 h-5"></i></div>
-          <h3 class="font-bold mb-2"><span class="lang-ar">٤. التشفير</span><span class="lang-en">4. Encryption</span></h3>
-          <p class="text-sm text-surface-600 lang-ar">SSL، pgcrypto، TDE (EDB)</p>
-          <p class="text-sm text-surface-600 lang-en">SSL, pgcrypto, TDE (EDB)</p>
+          <h3 class="font-bold mb-2"><span class="lang-ar">٤. التشفير والتدقيق</span><span class="lang-en">4. Encryption & Audit</span></h3>
+          <p class="text-sm text-surface-600 lang-ar">SSL، pgcrypto، TDE، pgaudit</p>
+          <p class="text-sm text-surface-600 lang-en">SSL, pgcrypto, TDE, pgaudit</p>
         </div>
       </div>
     </section>
 
     <section>
-      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">ملف pg_hba.conf</span><span class="lang-en">The pg_hba.conf File</span></h2>
-      <div class="bg-white rounded-2xl border border-surface-200 p-6">
-        <p class="text-surface-700 mb-4 lang-ar"><strong>HBA = Host-Based Authentication</strong>. هذا الملف يحدد من يستطيع الاتصال، ومن أي IP، وكيف يصادق.</p>
-        <p class="text-surface-700 mb-4 lang-en"><strong>HBA = Host-Based Authentication</strong>. This file defines who can connect, from which IPs, and how they authenticate.</p>
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">pg_hba.conf — القلب النابض للأمان</span><span class="lang-en">pg_hba.conf — Security's Beating Heart</span></h2>
+      <div class="bg-white rounded-2xl border border-surface-200 p-6 space-y-4">
+        <p class="text-surface-700 lang-ar"><strong>HBA = Host-Based Authentication</strong>. يُقرأ من الأعلى للأسفل، وأول سطر مطابق يحكم. ترتيب القواعد مهم جداً!</p>
+        <p class="text-surface-700 lang-en"><strong>HBA = Host-Based Authentication</strong>. Read top-to-bottom, first match wins. Rule order matters!</p>
 
         <div class="relative group" dir="ltr">
           <button onclick="copyCode(this)" class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 bg-surface-700 text-white text-xs px-2.5 py-1.5 rounded-lg z-10">Copy</button>
-<pre class="!bg-surface-900 !rounded-xl !p-5"><code class="language-bash"># TYPE  DATABASE  USER       ADDRESS          METHOD
-local   all       postgres                    peer
-local   all       all                         scram-sha-256
-host    all       all        127.0.0.1/32     scram-sha-256
-host    all       all        ::1/128          scram-sha-256
-host    sales     alice      192.168.30.0/24  scram-sha-256
-hostssl all       all        10.0.0.0/8       cert
-host    all       all        0.0.0.0/0        reject</code></pre>
+<pre class="!bg-surface-900 !rounded-xl !p-5"><code class="language-bash"># TYPE     DATABASE     USER          ADDRESS              METHOD    [options]
+#
+# local    = Unix socket (same machine)
+# host     = TCP/IP (SSL optional)
+# hostssl  = TCP/IP with SSL required
+# hostnossl= TCP/IP without SSL
+
+# --- Local connections ---
+local     all          postgres                             peer
+local     all          all                                  scram-sha-256
+
+# --- Local loopback ---
+host      all          all           127.0.0.1/32         scram-sha-256
+host      all          all           ::1/128              scram-sha-256
+
+# --- Office subnet: only app team ---
+host      appdb        app_user      10.0.1.0/24          scram-sha-256
+
+# --- Replication ---
+host      replication  replicator    192.168.1.0/24       scram-sha-256
+
+# --- External: require SSL + cert ---
+hostssl   all          all           0.0.0.0/0            cert clientcert=verify-full
+
+# --- Default deny (explicit) ---
+host      all          all           0.0.0.0/0            reject</code></pre>
         </div>
 
-        <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-3">
-          <div class="bg-red-50 border border-red-200 rounded-xl p-3">
-            <h4 class="font-bold text-sm mb-1"><span class="lang-ar">أنواع الاتصال</span><span class="lang-en">Connection Types</span></h4>
-            <ul class="text-xs space-y-1 text-surface-700">
-              <li><span class="font-mono text-red-700">local</span> — Unix socket</li>
-              <li><span class="font-mono text-red-700">host</span> — TCP/IP</li>
-              <li><span class="font-mono text-red-700">hostssl</span> — SSL required</li>
-              <li><span class="font-mono text-red-700">hostnossl</span> — no SSL</li>
-            </ul>
-          </div>
-          <div class="bg-orange-50 border border-orange-200 rounded-xl p-3">
-            <h4 class="font-bold text-sm mb-1"><span class="lang-ar">طرق المصادقة</span><span class="lang-en">Auth Methods</span></h4>
-            <ul class="text-xs space-y-1 text-surface-700">
-              <li><span class="font-mono text-orange-700">trust</span> — <span class="lang-ar">بدون كلمة مرور!</span><span class="lang-en">no password!</span></li>
-              <li><span class="font-mono text-orange-700">scram-sha-256</span> — <span class="lang-ar">مُوصى به</span><span class="lang-en">recommended</span></li>
-              <li><span class="font-mono text-orange-700">md5</span> — <span class="lang-ar">قديم</span><span class="lang-en">legacy</span></li>
-              <li><span class="font-mono text-orange-700">peer / cert / ldap</span></li>
-            </ul>
+        <div class="mt-4 flex gap-3 p-4 bg-amber-50 border border-amber-200 rounded-xl">
+          <i data-lucide="alert-circle" class="w-5 h-5 text-amber-600 shrink-0 mt-0.5"></i>
+          <div class="text-sm">
+            <strong class="text-amber-800 lang-ar">تذكر:</strong>
+            <strong class="text-amber-800 lang-en">Remember:</strong>
+            <span class="text-amber-700 lang-ar"> بعد أي تعديل على pg_hba.conf نفذ <span dir="ltr" class="font-mono">SELECT pg_reload_conf();</span> أو <span dir="ltr" class="font-mono">pg_ctl reload</span>. لا تحتاج restart.</span>
+            <span class="text-amber-700 lang-en"> After any pg_hba.conf change run <span class="font-mono">SELECT pg_reload_conf();</span> or <span class="font-mono">pg_ctl reload</span>. No restart needed.</span>
           </div>
         </div>
       </div>
     </section>
 
     <section>
-      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">Row Level Security (RLS)</span><span class="lang-en">Row Level Security</span></h2>
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">طرق المصادقة</span><span class="lang-en">Authentication Methods</span></h2>
+      <div class="bg-white rounded-2xl border border-surface-200 overflow-hidden">
+        <table class="w-full text-sm">
+          <thead class="bg-red-600 text-white">
+            <tr><th class="p-3 text-left">Method</th><th class="p-3 text-right lang-ar">الوصف</th><th class="p-3 text-left lang-en">Description</th><th class="p-3 text-right lang-ar">الاستخدام</th><th class="p-3 text-left lang-en">Use case</th></tr>
+          </thead>
+          <tbody class="divide-y divide-surface-100">
+            <tr class="bg-red-50"><td class="p-3 font-mono text-red-700 font-bold">trust</td><td class="p-3 lang-ar">بدون أي كلمة مرور!</td><td class="p-3 lang-en">NO password at all!</td><td class="p-3 lang-ar">خطر! للاختبار فقط</td><td class="p-3 lang-en">Dangerous! Testing only</td></tr>
+            <tr><td class="p-3 font-mono text-green-700 font-bold">scram-sha-256</td><td class="p-3 lang-ar">أقوى تشفير لكلمة المرور</td><td class="p-3 lang-en">Strongest password hashing</td><td class="p-3 lang-ar">✓ الموصى به</td><td class="p-3 lang-en">✓ Recommended</td></tr>
+            <tr class="bg-surface-50/50"><td class="p-3 font-mono text-amber-700 font-bold">md5</td><td class="p-3 lang-ar">قديم، أقل أماناً</td><td class="p-3 lang-en">Legacy, weaker</td><td class="p-3 lang-ar">للتوافقية فقط</td><td class="p-3 lang-en">Only for legacy compat</td></tr>
+            <tr><td class="p-3 font-mono text-blue-700 font-bold">peer</td><td class="p-3 lang-ar">يطابق مستخدم نظام التشغيل</td><td class="p-3 lang-en">Match OS username</td><td class="p-3 lang-ar">local فقط</td><td class="p-3 lang-en">Local only</td></tr>
+            <tr class="bg-surface-50/50"><td class="p-3 font-mono text-blue-700 font-bold">ident</td><td class="p-3 lang-ar">مثل peer لكن عبر شبكة</td><td class="p-3 lang-en">Like peer but over network</td><td class="p-3 lang-ar">نادر — غير موصى به</td><td class="p-3 lang-en">Rare — not recommended</td></tr>
+            <tr><td class="p-3 font-mono text-purple-700 font-bold">cert</td><td class="p-3 lang-ar">شهادة SSL (client cert)</td><td class="p-3 lang-en">SSL client certificate</td><td class="p-3 lang-ar">أمان عالي</td><td class="p-3 lang-en">High security</td></tr>
+            <tr class="bg-surface-50/50"><td class="p-3 font-mono text-indigo-700 font-bold">ldap</td><td class="p-3 lang-ar">Active Directory / LDAP</td><td class="p-3 lang-en">Active Directory / LDAP</td><td class="p-3 lang-ar">في المؤسسات</td><td class="p-3 lang-en">Enterprise</td></tr>
+            <tr><td class="p-3 font-mono text-indigo-700 font-bold">gss / sspi</td><td class="p-3 lang-ar">Kerberos / Windows</td><td class="p-3 lang-en">Kerberos / Windows SSO</td><td class="p-3 lang-ar">SSO مع AD</td><td class="p-3 lang-en">SSO with AD</td></tr>
+            <tr class="bg-surface-50/50"><td class="p-3 font-mono text-red-700 font-bold">reject</td><td class="p-3 lang-ar">رفض صريح</td><td class="p-3 lang-en">Explicit deny</td><td class="p-3 lang-ar">للحظر</td><td class="p-3 lang-en">Blocking</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">SSL/TLS — تشفير الاتصال</span><span class="lang-en">SSL/TLS — Connection Encryption</span></h2>
       <div class="bg-white rounded-2xl border border-surface-200 p-6">
-        <p class="text-surface-700 mb-4 lang-ar">الـ <strong>RLS</strong> يسمح بحصر الوصول للصفوف حسب هوية المستخدم — بحيث يرى كل مستخدم بياناته فقط.</p>
-        <p class="text-surface-700 mb-4 lang-en"><strong>RLS</strong> restricts row access based on user identity — each user sees only their own data.</p>
+        <p class="text-surface-700 mb-4 lang-ar">لحماية كلمات المرور والبيانات أثناء النقل عبر الشبكة:</p>
+        <p class="text-surface-700 mb-4 lang-en">To protect passwords and data in transit:</p>
 
         <div class="relative group" dir="ltr">
           <button onclick="copyCode(this)" class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 bg-surface-700 text-white text-xs px-2.5 py-1.5 rounded-lg z-10">Copy</button>
-<pre class="!bg-surface-900 !rounded-xl !p-5"><code class="language-sql">-- Enable RLS on a table
-ALTER TABLE orders ENABLE ROW LEVEL SECURITY;
+<pre class="!bg-surface-900 !rounded-xl !p-5"><code class="language-bash"># 1. Generate self-signed cert (or use Let's Encrypt)
+openssl req -new -x509 -days 365 -nodes -text \
+  -out /var/lib/pgsql/18/data/server.crt \
+  -keyout /var/lib/pgsql/18/data/server.key \
+  -subj "/CN=db.example.com"
 
--- Create policy: users see only their own orders
-CREATE POLICY orders_own_policy ON orders
-  FOR ALL
-  USING (customer_id = current_setting('app.current_user')::int);
+chmod 600 /var/lib/pgsql/18/data/server.key
+chown postgres:postgres /var/lib/pgsql/18/data/server.*
 
--- Create policy for admins: see all
-CREATE POLICY orders_admin_policy ON orders
+# 2. In postgresql.conf:
+ssl = on
+ssl_cert_file = 'server.crt'
+ssl_key_file = 'server.key'
+ssl_min_protocol_version = 'TLSv1.2'
+ssl_ciphers = 'HIGH:!aNULL:!MD5'
+
+# 3. In pg_hba.conf — enforce SSL
+hostssl all all 0.0.0.0/0 scram-sha-256
+
+# 4. Restart server
+pg_ctl restart
+
+# 5. Client verification (in app/connection string)
+psql "postgresql://user@host/db?sslmode=verify-full&amp;sslrootcert=ca.crt"</code></pre>
+        </div>
+
+        <div class="mt-4 grid grid-cols-2 md:grid-cols-3 gap-2 text-xs">
+          <div class="bg-red-50 border border-red-200 rounded-lg p-2"><span class="font-mono font-bold">disable</span><span class="text-surface-600 lang-ar"> لا SSL</span><span class="text-surface-600 lang-en"> no SSL</span></div>
+          <div class="bg-amber-50 border border-amber-200 rounded-lg p-2"><span class="font-mono font-bold">prefer</span><span class="text-surface-600 lang-ar"> اختياري</span><span class="text-surface-600 lang-en"> optional</span></div>
+          <div class="bg-green-50 border border-green-200 rounded-lg p-2"><span class="font-mono font-bold">require</span><span class="text-surface-600 lang-ar"> مطلوب</span><span class="text-surface-600 lang-en"> required</span></div>
+          <div class="bg-green-50 border border-green-200 rounded-lg p-2"><span class="font-mono font-bold">verify-ca</span><span class="text-surface-600 lang-ar"> + تحقق CA</span><span class="text-surface-600 lang-en"> + CA check</span></div>
+          <div class="bg-green-50 border border-green-200 rounded-lg p-2 col-span-2"><span class="font-mono font-bold">verify-full</span><span class="text-surface-600 lang-ar"> أقوى — يتحقق من hostname أيضاً</span><span class="text-surface-600 lang-en"> strongest — also verifies hostname</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">Row Level Security (RLS)</span><span class="lang-en">Row Level Security (RLS)</span></h2>
+      <div class="bg-white rounded-2xl border border-surface-200 p-6 space-y-4">
+        <p class="text-surface-700 lang-ar">الـ <strong>RLS</strong> يقيّد الصفوف التي يراها كل مستخدم — ممتاز للتطبيقات multi-tenant حيث كل عميل يرى بياناته فقط.</p>
+        <p class="text-surface-700 lang-en"><strong>RLS</strong> restricts which rows each user sees — excellent for multi-tenant apps where each customer sees only their own data.</p>
+
+        <div class="relative group" dir="ltr">
+          <button onclick="copyCode(this)" class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 bg-surface-700 text-white text-xs px-2.5 py-1.5 rounded-lg z-10">Copy</button>
+<pre class="!bg-surface-900 !rounded-xl !p-5"><code class="language-sql">-- Example: invoices table with tenant_id
+CREATE TABLE invoices (
+  id          SERIAL PRIMARY KEY,
+  tenant_id   TEXT NOT NULL,
+  amount      NUMERIC,
+  details     TEXT
+);
+
+-- 1. Enable RLS on the table
+ALTER TABLE invoices ENABLE ROW LEVEL SECURITY;
+
+-- 2. Create policies
+
+-- Policy A: tenants see only their own rows
+CREATE POLICY tenant_isolation ON invoices
+  FOR ALL                                    -- SELECT, INSERT, UPDATE, DELETE
+  USING (tenant_id = current_setting('app.tenant'))
+  WITH CHECK (tenant_id = current_setting('app.tenant'));
+
+-- Policy B: admins see everything
+CREATE POLICY admin_all ON invoices
   FOR ALL
-  TO admin_role
+  TO superadmin_role
   USING (true);
 
--- Test: set app user and query
-SET app.current_user = '42';
-SELECT * FROM orders; -- only sees customer_id = 42
+-- 3. Set the session variable from app code (per request)
+SET app.tenant = 'acme_inc';
+
+-- Now SELECT automatically filters:
+SELECT * FROM invoices;   -- only acme_inc rows visible
+
+-- FORCE RLS on table owner too (owner bypasses by default)
+ALTER TABLE invoices FORCE ROW LEVEL SECURITY;
 
 -- Disable RLS (careful!)
-ALTER TABLE orders DISABLE ROW LEVEL SECURITY;</code></pre>
+ALTER TABLE invoices DISABLE ROW LEVEL SECURITY;
+
+-- List policies
+\d+ invoices
+SELECT * FROM pg_policies WHERE tablename = 'invoices';</code></pre>
+        </div>
+
+        <div class="flex gap-3 p-4 bg-red-50 border border-red-200 rounded-xl">
+          <i data-lucide="alert-triangle" class="w-5 h-5 text-red-600 shrink-0 mt-0.5"></i>
+          <div class="text-sm">
+            <strong class="text-red-800 lang-ar">تنبيه:</strong>
+            <strong class="text-red-800 lang-en">Note:</strong>
+            <span class="text-red-700 lang-ar"> بدون سياسات، ENABLE RLS = <strong>لا أحد يرى شيء</strong> (default deny). ومالك الجدول يتجاوز RLS افتراضياً ما لم تستخدم FORCE.</span>
+            <span class="text-red-700 lang-en"> Without policies, ENABLE RLS = <strong>no one sees anything</strong> (default deny). Table owner bypasses RLS by default unless you use FORCE.</span>
+          </div>
         </div>
       </div>
     </section>
 
     <section>
-      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">توصيات الأمان</span><span class="lang-en">Security Recommendations</span></h2>
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">تشفير البيانات</span><span class="lang-en">Data Encryption</span></h2>
       <div class="bg-white rounded-2xl border border-surface-200 p-6">
-        <ul class="space-y-3">
-          <li class="flex gap-3 p-3 bg-green-50 rounded-xl"><i data-lucide="check" class="w-5 h-5 text-green-600 shrink-0 mt-0.5"></i><div><strong class="lang-ar">استخدم scram-sha-256:</strong><strong class="lang-en">Use scram-sha-256:</strong><span class="lang-ar"> أقوى من md5 وأحدث</span><span class="lang-en"> stronger and newer than md5</span></div></li>
-          <li class="flex gap-3 p-3 bg-green-50 rounded-xl"><i data-lucide="check" class="w-5 h-5 text-green-600 shrink-0 mt-0.5"></i><div><strong class="lang-ar">فعل SSL/TLS:</strong><strong class="lang-en">Enable SSL/TLS:</strong><span class="lang-ar"> لحماية البيانات أثناء النقل</span><span class="lang-en"> protect data in transit</span></div></li>
-          <li class="flex gap-3 p-3 bg-green-50 rounded-xl"><i data-lucide="check" class="w-5 h-5 text-green-600 shrink-0 mt-0.5"></i><div><strong class="lang-ar">Least Privilege:</strong><strong class="lang-en">Least Privilege:</strong><span class="lang-ar"> امنح الحد الأدنى من الصلاحيات فقط</span><span class="lang-en"> grant minimum needed privileges</span></div></li>
-          <li class="flex gap-3 p-3 bg-green-50 rounded-xl"><i data-lucide="check" class="w-5 h-5 text-green-600 shrink-0 mt-0.5"></i><div><strong class="lang-ar">لا تستخدم superuser:</strong><strong class="lang-en">Avoid superuser:</strong><span class="lang-ar"> للعمليات العادية</span><span class="lang-en"> for normal operations</span></div></li>
-          <li class="flex gap-3 p-3 bg-green-50 rounded-xl"><i data-lucide="check" class="w-5 h-5 text-green-600 shrink-0 mt-0.5"></i><div><strong class="lang-ar">تحديث منتظم:</strong><strong class="lang-en">Regular updates:</strong><span class="lang-ar"> طبق patches الأمان</span><span class="lang-en"> apply security patches</span></div></li>
-          <li class="flex gap-3 p-3 bg-green-50 rounded-xl"><i data-lucide="check" class="w-5 h-5 text-green-600 shrink-0 mt-0.5"></i><div><strong class="lang-ar">Audit logging:</strong><strong class="lang-en">Audit logging:</strong><span class="lang-ar"> فعّل pgaudit لتسجيل العمليات الحساسة</span><span class="lang-en"> enable pgaudit for sensitive ops</span></div></li>
-        </ul>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+          <div class="bg-red-50 border border-red-200 rounded-xl p-4">
+            <i data-lucide="network" class="w-6 h-6 text-red-600 mb-2"></i>
+            <h4 class="font-bold text-sm mb-1"><span class="lang-ar">In Transit</span><span class="lang-en">In Transit</span></h4>
+            <p class="text-xs text-surface-600 lang-ar">SSL/TLS بين client و server</p>
+            <p class="text-xs text-surface-600 lang-en">SSL/TLS between client &amp; server</p>
+          </div>
+          <div class="bg-amber-50 border border-amber-200 rounded-xl p-4">
+            <i data-lucide="hard-drive" class="w-6 h-6 text-amber-600 mb-2"></i>
+            <h4 class="font-bold text-sm mb-1"><span class="lang-ar">At Rest — مستوى القرص</span><span class="lang-en">At Rest — disk level</span></h4>
+            <p class="text-xs text-surface-600 lang-ar">LUKS، dm-crypt، ZFS encryption</p>
+            <p class="text-xs text-surface-600 lang-en">LUKS, dm-crypt, ZFS encryption</p>
+          </div>
+          <div class="bg-purple-50 border border-purple-200 rounded-xl p-4">
+            <i data-lucide="key" class="w-6 h-6 text-purple-600 mb-2"></i>
+            <h4 class="font-bold text-sm mb-1"><span class="lang-ar">Column-level</span><span class="lang-en">Column-level</span></h4>
+            <p class="text-xs text-surface-600 lang-ar">pgcrypto للحقول الحساسة</p>
+            <p class="text-xs text-surface-600 lang-en">pgcrypto for sensitive fields</p>
+          </div>
+        </div>
+
+        <div class="relative group" dir="ltr">
+          <button onclick="copyCode(this)" class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 bg-surface-700 text-white text-xs px-2.5 py-1.5 rounded-lg z-10">Copy</button>
+<pre class="!bg-surface-900 !rounded-xl !p-5"><code class="language-sql">-- Install pgcrypto
+CREATE EXTENSION IF NOT EXISTS pgcrypto;
+
+-- Hash password (for storing, not encryption)
+SELECT crypt('mypassword', gen_salt('bf'));   -- bcrypt
+-- Verify
+SELECT crypt('mypassword', stored_hash) = stored_hash;
+
+-- Symmetric encryption (AES)
+INSERT INTO secrets (id, data)
+VALUES (1, pgp_sym_encrypt('credit card: 4111...', 'secret_key'));
+
+-- Decrypt
+SELECT pgp_sym_decrypt(data::bytea, 'secret_key') FROM secrets WHERE id = 1;
+
+-- Generate random UUIDs (cryptographically secure)
+SELECT gen_random_uuid();</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">التدقيق بـ pgaudit</span><span class="lang-en">Auditing with pgaudit</span></h2>
+      <div class="bg-white rounded-2xl border border-surface-200 p-6">
+        <p class="text-surface-700 mb-4 lang-ar"><strong>pgaudit</strong> extension يسجل العمليات الحساسة بتفاصيل كاملة — مطلوب لـ HIPAA، PCI-DSS، GDPR.</p>
+        <p class="text-surface-700 mb-4 lang-en"><strong>pgaudit</strong> extension logs sensitive operations in detail — required for HIPAA, PCI-DSS, GDPR.</p>
+
+        <div class="relative group" dir="ltr">
+          <button onclick="copyCode(this)" class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 bg-surface-700 text-white text-xs px-2.5 py-1.5 rounded-lg z-10">Copy</button>
+<pre class="!bg-surface-900 !rounded-xl !p-5"><code class="language-bash"># Install pgaudit extension
+sudo dnf install pgaudit_18
+
+# In postgresql.conf:
+shared_preload_libraries = 'pgaudit'
+pgaudit.log = 'write, ddl, role'
+# Classes: read, write, function, role, ddl, misc, all
+
+# Per-database or per-role auditing
+ALTER DATABASE sales SET pgaudit.log = 'all';
+ALTER ROLE finance SET pgaudit.log = 'read, write';
+
+# Restart to activate
+sudo systemctl restart postgresql-18</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">قائمة تحقق الأمان</span><span class="lang-en">Security Checklist</span></h2>
+      <div class="bg-white rounded-2xl border border-surface-200 p-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+          <div class="bg-green-50 border border-green-200 rounded-xl p-3 text-sm flex gap-2"><i data-lucide="check" class="w-4 h-4 text-green-600 shrink-0 mt-0.5"></i><span class="lang-ar">scram-sha-256 وليس md5</span><span class="lang-en">scram-sha-256, not md5</span></div>
+          <div class="bg-green-50 border border-green-200 rounded-xl p-3 text-sm flex gap-2"><i data-lucide="check" class="w-4 h-4 text-green-600 shrink-0 mt-0.5"></i><span class="lang-ar">SSL مفعل وverify-full</span><span class="lang-en">SSL with verify-full</span></div>
+          <div class="bg-green-50 border border-green-200 rounded-xl p-3 text-sm flex gap-2"><i data-lucide="check" class="w-4 h-4 text-green-600 shrink-0 mt-0.5"></i><span class="lang-ar">لا trust method</span><span class="lang-en">No trust method</span></div>
+          <div class="bg-green-50 border border-green-200 rounded-xl p-3 text-sm flex gap-2"><i data-lucide="check" class="w-4 h-4 text-green-600 shrink-0 mt-0.5"></i><span class="lang-ar">listen_addresses محدود</span><span class="lang-en">listen_addresses limited</span></div>
+          <div class="bg-green-50 border border-green-200 rounded-xl p-3 text-sm flex gap-2"><i data-lucide="check" class="w-4 h-4 text-green-600 shrink-0 mt-0.5"></i><span class="lang-ar">Firewall يسمح بـ 5432 من IPs محددة فقط</span><span class="lang-en">Firewall allows 5432 from specific IPs only</span></div>
+          <div class="bg-green-50 border border-green-200 rounded-xl p-3 text-sm flex gap-2"><i data-lucide="check" class="w-4 h-4 text-green-600 shrink-0 mt-0.5"></i><span class="lang-ar">Least privilege في GRANT</span><span class="lang-en">Least privilege grants</span></div>
+          <div class="bg-green-50 border border-green-200 rounded-xl p-3 text-sm flex gap-2"><i data-lucide="check" class="w-4 h-4 text-green-600 shrink-0 mt-0.5"></i><span class="lang-ar">لا SUPERUSER للتطبيقات</span><span class="lang-en">No SUPERUSER for apps</span></div>
+          <div class="bg-green-50 border border-green-200 rounded-xl p-3 text-sm flex gap-2"><i data-lucide="check" class="w-4 h-4 text-green-600 shrink-0 mt-0.5"></i><span class="lang-ar">RLS للـ multi-tenant</span><span class="lang-en">RLS for multi-tenant</span></div>
+          <div class="bg-green-50 border border-green-200 rounded-xl p-3 text-sm flex gap-2"><i data-lucide="check" class="w-4 h-4 text-green-600 shrink-0 mt-0.5"></i><span class="lang-ar">pgaudit للمراقبة</span><span class="lang-en">pgaudit for monitoring</span></div>
+          <div class="bg-green-50 border border-green-200 rounded-xl p-3 text-sm flex gap-2"><i data-lucide="check" class="w-4 h-4 text-green-600 shrink-0 mt-0.5"></i><span class="lang-ar">تحديثات أمنية منتظمة</span><span class="lang-en">Regular security patches</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUIZ -->
+    <section>
+      <div class="mb-6">
+        <span class="text-sm font-bold text-red-600 uppercase tracking-wider"><span class="lang-ar">اختبر فهمك</span><span class="lang-en">Test Your Knowledge</span></span>
+        <h2 class="text-3xl font-bold text-surface-900 mt-2 mb-3"><span class="lang-ar">كويز الوحدة ٩ 🎯</span><span class="lang-en">Module 9 Quiz 🎯</span></h2>
+      </div>
+
+      <div id="quiz" class="space-y-4">
+        <div class="quiz-card bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="flex items-center gap-2 mb-3"><span class="w-7 h-7 rounded-full bg-red-600 text-white font-bold text-sm flex items-center justify-center">1</span></div>
+          <p class="font-semibold mb-4 lang-ar">أي طريقة مصادقة هي الأكثر أماناً وموصى بها؟</p>
+          <p class="font-semibold mb-4 lang-en">Which auth method is most secure and recommended?</p>
+          <div class="space-y-2">
+            <button onclick="pick(this,1)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-red-300"><span class="font-mono">md5</span></button>
+            <button onclick="pick(this,1)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-red-300"><span class="font-mono">trust</span></button>
+            <button onclick="pick(this,1)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-red-300" data-correct="true"><span class="font-mono">scram-sha-256</span></button>
+            <button onclick="pick(this,1)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-red-300"><span class="font-mono">password</span></button>
+          </div>
+          <div class="feedback hidden mt-3 p-3 rounded-xl text-sm"></div>
+        </div>
+
+        <div class="quiz-card bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="flex items-center gap-2 mb-3"><span class="w-7 h-7 rounded-full bg-red-600 text-white font-bold text-sm flex items-center justify-center">2</span></div>
+          <p class="font-semibold mb-4 lang-ar">ترتيب قواعد pg_hba.conf:</p>
+          <p class="font-semibold mb-4 lang-en">pg_hba.conf rule ordering:</p>
+          <div class="space-y-2">
+            <button onclick="pick(this,2)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-red-300"><span class="lang-ar">غير مهم — كلها تُطبق</span><span class="lang-en">Doesn't matter — all applied</span></button>
+            <button onclick="pick(this,2)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-red-300" data-correct="true"><span class="lang-ar">مهم جداً — أول قاعدة مطابقة تحكم</span><span class="lang-en">Critical — first match wins</span></button>
+            <button onclick="pick(this,2)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-red-300"><span class="lang-ar">آخر قاعدة مطابقة تحكم</span><span class="lang-en">Last match wins</span></button>
+          </div>
+          <div class="feedback hidden mt-3 p-3 rounded-xl text-sm"></div>
+        </div>
+
+        <div class="quiz-card bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="flex items-center gap-2 mb-3"><span class="w-7 h-7 rounded-full bg-red-600 text-white font-bold text-sm flex items-center justify-center">3</span></div>
+          <p class="font-semibold mb-4 lang-ar">ماذا يعني sslmode=verify-full؟</p>
+          <p class="font-semibold mb-4 lang-en">What does sslmode=verify-full mean?</p>
+          <div class="space-y-2">
+            <button onclick="pick(this,3)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-red-300"><span class="lang-ar">SSL فقط</span><span class="lang-en">SSL only</span></button>
+            <button onclick="pick(this,3)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-red-300" data-correct="true"><span class="lang-ar">SSL + CA + hostname check</span><span class="lang-en">SSL + CA + hostname check</span></button>
+            <button onclick="pick(this,3)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-red-300"><span class="lang-ar">SSL بدون تحقق</span><span class="lang-en">SSL without verification</span></button>
+          </div>
+          <div class="feedback hidden mt-3 p-3 rounded-xl text-sm"></div>
+        </div>
+
+        <div class="quiz-card bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="flex items-center gap-2 mb-3"><span class="w-7 h-7 rounded-full bg-red-600 text-white font-bold text-sm flex items-center justify-center">4</span></div>
+          <p class="font-semibold mb-4 lang-ar">تفعيل RLS على جدول بدون أي policy:</p>
+          <p class="font-semibold mb-4 lang-en">Enabling RLS on a table with no policies:</p>
+          <div class="space-y-2">
+            <button onclick="pick(this,4)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-red-300"><span class="lang-ar">الكل يرى كل شيء</span><span class="lang-en">Everyone sees everything</span></button>
+            <button onclick="pick(this,4)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-red-300" data-correct="true"><span class="lang-ar">لا أحد يرى شيء (default deny)</span><span class="lang-en">No one sees anything (default deny)</span></button>
+            <button onclick="pick(this,4)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-red-300"><span class="lang-ar">فقط المالك يرى</span><span class="lang-en">Only owner sees</span></button>
+          </div>
+          <div class="feedback hidden mt-3 p-3 rounded-xl text-sm"></div>
+        </div>
+
+        <div class="quiz-card bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="flex items-center gap-2 mb-3"><span class="w-7 h-7 rounded-full bg-red-600 text-white font-bold text-sm flex items-center justify-center">5</span></div>
+          <p class="font-semibold mb-4 lang-ar">بعد تعديل pg_hba.conf:</p>
+          <p class="font-semibold mb-4 lang-en">After editing pg_hba.conf:</p>
+          <div class="space-y-2">
+            <button onclick="pick(this,5)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-red-300"><span class="lang-ar">إعادة تشغيل كاملة فقط</span><span class="lang-en">Full restart only</span></button>
+            <button onclick="pick(this,5)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-red-300" data-correct="true"><span class="lang-ar">reload كافٍ (pg_reload_conf)</span><span class="lang-en">Reload is enough (pg_reload_conf)</span></button>
+            <button onclick="pick(this,5)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-red-300"><span class="lang-ar">لا شيء — يسري فوراً</span><span class="lang-en">Nothing — takes effect immediately</span></button>
+          </div>
+          <div class="feedback hidden mt-3 p-3 rounded-xl text-sm"></div>
+        </div>
+
+        <div class="quiz-card bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="flex items-center gap-2 mb-3"><span class="w-7 h-7 rounded-full bg-red-600 text-white font-bold text-sm flex items-center justify-center">6</span></div>
+          <p class="font-semibold mb-4 lang-ar">pgcrypto يوفر:</p>
+          <p class="font-semibold mb-4 lang-en">pgcrypto provides:</p>
+          <div class="space-y-2">
+            <button onclick="pick(this,6)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-red-300"><span class="lang-ar">تشفير الجداول كاملة</span><span class="lang-en">Full table encryption</span></button>
+            <button onclick="pick(this,6)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-red-300" data-correct="true"><span class="lang-ar">تشفير على مستوى الحقل + hashing + UUID</span><span class="lang-en">Column-level encryption + hashing + UUIDs</span></button>
+            <button onclick="pick(this,6)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-red-300"><span class="lang-ar">SSL certificates فقط</span><span class="lang-en">SSL certificates only</span></button>
+          </div>
+          <div class="feedback hidden mt-3 p-3 rounded-xl text-sm"></div>
+        </div>
+
+        <div class="quiz-card bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="flex items-center gap-2 mb-3"><span class="w-7 h-7 rounded-full bg-red-600 text-white font-bold text-sm flex items-center justify-center">7</span></div>
+          <p class="font-semibold mb-4 lang-ar">extension المفضل لتسجيل العمليات لأغراض الامتثال (HIPAA، PCI):</p>
+          <p class="font-semibold mb-4 lang-en">Extension for auditing for compliance (HIPAA, PCI):</p>
+          <div class="space-y-2">
+            <button onclick="pick(this,7)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-red-300"><span class="font-mono">pg_stat_statements</span></button>
+            <button onclick="pick(this,7)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-red-300"><span class="font-mono">pgcrypto</span></button>
+            <button onclick="pick(this,7)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-red-300" data-correct="true"><span class="font-mono">pgaudit</span></button>
+          </div>
+          <div class="feedback hidden mt-3 p-3 rounded-xl text-sm"></div>
+        </div>
+
+        <div id="quiz-result" class="hidden bg-gradient-to-br from-red-600 to-red-800 text-white rounded-2xl p-6 text-center">
+          <i data-lucide="award" class="w-12 h-12 mx-auto mb-3"></i>
+          <h3 class="text-2xl font-bold mb-2"><span class="lang-ar">نتيجتك</span><span class="lang-en">Your Score</span></h3>
+          <div class="text-5xl font-bold my-3"><span id="score">0</span><span class="text-2xl opacity-70">/7</span></div>
+          <p id="result-msg" class="text-red-100"></p>
+          <button onclick="resetQuiz()" class="mt-4 bg-white text-red-700 font-semibold px-6 py-2 rounded-lg hover:bg-red-50"><span class="lang-ar">إعادة المحاولة</span><span class="lang-en">Try Again</span></button>
+        </div>
       </div>
     </section>
 
@@ -180,12 +462,12 @@ ALTER TABLE orders DISABLE ROW LEVEL SECURITY;</code></pre>
       <div class="bg-gradient-to-br from-red-600 via-red-700 to-red-900 text-white rounded-2xl p-6 md:p-8 shadow-xl">
         <div class="flex items-center gap-3 mb-6"><div class="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center"><i data-lucide="bookmark-check" class="w-6 h-6"></i></div><h2 class="text-2xl font-bold"><span class="lang-ar">ملخص الوحدة</span><span class="lang-en">Module Summary</span></h2></div>
         <ul class="grid grid-cols-1 md:grid-cols-2 gap-3">
-          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-red-300 shrink-0 mt-0.5"></i><span class="lang-ar">٤ مستويات: شبكة/مصادقة/صلاحيات/تشفير</span><span class="lang-en">4 levels: network/auth/authz/encryption</span></li>
-          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-red-300 shrink-0 mt-0.5"></i><span class="lang-ar">pg_hba.conf يتحكم بالوصول</span><span class="lang-en">pg_hba.conf controls access</span></li>
-          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-red-300 shrink-0 mt-0.5"></i><span class="lang-ar">scram-sha-256 هو الموصى به</span><span class="lang-en">scram-sha-256 is recommended</span></li>
-          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-red-300 shrink-0 mt-0.5"></i><span class="lang-ar">RLS للأمان على مستوى الصف</span><span class="lang-en">RLS for row-level security</span></li>
-          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-red-300 shrink-0 mt-0.5"></i><span class="lang-ar">SSL/TLS للنقل الآمن</span><span class="lang-en">SSL/TLS for secure transit</span></li>
-          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-red-300 shrink-0 mt-0.5"></i><span class="lang-ar">مبدأ أقل الصلاحيات</span><span class="lang-en">Least privilege principle</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-red-300 shrink-0 mt-0.5"></i><span class="lang-ar">٤ طبقات: شبكة/مصادقة/صلاحيات/تشفير</span><span class="lang-en">4 layers: network/auth/authz/crypto</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-red-300 shrink-0 mt-0.5"></i><span class="lang-ar">pg_hba.conf أول مطابقة تحكم</span><span class="lang-en">pg_hba.conf first match wins</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-red-300 shrink-0 mt-0.5"></i><span class="lang-ar">scram-sha-256 أفضل طريقة</span><span class="lang-en">scram-sha-256 is best</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-red-300 shrink-0 mt-0.5"></i><span class="lang-ar">SSL verify-full للإنتاج</span><span class="lang-en">SSL verify-full for production</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-red-300 shrink-0 mt-0.5"></i><span class="lang-ar">RLS للـ multi-tenant</span><span class="lang-en">RLS for multi-tenant</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-red-300 shrink-0 mt-0.5"></i><span class="lang-ar">pgaudit للامتثال والتدقيق</span><span class="lang-en">pgaudit for compliance</span></li>
         </ul>
       </div>
     </section>
@@ -193,7 +475,7 @@ ALTER TABLE orders DISABLE ROW LEVEL SECURITY;</code></pre>
     <nav class="flex flex-col md:flex-row gap-4">
       <a href="ch08.html" class="flex-1 bg-white border border-surface-200 rounded-xl p-4 hover:border-red-300 hover:shadow-md transition-all">
         <div class="text-xs text-surface-500 mb-1"><span class="lang-ar">السابق</span><span class="lang-en">Previous</span></div>
-        <div class="flex items-center gap-2 font-bold"><i data-lucide="arrow-right" class="w-4 h-4 lang-ar"></i><i data-lucide="arrow-left" class="w-4 h-4 lang-en"></i><span class="lang-ar">إدارة الكائنات</span><span class="lang-en">Managing Objects</span></div>
+        <div class="flex items-center gap-2 font-bold"><i data-lucide="arrow-right" class="w-4 h-4 lang-ar"></i><i data-lucide="arrow-left" class="w-4 h-4 lang-en"></i><span class="lang-ar">الكائنات</span><span class="lang-en">Objects</span></div>
       </a>
       <a href="ch10.html" class="flex-1 bg-gradient-to-br from-red-600 to-red-700 text-white rounded-xl p-4 hover:shadow-xl transition-all">
         <div class="text-xs text-red-200 mb-1 text-end"><span class="lang-ar">التالي</span><span class="lang-en">Next</span></div>
@@ -207,6 +489,10 @@ ALTER TABLE orders DISABLE ROW LEVEL SECURITY;</code></pre>
   <script>
     function setLang(lang){document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';localStorage.setItem('pgCourseLang',lang);document.querySelectorAll('.lang-btn').forEach(b=>{b.classList.remove('bg-red-600','text-white','shadow-md');b.classList.add('text-surface-600','hover:bg-surface-100');});const a=document.getElementById('btn-'+lang);a.classList.add('bg-red-600','text-white','shadow-md');a.classList.remove('text-surface-600','hover:bg-surface-100');}
     function copyCode(btn){const c=btn.nextElementSibling.querySelector('code').textContent;navigator.clipboard.writeText(c);btn.textContent='✓';setTimeout(()=>btn.textContent='Copy',2000);}
+    const total=7;const answers={};
+    function pick(btn,q){const card=btn.closest('.quiz-card');card.querySelectorAll('.quiz-opt').forEach(o=>o.disabled=true);const correct=btn.dataset.correct==='true';btn.classList.add(correct?'correct':'wrong');if(!correct)card.querySelector('[data-correct="true"]').classList.add('correct');const fb=card.querySelector('.feedback');fb.classList.remove('hidden');const lang=document.documentElement.lang;fb.className='feedback mt-3 p-3 rounded-xl text-sm '+(correct?'bg-green-50 text-green-800 border border-green-200':'bg-red-50 text-red-800 border border-red-200');fb.innerHTML=correct?(lang==='ar'?'✓ ممتاز!':'✓ Correct!'):(lang==='ar'?'✗ خطأ — الإجابة بالأخضر':'✗ Wrong — answer in green');answers[q]=correct;if(Object.keys(answers).length===total)showResult();}
+    function showResult(){const s=Object.values(answers).filter(Boolean).length;document.getElementById('score').textContent=s;const m=document.getElementById('result-msg');const l=document.documentElement.lang;m.textContent=s===total?(l==='ar'?'🎉 إتقان كامل!':'🎉 Perfect!'):s>=Math.ceil(total*0.7)?(l==='ar'?'👍 ممتاز!':'👍 Great!'):(l==='ar'?'📚 راجع':'📚 Review');const r=document.getElementById('quiz-result');r.classList.remove('hidden');r.scrollIntoView({behavior:'smooth',block:'center'});}
+    function resetQuiz(){Object.keys(answers).forEach(k=>delete answers[k]);document.querySelectorAll('.quiz-opt').forEach(b=>{b.disabled=false;b.classList.remove('correct','wrong');});document.querySelectorAll('.feedback').forEach(f=>f.classList.add('hidden'));document.getElementById('quiz-result').classList.add('hidden');document.getElementById('quiz').scrollIntoView({behavior:'smooth',block:'start'});}
     setLang(localStorage.getItem('pgCourseLang')||'ar');lucide.createIcons();Prism.highlightAll();
   </script>
 </body>

@@ -12,7 +12,8 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
-  <style>body{font-family:'IBM Plex Sans Arabic',sans-serif}html[lang="ar"] .lang-en{display:none!important}html[lang="en"] .lang-ar{display:none!important}pre[class*="language-"]{border-radius:.75rem;font-size:.875rem;direction:ltr}code[class*="language-"]{font-family:'JetBrains Mono',monospace}</style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-sql.min.js"></script>
+  <style>body{font-family:'IBM Plex Sans Arabic',sans-serif}html[lang="ar"] .lang-en{display:none!important}html[lang="en"] .lang-ar{display:none!important}pre[class*="language-"]{border-radius:.75rem;font-size:.875rem;direction:ltr}code[class*="language-"]{font-family:'JetBrains Mono',monospace}.quiz-opt.correct{border-color:#059669!important;background:#ecfdf5!important}.quiz-opt.wrong{border-color:#dc2626!important;background:#fef2f2!important}.quiz-opt:disabled{cursor:not-allowed}</style>
 </head>
 <body class="bg-surface-50 text-surface-800 antialiased min-h-screen">
 
@@ -34,22 +35,21 @@
         <span class="lang-ar">١٤ صفحة</span><span class="lang-en">14 pages</span>
       </div>
       <h1 class="text-3xl md:text-5xl font-bold mb-4"><span class="lang-ar">كلاسترات قاعدة البيانات</span><span class="lang-en">Database Clusters</span></h1>
-      <p class="text-lg text-rose-100 max-w-3xl lang-ar">إنشاء وإدارة كلاستر PostgreSQL — الحجر الأساس لكل قواعد بياناتك.</p>
-      <p class="text-lg text-rose-100 max-w-3xl lang-en">Creating and managing PostgreSQL clusters — the foundation for all your databases.</p>
+      <p class="text-lg text-rose-100 max-w-3xl lang-ar">مفهوم الكلاستر، إنشاؤه، إدارته، وتشغيل عدة كلاسترات على نفس الخادم.</p>
+      <p class="text-lg text-rose-100 max-w-3xl lang-en">Cluster concept, creation, management, and running multiple clusters on one server.</p>
     </div>
   </header>
 
   <section class="max-w-6xl mx-auto px-4 sm:px-6 py-10">
     <div class="bg-white rounded-2xl shadow-sm border border-surface-200 p-6 md:p-8">
-      <div class="flex items-center gap-3 mb-6">
-        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-rose-500 to-rose-700 flex items-center justify-center text-white"><i data-lucide="database" class="w-6 h-6"></i></div>
-        <h2 class="text-2xl font-bold"><span class="lang-ar">أهداف الوحدة</span><span class="lang-en">Module Objectives</span></h2>
-      </div>
+      <div class="flex items-center gap-3 mb-6"><div class="w-12 h-12 rounded-xl bg-gradient-to-br from-rose-500 to-rose-700 flex items-center justify-center text-white"><i data-lucide="database" class="w-6 h-6"></i></div><h2 class="text-2xl font-bold"><span class="lang-ar">أهداف الوحدة</span><span class="lang-en">Module Objectives</span></h2></div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
-        <div class="flex gap-2 p-3 rounded-xl bg-rose-50 border border-rose-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-rose-600 shrink-0"></i><span class="lang-ar">مفهوم الكلاستر</span><span class="lang-en">Database Clusters Concept</span></div>
-        <div class="flex gap-2 p-3 rounded-xl bg-rose-50 border border-rose-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-rose-600 shrink-0"></i><span class="lang-ar">إنشاء كلاستر جديد</span><span class="lang-en">Creating a Database Cluster</span></div>
-        <div class="flex gap-2 p-3 rounded-xl bg-rose-50 border border-rose-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-rose-600 shrink-0"></i><span class="lang-ar">تشغيل وإيقاف السيرفر (pg_ctl)</span><span class="lang-en">Starting/Stopping Server (pg_ctl)</span></div>
-        <div class="flex gap-2 p-3 rounded-xl bg-rose-50 border border-rose-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-rose-600 shrink-0"></i><span class="lang-ar">الاتصال بالسيرفر عبر psql</span><span class="lang-en">Connecting via psql</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-rose-50 border border-rose-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-rose-600 shrink-0"></i><span class="lang-ar">مفهوم الكلاستر والفرق عن قاعدة البيانات</span><span class="lang-en">Cluster vs database</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-rose-50 border border-rose-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-rose-600 shrink-0"></i><span class="lang-ar">إنشاء كلاستر عبر initdb</span><span class="lang-en">Creating with initdb</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-rose-50 border border-rose-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-rose-600 shrink-0"></i><span class="lang-ar">تشغيل وإيقاف السيرفر</span><span class="lang-en">Start/stop server</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-rose-50 border border-rose-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-rose-600 shrink-0"></i><span class="lang-ar">ثلاث أوضاع للإيقاف</span><span class="lang-en">Three shutdown modes</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-rose-50 border border-rose-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-rose-600 shrink-0"></i><span class="lang-ar">قواعد البيانات الافتراضية</span><span class="lang-en">Default databases</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-rose-50 border border-rose-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-rose-600 shrink-0"></i><span class="lang-ar">عدة كلاسترات على سيرفر واحد</span><span class="lang-en">Multiple clusters per server</span></div>
       </div>
     </div>
   </section>
@@ -58,108 +58,287 @@
 
     <section>
       <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">ما هو الكلاستر؟</span><span class="lang-en">What is a Cluster?</span></h2>
-      <div class="bg-white rounded-2xl border border-surface-200 p-6 space-y-4">
-        <p class="text-surface-700 leading-relaxed lang-ar"><strong>الكلاستر (Database Cluster)</strong> هو مجموعة من قواعد البيانات تدار بواسطة سيرفر PostgreSQL واحد. يتكون من:</p>
-        <p class="text-surface-700 leading-relaxed lang-en">A <strong>Database Cluster</strong> is a collection of databases managed by a single PostgreSQL server instance. It consists of:</p>
+      <div class="bg-white rounded-2xl border border-surface-200 p-6 md:p-8 space-y-4">
+        <p class="text-surface-700 leading-relaxed lang-ar">
+          <strong>الكلاستر (Database Cluster)</strong> في PostgreSQL مصطلح قد يختلف عن ما تعرفه. هنا <strong>لا يعني</strong> مجموعة سيرفرات متصلة — بل يعني <strong>مجموعة قواعد بيانات يديرها سيرفر PostgreSQL واحد</strong>. الكلاستر = مجلد بيانات + منفذ + عملية سيرفر واحدة.
+        </p>
+        <p class="text-surface-700 leading-relaxed lang-en">
+          In PostgreSQL, <strong>"cluster"</strong> may differ from what you know. It does <strong>NOT</strong> mean a group of connected servers — it means <strong>a set of databases managed by a single PostgreSQL server</strong>. Cluster = data directory + port + one server process.
+        </p>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-          <div class="bg-gradient-to-br from-rose-50 to-rose-100 rounded-xl p-5 border border-rose-200">
-            <i data-lucide="folder-tree" class="w-8 h-8 text-rose-600 mb-3"></i>
-            <h4 class="font-bold mb-2"><span class="lang-ar">مجلد البيانات</span><span class="lang-en">Data Directory</span></h4>
-            <p class="text-sm text-surface-700 lang-ar">المجلد الذي يحتوي على كل ملفات قاعدة البيانات (<span dir="ltr" class="font-mono">PGDATA</span>)</p>
-            <p class="text-sm text-surface-700 lang-en">The folder containing all database files (<span class="font-mono">PGDATA</span>)</p>
-          </div>
-          <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-5 border border-purple-200">
-            <i data-lucide="network" class="w-8 h-8 text-purple-600 mb-3"></i>
-            <h4 class="font-bold mb-2"><span class="lang-ar">منفذ الاتصال</span><span class="lang-en">Port</span></h4>
-            <p class="text-sm text-surface-700 lang-ar">رقم المنفذ للاتصال (الافتراضي: <span dir="ltr" class="font-mono">5432</span>)</p>
-            <p class="text-sm text-surface-700 lang-en">Connection port number (default: <span class="font-mono">5432</span>)</p>
+        <div class="bg-gradient-to-br from-rose-50 to-white rounded-xl p-5 border border-rose-200">
+          <h3 class="font-bold text-rose-900 mb-3 flex items-center gap-2"><i data-lucide="layers" class="w-5 h-5"></i><span class="lang-ar">الهرمية الكاملة</span><span class="lang-en">The Full Hierarchy</span></h3>
+          <div class="text-sm font-mono bg-white rounded-lg p-4 border border-rose-100" dir="ltr">
+<pre class="!p-0 !bg-transparent !text-surface-800 text-xs">
+Server (machine)
+ └─ Cluster (= PGDATA directory + port)
+     ├─ Database 1
+     │   └─ Schema
+     │       └─ Tables, Views, Indexes, Functions
+     ├─ Database 2
+     └─ Database 3</pre>
           </div>
         </div>
 
-        <div class="flex gap-3 p-4 bg-rose-50 border border-rose-200 rounded-xl">
-          <i data-lucide="lightbulb" class="w-5 h-5 text-rose-600 shrink-0 mt-0.5"></i>
-          <div>
-            <strong class="text-rose-800 lang-ar">قواعد البيانات الافتراضية عند الإنشاء:</strong>
-            <strong class="text-rose-800 lang-en">Default databases created:</strong>
-            <div class="mt-2 flex flex-wrap gap-2">
-              <span class="font-mono bg-white border border-rose-200 px-3 py-1 rounded-lg text-sm">template0</span>
-              <span class="font-mono bg-white border border-rose-200 px-3 py-1 rounded-lg text-sm">template1</span>
-              <span class="font-mono bg-white border border-rose-200 px-3 py-1 rounded-lg text-sm">postgres</span>
-            </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+          <div class="bg-white border-2 border-rose-200 rounded-xl p-4">
+            <div class="font-mono font-bold text-rose-700 mb-1">postgres</div>
+            <p class="text-xs text-surface-600 lang-ar">القاعدة الافتراضية للمدير — استخدمها للإدارة</p>
+            <p class="text-xs text-surface-600 lang-en">Default admin DB — use for maintenance</p>
+          </div>
+          <div class="bg-white border-2 border-rose-200 rounded-xl p-4">
+            <div class="font-mono font-bold text-rose-700 mb-1">template1</div>
+            <p class="text-xs text-surface-600 lang-ar">القالب الذي يُنسخ منه عند CREATE DATABASE</p>
+            <p class="text-xs text-surface-600 lang-en">Template copied on CREATE DATABASE</p>
+          </div>
+          <div class="bg-white border-2 border-rose-200 rounded-xl p-4">
+            <div class="font-mono font-bold text-rose-700 mb-1">template0</div>
+            <p class="text-xs text-surface-600 lang-ar">قالب "نظيف" احتياطي — لا تعدّله أبداً</p>
+            <p class="text-xs text-surface-600 lang-en">Pristine backup template — never modify</p>
+          </div>
+        </div>
+
+        <div class="flex gap-3 p-4 bg-amber-50 border border-amber-200 rounded-xl">
+          <i data-lucide="info" class="w-5 h-5 text-amber-600 shrink-0 mt-0.5"></i>
+          <div class="text-sm">
+            <strong class="text-amber-800 lang-ar">نصيحة الخبراء:</strong>
+            <strong class="text-amber-800 lang-en">Expert tip:</strong>
+            <span class="text-amber-700 lang-ar"> لو أضفت extension أو عدلت template1، كل قواعد بيانات جديدة ترث هذه التعديلات. مفيد لإضافة <span dir="ltr" class="font-mono">pgcrypto</span> أو <span dir="ltr" class="font-mono">uuid-ossp</span> افتراضياً.</span>
+            <span class="text-amber-700 lang-en"> If you add an extension or modify template1, all new databases inherit it. Useful for adding <span class="font-mono">pgcrypto</span> or <span class="font-mono">uuid-ossp</span> by default.</span>
           </div>
         </div>
       </div>
     </section>
 
     <section>
-      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">إنشاء كلاستر جديد</span><span class="lang-en">Creating a Cluster</span></h2>
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">initdb — إنشاء كلاستر جديد</span><span class="lang-en">initdb — Creating a New Cluster</span></h2>
       <div class="bg-white rounded-2xl border border-surface-200 p-6 space-y-4">
-        <p class="text-surface-700 lang-ar">استخدم <span dir="ltr" class="font-mono bg-surface-100 px-2 py-0.5 rounded">initdb</span> لإنشاء كلاستر جديد:</p>
-        <p class="text-surface-700 lang-en">Use <span class="font-mono bg-surface-100 px-2 py-0.5 rounded">initdb</span> to create a new cluster:</p>
+        <p class="text-surface-700 lang-ar"><span dir="ltr" class="font-mono">initdb</span> يُشغّل مرة واحدة فقط لكل كلاستر — ينشئ بنية المجلد، ملفات النظام، والقواعد الافتراضية.</p>
+        <p class="text-surface-700 lang-en"><span class="font-mono">initdb</span> runs only ONCE per cluster — creates directory structure, system files, and default databases.</p>
 
         <div class="relative group" dir="ltr">
           <button onclick="copyCode(this)" class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 bg-surface-700 text-white text-xs px-2.5 py-1.5 rounded-lg z-10">Copy</button>
-<pre class="!bg-surface-900 !rounded-xl !p-5"><code class="language-bash"># Create a new cluster at /var/lib/pgsql/18/edbdata
-initdb -D /var/lib/pgsql/18/edbdata \
-       -U postgres \
-       --encoding=UTF8 \
-       --locale=en_US.UTF-8
+<pre class="!bg-surface-900 !rounded-xl !p-5"><code class="language-bash"># Basic — only required: -D (data dir)
+initdb -D /var/lib/pgsql/18/data
 
-# With password auth enabled
+# Recommended options:
 initdb -D /var/lib/pgsql/18/edbdata \
-       -U postgres \
-       --pwprompt \
-       --auth-host=md5</code></pre>
+       --encoding=UTF8 \                   # UTF-8 for Arabic/emoji
+       --locale=en_US.UTF-8 \              # for text ordering
+       -U postgres \                        # DB superuser name
+       --pwprompt \                         # prompt for password
+       --auth-host=scram-sha-256 \          # secure auth for network
+       --auth-local=peer \                  # OS user for local
+       --data-checksums                     # corruption detection
+
+# After initdb:
+ls /var/lib/pgsql/18/edbdata
+# base  global  pg_hba.conf  pg_wal  postgresql.conf ...
+
+# Start the server
+pg_ctl -D /var/lib/pgsql/18/edbdata -l logfile start</code></pre>
+        </div>
+
+        <div class="flex gap-3 p-4 bg-red-50 border border-red-200 rounded-xl">
+          <i data-lucide="alert-triangle" class="w-5 h-5 text-red-600 shrink-0 mt-0.5"></i>
+          <div class="text-sm">
+            <strong class="text-red-800 lang-ar">مهم جداً:</strong>
+            <strong class="text-red-800 lang-en">Critical:</strong>
+            <span class="text-red-700 lang-ar"> <span dir="ltr" class="font-mono">--data-checksums</span> يجب إضافتها عند <span dir="ltr" class="font-mono">initdb</span> — لا يمكن تفعيلها لاحقاً (لكن في PostgreSQL 18 هناك أدوات لتفعيلها بدون re-init، لكن العملية معقدة). فعّلها من البداية!</span>
+            <span class="text-red-700 lang-en"> <span class="font-mono">--data-checksums</span> must be set at <span class="font-mono">initdb</span> time — tools exist to enable later in PG18 but the process is complex. Enable from day one!</span>
+          </div>
         </div>
       </div>
     </section>
 
     <section>
-      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">إدارة السيرفر عبر pg_ctl</span><span class="lang-en">Managing Server via pg_ctl</span></h2>
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">pg_ctl — إدارة السيرفر</span><span class="lang-en">pg_ctl — Server Management</span></h2>
       <div class="bg-white rounded-2xl border border-surface-200 p-6">
         <div class="relative group" dir="ltr">
           <button onclick="copyCode(this)" class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 bg-surface-700 text-white text-xs px-2.5 py-1.5 rounded-lg z-10">Copy</button>
-<pre class="!bg-surface-900 !rounded-xl !p-5"><code class="language-bash"># Set PGDATA environment variable first
-export PGDATA=/var/lib/pgsql/18/edbdata
+<pre class="!bg-surface-900 !rounded-xl !p-5"><code class="language-bash">export PGDATA=/var/lib/pgsql/18/data
 
-# Start the server
-pg_ctl start
+# Start
+pg_ctl start -l /var/log/postgresql.log
 
-# Check status
+# Status (running or not)
 pg_ctl status
 
-# Reload configuration (no restart needed)
+# Reload config (NO restart — for postgresql.conf changes)
 pg_ctl reload
+# Equivalent SQL: SELECT pg_reload_conf();
 
-# Restart the server
+# Restart (for params requiring restart)
 pg_ctl restart
 
-# Stop (smart = wait for clients, fast = rollback, immediate = crash)
-pg_ctl stop -m smart
-pg_ctl stop -m fast
-pg_ctl stop -m immediate</code></pre>
+# Stop — 3 modes
+pg_ctl stop -m smart         # wait for clients to disconnect
+pg_ctl stop -m fast          # default: rollback + disconnect
+pg_ctl stop -m immediate     # abrupt — recovery needed on next start
+
+# Promote (convert standby to primary)
+pg_ctl promote
+
+# Check version
+pg_ctl --version</code></pre>
         </div>
 
         <div class="mt-4 grid grid-cols-1 md:grid-cols-3 gap-3">
           <div class="bg-green-50 border border-green-200 rounded-xl p-4">
-            <h4 class="font-bold text-green-800 text-sm mb-1 lang-ar">smart (ذكي)</h4>
-            <h4 class="font-bold text-green-800 text-sm mb-1 lang-en">smart</h4>
-            <p class="text-xs text-green-700 lang-ar">ينتظر انتهاء العملاء</p>
-            <p class="text-xs text-green-700 lang-en">Waits for clients to finish</p>
+            <div class="flex items-center gap-2 mb-1"><i data-lucide="check-circle" class="w-5 h-5 text-green-600"></i><h4 class="font-bold text-green-800 text-sm">smart</h4></div>
+            <p class="text-xs text-green-700 lang-ar">ينتظر كل العملاء ينتهون — مثالي لكن قد يأخذ وقتاً طويلاً</p>
+            <p class="text-xs text-green-700 lang-en">Waits for all clients — ideal but may take long</p>
           </div>
           <div class="bg-amber-50 border border-amber-200 rounded-xl p-4">
-            <h4 class="font-bold text-amber-800 text-sm mb-1 lang-ar">fast (سريع) — افتراضي</h4>
-            <h4 class="font-bold text-amber-800 text-sm mb-1 lang-en">fast (default)</h4>
-            <p class="text-xs text-amber-700 lang-ar">يلغي العمليات الجارية</p>
-            <p class="text-xs text-amber-700 lang-en">Aborts in-flight transactions</p>
+            <div class="flex items-center gap-2 mb-1"><i data-lucide="zap" class="w-5 h-5 text-amber-600"></i><h4 class="font-bold text-amber-800 text-sm">fast (default)</h4></div>
+            <p class="text-xs text-amber-700 lang-ar">يقطع الاتصالات، يعمل rollback للمعلّقات، ثم يوقف. الأكثر استخداماً</p>
+            <p class="text-xs text-amber-700 lang-en">Disconnects, rollback pending, stops. Most commonly used</p>
           </div>
           <div class="bg-red-50 border border-red-200 rounded-xl p-4">
-            <h4 class="font-bold text-red-800 text-sm mb-1 lang-ar">immediate (فوري)</h4>
-            <h4 class="font-bold text-red-800 text-sm mb-1 lang-en">immediate</h4>
-            <p class="text-xs text-red-700 lang-ar">توقف قسري — يتطلب recovery</p>
-            <p class="text-xs text-red-700 lang-en">Abrupt stop — needs recovery</p>
+            <div class="flex items-center gap-2 mb-1"><i data-lucide="alert-octagon" class="w-5 h-5 text-red-600"></i><h4 class="font-bold text-red-800 text-sm">immediate</h4></div>
+            <p class="text-xs text-red-700 lang-ar">يتوقف فوراً — مثل kill. يحتاج WAL recovery عند التشغيل. للطوارئ فقط</p>
+            <p class="text-xs text-red-700 lang-en">Stops immediately — like kill. Needs WAL recovery on start. Emergency only</p>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">systemctl vs pg_ctl</span><span class="lang-en">systemctl vs pg_ctl</span></h2>
+      <div class="bg-white rounded-2xl border border-surface-200 p-6 space-y-3">
+        <p class="text-surface-700 lang-ar">في بيئة الإنتاج على Linux، استخدم <strong>systemctl</strong> (يعمل كـ service مع init system). <strong>pg_ctl</strong> للتطوير أو لـ scripts مخصصة.</p>
+        <p class="text-surface-700 lang-en">In production Linux, use <strong>systemctl</strong> (runs as service with init system). <strong>pg_ctl</strong> is for dev or custom scripts.</p>
+
+        <div class="relative group" dir="ltr">
+          <button onclick="copyCode(this)" class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 bg-surface-700 text-white text-xs px-2.5 py-1.5 rounded-lg z-10">Copy</button>
+<pre class="!bg-surface-900 !rounded-xl !p-5"><code class="language-bash">sudo systemctl start postgresql-18     # start
+sudo systemctl stop postgresql-18      # stop (fast mode)
+sudo systemctl restart postgresql-18   # restart
+sudo systemctl reload postgresql-18    # SIGHUP (reload conf only)
+sudo systemctl status postgresql-18    # health check
+sudo systemctl enable postgresql-18    # auto-start on boot
+sudo journalctl -u postgresql-18 -f    # live log tailing</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">عدة كلاسترات على سيرفر واحد</span><span class="lang-en">Multiple Clusters Per Server</span></h2>
+      <div class="bg-white rounded-2xl border border-surface-200 p-6 space-y-4">
+        <p class="text-surface-700 lang-ar">يمكن تشغيل عدة كلاسترات على نفس السيرفر — كل واحد بمجلد ومنفذ مختلفين. مفيد للفصل بين بيئات التطوير والاختبار.</p>
+        <p class="text-surface-700 lang-en">You can run multiple clusters on one server — each with its own directory and port. Useful for separating dev/test environments.</p>
+
+        <div class="relative group" dir="ltr">
+          <button onclick="copyCode(this)" class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 bg-surface-700 text-white text-xs px-2.5 py-1.5 rounded-lg z-10">Copy</button>
+<pre class="!bg-surface-900 !rounded-xl !p-5"><code class="language-bash"># Create 2nd cluster on port 5433
+sudo -u postgres /usr/pgsql-18/bin/initdb -D /var/lib/pgsql/18/test_data
+
+# Edit postgresql.conf in that directory:
+# port = 5433
+
+# Start it manually (not via systemd)
+sudo -u postgres /usr/pgsql-18/bin/pg_ctl \
+  -D /var/lib/pgsql/18/test_data \
+  -l /tmp/test.log start
+
+# Connect to each
+psql -p 5432 -U postgres   # main cluster
+psql -p 5433 -U postgres   # test cluster
+
+# On Ubuntu/Debian it's much easier:
+pg_createcluster 18 testing --port=5433 --start
+pg_lsclusters</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUIZ -->
+    <section>
+      <div class="mb-6">
+        <span class="text-sm font-bold text-rose-600 uppercase tracking-wider"><span class="lang-ar">اختبر فهمك</span><span class="lang-en">Test Your Knowledge</span></span>
+        <h2 class="text-3xl font-bold text-surface-900 mt-2 mb-3"><span class="lang-ar">كويز الوحدة ٥ 🎯</span><span class="lang-en">Module 5 Quiz 🎯</span></h2>
+      </div>
+
+      <div id="quiz" class="space-y-4">
+        <div class="quiz-card bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="flex items-center gap-2 mb-3"><span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold text-sm flex items-center justify-center">1</span></div>
+          <p class="font-semibold mb-4 lang-ar">ماذا يعني "Cluster" في PostgreSQL؟</p>
+          <p class="font-semibold mb-4 lang-en">What does "Cluster" mean in PostgreSQL?</p>
+          <div class="space-y-2">
+            <button onclick="pick(this,1)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-rose-300"><span class="lang-ar">مجموعة سيرفرات متصلة</span><span class="lang-en">A group of connected servers</span></button>
+            <button onclick="pick(this,1)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-rose-300" data-correct="true"><span class="lang-ar">مجموعة قواعد بيانات يديرها سيرفر واحد</span><span class="lang-en">Set of databases managed by one server</span></button>
+            <button onclick="pick(this,1)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-rose-300"><span class="lang-ar">نسخ متعددة من نفس البيانات</span><span class="lang-en">Multiple data replicas</span></button>
+          </div>
+          <div class="feedback hidden mt-3 p-3 rounded-xl text-sm"></div>
+        </div>
+
+        <div class="quiz-card bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="flex items-center gap-2 mb-3"><span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold text-sm flex items-center justify-center">2</span></div>
+          <p class="font-semibold mb-4 lang-ar">أي قاعدة بيانات هي "القالب النظيف الاحتياطي"؟</p>
+          <p class="font-semibold mb-4 lang-en">Which database is the "pristine backup template"?</p>
+          <div class="space-y-2">
+            <button onclick="pick(this,2)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-rose-300"><span class="font-mono">postgres</span></button>
+            <button onclick="pick(this,2)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-rose-300"><span class="font-mono">template1</span></button>
+            <button onclick="pick(this,2)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-rose-300" data-correct="true"><span class="font-mono">template0</span></button>
+          </div>
+          <div class="feedback hidden mt-3 p-3 rounded-xl text-sm"></div>
+        </div>
+
+        <div class="quiz-card bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="flex items-center gap-2 mb-3"><span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold text-sm flex items-center justify-center">3</span></div>
+          <p class="font-semibold mb-4 lang-ar">أي وضع إيقاف يحتاج WAL recovery عند التشغيل التالي؟</p>
+          <p class="font-semibold mb-4 lang-en">Which shutdown mode requires WAL recovery on next start?</p>
+          <div class="space-y-2">
+            <button onclick="pick(this,3)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-rose-300"><span class="font-mono">smart</span></button>
+            <button onclick="pick(this,3)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-rose-300"><span class="font-mono">fast</span></button>
+            <button onclick="pick(this,3)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-rose-300" data-correct="true"><span class="font-mono">immediate</span></button>
+          </div>
+          <div class="feedback hidden mt-3 p-3 rounded-xl text-sm"></div>
+        </div>
+
+        <div class="quiz-card bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="flex items-center gap-2 mb-3"><span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold text-sm flex items-center justify-center">4</span></div>
+          <p class="font-semibold mb-4 lang-ar">لإعادة تحميل ملف postgresql.conf بدون restart، الأمر هو:</p>
+          <p class="font-semibold mb-4 lang-en">To reload postgresql.conf without restart:</p>
+          <div class="space-y-2">
+            <button onclick="pick(this,4)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-rose-300"><span class="font-mono">pg_ctl restart</span></button>
+            <button onclick="pick(this,4)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-rose-300" data-correct="true"><span class="font-mono">pg_ctl reload</span></button>
+            <button onclick="pick(this,4)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-rose-300"><span class="font-mono">pg_ctl refresh</span></button>
+          </div>
+          <div class="feedback hidden mt-3 p-3 rounded-xl text-sm"></div>
+        </div>
+
+        <div class="quiz-card bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="flex items-center gap-2 mb-3"><span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold text-sm flex items-center justify-center">5</span></div>
+          <p class="font-semibold mb-4 lang-ar">ما هو الخيار الحاسم الذي يُفعّل عند initdb ولا يمكن إضافته بسهولة لاحقاً؟</p>
+          <p class="font-semibold mb-4 lang-en">Which critical option is enabled at initdb and hard to add later?</p>
+          <div class="space-y-2">
+            <button onclick="pick(this,5)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-rose-300"><span class="font-mono">--encoding</span></button>
+            <button onclick="pick(this,5)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-rose-300"><span class="font-mono">--pwprompt</span></button>
+            <button onclick="pick(this,5)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-rose-300" data-correct="true"><span class="font-mono">--data-checksums</span></button>
+            <button onclick="pick(this,5)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-rose-300"><span class="font-mono">--auth-host</span></button>
+          </div>
+          <div class="feedback hidden mt-3 p-3 rounded-xl text-sm"></div>
+        </div>
+
+        <div class="quiz-card bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="flex items-center gap-2 mb-3"><span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold text-sm flex items-center justify-center">6</span></div>
+          <p class="font-semibold mb-4 lang-ar">كيف تُشغّل كلاسترين مختلفين على نفس السيرفر؟</p>
+          <p class="font-semibold mb-4 lang-en">How do you run two clusters on the same server?</p>
+          <div class="space-y-2">
+            <button onclick="pick(this,6)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-rose-300"><span class="lang-ar">غير ممكن — كلاستر واحد فقط</span><span class="lang-en">Not possible — only one allowed</span></button>
+            <button onclick="pick(this,6)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-rose-300" data-correct="true"><span class="lang-ar">كل واحد بـ PGDATA ومنفذ مختلفين</span><span class="lang-en">Each with its own PGDATA and port</span></button>
+            <button onclick="pick(this,6)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-rose-300"><span class="lang-ar">تحتاج ترخيص enterprise</span><span class="lang-en">Requires enterprise license</span></button>
+          </div>
+          <div class="feedback hidden mt-3 p-3 rounded-xl text-sm"></div>
+        </div>
+
+        <div id="quiz-result" class="hidden bg-gradient-to-br from-rose-600 to-rose-800 text-white rounded-2xl p-6 text-center">
+          <i data-lucide="award" class="w-12 h-12 mx-auto mb-3"></i>
+          <h3 class="text-2xl font-bold mb-2"><span class="lang-ar">نتيجتك</span><span class="lang-en">Your Score</span></h3>
+          <div class="text-5xl font-bold my-3"><span id="score">0</span><span class="text-2xl opacity-70">/6</span></div>
+          <p id="result-msg" class="text-rose-100"></p>
+          <button onclick="resetQuiz()" class="mt-4 bg-white text-rose-700 font-semibold px-6 py-2 rounded-lg hover:bg-rose-50"><span class="lang-ar">إعادة المحاولة</span><span class="lang-en">Try Again</span></button>
         </div>
       </div>
     </section>
@@ -168,10 +347,12 @@ pg_ctl stop -m immediate</code></pre>
       <div class="bg-gradient-to-br from-rose-600 via-rose-700 to-rose-900 text-white rounded-2xl p-6 md:p-8 shadow-xl">
         <div class="flex items-center gap-3 mb-6"><div class="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center"><i data-lucide="bookmark-check" class="w-6 h-6"></i></div><h2 class="text-2xl font-bold"><span class="lang-ar">ملخص الوحدة</span><span class="lang-en">Module Summary</span></h2></div>
         <ul class="grid grid-cols-1 md:grid-cols-2 gap-3">
-          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-rose-300 shrink-0 mt-0.5"></i><span class="lang-ar">الكلاستر = مجلد بيانات + منفذ</span><span class="lang-en">Cluster = data directory + port</span></li>
-          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-rose-300 shrink-0 mt-0.5"></i><span class="lang-ar">initdb لإنشاء كلاستر جديد</span><span class="lang-en">initdb creates a new cluster</span></li>
-          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-rose-300 shrink-0 mt-0.5"></i><span class="lang-ar">pg_ctl لإدارة السيرفر</span><span class="lang-en">pg_ctl manages the server</span></li>
-          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-rose-300 shrink-0 mt-0.5"></i><span class="lang-ar">ثلاث أوضاع للإيقاف: smart/fast/immediate</span><span class="lang-en">Three shutdown modes</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-rose-300 shrink-0 mt-0.5"></i><span class="lang-ar">Cluster = PGDATA + port + server process</span><span class="lang-en">Cluster = PGDATA + port + server</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-rose-300 shrink-0 mt-0.5"></i><span class="lang-ar">initdb مرة واحدة فقط</span><span class="lang-en">initdb runs only once</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-rose-300 shrink-0 mt-0.5"></i><span class="lang-ar">pg_ctl للإدارة اليدوية</span><span class="lang-en">pg_ctl for manual control</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-rose-300 shrink-0 mt-0.5"></i><span class="lang-ar">systemctl للإنتاج</span><span class="lang-en">systemctl for production</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-rose-300 shrink-0 mt-0.5"></i><span class="lang-ar">٣ قواعد افتراضية: postgres، template1، template0</span><span class="lang-en">3 default DBs: postgres, template1, template0</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-rose-300 shrink-0 mt-0.5"></i><span class="lang-ar">عدة كلاسترات بمنافذ مختلفة ممكنة</span><span class="lang-en">Multi-cluster via different ports</span></li>
         </ul>
       </div>
     </section>
@@ -183,7 +364,7 @@ pg_ctl stop -m immediate</code></pre>
       </a>
       <a href="ch06.html" class="flex-1 bg-gradient-to-br from-rose-600 to-rose-700 text-white rounded-xl p-4 hover:shadow-xl transition-all">
         <div class="text-xs text-rose-200 mb-1 text-end"><span class="lang-ar">التالي</span><span class="lang-en">Next</span></div>
-        <div class="flex items-center justify-end gap-2 font-bold"><span class="lang-ar">تهيئة قاعدة البيانات</span><span class="lang-en">Database Configuration</span><i data-lucide="arrow-left" class="w-4 h-4 lang-ar"></i><i data-lucide="arrow-right" class="w-4 h-4 lang-en"></i></div>
+        <div class="flex items-center justify-end gap-2 font-bold"><span class="lang-ar">التهيئة</span><span class="lang-en">Configuration</span><i data-lucide="arrow-left" class="w-4 h-4 lang-ar"></i><i data-lucide="arrow-right" class="w-4 h-4 lang-en"></i></div>
       </a>
     </nav>
   </main>
@@ -193,6 +374,10 @@ pg_ctl stop -m immediate</code></pre>
   <script>
     function setLang(lang){document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';localStorage.setItem('pgCourseLang',lang);document.querySelectorAll('.lang-btn').forEach(b=>{b.classList.remove('bg-rose-600','text-white','shadow-md');b.classList.add('text-surface-600','hover:bg-surface-100');});const a=document.getElementById('btn-'+lang);a.classList.add('bg-rose-600','text-white','shadow-md');a.classList.remove('text-surface-600','hover:bg-surface-100');}
     function copyCode(btn){const c=btn.nextElementSibling.querySelector('code').textContent;navigator.clipboard.writeText(c);btn.textContent='✓';setTimeout(()=>btn.textContent='Copy',2000);}
+    const total=6;const answers={};
+    function pick(btn,q){const card=btn.closest('.quiz-card');card.querySelectorAll('.quiz-opt').forEach(o=>o.disabled=true);const correct=btn.dataset.correct==='true';btn.classList.add(correct?'correct':'wrong');if(!correct)card.querySelector('[data-correct="true"]').classList.add('correct');const fb=card.querySelector('.feedback');fb.classList.remove('hidden');const lang=document.documentElement.lang;fb.className='feedback mt-3 p-3 rounded-xl text-sm '+(correct?'bg-green-50 text-green-800 border border-green-200':'bg-red-50 text-red-800 border border-red-200');fb.innerHTML=correct?(lang==='ar'?'✓ ممتاز!':'✓ Correct!'):(lang==='ar'?'✗ خطأ — الإجابة بالأخضر':'✗ Wrong — answer in green');answers[q]=correct;if(Object.keys(answers).length===total)showResult();}
+    function showResult(){const s=Object.values(answers).filter(Boolean).length;document.getElementById('score').textContent=s;const m=document.getElementById('result-msg');const l=document.documentElement.lang;m.textContent=s===total?(l==='ar'?'🎉 إتقان كامل!':'🎉 Perfect!'):s>=Math.ceil(total*0.7)?(l==='ar'?'👍 ممتاز!':'👍 Great!'):(l==='ar'?'📚 راجع':'📚 Review');const r=document.getElementById('quiz-result');r.classList.remove('hidden');r.scrollIntoView({behavior:'smooth',block:'center'});}
+    function resetQuiz(){Object.keys(answers).forEach(k=>delete answers[k]);document.querySelectorAll('.quiz-opt').forEach(b=>{b.disabled=false;b.classList.remove('correct','wrong');});document.querySelectorAll('.feedback').forEach(f=>f.classList.add('hidden'));document.getElementById('quiz-result').classList.add('hidden');document.getElementById('quiz').scrollIntoView({behavior:'smooth',block:'start'});}
     setLang(localStorage.getItem('pgCourseLang')||'ar');lucide.createIcons();Prism.highlightAll();
   </script>
 </body>
