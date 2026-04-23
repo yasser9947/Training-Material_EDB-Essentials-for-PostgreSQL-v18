@@ -13,7 +13,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-sql.min.js"></script>
-  <style>body{font-family:'IBM Plex Sans Arabic',sans-serif}html[lang="ar"] .lang-en{display:none!important}html[lang="en"] .lang-ar{display:none!important}pre[class*="language-"]{border-radius:.75rem;font-size:.875rem;direction:ltr}code[class*="language-"]{font-family:'JetBrains Mono',monospace}</style>
+  <style>body{font-family:'IBM Plex Sans Arabic',sans-serif}html[lang="ar"] .lang-en{display:none!important}html[lang="en"] .lang-ar{display:none!important}pre[class*="language-"]{border-radius:.75rem;font-size:.875rem;direction:ltr}code[class*="language-"]{font-family:'JetBrains Mono',monospace}.quiz-opt.correct{border-color:#059669!important;background:#ecfdf5!important}.quiz-opt.wrong{border-color:#dc2626!important;background:#fef2f2!important}.quiz-opt:disabled{cursor:not-allowed}</style>
 </head>
 <body class="bg-surface-50 text-surface-800 antialiased min-h-screen">
 
@@ -35,24 +35,23 @@
         <span class="lang-ar">٤٣ صفحة</span><span class="lang-en">43 pages</span>
       </div>
       <h1 class="text-3xl md:text-5xl font-bold mb-4"><span class="lang-ar">النسخ الاحتياطي والاستعادة</span><span class="lang-en">Backup & Recovery</span></h1>
-      <p class="text-lg text-emerald-100 max-w-3xl lang-ar">احمِ بياناتك — استراتيجيات النسخ الاحتياطي الذكية والاستعادة عند الكوارث.</p>
-      <p class="text-lg text-emerald-100 max-w-3xl lang-en">Protect your data — smart backup strategies and disaster recovery.</p>
+      <p class="text-lg text-emerald-100 max-w-3xl lang-ar">من pg_dump إلى PITR، إلى أدوات الإنتاج Barman و pgBackRest — خط الدفاع الأخير لبياناتك.</p>
+      <p class="text-lg text-emerald-100 max-w-3xl lang-en">From pg_dump to PITR, to production tools Barman and pgBackRest — your data's last line of defense.</p>
     </div>
   </header>
 
   <section class="max-w-6xl mx-auto px-4 sm:px-6 py-10">
     <div class="bg-white rounded-2xl shadow-sm border border-surface-200 p-6 md:p-8">
-      <div class="flex items-center gap-3 mb-6">
-        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center text-white"><i data-lucide="save" class="w-6 h-6"></i></div>
-        <h2 class="text-2xl font-bold"><span class="lang-ar">أهداف الوحدة</span><span class="lang-en">Module Objectives</span></h2>
-      </div>
+      <div class="flex items-center gap-3 mb-6"><div class="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center text-white"><i data-lucide="save" class="w-6 h-6"></i></div><h2 class="text-2xl font-bold"><span class="lang-ar">أهداف الوحدة</span><span class="lang-en">Module Objectives</span></h2></div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
-        <div class="flex gap-2 p-3 rounded-xl bg-emerald-50 border border-emerald-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-600 shrink-0"></i><span class="lang-ar">أنواع النسخ الاحتياطي</span><span class="lang-en">Backup Types</span></div>
-        <div class="flex gap-2 p-3 rounded-xl bg-emerald-50 border border-emerald-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-600 shrink-0"></i><span class="lang-ar">SQL Dumps واستعادتها</span><span class="lang-en">SQL Dumps & Restore</span></div>
-        <div class="flex gap-2 p-3 rounded-xl bg-emerald-50 border border-emerald-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-600 shrink-0"></i><span class="lang-ar">Physical Backups (pg_basebackup)</span><span class="lang-en">Physical Backups</span></div>
-        <div class="flex gap-2 p-3 rounded-xl bg-emerald-50 border border-emerald-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-600 shrink-0"></i><span class="lang-ar">Continuous Archiving</span><span class="lang-en">Continuous Archiving</span></div>
-        <div class="flex gap-2 p-3 rounded-xl bg-emerald-50 border border-emerald-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-600 shrink-0"></i><span class="lang-ar">Point-in-Time Recovery (PITR)</span><span class="lang-en">Point-in-Time Recovery</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-emerald-50 border border-emerald-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-600 shrink-0"></i><span class="lang-ar">Logical vs Physical backup</span><span class="lang-en">Logical vs Physical backup</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-emerald-50 border border-emerald-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-600 shrink-0"></i><span class="lang-ar">RTO و RPO</span><span class="lang-en">RTO & RPO</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-emerald-50 border border-emerald-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-600 shrink-0"></i><span class="lang-ar">pg_dump بكل الأشكال</span><span class="lang-en">pg_dump in all formats</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-emerald-50 border border-emerald-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-600 shrink-0"></i><span class="lang-ar">pg_basebackup</span><span class="lang-en">pg_basebackup</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-emerald-50 border border-emerald-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-600 shrink-0"></i><span class="lang-ar">Continuous Archiving + PITR</span><span class="lang-en">Continuous Archiving + PITR</span></div>
         <div class="flex gap-2 p-3 rounded-xl bg-emerald-50 border border-emerald-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-600 shrink-0"></i><span class="lang-ar">Barman و pgBackRest</span><span class="lang-en">Barman & pgBackRest</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-emerald-50 border border-emerald-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-600 shrink-0"></i><span class="lang-ar">اختبار الاستعادة</span><span class="lang-en">Testing restore</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-emerald-50 border border-emerald-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-600 shrink-0"></i><span class="lang-ar">استراتيجيات 3-2-1</span><span class="lang-en">3-2-1 backup strategy</span></div>
       </div>
     </div>
   </section>
@@ -60,136 +59,407 @@
   <main class="max-w-6xl mx-auto px-4 sm:px-6 pb-12 space-y-12">
 
     <section>
-      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">أنواع النسخ الاحتياطي</span><span class="lang-en">Backup Types</span></h2>
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">RTO و RPO — حدد هدفك أولاً</span><span class="lang-en">RTO & RPO — Define Goals First</span></h2>
+      <div class="bg-white rounded-2xl border border-surface-200 p-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div class="bg-emerald-50 border-2 border-emerald-200 rounded-xl p-5">
+            <h3 class="font-bold text-xl mb-2">RTO<span class="text-sm font-normal text-surface-600 ms-2">Recovery Time Objective</span></h3>
+            <p class="text-sm text-surface-700 lang-ar">كم من الوقت تتحمل أن تكون قاعدة البيانات معطلة؟</p>
+            <p class="text-sm text-surface-700 lang-en">How long can the DB be down?</p>
+            <div class="mt-2 text-xs text-surface-600"><span class="lang-ar">مثال: أقل من ٥ دقائق</span><span class="lang-en">Example: &lt; 5 minutes</span></div>
+          </div>
+          <div class="bg-blue-50 border-2 border-blue-200 rounded-xl p-5">
+            <h3 class="font-bold text-xl mb-2">RPO<span class="text-sm font-normal text-surface-600 ms-2">Recovery Point Objective</span></h3>
+            <p class="text-sm text-surface-700 lang-ar">كم من البيانات تتحمل فقدانها؟</p>
+            <p class="text-sm text-surface-700 lang-en">How much data can you lose?</p>
+            <div class="mt-2 text-xs text-surface-600"><span class="lang-ar">مثال: أقل من ثانية</span><span class="lang-en">Example: &lt; 1 second</span></div>
+          </div>
+        </div>
+        <div class="text-sm text-surface-700 lang-ar"><strong>مثال:</strong> بنك — RTO = دقيقة، RPO = ٠ (replication). مدونة شخصية — RTO = ٢٤h، RPO = يوم (dump يومي).</div>
+        <div class="text-sm text-surface-700 lang-en"><strong>Example:</strong> Bank — RTO = minute, RPO = 0 (replication). Personal blog — RTO = 24h, RPO = day (daily dump).</div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">Logical vs Physical</span><span class="lang-en">Logical vs Physical</span></h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div class="bg-white rounded-2xl border-2 border-emerald-200 p-6">
           <div class="w-12 h-12 rounded-xl bg-emerald-100 flex items-center justify-center text-emerald-600 mb-3"><i data-lucide="file-text" class="w-6 h-6"></i></div>
           <h3 class="font-bold text-lg mb-2"><span class="lang-ar">Logical Backup</span><span class="lang-en">Logical Backup</span></h3>
-          <p class="text-sm text-surface-600 mb-2 lang-ar">ملف SQL نصي يحتوي أوامر لإعادة البناء</p>
-          <p class="text-sm text-surface-600 mb-2 lang-en">SQL text file with commands to rebuild</p>
-          <ul class="text-sm space-y-1 text-surface-700">
-            <li><span class="font-mono text-emerald-700">pg_dump</span> — <span class="lang-ar">قاعدة واحدة</span><span class="lang-en">single database</span></li>
-            <li><span class="font-mono text-emerald-700">pg_dumpall</span> — <span class="lang-ar">كل الكلاستر</span><span class="lang-en">entire cluster</span></li>
-            <li><span class="font-mono text-emerald-700">pg_restore</span> — <span class="lang-ar">استعادة</span><span class="lang-en">restore</span></li>
+          <p class="text-sm text-surface-700 mb-3 lang-ar">SQL نصي — أوامر CREATE و INSERT لإعادة البناء.</p>
+          <p class="text-sm text-surface-700 mb-3 lang-en">SQL text — CREATE and INSERT commands to rebuild.</p>
+          <ul class="text-xs text-surface-700 space-y-1">
+            <li class="lang-ar">✓ محمول بين إصدارات PostgreSQL</li>
+            <li class="lang-en">✓ Portable across PG versions</li>
+            <li class="lang-ar">✓ يختار جداول معينة</li>
+            <li class="lang-en">✓ Selective table backup</li>
+            <li class="lang-ar">✗ بطيء للقواعد الكبيرة</li>
+            <li class="lang-en">✗ Slow for large DBs</li>
+            <li class="lang-ar">✗ لا يدعم PITR</li>
+            <li class="lang-en">✗ No PITR support</li>
           </ul>
+          <div class="mt-3 font-mono text-xs bg-surface-50 p-2 rounded">pg_dump, pg_dumpall, pg_restore</div>
         </div>
 
         <div class="bg-white rounded-2xl border-2 border-blue-200 p-6">
           <div class="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center text-blue-600 mb-3"><i data-lucide="hard-drive" class="w-6 h-6"></i></div>
           <h3 class="font-bold text-lg mb-2"><span class="lang-ar">Physical Backup</span><span class="lang-en">Physical Backup</span></h3>
-          <p class="text-sm text-surface-600 mb-2 lang-ar">نسخة من ملفات قاعدة البيانات الفعلية</p>
-          <p class="text-sm text-surface-600 mb-2 lang-en">Copy of actual database files</p>
-          <ul class="text-sm space-y-1 text-surface-700">
-            <li><span class="font-mono text-blue-700">pg_basebackup</span> — <span class="lang-ar">online</span><span class="lang-en">online</span></li>
-            <li><span class="font-mono text-blue-700">File copy</span> — <span class="lang-ar">offline</span><span class="lang-en">offline</span></li>
-            <li><span class="font-mono text-blue-700">PITR</span> — <span class="lang-ar">استعادة لنقطة زمنية</span><span class="lang-en">point-in-time recovery</span></li>
+          <p class="text-sm text-surface-700 mb-3 lang-ar">نسخة ثنائية من ملفات قاعدة البيانات.</p>
+          <p class="text-sm text-surface-700 mb-3 lang-en">Binary copy of DB files.</p>
+          <ul class="text-xs text-surface-700 space-y-1">
+            <li class="lang-ar">✓ سريع جداً (I/O فقط)</li>
+            <li class="lang-en">✓ Very fast (I/O only)</li>
+            <li class="lang-ar">✓ يدعم PITR</li>
+            <li class="lang-en">✓ PITR support</li>
+            <li class="lang-ar">✗ نفس الإصدار والمنصة</li>
+            <li class="lang-en">✗ Same version and platform</li>
+            <li class="lang-ar">✗ كلاستر كامل فقط</li>
+            <li class="lang-en">✗ Full cluster only</li>
           </ul>
+          <div class="mt-3 font-mono text-xs bg-surface-50 p-2 rounded">pg_basebackup, Barman, pgBackRest</div>
         </div>
       </div>
     </section>
 
     <section>
-      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">pg_dump و pg_restore</span><span class="lang-en">pg_dump & pg_restore</span></h2>
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">pg_dump — التفاصيل الكاملة</span><span class="lang-en">pg_dump — Full Details</span></h2>
       <div class="bg-white rounded-2xl border border-surface-200 p-6">
         <div class="relative group" dir="ltr">
           <button onclick="copyCode(this)" class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 bg-surface-700 text-white text-xs px-2.5 py-1.5 rounded-lg z-10">Copy</button>
-<pre class="!bg-surface-900 !rounded-xl !p-5"><code class="language-bash"># Plain SQL dump (human-readable)
+<pre class="!bg-surface-900 !rounded-xl !p-5"><code class="language-bash"># 4 output formats:
+
+# 1. Plain SQL (human-readable, simple)
 pg_dump -U postgres -d mydb -f mydb.sql
 
-# Custom format (compressed, allows selective restore)
-pg_dump -U postgres -d mydb -F c -f mydb.dump
+# 2. Custom (compressed, selective restore supported) — recommended
+pg_dump -U postgres -d mydb -F c -Z 9 -f mydb.dump
 
-# Directory format (parallel dump)
+# 3. Directory (parallel dump/restore)
 pg_dump -U postgres -d mydb -F d -j 4 -f mydb_dir/
 
-# Tar format
+# 4. Tar archive
 pg_dump -U postgres -d mydb -F t -f mydb.tar
 
-# Dump only schema (no data)
-pg_dump -U postgres -d mydb --schema-only -f schema.sql
+# --- Selective options ---
+# Schema only (no data) — for versioning
+pg_dump -d mydb --schema-only -f schema.sql
 
-# Dump only data
-pg_dump -U postgres -d mydb --data-only -f data.sql
+# Data only — for migrations
+pg_dump -d mydb --data-only -f data.sql
 
-# Dump specific tables
-pg_dump -U postgres -d mydb -t customers -t orders -f tables.sql
+# Specific tables
+pg_dump -d mydb -t customers -t orders -f tables.sql
 
-# All databases + global objects (roles, tablespaces)
+# Specific schema
+pg_dump -d mydb -n sales -f sales.sql
+
+# Exclude tables (e.g., logs)
+pg_dump -d mydb -T logs -T audit_* -f mydb.sql
+
+# All databases + global (roles, tablespaces)
 pg_dumpall -U postgres -f all.sql
+pg_dumpall --globals-only -f globals.sql   # just globals
 
-# Restore
-psql -U postgres -d mydb -f mydb.sql
-pg_restore -U postgres -d mydb mydb.dump
-pg_restore -U postgres -d mydb -j 4 mydb_dir/  # parallel</code></pre>
+# --- Restore ---
+psql -U postgres -d mydb -f mydb.sql                # plain SQL
+pg_restore -U postgres -d mydb mydb.dump           # custom format
+pg_restore -U postgres -d mydb -j 4 mydb_dir/      # parallel
+
+# Restore specific table from custom-format dump
+pg_restore -U postgres -d mydb -t customers mydb.dump
+
+# See contents of custom dump
+pg_restore --list mydb.dump</code></pre>
         </div>
       </div>
     </section>
 
     <section>
-      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">pg_basebackup و PITR</span><span class="lang-en">pg_basebackup & PITR</span></h2>
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">pg_basebackup للنسخ المادي</span><span class="lang-en">pg_basebackup for Physical Backup</span></h2>
       <div class="bg-white rounded-2xl border border-surface-200 p-6 space-y-4">
-        <p class="text-surface-700 lang-ar"><strong>PITR</strong> يتيح استعادة قاعدة البيانات إلى أي نقطة زمنية — يتطلب physical backup + WAL archiving مفعل.</p>
-        <p class="text-surface-700 lang-en"><strong>PITR</strong> lets you restore to any point in time — requires physical backup + WAL archiving enabled.</p>
+        <p class="text-surface-700 lang-ar">يأخذ snapshot كامل من الكلاستر وهو شغّال — مفيد جداً للقواعد الكبيرة و <strong>PITR</strong>.</p>
+        <p class="text-surface-700 lang-en">Takes a full cluster snapshot while live — crucial for large DBs and <strong>PITR</strong>.</p>
 
         <div class="relative group" dir="ltr">
           <button onclick="copyCode(this)" class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 bg-surface-700 text-white text-xs px-2.5 py-1.5 rounded-lg z-10">Copy</button>
-<pre class="!bg-surface-900 !rounded-xl !p-5"><code class="language-bash"># 1. Enable WAL archiving in postgresql.conf
-# wal_level = replica
-# archive_mode = on
-# archive_command = 'cp %p /archive/%f'
+<pre class="!bg-surface-900 !rounded-xl !p-5"><code class="language-bash"># Prereq: create replication user
+CREATE USER backup REPLICATION LOGIN PASSWORD 'bk_pw';
+# Edit pg_hba.conf — allow replication for this user
 
-# 2. Take a base backup
-pg_basebackup -D /backup/base -Ft -z -P -U replicator
+# Base backup
+pg_basebackup \
+  -h primary.host \
+  -U backup \
+  -D /backup/base_$(date +%Y%m%d) \
+  -F t \                      # tar format
+  -z \                        # gzip compress
+  -P \                        # show progress
+  -X stream \                 # include WAL via streaming
+  -c fast \                   # fast checkpoint
+  -R \                        # write standby.signal (ready for replica)
+  --wal-method=stream         # default in PG12+
 
-# 3. Simulate a disaster (bad DELETE at 14:30)
-# ...
-
-# 4. Restore base backup
-rm -rf /var/lib/pgsql/18/data/*
-tar -xzf /backup/base/base.tar.gz -C /var/lib/pgsql/18/data/
-
-# 5. Create recovery.signal and configure recovery
-touch /var/lib/pgsql/18/data/recovery.signal
-cat &gt;&gt; postgresql.auto.conf &lt;&lt; EOF
-restore_command = 'cp /archive/%f %p'
-recovery_target_time = '2026-04-22 14:25:00'
-recovery_target_action = 'promote'
-EOF
-
-# 6. Start server — it will replay WAL up to the target
-pg_ctl start</code></pre>
+# Result (tar format):
+ls /backup/base_20260422/
+# base.tar.gz  pg_wal.tar.gz</code></pre>
         </div>
       </div>
     </section>
 
     <section>
-      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">أدوات احترافية</span><span class="lang-en">Professional Tools</span></h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div class="bg-white rounded-2xl border border-surface-200 p-6">
-          <div class="flex items-center gap-3 mb-3"><div class="w-10 h-10 rounded-lg bg-emerald-100 flex items-center justify-center"><i data-lucide="archive" class="w-5 h-5 text-emerald-600"></i></div><h3 class="font-bold text-lg">Barman</h3></div>
-          <ul class="text-sm space-y-1 text-surface-700">
-            <li class="lang-ar">• إدارة مركزية للنسخ الاحتياطي</li>
-            <li class="lang-en">• Centralized backup management</li>
-            <li class="lang-ar">• PITR سهل</li>
-            <li class="lang-en">• Easy PITR</li>
-            <li class="lang-ar">• تحقق تلقائي من النسخ</li>
-            <li class="lang-en">• Automatic backup validation</li>
-            <li class="lang-ar">• من EDB — يعمل مع عدة سيرفرات</li>
-            <li class="lang-en">• By EDB — multi-server support</li>
-          </ul>
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">Point-in-Time Recovery (PITR)</span><span class="lang-en">Point-in-Time Recovery (PITR)</span></h2>
+      <div class="bg-white rounded-2xl border border-surface-200 p-6 space-y-4">
+        <p class="text-surface-700 lang-ar">PITR يسمح باستعادة القاعدة إلى <strong>أي لحظة زمنية</strong> في الماضي. مفيد بعد حذف خاطئ.</p>
+        <p class="text-surface-700 lang-en">PITR lets you restore to <strong>any point in time</strong> in the past. Invaluable after an accidental delete.</p>
+
+        <div class="bg-gradient-to-br from-emerald-50 to-white rounded-xl p-5 border border-emerald-200">
+          <h4 class="font-bold mb-2"><span class="lang-ar">المعادلة السحرية:</span><span class="lang-en">The magic formula:</span></h4>
+          <div class="font-mono text-sm text-emerald-900 bg-white p-3 rounded border border-emerald-100" dir="ltr">PITR = pg_basebackup + continuous WAL archive</div>
         </div>
-        <div class="bg-white rounded-2xl border border-surface-200 p-6">
-          <div class="flex items-center gap-3 mb-3"><div class="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center"><i data-lucide="zap" class="w-5 h-5 text-blue-600"></i></div><h3 class="font-bold text-lg">pgBackRest</h3></div>
-          <ul class="text-sm space-y-1 text-surface-700">
-            <li class="lang-ar">• نسخ متوازي (أسرع)</li>
-            <li class="lang-en">• Parallel backup (faster)</li>
-            <li class="lang-ar">• ضغط بمستويات متعددة</li>
-            <li class="lang-en">• Multi-level compression</li>
-            <li class="lang-ar">• Incremental & Differential</li>
-            <li class="lang-en">• Incremental & Differential</li>
-            <li class="lang-ar">• يدعم S3 و Azure Blob</li>
-            <li class="lang-en">• Supports S3 and Azure Blob</li>
+
+        <div class="relative group" dir="ltr">
+          <button onclick="copyCode(this)" class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 bg-surface-700 text-white text-xs px-2.5 py-1.5 rounded-lg z-10">Copy</button>
+<pre class="!bg-surface-900 !rounded-xl !p-5"><code class="language-bash"># ========== STEP 1: Enable WAL archiving ==========
+# postgresql.conf:
+wal_level = replica
+archive_mode = on
+archive_command = 'test ! -f /archive/%f &amp;&amp; cp %p /archive/%f'
+# restart needed
+
+# ========== STEP 2: Take periodic base backups ==========
+# Weekly (cron)
+pg_basebackup -D /backup/weekly_$(date +%Y%m%d) -Ft -z -P -U backup
+
+# ========== STEP 3: Disaster strikes! ==========
+# Bad query at 14:30 deleted 10,000 orders
+# We want to restore to 14:29
+
+# ========== STEP 4: Recovery ==========
+# 1. Stop current server
+pg_ctl stop -m fast
+
+# 2. Move old data dir (don't delete — keep for forensics)
+mv /var/lib/pgsql/18/data /var/lib/pgsql/18/data.broken
+
+# 3. Restore base backup
+mkdir /var/lib/pgsql/18/data
+tar -xzf /backup/weekly_20260420/base.tar.gz -C /var/lib/pgsql/18/data/
+
+# 4. Configure recovery (PG12+: in postgresql.auto.conf + signal file)
+touch /var/lib/pgsql/18/data/recovery.signal
+cat &gt;&gt; /var/lib/pgsql/18/data/postgresql.auto.conf &lt;&lt; EOF
+restore_command = 'cp /archive/%f %p'
+recovery_target_time = '2026-04-22 14:29:00+00'
+recovery_target_action = 'promote'   # or 'pause' to inspect first
+EOF
+
+# 5. Start — replays WAL until target
+pg_ctl start
+
+# 6. Verify, then use SELECT pg_wal_replay_resume(); if paused</code></pre>
+        </div>
+
+        <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-3">
+          <div class="bg-blue-50 border border-blue-200 rounded-xl p-3 text-sm">
+            <strong class="lang-ar">أهداف recovery الممكنة:</strong>
+            <strong class="lang-en">Recovery targets:</strong>
+            <ul class="text-xs space-y-0.5 mt-1 font-mono">
+              <li>recovery_target_time = '...'</li>
+              <li>recovery_target_xid = '12345'</li>
+              <li>recovery_target_lsn = '1/300000'</li>
+              <li>recovery_target_name = 'before_drop'</li>
+              <li>recovery_target = 'immediate'</li>
+            </ul>
+          </div>
+          <div class="bg-amber-50 border border-amber-200 rounded-xl p-3 text-sm">
+            <strong class="lang-ar">recovery_target_action:</strong>
+            <strong class="lang-en">recovery_target_action:</strong>
+            <ul class="text-xs space-y-0.5 mt-1">
+              <li><span class="font-mono">pause</span> <span class="lang-ar">— توقف للفحص</span><span class="lang-en"> — pause to inspect</span></li>
+              <li><span class="font-mono">promote</span> <span class="lang-ar">— أصبح primary</span><span class="lang-en"> — become primary</span></li>
+              <li><span class="font-mono">shutdown</span> <span class="lang-ar">— أوقف</span><span class="lang-en"> — stop</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">Barman و pgBackRest</span><span class="lang-en">Barman & pgBackRest</span></h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-white rounded-2xl border-2 border-emerald-200 p-5">
+          <h3 class="font-bold text-lg mb-2">Barman <span class="text-xs text-surface-500 ms-2">(by EDB)</span></h3>
+          <p class="text-sm text-surface-700 mb-3 lang-ar">إدارة مركزية للنسخ — سيرفر واحد يدير backups لعدة قواعد.</p>
+          <p class="text-sm text-surface-700 mb-3 lang-en">Centralized backup management — one server handles backups for many DBs.</p>
+          <ul class="text-xs space-y-1 text-surface-700">
+            <li class="lang-ar">• WAL streaming مستمر</li>
+            <li class="lang-en">• Continuous WAL streaming</li>
+            <li class="lang-ar">• PITR مبسّط</li>
+            <li class="lang-en">• Simplified PITR</li>
+            <li class="lang-ar">• تحقق تلقائي من backups</li>
+            <li class="lang-en">• Automatic backup verification</li>
+            <li class="lang-ar">• سياسات احتفاظ</li>
+            <li class="lang-en">• Retention policies</li>
           </ul>
+          <div class="mt-3 font-mono text-xs bg-surface-50 p-2 rounded" dir="ltr">barman backup &amp; barman recover</div>
+        </div>
+
+        <div class="bg-white rounded-2xl border-2 border-blue-200 p-5">
+          <h3 class="font-bold text-lg mb-2">pgBackRest <span class="text-xs text-surface-500 ms-2">(industry favorite)</span></h3>
+          <p class="text-sm text-surface-700 mb-3 lang-ar">الأكثر تقدماً — نسخ متوازي، incremental، ودعم S3.</p>
+          <p class="text-sm text-surface-700 mb-3 lang-en">Most advanced — parallel, incremental, and S3 support.</p>
+          <ul class="text-xs space-y-1 text-surface-700">
+            <li class="lang-ar">• Parallel backup (أسرع)</li>
+            <li class="lang-en">• Parallel backup (faster)</li>
+            <li class="lang-ar">• Full / Differential / Incremental</li>
+            <li class="lang-en">• Full / Differential / Incremental</li>
+            <li class="lang-ar">• S3, Azure Blob, GCS</li>
+            <li class="lang-en">• S3, Azure Blob, GCS</li>
+            <li class="lang-ar">• Encryption at rest</li>
+            <li class="lang-en">• Encryption at rest</li>
+          </ul>
+          <div class="mt-3 font-mono text-xs bg-surface-50 p-2 rounded" dir="ltr">pgbackrest backup &amp; pgbackrest restore</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">استراتيجية 3-2-1 الذهبية</span><span class="lang-en">The Golden 3-2-1 Strategy</span></h2>
+      <div class="bg-white rounded-2xl border border-surface-200 p-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-4 text-center">
+            <div class="text-4xl font-bold text-emerald-600 mb-2">3</div>
+            <div class="font-bold text-sm mb-1 lang-ar">نسخ من البيانات</div>
+            <div class="font-bold text-sm mb-1 lang-en">Copies of data</div>
+            <div class="text-xs text-surface-600 lang-ar">الأصلي + نسختان</div>
+            <div class="text-xs text-surface-600 lang-en">Original + 2 backups</div>
+          </div>
+          <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-4 text-center">
+            <div class="text-4xl font-bold text-emerald-600 mb-2">2</div>
+            <div class="font-bold text-sm mb-1 lang-ar">أنواع تخزين</div>
+            <div class="font-bold text-sm mb-1 lang-en">Storage types</div>
+            <div class="text-xs text-surface-600 lang-ar">disk + cloud / tape</div>
+            <div class="text-xs text-surface-600 lang-en">disk + cloud / tape</div>
+          </div>
+          <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-4 text-center">
+            <div class="text-4xl font-bold text-emerald-600 mb-2">1</div>
+            <div class="font-bold text-sm mb-1 lang-ar">نسخة خارج الموقع</div>
+            <div class="font-bold text-sm mb-1 lang-en">Offsite copy</div>
+            <div class="text-xs text-surface-600 lang-ar">حماية من كارثة فيزيائية</div>
+            <div class="text-xs text-surface-600 lang-en">Physical disaster protection</div>
+          </div>
+        </div>
+
+        <div class="mt-4 flex gap-3 p-4 bg-red-50 border border-red-200 rounded-xl">
+          <i data-lucide="alert-octagon" class="w-5 h-5 text-red-600 shrink-0 mt-0.5"></i>
+          <div class="text-sm">
+            <strong class="text-red-800 lang-ar">القاعدة الذهبية:</strong>
+            <strong class="text-red-800 lang-en">Golden rule:</strong>
+            <span class="text-red-700 lang-ar"> <strong>النسخة الاحتياطية غير موجودة حتى تختبر الاستعادة منها!</strong> اختبر الاستعادة على الأقل مرة في الشهر.</span>
+            <span class="text-red-700 lang-en"> <strong>A backup doesn't exist until you've tested restore!</strong> Test at least once a month.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUIZ -->
+    <section>
+      <div class="mb-6">
+        <span class="text-sm font-bold text-emerald-600 uppercase tracking-wider"><span class="lang-ar">اختبر فهمك</span><span class="lang-en">Test Your Knowledge</span></span>
+        <h2 class="text-3xl font-bold text-surface-900 mt-2 mb-3"><span class="lang-ar">كويز الوحدة ١٢ 🎯</span><span class="lang-en">Module 12 Quiz 🎯</span></h2>
+      </div>
+
+      <div id="quiz" class="space-y-4">
+        <div class="quiz-card bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="flex items-center gap-2 mb-3"><span class="w-7 h-7 rounded-full bg-emerald-600 text-white font-bold text-sm flex items-center justify-center">1</span></div>
+          <p class="font-semibold mb-4 lang-ar">RTO يعني:</p>
+          <p class="font-semibold mb-4 lang-en">RTO stands for:</p>
+          <div class="space-y-2">
+            <button onclick="pick(this,1)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-emerald-300" data-correct="true"><span class="lang-ar">Recovery Time Objective — مدة التعطل المقبولة</span><span class="lang-en">Recovery Time Objective — acceptable downtime</span></button>
+            <button onclick="pick(this,1)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-emerald-300"><span class="lang-ar">Real Transaction Order</span><span class="lang-en">Real Transaction Order</span></button>
+            <button onclick="pick(this,1)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-emerald-300"><span class="lang-ar">Replication Target Operation</span><span class="lang-en">Replication Target Operation</span></button>
+          </div>
+          <div class="feedback hidden mt-3 p-3 rounded-xl text-sm"></div>
+        </div>
+
+        <div class="quiz-card bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="flex items-center gap-2 mb-3"><span class="w-7 h-7 rounded-full bg-emerald-600 text-white font-bold text-sm flex items-center justify-center">2</span></div>
+          <p class="font-semibold mb-4 lang-ar">أي format مُستحسن للـ pg_dump في الإنتاج؟</p>
+          <p class="font-semibold mb-4 lang-en">Which pg_dump format is recommended for production?</p>
+          <div class="space-y-2">
+            <button onclick="pick(this,2)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-emerald-300"><span class="font-mono">-F p (plain SQL)</span></button>
+            <button onclick="pick(this,2)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-emerald-300" data-correct="true"><span class="font-mono">-F c (custom, compressed)</span></button>
+            <button onclick="pick(this,2)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-emerald-300"><span class="font-mono">-F t (tar)</span></button>
+          </div>
+          <div class="feedback hidden mt-3 p-3 rounded-xl text-sm"></div>
+        </div>
+
+        <div class="quiz-card bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="flex items-center gap-2 mb-3"><span class="w-7 h-7 rounded-full bg-emerald-600 text-white font-bold text-sm flex items-center justify-center">3</span></div>
+          <p class="font-semibold mb-4 lang-ar">PITR يتطلب:</p>
+          <p class="font-semibold mb-4 lang-en">PITR requires:</p>
+          <div class="space-y-2">
+            <button onclick="pick(this,3)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-emerald-300"><span class="lang-ar">pg_dump فقط</span><span class="lang-en">pg_dump only</span></button>
+            <button onclick="pick(this,3)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-emerald-300" data-correct="true"><span class="lang-ar">base backup + WAL archiving</span><span class="lang-en">Base backup + WAL archiving</span></button>
+            <button onclick="pick(this,3)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-emerald-300"><span class="lang-ar">replication فقط</span><span class="lang-en">Replication only</span></button>
+          </div>
+          <div class="feedback hidden mt-3 p-3 rounded-xl text-sm"></div>
+        </div>
+
+        <div class="quiz-card bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="flex items-center gap-2 mb-3"><span class="w-7 h-7 rounded-full bg-emerald-600 text-white font-bold text-sm flex items-center justify-center">4</span></div>
+          <p class="font-semibold mb-4 lang-ar">الفرق بين pg_dump و pg_dumpall:</p>
+          <p class="font-semibold mb-4 lang-en">Difference between pg_dump and pg_dumpall:</p>
+          <div class="space-y-2">
+            <button onclick="pick(this,4)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-emerald-300"><span class="lang-ar">dumpall أسرع</span><span class="lang-en">dumpall is faster</span></button>
+            <button onclick="pick(this,4)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-emerald-300" data-correct="true"><span class="lang-ar">dump لقاعدة واحدة؛ dumpall لكل الكلاستر + globals (roles)</span><span class="lang-en">dump = one DB; dumpall = whole cluster + globals</span></button>
+            <button onclick="pick(this,4)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-emerald-300"><span class="lang-ar">لا فرق</span><span class="lang-en">No difference</span></button>
+          </div>
+          <div class="feedback hidden mt-3 p-3 rounded-xl text-sm"></div>
+        </div>
+
+        <div class="quiz-card bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="flex items-center gap-2 mb-3"><span class="w-7 h-7 rounded-full bg-emerald-600 text-white font-bold text-sm flex items-center justify-center">5</span></div>
+          <p class="font-semibold mb-4 lang-ar">قاعدة 3-2-1 تعني:</p>
+          <p class="font-semibold mb-4 lang-en">The 3-2-1 rule means:</p>
+          <div class="space-y-2">
+            <button onclick="pick(this,5)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-emerald-300"><span class="lang-ar">3 ساعات، 2 أيام، 1 أسبوع</span><span class="lang-en">3 hours, 2 days, 1 week</span></button>
+            <button onclick="pick(this,5)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-emerald-300" data-correct="true"><span class="lang-ar">3 نسخ، 2 أنواع تخزين، 1 خارج الموقع</span><span class="lang-en">3 copies, 2 storage types, 1 offsite</span></button>
+            <button onclick="pick(this,5)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-emerald-300"><span class="lang-ar">3 DBAs، 2 سيرفرات، 1 backup</span><span class="lang-en">3 DBAs, 2 servers, 1 backup</span></button>
+          </div>
+          <div class="feedback hidden mt-3 p-3 rounded-xl text-sm"></div>
+        </div>
+
+        <div class="quiz-card bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="flex items-center gap-2 mb-3"><span class="w-7 h-7 rounded-full bg-emerald-600 text-white font-bold text-sm flex items-center justify-center">6</span></div>
+          <p class="font-semibold mb-4 lang-ar">أداة backup احترافية تدعم Incremental و S3:</p>
+          <p class="font-semibold mb-4 lang-en">Backup tool supporting incremental + S3:</p>
+          <div class="space-y-2">
+            <button onclick="pick(this,6)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-emerald-300"><span class="font-mono">pg_dump</span></button>
+            <button onclick="pick(this,6)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-emerald-300" data-correct="true"><span class="font-mono">pgBackRest</span></button>
+            <button onclick="pick(this,6)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-emerald-300"><span class="font-mono">rsync</span></button>
+          </div>
+          <div class="feedback hidden mt-3 p-3 rounded-xl text-sm"></div>
+        </div>
+
+        <div class="quiz-card bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="flex items-center gap-2 mb-3"><span class="w-7 h-7 rounded-full bg-emerald-600 text-white font-bold text-sm flex items-center justify-center">7</span></div>
+          <p class="font-semibold mb-4 lang-ar">ما علامة "recovery.signal"؟</p>
+          <p class="font-semibold mb-4 lang-en">What's "recovery.signal"?</p>
+          <div class="space-y-2">
+            <button onclick="pick(this,7)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-emerald-300"><span class="lang-ar">ملف log</span><span class="lang-en">Log file</span></button>
+            <button onclick="pick(this,7)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-emerald-300" data-correct="true"><span class="lang-ar">ملف فارغ يشير للسيرفر بتفعيل وضع recovery عند التشغيل</span><span class="lang-en">Empty file signaling the server to enter recovery on start</span></button>
+            <button onclick="pick(this,7)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-emerald-300"><span class="lang-ar">extension للاستعادة</span><span class="lang-en">A recovery extension</span></button>
+          </div>
+          <div class="feedback hidden mt-3 p-3 rounded-xl text-sm"></div>
+        </div>
+
+        <div id="quiz-result" class="hidden bg-gradient-to-br from-emerald-600 to-emerald-800 text-white rounded-2xl p-6 text-center">
+          <i data-lucide="award" class="w-12 h-12 mx-auto mb-3"></i>
+          <h3 class="text-2xl font-bold mb-2"><span class="lang-ar">نتيجتك</span><span class="lang-en">Your Score</span></h3>
+          <div class="text-5xl font-bold my-3"><span id="score">0</span><span class="text-2xl opacity-70">/7</span></div>
+          <p id="result-msg" class="text-emerald-100"></p>
+          <button onclick="resetQuiz()" class="mt-4 bg-white text-emerald-700 font-semibold px-6 py-2 rounded-lg hover:bg-emerald-50"><span class="lang-ar">إعادة المحاولة</span><span class="lang-en">Try Again</span></button>
         </div>
       </div>
     </section>
@@ -198,12 +468,12 @@ pg_ctl start</code></pre>
       <div class="bg-gradient-to-br from-emerald-600 via-emerald-700 to-emerald-900 text-white rounded-2xl p-6 md:p-8 shadow-xl">
         <div class="flex items-center gap-3 mb-6"><div class="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center"><i data-lucide="bookmark-check" class="w-6 h-6"></i></div><h2 class="text-2xl font-bold"><span class="lang-ar">ملخص الوحدة</span><span class="lang-en">Module Summary</span></h2></div>
         <ul class="grid grid-cols-1 md:grid-cols-2 gap-3">
-          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-emerald-300 shrink-0 mt-0.5"></i><span class="lang-ar">Logical vs Physical backup</span><span class="lang-en">Logical vs Physical backup</span></li>
-          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-emerald-300 shrink-0 mt-0.5"></i><span class="lang-ar">pg_dump لقاعدة واحدة</span><span class="lang-en">pg_dump for single database</span></li>
-          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-emerald-300 shrink-0 mt-0.5"></i><span class="lang-ar">pg_basebackup للكلاستر كاملاً</span><span class="lang-en">pg_basebackup for entire cluster</span></li>
-          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-emerald-300 shrink-0 mt-0.5"></i><span class="lang-ar">PITR = backup + WAL archive</span><span class="lang-en">PITR = backup + WAL archive</span></li>
-          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-emerald-300 shrink-0 mt-0.5"></i><span class="lang-ar">Barman و pgBackRest للإنتاج</span><span class="lang-en">Barman & pgBackRest for production</span></li>
-          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-emerald-300 shrink-0 mt-0.5"></i><span class="lang-ar">اختبر الاستعادة دائماً!</span><span class="lang-en">Always test your restore!</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-emerald-300 shrink-0 mt-0.5"></i><span class="lang-ar">حدد RTO/RPO أولاً</span><span class="lang-en">Define RTO/RPO first</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-emerald-300 shrink-0 mt-0.5"></i><span class="lang-ar">Logical (pg_dump) أو Physical (pg_basebackup)</span><span class="lang-en">Logical or Physical backup</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-emerald-300 shrink-0 mt-0.5"></i><span class="lang-ar">pg_dump -F c هو الأفضل</span><span class="lang-en">pg_dump -F c is best</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-emerald-300 shrink-0 mt-0.5"></i><span class="lang-ar">PITR = base + WAL archive</span><span class="lang-en">PITR = base + WAL archive</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-emerald-300 shrink-0 mt-0.5"></i><span class="lang-ar">Barman / pgBackRest للإنتاج</span><span class="lang-en">Barman / pgBackRest for prod</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-emerald-300 shrink-0 mt-0.5"></i><span class="lang-ar">اختبر الاستعادة شهرياً!</span><span class="lang-en">Test restore monthly!</span></li>
         </ul>
       </div>
     </section>
@@ -215,7 +485,7 @@ pg_ctl start</code></pre>
       </a>
       <a href="ch13.html" class="flex-1 bg-gradient-to-br from-emerald-600 to-emerald-700 text-white rounded-xl p-4 hover:shadow-xl transition-all">
         <div class="text-xs text-emerald-200 mb-1 text-end"><span class="lang-ar">التالي</span><span class="lang-en">Next</span></div>
-        <div class="flex items-center justify-end gap-2 font-bold"><span class="lang-ar">الصيانة الدورية</span><span class="lang-en">Routine Maintenance</span><i data-lucide="arrow-left" class="w-4 h-4 lang-ar"></i><i data-lucide="arrow-right" class="w-4 h-4 lang-en"></i></div>
+        <div class="flex items-center justify-end gap-2 font-bold"><span class="lang-ar">الصيانة</span><span class="lang-en">Maintenance</span><i data-lucide="arrow-left" class="w-4 h-4 lang-ar"></i><i data-lucide="arrow-right" class="w-4 h-4 lang-en"></i></div>
       </a>
     </nav>
   </main>
@@ -225,6 +495,10 @@ pg_ctl start</code></pre>
   <script>
     function setLang(lang){document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';localStorage.setItem('pgCourseLang',lang);document.querySelectorAll('.lang-btn').forEach(b=>{b.classList.remove('bg-emerald-600','text-white','shadow-md');b.classList.add('text-surface-600','hover:bg-surface-100');});const a=document.getElementById('btn-'+lang);a.classList.add('bg-emerald-600','text-white','shadow-md');a.classList.remove('text-surface-600','hover:bg-surface-100');}
     function copyCode(btn){const c=btn.nextElementSibling.querySelector('code').textContent;navigator.clipboard.writeText(c);btn.textContent='✓';setTimeout(()=>btn.textContent='Copy',2000);}
+    const total=7;const answers={};
+    function pick(btn,q){const card=btn.closest('.quiz-card');card.querySelectorAll('.quiz-opt').forEach(o=>o.disabled=true);const correct=btn.dataset.correct==='true';btn.classList.add(correct?'correct':'wrong');if(!correct)card.querySelector('[data-correct="true"]').classList.add('correct');const fb=card.querySelector('.feedback');fb.classList.remove('hidden');const lang=document.documentElement.lang;fb.className='feedback mt-3 p-3 rounded-xl text-sm '+(correct?'bg-green-50 text-green-800 border border-green-200':'bg-red-50 text-red-800 border border-red-200');fb.innerHTML=correct?(lang==='ar'?'✓ ممتاز!':'✓ Correct!'):(lang==='ar'?'✗ خطأ — الإجابة بالأخضر':'✗ Wrong — answer in green');answers[q]=correct;if(Object.keys(answers).length===total)showResult();}
+    function showResult(){const s=Object.values(answers).filter(Boolean).length;document.getElementById('score').textContent=s;const m=document.getElementById('result-msg');const l=document.documentElement.lang;m.textContent=s===total?(l==='ar'?'🎉 إتقان كامل!':'🎉 Perfect!'):s>=Math.ceil(total*0.7)?(l==='ar'?'👍 ممتاز!':'👍 Great!'):(l==='ar'?'📚 راجع':'📚 Review');const r=document.getElementById('quiz-result');r.classList.remove('hidden');r.scrollIntoView({behavior:'smooth',block:'center'});}
+    function resetQuiz(){Object.keys(answers).forEach(k=>delete answers[k]);document.querySelectorAll('.quiz-opt').forEach(b=>{b.disabled=false;b.classList.remove('correct','wrong');});document.querySelectorAll('.feedback').forEach(f=>f.classList.add('hidden'));document.getElementById('quiz-result').classList.add('hidden');document.getElementById('quiz').scrollIntoView({behavior:'smooth',block:'start'});}
     setLang(localStorage.getItem('pgCourseLang')||'ar');lucide.createIcons();Prism.highlightAll();
   </script>
 </body>

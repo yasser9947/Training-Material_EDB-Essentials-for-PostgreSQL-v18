@@ -12,7 +12,7 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-sql.min.js"></script>
-  <style>body{font-family:'IBM Plex Sans Arabic',sans-serif}html[lang="ar"] .lang-en{display:none!important}html[lang="en"] .lang-ar{display:none!important}pre[class*="language-"]{border-radius:.75rem;font-size:.875rem;direction:ltr}code[class*="language-"]{font-family:'JetBrains Mono',monospace}</style>
+  <style>body{font-family:'IBM Plex Sans Arabic',sans-serif}html[lang="ar"] .lang-en{display:none!important}html[lang="en"] .lang-ar{display:none!important}pre[class*="language-"]{border-radius:.75rem;font-size:.875rem;direction:ltr}code[class*="language-"]{font-family:'JetBrains Mono',monospace}.quiz-opt.correct{border-color:#059669!important;background:#ecfdf5!important}.quiz-opt.wrong{border-color:#dc2626!important;background:#fef2f2!important}.quiz-opt:disabled{cursor:not-allowed}</style>
 </head>
 <body class="bg-surface-50 text-surface-800 antialiased min-h-screen">
 
@@ -33,24 +33,22 @@
         <span>·</span><span class="font-mono">p. 321–347</span><span>·</span>
         <span class="lang-ar">٢٧ صفحة</span><span class="lang-en">27 pages</span>
       </div>
-      <h1 class="text-3xl md:text-5xl font-bold mb-4"><span class="lang-ar">مهام الصيانة الدورية</span><span class="lang-en">Routine Maintenance Tasks</span></h1>
-      <p class="text-lg text-yellow-100 max-w-3xl lang-ar">VACUUM، ANALYZE، إعادة الفهرسة — الصيانة التي تبقي قاعدة بياناتك في أفضل حال.</p>
-      <p class="text-lg text-yellow-100 max-w-3xl lang-en">VACUUM, ANALYZE, reindexing — maintenance that keeps your database healthy.</p>
+      <h1 class="text-3xl md:text-5xl font-bold mb-4"><span class="lang-ar">مهام الصيانة الدورية</span><span class="lang-en">Routine Maintenance</span></h1>
+      <p class="text-lg text-yellow-100 max-w-3xl lang-ar">MVCC، VACUUM، Autovacuum، TXID Wraparound، REINDEX — الصيانة التي تبقي قاعدة بياناتك حية.</p>
+      <p class="text-lg text-yellow-100 max-w-3xl lang-en">MVCC, VACUUM, Autovacuum, TXID wraparound, REINDEX — maintenance that keeps your DB alive.</p>
     </div>
   </header>
 
   <section class="max-w-6xl mx-auto px-4 sm:px-6 py-10">
     <div class="bg-white rounded-2xl shadow-sm border border-surface-200 p-6 md:p-8">
-      <div class="flex items-center gap-3 mb-6">
-        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-yellow-500 to-yellow-700 flex items-center justify-center text-white"><i data-lucide="wrench" class="w-6 h-6"></i></div>
-        <h2 class="text-2xl font-bold"><span class="lang-ar">أهداف الوحدة</span><span class="lang-en">Module Objectives</span></h2>
-      </div>
+      <div class="flex items-center gap-3 mb-6"><div class="w-12 h-12 rounded-xl bg-gradient-to-br from-yellow-500 to-yellow-700 flex items-center justify-center text-white"><i data-lucide="wrench" class="w-6 h-6"></i></div><h2 class="text-2xl font-bold"><span class="lang-ar">أهداف الوحدة</span><span class="lang-en">Module Objectives</span></h2></div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
-        <div class="flex gap-2 p-3 rounded-xl bg-yellow-50 border border-yellow-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-yellow-600 shrink-0"></i><span class="lang-ar">تحديث إحصائيات الـ Optimizer</span><span class="lang-en">Updating Optimizer Statistics</span></div>
-        <div class="flex gap-2 p-3 rounded-xl bg-yellow-50 border border-yellow-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-yellow-600 shrink-0"></i><span class="lang-ar">معالجة التجزؤ عبر VACUUM</span><span class="lang-en">Handling Fragmentation via VACUUM</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-yellow-50 border border-yellow-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-yellow-600 shrink-0"></i><span class="lang-ar">لماذا نحتاج VACUUM (MVCC)</span><span class="lang-en">Why we need VACUUM (MVCC)</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-yellow-50 border border-yellow-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-yellow-600 shrink-0"></i><span class="lang-ar">VACUUM vs VACUUM FULL vs VACUUM FREEZE</span><span class="lang-en">VACUUM vs VACUUM FULL vs FREEZE</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-yellow-50 border border-yellow-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-yellow-600 shrink-0"></i><span class="lang-ar">ANALYZE والإحصائيات</span><span class="lang-en">ANALYZE & statistics</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-yellow-50 border border-yellow-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-yellow-600 shrink-0"></i><span class="lang-ar">Autovacuum tuning</span><span class="lang-en">Autovacuum tuning</span></div>
         <div class="flex gap-2 p-3 rounded-xl bg-yellow-50 border border-yellow-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-yellow-600 shrink-0"></i><span class="lang-ar">Transaction ID Wraparound</span><span class="lang-en">Transaction ID Wraparound</span></div>
-        <div class="flex gap-2 p-3 rounded-xl bg-yellow-50 border border-yellow-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-yellow-600 shrink-0"></i><span class="lang-ar">Autovacuum</span><span class="lang-en">Autovacuum</span></div>
-        <div class="flex gap-2 p-3 rounded-xl bg-yellow-50 border border-yellow-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-yellow-600 shrink-0"></i><span class="lang-ar">Re-indexing</span><span class="lang-en">Re-indexing</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-yellow-50 border border-yellow-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-yellow-600 shrink-0"></i><span class="lang-ar">REINDEX و bloat</span><span class="lang-en">REINDEX & bloat</span></div>
       </div>
     </div>
   </section>
@@ -58,15 +56,62 @@
   <main class="max-w-6xl mx-auto px-4 sm:px-6 pb-12 space-y-12">
 
     <section>
-      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">لماذا نحتاج VACUUM؟</span><span class="lang-en">Why Do We Need VACUUM?</span></h2>
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">لماذا VACUUM ضروري؟</span><span class="lang-en">Why is VACUUM Essential?</span></h2>
       <div class="bg-white rounded-2xl border border-surface-200 p-6 space-y-4">
-        <p class="text-surface-700 lang-ar">PostgreSQL يستخدم <strong>MVCC</strong> (Multi-Version Concurrency Control). عند UPDATE أو DELETE، الصفوف القديمة لا تُحذف فوراً — تبقى كـ "Dead Tuples" حتى يأتي VACUUM.</p>
-        <p class="text-surface-700 lang-en">PostgreSQL uses <strong>MVCC</strong> (Multi-Version Concurrency Control). On UPDATE/DELETE, old rows aren't immediately removed — they become "Dead Tuples" until VACUUM runs.</p>
+        <p class="text-surface-700 lang-ar">PostgreSQL يستخدم <strong>MVCC</strong> — عند UPDATE أو DELETE، الصف القديم <strong>لا يُحذف فوراً</strong>. بدل ذلك يُترك كـ "dead tuple" حتى يأتي VACUUM ليحرر مساحته.</p>
+        <p class="text-surface-700 lang-en">PostgreSQL uses <strong>MVCC</strong> — on UPDATE/DELETE, the old row is <strong>not immediately removed</strong>. It becomes a "dead tuple" until VACUUM reclaims the space.</p>
+
+        <div class="bg-gradient-to-br from-yellow-50 to-white rounded-xl p-5 border border-yellow-200">
+          <h4 class="font-bold mb-3"><span class="lang-ar">مثال — دورة حياة UPDATE:</span><span class="lang-en">Example — UPDATE lifecycle:</span></h4>
+          <ol class="text-sm space-y-2 text-surface-700 list-decimal list-inside">
+            <li class="lang-ar">TX1 يقرأ صف "Alice, 30"</li>
+            <li class="lang-en">TX1 reads row "Alice, 30"</li>
+            <li class="lang-ar">TX2 يُحدّث "Alice, 31" — ينشئ نسخة جديدة، القديمة تُحدد كـ dead</li>
+            <li class="lang-en">TX2 updates to "Alice, 31" — creates new version, old marked dead</li>
+            <li class="lang-ar">TX1 ما زال يرى "Alice, 30" (consistent snapshot) ✓</li>
+            <li class="lang-en">TX1 still sees "Alice, 30" (consistent snapshot) ✓</li>
+            <li class="lang-ar">بعد انتهاء TX1، الصف القديم أصبح garbage لكن لا يُحذف</li>
+            <li class="lang-en">After TX1 ends, old row becomes garbage but isn't deleted</li>
+            <li class="lang-ar">VACUUM لاحقاً يحرر المساحة</li>
+            <li class="lang-en">VACUUM later reclaims the space</li>
+          </ol>
+        </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-          <div class="bg-yellow-50 border border-yellow-200 rounded-xl p-4"><i data-lucide="trash-2" class="w-6 h-6 text-yellow-600 mb-2"></i><h4 class="font-bold text-sm lang-ar">VACUUM</h4><h4 class="font-bold text-sm lang-en">VACUUM</h4><p class="text-xs text-surface-600 mt-1 lang-ar">تنظيف الصفوف الميتة</p><p class="text-xs text-surface-600 mt-1 lang-en">Clean dead tuples</p></div>
-          <div class="bg-yellow-50 border border-yellow-200 rounded-xl p-4"><i data-lucide="bar-chart-3" class="w-6 h-6 text-yellow-600 mb-2"></i><h4 class="font-bold text-sm lang-ar">ANALYZE</h4><h4 class="font-bold text-sm lang-en">ANALYZE</h4><p class="text-xs text-surface-600 mt-1 lang-ar">تحديث الإحصائيات للـ Planner</p><p class="text-xs text-surface-600 mt-1 lang-en">Update stats for Planner</p></div>
-          <div class="bg-yellow-50 border border-yellow-200 rounded-xl p-4"><i data-lucide="refresh-cw" class="w-6 h-6 text-yellow-600 mb-2"></i><h4 class="font-bold text-sm lang-ar">REINDEX</h4><h4 class="font-bold text-sm lang-en">REINDEX</h4><p class="text-xs text-surface-600 mt-1 lang-ar">إعادة بناء الفهارس</p><p class="text-xs text-surface-600 mt-1 lang-en">Rebuild indexes</p></div>
+          <div class="bg-yellow-50 border border-yellow-200 rounded-xl p-4"><i data-lucide="trash-2" class="w-6 h-6 text-yellow-600 mb-2"></i><h4 class="font-bold text-sm lang-ar">VACUUM</h4><h4 class="font-bold text-sm lang-en">VACUUM</h4><p class="text-xs text-surface-600 lang-ar">يحرر dead tuples — لا يلمس حجم الملف</p><p class="text-xs text-surface-600 lang-en">Reclaims dead tuples — doesn't shrink file</p></div>
+          <div class="bg-yellow-50 border border-yellow-200 rounded-xl p-4"><i data-lucide="bar-chart-3" class="w-6 h-6 text-yellow-600 mb-2"></i><h4 class="font-bold text-sm lang-ar">ANALYZE</h4><h4 class="font-bold text-sm lang-en">ANALYZE</h4><p class="text-xs text-surface-600 lang-ar">يحدث الإحصائيات للـ planner</p><p class="text-xs text-surface-600 lang-en">Updates planner statistics</p></div>
+          <div class="bg-yellow-50 border border-yellow-200 rounded-xl p-4"><i data-lucide="refresh-cw" class="w-6 h-6 text-yellow-600 mb-2"></i><h4 class="font-bold text-sm lang-ar">REINDEX</h4><h4 class="font-bold text-sm lang-en">REINDEX</h4><p class="text-xs text-surface-600 lang-ar">يعيد بناء الفهارس (bloat)</p><p class="text-xs text-surface-600 lang-en">Rebuilds indexes (bloat)</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">أنواع VACUUM الثلاثة</span><span class="lang-en">Three Types of VACUUM</span></h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="bg-white rounded-2xl border-2 border-green-200 p-5">
+          <div class="flex items-center gap-2 mb-3"><i data-lucide="check-circle" class="w-6 h-6 text-green-600"></i><h3 class="font-bold">VACUUM</h3></div>
+          <p class="text-sm text-surface-700 mb-2 lang-ar">الأساسي — يحرر dead tuples، يعمل online (لا يقفل).</p>
+          <p class="text-sm text-surface-700 mb-2 lang-en">Standard — reclaims dead tuples, online (no lock).</p>
+          <div class="text-xs text-green-700 lang-ar">✓ آمن في الإنتاج</div>
+          <div class="text-xs text-green-700 lang-en">✓ Safe in production</div>
+          <div class="text-xs text-surface-500 mt-2 lang-ar">لا يقلل حجم الملف — المساحة تُستخدم لصفوف جديدة</div>
+          <div class="text-xs text-surface-500 mt-2 lang-en">Doesn't shrink file — space reused for new rows</div>
+        </div>
+        <div class="bg-white rounded-2xl border-2 border-red-200 p-5">
+          <div class="flex items-center gap-2 mb-3"><i data-lucide="alert-octagon" class="w-6 h-6 text-red-600"></i><h3 class="font-bold">VACUUM FULL</h3></div>
+          <p class="text-sm text-surface-700 mb-2 lang-ar">يعيد كتابة الجدول كاملاً — يحرر المساحة للـ OS.</p>
+          <p class="text-sm text-surface-700 mb-2 lang-en">Rewrites whole table — returns space to OS.</p>
+          <div class="text-xs text-red-700 lang-ar">✗ يقفل الجدول (ACCESS EXCLUSIVE)</div>
+          <div class="text-xs text-red-700 lang-en">✗ Locks table (ACCESS EXCLUSIVE)</div>
+          <div class="text-xs text-red-700 lang-ar">✗ يحتاج مساحة إضافية (2×)</div>
+          <div class="text-xs text-red-700 lang-en">✗ Needs extra space (2×)</div>
+        </div>
+        <div class="bg-white rounded-2xl border-2 border-blue-200 p-5">
+          <div class="flex items-center gap-2 mb-3"><i data-lucide="snowflake" class="w-6 h-6 text-blue-600"></i><h3 class="font-bold">VACUUM FREEZE</h3></div>
+          <p class="text-sm text-surface-700 mb-2 lang-ar">يجمّد الصفوف لمنع wraparound.</p>
+          <p class="text-sm text-surface-700 mb-2 lang-en">Freezes rows to prevent wraparound.</p>
+          <div class="text-xs text-blue-700 lang-ar">⚡ يعمل تلقائياً عند الحاجة</div>
+          <div class="text-xs text-blue-700 lang-en">⚡ Runs automatically when needed</div>
         </div>
       </div>
     </section>
@@ -77,110 +122,304 @@
         <div class="relative group" dir="ltr">
           <button onclick="copyCode(this)" class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 bg-surface-700 text-white text-xs px-2.5 py-1.5 rounded-lg z-10">Copy</button>
 <pre class="!bg-surface-900 !rounded-xl !p-5"><code class="language-sql">-- Standard VACUUM (non-blocking)
-VACUUM;
+VACUUM;                            -- entire database
+VACUUM customers;                  -- specific table
+VACUUM (VERBOSE) customers;        -- show details
 
--- VACUUM specific table with verbose output
-VACUUM VERBOSE customers;
-
--- VACUUM + ANALYZE together
+-- VACUUM + ANALYZE together (common)
 VACUUM ANALYZE orders;
 
--- VACUUM FULL (locks table, reclaims disk space)
+-- VACUUM FULL (locks! use offline hours)
 VACUUM FULL orders;
 
--- ANALYZE only (updates stats without cleanup)
-ANALYZE;
-ANALYZE orders (customer_id, order_date);
+-- VACUUM with options (PG12+)
+VACUUM (VERBOSE, ANALYZE, PARALLEL 4) big_table;
 
--- Check bloat
-SELECT schemaname, relname, n_dead_tup, n_live_tup,
-       ROUND(100.0 * n_dead_tup / NULLIF(n_live_tup + n_dead_tup, 0), 2) AS dead_pct
+-- Check bloat percentage
+SELECT schemaname, relname,
+       n_live_tup, n_dead_tup,
+       ROUND(100.0 * n_dead_tup / NULLIF(n_live_tup + n_dead_tup, 0), 2) AS dead_pct,
+       last_vacuum, last_autovacuum
 FROM pg_stat_user_tables
+WHERE n_dead_tup &gt; 1000
 ORDER BY dead_pct DESC NULLS LAST
-LIMIT 10;
+LIMIT 20;
 
--- Rebuild indexes
+-- ANALYZE only (fast, no cleanup)
+ANALYZE;
+ANALYZE orders (customer_id, order_date);   -- specific columns
+
+-- REINDEX
 REINDEX TABLE customers;
 REINDEX INDEX idx_orders_customer;
 REINDEX DATABASE mydb;
+REINDEX SCHEMA public;
 
--- CONCURRENTLY (doesn't lock writes)
-REINDEX INDEX CONCURRENTLY idx_orders_customer;</code></pre>
+-- CONCURRENTLY — no write locks (PG12+)
+REINDEX INDEX CONCURRENTLY idx_orders_customer;
+REINDEX TABLE CONCURRENTLY customers;
+
+-- From command line
+vacuumdb -a -z              # all DBs with analyze
+vacuumdb -j 4 -d mydb       # parallel (4 workers)</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">Autovacuum — الصيانة التلقائية</span><span class="lang-en">Autovacuum — Automatic Maintenance</span></h2>
+      <div class="bg-white rounded-2xl border border-surface-200 p-6 space-y-4">
+        <p class="text-surface-700 lang-ar"><strong>Autovacuum</strong> خلفية تراقب الجداول باستمرار وتشغل VACUUM/ANALYZE تلقائياً. <strong>لا تعطلها أبداً</strong> في الإنتاج.</p>
+        <p class="text-surface-700 lang-en"><strong>Autovacuum</strong> is a background process that monitors tables and runs VACUUM/ANALYZE automatically. <strong>Never disable it</strong> in production.</p>
+
+        <div class="relative group" dir="ltr">
+          <button onclick="copyCode(this)" class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 bg-surface-700 text-white text-xs px-2.5 py-1.5 rounded-lg z-10">Copy</button>
+<pre class="!bg-surface-900 !rounded-xl !p-5"><code class="language-sql">-- Key parameters (postgresql.conf):
+-- autovacuum = on                                -- NEVER disable!
+-- autovacuum_max_workers = 3                     -- increase for big DBs
+-- autovacuum_naptime = 1min                      -- check every minute
+-- autovacuum_vacuum_threshold = 50               -- min dead rows
+-- autovacuum_vacuum_scale_factor = 0.2           -- 20% of table
+-- autovacuum_analyze_threshold = 50
+-- autovacuum_analyze_scale_factor = 0.1          -- 10% of table
+
+-- Trigger formula:
+-- vacuum when n_dead_tup &gt; threshold + scale_factor × n_live_tup
+
+-- For HOT tables (e.g., session tables) — more aggressive
+ALTER TABLE user_sessions SET (
+  autovacuum_vacuum_scale_factor = 0.02,     -- at 2%
+  autovacuum_analyze_scale_factor = 0.01,    -- at 1%
+  autovacuum_vacuum_cost_delay = 0           -- don't throttle
+);
+
+-- Monitor autovacuum activity
+SELECT schemaname, relname,
+       last_autovacuum, autovacuum_count,
+       last_autoanalyze, autoanalyze_count,
+       n_tup_ins, n_tup_upd, n_tup_del, n_dead_tup
+FROM pg_stat_user_tables
+ORDER BY last_autovacuum DESC NULLS LAST
+LIMIT 20;
+
+-- Currently running autovacuum workers
+SELECT pid, datname, query
+FROM pg_stat_activity
+WHERE backend_type = 'autovacuum worker';</code></pre>
         </div>
 
-        <div class="mt-4 flex gap-3 p-4 bg-amber-50 border border-amber-200 rounded-xl">
-          <i data-lucide="alert-triangle" class="w-5 h-5 text-amber-600 shrink-0 mt-0.5"></i>
-          <div>
-            <strong class="text-amber-800 lang-ar">تنبيه:</strong>
-            <strong class="text-amber-800 lang-en">Warning:</strong>
-            <span class="text-amber-700 lang-ar"> <span dir="ltr" class="font-mono">VACUUM FULL</span> يقفل الجدول كاملاً ويحتاج مساحة إضافية. لا تستخدمه في ساعات الذروة!</span>
-            <span class="text-amber-700 lang-en"> <span class="font-mono">VACUUM FULL</span> locks the entire table and needs extra space. Avoid during peak hours!</span>
+        <div class="flex gap-3 p-4 bg-amber-50 border border-amber-200 rounded-xl">
+          <i data-lucide="info" class="w-5 h-5 text-amber-600 shrink-0 mt-0.5"></i>
+          <div class="text-sm">
+            <strong class="text-amber-800 lang-ar">نصيحة للجداول الضخمة:</strong>
+            <strong class="text-amber-800 lang-en">Tip for huge tables:</strong>
+            <span class="text-amber-700 lang-ar"> جدول 1TB مع scale_factor=0.2 لن يُفحص إلا بعد 200GB dead! خفضها إلى 0.02 (2%) للجداول الكبيرة.</span>
+            <span class="text-amber-700 lang-en"> A 1TB table with scale_factor=0.2 won't vacuum until 200GB dead! Lower to 0.02 (2%) for big tables.</span>
           </div>
         </div>
       </div>
     </section>
 
     <section>
-      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">Autovacuum</span><span class="lang-en">Autovacuum</span></h2>
-      <div class="bg-white rounded-2xl border border-surface-200 p-6">
-        <p class="text-surface-700 mb-4 lang-ar"><strong>Autovacuum</strong> عملية خلفية تشغل VACUUM و ANALYZE تلقائياً بناءً على عدد الصفوف المتغيرة.</p>
-        <p class="text-surface-700 mb-4 lang-en"><strong>Autovacuum</strong> is a background process that automatically runs VACUUM/ANALYZE based on row changes.</p>
-
-        <div class="relative group" dir="ltr">
-          <button onclick="copyCode(this)" class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 bg-surface-700 text-white text-xs px-2.5 py-1.5 rounded-lg z-10">Copy</button>
-<pre class="!bg-surface-900 !rounded-xl !p-5"><code class="language-sql">-- Key autovacuum parameters (postgresql.conf)
--- autovacuum = on
--- autovacuum_max_workers = 3
--- autovacuum_naptime = 1min
--- autovacuum_vacuum_threshold = 50
--- autovacuum_vacuum_scale_factor = 0.2    -- 20% of rows
--- autovacuum_analyze_threshold = 50
--- autovacuum_analyze_scale_factor = 0.1   -- 10% of rows
-
--- Per-table override (for hot tables)
-ALTER TABLE orders SET (
-  autovacuum_vacuum_scale_factor = 0.05,   -- vacuum at 5%
-  autovacuum_analyze_scale_factor = 0.02    -- analyze at 2%
-);
-
--- Check last autovacuum run
-SELECT schemaname, relname,
-       last_vacuum, last_autovacuum,
-       last_analyze, last_autoanalyze,
-       vacuum_count, autovacuum_count
-FROM pg_stat_user_tables
-ORDER BY last_autovacuum DESC NULLS LAST;</code></pre>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">Transaction ID Wraparound</span><span class="lang-en">Transaction ID Wraparound</span></h2>
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">Transaction ID Wraparound — الكابوس</span><span class="lang-en">TXID Wraparound — The Nightmare</span></h2>
       <div class="bg-white rounded-2xl border border-surface-200 p-6 space-y-4">
-        <p class="text-surface-700 lang-ar">الـ Transaction IDs في PostgreSQL هي أرقام 32-bit. بعد ~2 مليار transaction، تبدأ الدورة من جديد — وإذا لم يتم تنظيفها، قاعدة البيانات تتوقف!</p>
-        <p class="text-surface-700 lang-en">PostgreSQL transaction IDs are 32-bit. After ~2 billion transactions, they wrap around — if not cleaned, the database halts!</p>
+        <p class="text-surface-700 lang-ar">TXIDs في PostgreSQL أرقام <strong>32-bit</strong>. بعد ~2 مليار transaction، تبدأ الدورة. إذا لم يتم "تجميد" الصفوف القديمة، قاعدة البيانات <strong>تتوقف عن قبول الكتابة</strong>!</p>
+        <p class="text-surface-700 lang-en">TXIDs in PostgreSQL are <strong>32-bit</strong>. After ~2 billion transactions they wrap. If old rows aren't "frozen", the DB <strong>refuses writes</strong>!</p>
 
         <div class="flex gap-3 p-4 bg-red-50 border border-red-200 rounded-xl">
           <i data-lucide="alert-octagon" class="w-5 h-5 text-red-600 shrink-0 mt-0.5"></i>
-          <div>
-            <strong class="text-red-800 lang-ar">خطر جدي:</strong>
-            <strong class="text-red-800 lang-en">Serious danger:</strong>
-            <span class="text-red-700 lang-ar"> إذا لم يعمل VACUUM، ستصل قاعدة البيانات إلى حالة <strong>FROZEN</strong> وتتوقف عن قبول كتابة جديدة. تأكد دائماً من عمل autovacuum!</span>
-            <span class="text-red-700 lang-en"> Without VACUUM, the database enters <strong>FROZEN</strong> state and refuses new writes. Always ensure autovacuum is running!</span>
+          <div class="text-sm">
+            <strong class="text-red-800 lang-ar">الحادثة الشهيرة:</strong>
+            <strong class="text-red-800 lang-en">The famous incident:</strong>
+            <span class="text-red-700 lang-ar"> Sentry (٢٠١٥) تعطل ٨ ساعات بسبب wraparound — منذ ذلك الحين Autovacuum يعمل FREEZE تلقائياً.</span>
+            <span class="text-red-700 lang-en"> Sentry (2015) had an 8-hour outage from wraparound — since then autovacuum runs FREEZE automatically.</span>
           </div>
         </div>
 
         <div class="relative group" dir="ltr">
           <button onclick="copyCode(this)" class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 bg-surface-700 text-white text-xs px-2.5 py-1.5 rounded-lg z-10">Copy</button>
-<pre class="!bg-surface-900 !rounded-xl !p-5"><code class="language-sql">-- Monitor transaction age
+<pre class="!bg-surface-900 !rounded-xl !p-5"><code class="language-sql">-- Monitor wraparound risk
 SELECT datname,
        age(datfrozenxid) AS xid_age,
        ROUND(100.0 * age(datfrozenxid) / 2000000000, 2) AS pct_to_wraparound
 FROM pg_database
 ORDER BY xid_age DESC;
 
--- If wraparound approaching, run VACUUM FREEZE
-VACUUM FREEZE;</code></pre>
+-- Alert thresholds:
+--   &gt; 50% → warning
+--   &gt; 75% → critical
+--   &gt; 90% → EMERGENCY — database will soon refuse writes!
+
+-- Per-table age
+SELECT c.relname,
+       age(c.relfrozenxid) AS xid_age,
+       pg_size_pretty(pg_total_relation_size(c.oid)) AS size
+FROM pg_class c
+WHERE c.relkind = 'r' AND c.relnamespace &gt; 16384
+ORDER BY age(c.relfrozenxid) DESC
+LIMIT 20;
+
+-- Force freeze on a table (when emergency)
+VACUUM FREEZE big_old_table;
+
+-- Related autovacuum params:
+-- autovacuum_freeze_max_age = 200000000  (triggers "emergency" freeze)
+-- vacuum_freeze_min_age = 50000000
+-- vacuum_freeze_table_age = 150000000</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">Bloat — العدو الصامت</span><span class="lang-en">Bloat — The Silent Enemy</span></h2>
+      <div class="bg-white rounded-2xl border border-surface-200 p-6 space-y-4">
+        <p class="text-surface-700 lang-ar"><strong>Bloat</strong> = مساحة مهدرة في الجداول/الفهارس. يحدث عند UPDATE/DELETE كثير بدون VACUUM كافٍ.</p>
+        <p class="text-surface-700 lang-en"><strong>Bloat</strong> = wasted space in tables/indexes. Happens with heavy UPDATE/DELETE without enough VACUUM.</p>
+
+        <div class="relative group" dir="ltr">
+          <button onclick="copyCode(this)" class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 bg-surface-700 text-white text-xs px-2.5 py-1.5 rounded-lg z-10">Copy</button>
+<pre class="!bg-surface-900 !rounded-xl !p-5"><code class="language-sql">-- Simple bloat estimate (from pg_stat_user_tables)
+SELECT relname,
+       pg_size_pretty(pg_total_relation_size(relid)) AS size,
+       n_live_tup, n_dead_tup,
+       ROUND(100.0 * n_dead_tup / NULLIF(n_live_tup, 0), 2) AS dead_pct
+FROM pg_stat_user_tables
+WHERE n_dead_tup &gt; 10000
+ORDER BY n_dead_tup DESC
+LIMIT 10;
+
+-- Fix bloat approaches (no downtime):
+-- 1. Run VACUUM regularly (autovacuum handles 90%+)
+
+-- 2. pg_repack extension (re-pack without blocking!)
+-- Install: CREATE EXTENSION pg_repack;
+-- $ pg_repack -d mydb -t orders
+
+-- 3. CLUSTER + re-create indexes (heavy lock!)
+CLUSTER orders USING idx_orders_date;
+
+-- 4. For index bloat
+REINDEX INDEX CONCURRENTLY idx_name;   -- PG12+</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">جدول صيانة أسبوعي مقترح</span><span class="lang-en">Suggested Weekly Maintenance</span></h2>
+      <div class="bg-white rounded-2xl border border-surface-200 p-6">
+        <table class="w-full text-sm">
+          <thead class="bg-yellow-600 text-white">
+            <tr><th class="p-3 text-right lang-ar">التكرار</th><th class="p-3 text-left lang-en">Frequency</th><th class="p-3 text-right lang-ar">المهمة</th><th class="p-3 text-left lang-en">Task</th></tr>
+          </thead>
+          <tbody class="divide-y divide-surface-100">
+            <tr><td class="p-3 lang-ar">مستمر</td><td class="p-3 lang-en">Continuous</td><td class="p-3 font-mono" colspan="2">autovacuum enabled &amp; tuned</td></tr>
+            <tr class="bg-surface-50/50"><td class="p-3 lang-ar">يومي</td><td class="p-3 lang-en">Daily</td><td class="p-3" colspan="2"><span class="lang-ar">مراقبة xid_age + bloat %</span><span class="lang-en">Monitor xid_age + bloat %</span></td></tr>
+            <tr><td class="p-3 lang-ar">أسبوعي</td><td class="p-3 lang-en">Weekly</td><td class="p-3" colspan="2"><span class="lang-ar">REINDEX CONCURRENTLY للفهارس المنتفخة</span><span class="lang-en">REINDEX CONCURRENTLY bloated indexes</span></td></tr>
+            <tr class="bg-surface-50/50"><td class="p-3 lang-ar">شهري</td><td class="p-3 lang-en">Monthly</td><td class="p-3" colspan="2"><span class="lang-ar">pg_repack للجداول عالية الـ bloat</span><span class="lang-en">pg_repack for heavily bloated tables</span></td></tr>
+            <tr><td class="p-3 lang-ar">ربع سنوي</td><td class="p-3 lang-en">Quarterly</td><td class="p-3" colspan="2"><span class="lang-ar">مراجعة autovacuum tuning</span><span class="lang-en">Review autovacuum tuning</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- QUIZ -->
+    <section>
+      <div class="mb-6">
+        <span class="text-sm font-bold text-yellow-600 uppercase tracking-wider"><span class="lang-ar">اختبر فهمك</span><span class="lang-en">Test Your Knowledge</span></span>
+        <h2 class="text-3xl font-bold text-surface-900 mt-2 mb-3"><span class="lang-ar">كويز الوحدة ١٣ 🎯</span><span class="lang-en">Module 13 Quiz 🎯</span></h2>
+      </div>
+
+      <div id="quiz" class="space-y-4">
+        <div class="quiz-card bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="flex items-center gap-2 mb-3"><span class="w-7 h-7 rounded-full bg-yellow-600 text-white font-bold text-sm flex items-center justify-center">1</span></div>
+          <p class="font-semibold mb-4 lang-ar">لماذا تحتاج PostgreSQL لعملية VACUUM؟</p>
+          <p class="font-semibold mb-4 lang-en">Why does PostgreSQL need VACUUM?</p>
+          <div class="space-y-2">
+            <button onclick="pick(this,1)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-yellow-300"><span class="lang-ar">لعمل نسخة احتياطية</span><span class="lang-en">To back up</span></button>
+            <button onclick="pick(this,1)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-yellow-300" data-correct="true"><span class="lang-ar">لتنظيف dead tuples الناتجة عن MVCC</span><span class="lang-en">To clean dead tuples from MVCC</span></button>
+            <button onclick="pick(this,1)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-yellow-300"><span class="lang-ar">لتسريع الاستعلامات مباشرة</span><span class="lang-en">To speed up queries directly</span></button>
+          </div>
+          <div class="feedback hidden mt-3 p-3 rounded-xl text-sm"></div>
+        </div>
+
+        <div class="quiz-card bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="flex items-center gap-2 mb-3"><span class="w-7 h-7 rounded-full bg-yellow-600 text-white font-bold text-sm flex items-center justify-center">2</span></div>
+          <p class="font-semibold mb-4 lang-ar">VACUUM FULL:</p>
+          <p class="font-semibold mb-4 lang-en">VACUUM FULL:</p>
+          <div class="space-y-2">
+            <button onclick="pick(this,2)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-yellow-300"><span class="lang-ar">غير مؤذٍ، استخدمه أي وقت</span><span class="lang-en">Harmless, use anytime</span></button>
+            <button onclick="pick(this,2)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-yellow-300" data-correct="true"><span class="lang-ar">يقفل الجدول — استخدمه خارج ساعات الذروة فقط</span><span class="lang-en">Locks the table — use off-hours only</span></button>
+            <button onclick="pick(this,2)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-yellow-300"><span class="lang-ar">أسرع من VACUUM العادي دائماً</span><span class="lang-en">Always faster than regular VACUUM</span></button>
+          </div>
+          <div class="feedback hidden mt-3 p-3 rounded-xl text-sm"></div>
+        </div>
+
+        <div class="quiz-card bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="flex items-center gap-2 mb-3"><span class="w-7 h-7 rounded-full bg-yellow-600 text-white font-bold text-sm flex items-center justify-center">3</span></div>
+          <p class="font-semibold mb-4 lang-ar">لتحديث إحصائيات الـ planner بدون تنظيف:</p>
+          <p class="font-semibold mb-4 lang-en">To update planner stats without cleaning:</p>
+          <div class="space-y-2">
+            <button onclick="pick(this,3)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-yellow-300"><span class="font-mono">VACUUM</span></button>
+            <button onclick="pick(this,3)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-yellow-300" data-correct="true"><span class="font-mono">ANALYZE</span></button>
+            <button onclick="pick(this,3)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-yellow-300"><span class="font-mono">REINDEX</span></button>
+          </div>
+          <div class="feedback hidden mt-3 p-3 rounded-xl text-sm"></div>
+        </div>
+
+        <div class="quiz-card bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="flex items-center gap-2 mb-3"><span class="w-7 h-7 rounded-full bg-yellow-600 text-white font-bold text-sm flex items-center justify-center">4</span></div>
+          <p class="font-semibold mb-4 lang-ar">TXID wraparound يحدث بعد:</p>
+          <p class="font-semibold mb-4 lang-en">TXID wraparound happens after:</p>
+          <div class="space-y-2">
+            <button onclick="pick(this,4)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-yellow-300"><span class="lang-ar">~1 مليون transaction</span><span class="lang-en">~1 million transactions</span></button>
+            <button onclick="pick(this,4)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-yellow-300" data-correct="true"><span class="lang-ar">~2 مليار transaction</span><span class="lang-en">~2 billion transactions</span></button>
+            <button onclick="pick(this,4)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-yellow-300"><span class="lang-ar">~100 مليار transaction</span><span class="lang-en">~100 billion transactions</span></button>
+          </div>
+          <div class="feedback hidden mt-3 p-3 rounded-xl text-sm"></div>
+        </div>
+
+        <div class="quiz-card bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="flex items-center gap-2 mb-3"><span class="w-7 h-7 rounded-full bg-yellow-600 text-white font-bold text-sm flex items-center justify-center">5</span></div>
+          <p class="font-semibold mb-4 lang-ar">REINDEX CONCURRENTLY:</p>
+          <p class="font-semibold mb-4 lang-en">REINDEX CONCURRENTLY:</p>
+          <div class="space-y-2">
+            <button onclick="pick(this,5)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-yellow-300"><span class="lang-ar">يحتاج downtime</span><span class="lang-en">Requires downtime</span></button>
+            <button onclick="pick(this,5)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-yellow-300" data-correct="true"><span class="lang-ar">يعيد بناء الفهرس بدون قفل الكتابة</span><span class="lang-en">Rebuilds index without write locks</span></button>
+            <button onclick="pick(this,5)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-yellow-300"><span class="lang-ar">يعمل عدة indexes بالتوازي</span><span class="lang-en">Runs indexes in parallel</span></button>
+          </div>
+          <div class="feedback hidden mt-3 p-3 rounded-xl text-sm"></div>
+        </div>
+
+        <div class="quiz-card bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="flex items-center gap-2 mb-3"><span class="w-7 h-7 rounded-full bg-yellow-600 text-white font-bold text-sm flex items-center justify-center">6</span></div>
+          <p class="font-semibold mb-4 lang-ar">أداة لإزالة bloat بدون قفل الجدول:</p>
+          <p class="font-semibold mb-4 lang-en">Tool to remove bloat without locking the table:</p>
+          <div class="space-y-2">
+            <button onclick="pick(this,6)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-yellow-300"><span class="font-mono">VACUUM FULL</span></button>
+            <button onclick="pick(this,6)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-yellow-300"><span class="font-mono">CLUSTER</span></button>
+            <button onclick="pick(this,6)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-yellow-300" data-correct="true"><span class="font-mono">pg_repack extension</span></button>
+          </div>
+          <div class="feedback hidden mt-3 p-3 rounded-xl text-sm"></div>
+        </div>
+
+        <div class="quiz-card bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="flex items-center gap-2 mb-3"><span class="w-7 h-7 rounded-full bg-yellow-600 text-white font-bold text-sm flex items-center justify-center">7</span></div>
+          <p class="font-semibold mb-4 lang-ar">لجدول ضخم 1TB، scale_factor الافتراضي (0.2) يعني:</p>
+          <p class="font-semibold mb-4 lang-en">For a 1TB huge table, the default scale_factor (0.2) means:</p>
+          <div class="space-y-2">
+            <button onclick="pick(this,7)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-yellow-300"><span class="lang-ar">vacuum سريع ومتكرر</span><span class="lang-en">Frequent fast vacuums</span></button>
+            <button onclick="pick(this,7)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-yellow-300" data-correct="true"><span class="lang-ar">مشكلة — ما يُفحص إلا بعد ~200GB dead!</span><span class="lang-en">Problem — won't vacuum until ~200GB dead!</span></button>
+            <button onclick="pick(this,7)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-yellow-300"><span class="lang-ar">مثالي للإنتاج</span><span class="lang-en">Ideal for production</span></button>
+          </div>
+          <div class="feedback hidden mt-3 p-3 rounded-xl text-sm"></div>
+        </div>
+
+        <div id="quiz-result" class="hidden bg-gradient-to-br from-yellow-600 to-yellow-800 text-white rounded-2xl p-6 text-center">
+          <i data-lucide="award" class="w-12 h-12 mx-auto mb-3"></i>
+          <h3 class="text-2xl font-bold mb-2"><span class="lang-ar">نتيجتك</span><span class="lang-en">Your Score</span></h3>
+          <div class="text-5xl font-bold my-3"><span id="score">0</span><span class="text-2xl opacity-70">/7</span></div>
+          <p id="result-msg" class="text-yellow-100"></p>
+          <button onclick="resetQuiz()" class="mt-4 bg-white text-yellow-700 font-semibold px-6 py-2 rounded-lg hover:bg-yellow-50"><span class="lang-ar">إعادة المحاولة</span><span class="lang-en">Try Again</span></button>
         </div>
       </div>
     </section>
@@ -189,12 +428,12 @@ VACUUM FREEZE;</code></pre>
       <div class="bg-gradient-to-br from-yellow-600 via-yellow-700 to-yellow-900 text-white rounded-2xl p-6 md:p-8 shadow-xl">
         <div class="flex items-center gap-3 mb-6"><div class="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center"><i data-lucide="bookmark-check" class="w-6 h-6"></i></div><h2 class="text-2xl font-bold"><span class="lang-ar">ملخص الوحدة</span><span class="lang-en">Module Summary</span></h2></div>
         <ul class="grid grid-cols-1 md:grid-cols-2 gap-3">
-          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-yellow-300 shrink-0 mt-0.5"></i><span class="lang-ar">MVCC يخلق dead tuples</span><span class="lang-en">MVCC creates dead tuples</span></li>
-          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-yellow-300 shrink-0 mt-0.5"></i><span class="lang-ar">VACUUM ينظف dead tuples</span><span class="lang-en">VACUUM cleans dead tuples</span></li>
-          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-yellow-300 shrink-0 mt-0.5"></i><span class="lang-ar">ANALYZE يحدث إحصائيات Planner</span><span class="lang-en">ANALYZE updates Planner stats</span></li>
-          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-yellow-300 shrink-0 mt-0.5"></i><span class="lang-ar">Autovacuum يعمل تلقائياً</span><span class="lang-en">Autovacuum runs automatically</span></li>
-          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-yellow-300 shrink-0 mt-0.5"></i><span class="lang-ar">احذر من TXID Wraparound</span><span class="lang-en">Beware of TXID wraparound</span></li>
-          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-yellow-300 shrink-0 mt-0.5"></i><span class="lang-ar">REINDEX CONCURRENTLY في الإنتاج</span><span class="lang-en">REINDEX CONCURRENTLY in prod</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-yellow-300 shrink-0 mt-0.5"></i><span class="lang-ar">MVCC ينتج dead tuples</span><span class="lang-en">MVCC creates dead tuples</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-yellow-300 shrink-0 mt-0.5"></i><span class="lang-ar">VACUUM online، VACUUM FULL يقفل</span><span class="lang-en">VACUUM online, VACUUM FULL locks</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-yellow-300 shrink-0 mt-0.5"></i><span class="lang-ar">ANALYZE للإحصائيات</span><span class="lang-en">ANALYZE for statistics</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-yellow-300 shrink-0 mt-0.5"></i><span class="lang-ar">Autovacuum دائماً مفعّل</span><span class="lang-en">Autovacuum always on</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-yellow-300 shrink-0 mt-0.5"></i><span class="lang-ar">راقب TXID wraparound</span><span class="lang-en">Monitor TXID wraparound</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-yellow-300 shrink-0 mt-0.5"></i><span class="lang-ar">pg_repack للجداول الضخمة</span><span class="lang-en">pg_repack for huge tables</span></li>
         </ul>
       </div>
     </section>
@@ -216,6 +455,10 @@ VACUUM FREEZE;</code></pre>
   <script>
     function setLang(lang){document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';localStorage.setItem('pgCourseLang',lang);document.querySelectorAll('.lang-btn').forEach(b=>{b.classList.remove('bg-yellow-600','text-white','shadow-md');b.classList.add('text-surface-600','hover:bg-surface-100');});const a=document.getElementById('btn-'+lang);a.classList.add('bg-yellow-600','text-white','shadow-md');a.classList.remove('text-surface-600','hover:bg-surface-100');}
     function copyCode(btn){const c=btn.nextElementSibling.querySelector('code').textContent;navigator.clipboard.writeText(c);btn.textContent='✓';setTimeout(()=>btn.textContent='Copy',2000);}
+    const total=7;const answers={};
+    function pick(btn,q){const card=btn.closest('.quiz-card');card.querySelectorAll('.quiz-opt').forEach(o=>o.disabled=true);const correct=btn.dataset.correct==='true';btn.classList.add(correct?'correct':'wrong');if(!correct)card.querySelector('[data-correct="true"]').classList.add('correct');const fb=card.querySelector('.feedback');fb.classList.remove('hidden');const lang=document.documentElement.lang;fb.className='feedback mt-3 p-3 rounded-xl text-sm '+(correct?'bg-green-50 text-green-800 border border-green-200':'bg-red-50 text-red-800 border border-red-200');fb.innerHTML=correct?(lang==='ar'?'✓ ممتاز!':'✓ Correct!'):(lang==='ar'?'✗ خطأ — الإجابة بالأخضر':'✗ Wrong — answer in green');answers[q]=correct;if(Object.keys(answers).length===total)showResult();}
+    function showResult(){const s=Object.values(answers).filter(Boolean).length;document.getElementById('score').textContent=s;const m=document.getElementById('result-msg');const l=document.documentElement.lang;m.textContent=s===total?(l==='ar'?'🎉 إتقان كامل!':'🎉 Perfect!'):s>=Math.ceil(total*0.7)?(l==='ar'?'👍 ممتاز!':'👍 Great!'):(l==='ar'?'📚 راجع':'📚 Review');const r=document.getElementById('quiz-result');r.classList.remove('hidden');r.scrollIntoView({behavior:'smooth',block:'center'});}
+    function resetQuiz(){Object.keys(answers).forEach(k=>delete answers[k]);document.querySelectorAll('.quiz-opt').forEach(b=>{b.disabled=false;b.classList.remove('correct','wrong');});document.querySelectorAll('.feedback').forEach(f=>f.classList.add('hidden'));document.getElementById('quiz-result').classList.add('hidden');document.getElementById('quiz').scrollIntoView({behavior:'smooth',block:'start'});}
     setLang(localStorage.getItem('pgCourseLang')||'ar');lucide.createIcons();Prism.highlightAll();
   </script>
 </body>

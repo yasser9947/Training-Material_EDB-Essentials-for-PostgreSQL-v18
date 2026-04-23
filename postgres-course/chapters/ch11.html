@@ -12,7 +12,7 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-sql.min.js"></script>
-  <style>body{font-family:'IBM Plex Sans Arabic',sans-serif}html[lang="ar"] .lang-en{display:none!important}html[lang="en"] .lang-ar{display:none!important}pre[class*="language-"]{border-radius:.75rem;font-size:.875rem;direction:ltr}code[class*="language-"]{font-family:'JetBrains Mono',monospace}</style>
+  <style>body{font-family:'IBM Plex Sans Arabic',sans-serif}html[lang="ar"] .lang-en{display:none!important}html[lang="en"] .lang-ar{display:none!important}pre[class*="language-"]{border-radius:.75rem;font-size:.875rem;direction:ltr}code[class*="language-"]{font-family:'JetBrains Mono',monospace}.quiz-opt.correct{border-color:#059669!important;background:#ecfdf5!important}.quiz-opt.wrong{border-color:#dc2626!important;background:#fef2f2!important}.quiz-opt:disabled{cursor:not-allowed}</style>
 </head>
 <body class="bg-surface-50 text-surface-800 antialiased min-h-screen">
 
@@ -33,26 +33,24 @@
         <span>·</span><span class="font-mono">p. 248–277</span><span>·</span>
         <span class="lang-ar">٣٠ صفحة</span><span class="lang-en">30 pages</span>
       </div>
-      <h1 class="text-3xl md:text-5xl font-bold mb-4"><span class="lang-ar">مقدمة في SQL</span><span class="lang-en">SQL Primer</span></h1>
-      <p class="text-lg text-blue-100 max-w-3xl lang-ar">أساسيات SQL في PostgreSQL — من أنواع البيانات إلى الـ Indexes والـ Explain Plans.</p>
-      <p class="text-lg text-blue-100 max-w-3xl lang-en">SQL essentials in PostgreSQL — from data types to indexes and explain plans.</p>
+      <h1 class="text-3xl md:text-5xl font-bold mb-4"><span class="lang-ar">مقدمة شاملة في SQL</span><span class="lang-en">Comprehensive SQL Primer</span></h1>
+      <p class="text-lg text-blue-100 max-w-3xl lang-ar">أنواع البيانات، DDL/DML/DCL/TCL، القيود، Transactions، Views، Joins، Indexes، EXPLAIN.</p>
+      <p class="text-lg text-blue-100 max-w-3xl lang-en">Data types, DDL/DML/DCL/TCL, constraints, transactions, views, joins, indexes, EXPLAIN.</p>
     </div>
   </header>
 
   <section class="max-w-6xl mx-auto px-4 sm:px-6 py-10">
     <div class="bg-white rounded-2xl shadow-sm border border-surface-200 p-6 md:p-8">
-      <div class="flex items-center gap-3 mb-6">
-        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center text-white"><i data-lucide="code" class="w-6 h-6"></i></div>
-        <h2 class="text-2xl font-bold"><span class="lang-ar">أهداف الوحدة</span><span class="lang-en">Module Objectives</span></h2>
-      </div>
+      <div class="flex items-center gap-3 mb-6"><div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center text-white"><i data-lucide="code" class="w-6 h-6"></i></div><h2 class="text-2xl font-bold"><span class="lang-ar">أهداف الوحدة</span><span class="lang-en">Module Objectives</span></h2></div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
-        <div class="flex gap-2 p-3 rounded-xl bg-blue-50 border border-blue-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-blue-600 shrink-0"></i><span class="lang-ar">أنواع البيانات</span><span class="lang-en">Data Types</span></div>
-        <div class="flex gap-2 p-3 rounded-xl bg-blue-50 border border-blue-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-blue-600 shrink-0"></i><span class="lang-ar">DDL، DML، DCL</span><span class="lang-en">DDL, DML, DCL</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-blue-50 border border-blue-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-blue-600 shrink-0"></i><span class="lang-ar">أنواع بيانات PostgreSQL الغنية</span><span class="lang-en">Rich PostgreSQL data types</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-blue-50 border border-blue-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-blue-600 shrink-0"></i><span class="lang-ar">DDL, DML, DCL, TCL</span><span class="lang-en">DDL, DML, DCL, TCL</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-blue-50 border border-blue-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-blue-600 shrink-0"></i><span class="lang-ar">القيود (Constraints)</span><span class="lang-en">Constraints</span></div>
         <div class="flex gap-2 p-3 rounded-xl bg-blue-50 border border-blue-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-blue-600 shrink-0"></i><span class="lang-ar">Transactions و Savepoints</span><span class="lang-en">Transactions & Savepoints</span></div>
-        <div class="flex gap-2 p-3 rounded-xl bg-blue-50 border border-blue-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-blue-600 shrink-0"></i><span class="lang-ar">Tables، Constraints، Views</span><span class="lang-en">Tables, Constraints, Views</span></div>
-        <div class="flex gap-2 p-3 rounded-xl bg-blue-50 border border-blue-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-blue-600 shrink-0"></i><span class="lang-ar">Sequences و Domains</span><span class="lang-en">Sequences & Domains</span></div>
-        <div class="flex gap-2 p-3 rounded-xl bg-blue-50 border border-blue-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-blue-600 shrink-0"></i><span class="lang-ar">Joins و Explain Plans</span><span class="lang-en">Joins & Explain Plans</span></div>
-        <div class="flex gap-2 p-3 rounded-xl bg-blue-50 border border-blue-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-blue-600 shrink-0"></i><span class="lang-ar">Indexes</span><span class="lang-en">Indexes</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-blue-50 border border-blue-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-blue-600 shrink-0"></i><span class="lang-ar">Views و Materialized Views</span><span class="lang-en">Views & Materialized Views</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-blue-50 border border-blue-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-blue-600 shrink-0"></i><span class="lang-ar">أنواع Joins الـ ٤</span><span class="lang-en">4 types of Joins</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-blue-50 border border-blue-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-blue-600 shrink-0"></i><span class="lang-ar">أنواع الفهارس الـ ٦</span><span class="lang-en">6 index types</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-blue-50 border border-blue-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-blue-600 shrink-0"></i><span class="lang-ar">قراءة EXPLAIN ANALYZE</span><span class="lang-en">Reading EXPLAIN ANALYZE</span></div>
       </div>
     </div>
   </section>
@@ -60,155 +58,484 @@
   <main class="max-w-6xl mx-auto px-4 sm:px-6 pb-12 space-y-12">
 
     <section>
-      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">أنواع البيانات</span><span class="lang-en">Data Types</span></h2>
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">أنواع البيانات بالتفصيل</span><span class="lang-en">Data Types In Detail</span></h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div class="bg-white rounded-2xl border border-surface-200 p-5">
           <h3 class="font-bold text-lg mb-3 flex items-center gap-2"><i data-lucide="hash" class="w-5 h-5 text-blue-600"></i><span class="lang-ar">أرقام</span><span class="lang-en">Numeric</span></h3>
-          <div class="space-y-2 text-sm">
-            <div class="flex justify-between border-b border-surface-100 py-1"><span class="font-mono text-blue-700">smallint</span><span class="text-surface-600 lang-ar">2 بايت</span><span class="text-surface-600 lang-en">2 bytes</span></div>
-            <div class="flex justify-between border-b border-surface-100 py-1"><span class="font-mono text-blue-700">integer</span><span class="text-surface-600 lang-ar">4 بايت</span><span class="text-surface-600 lang-en">4 bytes</span></div>
-            <div class="flex justify-between border-b border-surface-100 py-1"><span class="font-mono text-blue-700">bigint</span><span class="text-surface-600 lang-ar">8 بايت</span><span class="text-surface-600 lang-en">8 bytes</span></div>
+          <div class="space-y-1.5 text-sm">
+            <div class="flex justify-between border-b border-surface-100 py-1"><span class="font-mono text-blue-700">smallint</span><span class="text-surface-600">2 bytes · ±32K</span></div>
+            <div class="flex justify-between border-b border-surface-100 py-1"><span class="font-mono text-blue-700">integer (int)</span><span class="text-surface-600">4 bytes · ±2B</span></div>
+            <div class="flex justify-between border-b border-surface-100 py-1"><span class="font-mono text-blue-700">bigint (int8)</span><span class="text-surface-600">8 bytes · ±9Q</span></div>
             <div class="flex justify-between border-b border-surface-100 py-1"><span class="font-mono text-blue-700">numeric(p,s)</span><span class="text-surface-600 lang-ar">دقيق</span><span class="text-surface-600 lang-en">exact</span></div>
-            <div class="flex justify-between py-1"><span class="font-mono text-blue-700">real / double</span><span class="text-surface-600 lang-ar">عشري</span><span class="text-surface-600 lang-en">float</span></div>
+            <div class="flex justify-between border-b border-surface-100 py-1"><span class="font-mono text-blue-700">real</span><span class="text-surface-600">4 bytes float</span></div>
+            <div class="flex justify-between py-1"><span class="font-mono text-blue-700">double precision</span><span class="text-surface-600">8 bytes float</span></div>
+          </div>
+          <div class="mt-3 p-2 bg-amber-50 rounded text-xs">
+            <span class="lang-ar">💡 للأموال استخدم <code class="font-mono">numeric</code> — أبداً <code class="font-mono">float</code>!</span>
+            <span class="lang-en">💡 Use <code class="font-mono">numeric</code> for money — never <code class="font-mono">float</code>!</span>
           </div>
         </div>
 
         <div class="bg-white rounded-2xl border border-surface-200 p-5">
           <h3 class="font-bold text-lg mb-3 flex items-center gap-2"><i data-lucide="type" class="w-5 h-5 text-blue-600"></i><span class="lang-ar">نصوص</span><span class="lang-en">Character</span></h3>
-          <div class="space-y-2 text-sm">
-            <div class="flex justify-between border-b border-surface-100 py-1"><span class="font-mono text-blue-700">char(n)</span><span class="text-surface-600 lang-ar">طول ثابت</span><span class="text-surface-600 lang-en">fixed-length</span></div>
-            <div class="flex justify-between border-b border-surface-100 py-1"><span class="font-mono text-blue-700">varchar(n)</span><span class="text-surface-600 lang-ar">طول متغير</span><span class="text-surface-600 lang-en">variable length</span></div>
-            <div class="flex justify-between py-1"><span class="font-mono text-blue-700">text</span><span class="text-surface-600 lang-ar">نص غير محدود</span><span class="text-surface-600 lang-en">unlimited</span></div>
+          <div class="space-y-1.5 text-sm">
+            <div class="flex justify-between border-b border-surface-100 py-1"><span class="font-mono text-blue-700">char(n)</span><span class="text-surface-600 lang-ar">طول ثابت (padded)</span><span class="text-surface-600 lang-en">fixed-length (padded)</span></div>
+            <div class="flex justify-between border-b border-surface-100 py-1"><span class="font-mono text-blue-700">varchar(n)</span><span class="text-surface-600 lang-ar">طول متغير بحد</span><span class="text-surface-600 lang-en">variable with limit</span></div>
+            <div class="flex justify-between py-1"><span class="font-mono text-blue-700">text</span><span class="text-surface-600 lang-ar">غير محدود — الأفضل</span><span class="text-surface-600 lang-en">unlimited — prefer!</span></div>
+          </div>
+          <div class="mt-3 p-2 bg-green-50 rounded text-xs">
+            <span class="lang-ar">💡 في PostgreSQL، <code class="font-mono">text</code> و <code class="font-mono">varchar</code> لهما نفس الأداء!</span>
+            <span class="lang-en">💡 In PostgreSQL, <code class="font-mono">text</code> and <code class="font-mono">varchar</code> have the same performance!</span>
           </div>
         </div>
 
         <div class="bg-white rounded-2xl border border-surface-200 p-5">
           <h3 class="font-bold text-lg mb-3 flex items-center gap-2"><i data-lucide="calendar" class="w-5 h-5 text-blue-600"></i><span class="lang-ar">تاريخ ووقت</span><span class="lang-en">Date/Time</span></h3>
-          <div class="space-y-2 text-sm">
+          <div class="space-y-1.5 text-sm">
             <div class="flex justify-between border-b border-surface-100 py-1"><span class="font-mono text-blue-700">date</span><span class="text-surface-600">YYYY-MM-DD</span></div>
             <div class="flex justify-between border-b border-surface-100 py-1"><span class="font-mono text-blue-700">time</span><span class="text-surface-600">HH:MM:SS</span></div>
-            <div class="flex justify-between border-b border-surface-100 py-1"><span class="font-mono text-blue-700">timestamp</span><span class="text-surface-600 lang-ar">تاريخ + وقت</span><span class="text-surface-600 lang-en">date + time</span></div>
-            <div class="flex justify-between py-1"><span class="font-mono text-blue-700">timestamptz</span><span class="text-surface-600 lang-ar">مع المنطقة الزمنية</span><span class="text-surface-600 lang-en">with timezone</span></div>
+            <div class="flex justify-between border-b border-surface-100 py-1"><span class="font-mono text-blue-700">timestamp</span><span class="text-surface-600 lang-ar">بدون منطقة زمنية</span><span class="text-surface-600 lang-en">no timezone</span></div>
+            <div class="flex justify-between border-b border-surface-100 py-1"><span class="font-mono text-blue-700">timestamptz</span><span class="text-surface-600 lang-ar">★ مع المنطقة</span><span class="text-surface-600 lang-en">★ with timezone</span></div>
+            <div class="flex justify-between py-1"><span class="font-mono text-blue-700">interval</span><span class="text-surface-600 lang-ar">فرق زمني</span><span class="text-surface-600 lang-en">duration</span></div>
+          </div>
+          <div class="mt-3 p-2 bg-green-50 rounded text-xs">
+            <span class="lang-ar">💡 استخدم <code class="font-mono">timestamptz</code> دائماً!</span>
+            <span class="lang-en">💡 Always use <code class="font-mono">timestamptz</code>!</span>
           </div>
         </div>
 
         <div class="bg-white rounded-2xl border border-surface-200 p-5">
-          <h3 class="font-bold text-lg mb-3 flex items-center gap-2"><i data-lucide="boxes" class="w-5 h-5 text-blue-600"></i><span class="lang-ar">أخرى</span><span class="lang-en">Others</span></h3>
-          <div class="space-y-2 text-sm">
-            <div class="flex justify-between border-b border-surface-100 py-1"><span class="font-mono text-blue-700">boolean</span><span class="text-surface-600">true/false</span></div>
-            <div class="flex justify-between border-b border-surface-100 py-1"><span class="font-mono text-blue-700">uuid</span><span class="text-surface-600 lang-ar">معرف فريد</span><span class="text-surface-600 lang-en">unique ID</span></div>
-            <div class="flex justify-between border-b border-surface-100 py-1"><span class="font-mono text-blue-700">json / jsonb</span><span class="text-surface-600 lang-ar">JSON</span><span class="text-surface-600 lang-en">JSON</span></div>
-            <div class="flex justify-between py-1"><span class="font-mono text-blue-700">array, bytea, inet</span><span class="text-surface-600">...</span></div>
+          <h3 class="font-bold text-lg mb-3 flex items-center gap-2"><i data-lucide="boxes" class="w-5 h-5 text-blue-600"></i><span class="lang-ar">متقدم</span><span class="lang-en">Advanced</span></h3>
+          <div class="space-y-1.5 text-sm">
+            <div class="flex justify-between border-b border-surface-100 py-1"><span class="font-mono text-blue-700">boolean</span><span class="text-surface-600">true/false/null</span></div>
+            <div class="flex justify-between border-b border-surface-100 py-1"><span class="font-mono text-blue-700">uuid</span><span class="text-surface-600 lang-ar">128-bit فريد</span><span class="text-surface-600 lang-en">128-bit unique</span></div>
+            <div class="flex justify-between border-b border-surface-100 py-1"><span class="font-mono text-blue-700">json / jsonb</span><span class="text-surface-600 lang-ar">★ jsonb أسرع</span><span class="text-surface-600 lang-en">★ jsonb faster</span></div>
+            <div class="flex justify-between border-b border-surface-100 py-1"><span class="font-mono text-blue-700">text[]</span><span class="text-surface-600 lang-ar">مصفوفة</span><span class="text-surface-600 lang-en">array</span></div>
+            <div class="flex justify-between border-b border-surface-100 py-1"><span class="font-mono text-blue-700">inet / cidr</span><span class="text-surface-600 lang-ar">IP addresses</span><span class="text-surface-600 lang-en">IP addresses</span></div>
+            <div class="flex justify-between border-b border-surface-100 py-1"><span class="font-mono text-blue-700">tsvector</span><span class="text-surface-600 lang-ar">بحث نصي</span><span class="text-surface-600 lang-en">full-text search</span></div>
+            <div class="flex justify-between py-1"><span class="font-mono text-blue-700">geometry</span><span class="text-surface-600 lang-ar">جغرافي (PostGIS)</span><span class="text-surface-600 lang-en">spatial (PostGIS)</span></div>
           </div>
         </div>
       </div>
     </section>
 
     <section>
-      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">DDL, DML, DCL, TCL</span><span class="lang-en">DDL, DML, DCL, TCL</span></h2>
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">DDL — تعريف الهيكل</span><span class="lang-en">DDL — Structure Definition</span></h2>
       <div class="bg-white rounded-2xl border border-surface-200 p-6">
         <div class="relative group" dir="ltr">
           <button onclick="copyCode(this)" class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 bg-surface-700 text-white text-xs px-2.5 py-1.5 rounded-lg z-10">Copy</button>
-<pre class="!bg-surface-900 !rounded-xl !p-5"><code class="language-sql">-- DDL: Data Definition Language (schema)
+<pre class="!bg-surface-900 !rounded-xl !p-5"><code class="language-sql">-- Create table with constraints
 CREATE TABLE employees (
-  id          SERIAL PRIMARY KEY,
-  name        VARCHAR(100) NOT NULL,
-  email       VARCHAR(255) UNIQUE,
-  salary      NUMERIC(10,2) CHECK (salary &gt; 0),
-  hire_date   DATE DEFAULT CURRENT_DATE,
-  dept_id     INT REFERENCES departments(id)
+  id           SERIAL PRIMARY KEY,                       -- auto-increment PK
+  name         TEXT NOT NULL,
+  email        TEXT UNIQUE NOT NULL,
+  salary       NUMERIC(10,2) CHECK (salary &gt; 0),
+  hire_date    DATE DEFAULT CURRENT_DATE,
+  dept_id      INT REFERENCES departments(id) ON DELETE SET NULL,
+  status       TEXT DEFAULT 'active'
+               CHECK (status IN ('active','inactive','on_leave')),
+  metadata     JSONB,
+  created_at   TIMESTAMPTZ DEFAULT NOW()
 );
 
-ALTER TABLE employees ADD COLUMN phone VARCHAR(20);
+-- Alter table
+ALTER TABLE employees ADD COLUMN phone TEXT;
+ALTER TABLE employees DROP COLUMN phone;
+ALTER TABLE employees RENAME COLUMN name TO full_name;
+ALTER TABLE employees ALTER COLUMN salary TYPE NUMERIC(12,2);
+ALTER TABLE employees ADD CONSTRAINT chk_email CHECK (email LIKE '%@%');
+
+-- Add foreign key after creation
+ALTER TABLE employees ADD CONSTRAINT fk_dept
+  FOREIGN KEY (dept_id) REFERENCES departments(id);
+
+-- Drop table (careful!)
 DROP TABLE employees;
+DROP TABLE IF EXISTS employees CASCADE;   -- also drops dependencies
 
--- DML: Data Manipulation Language
-INSERT INTO employees (name, email, salary)
-VALUES ('Alice', 'alice@example.com', 50000);
+-- Rename
+ALTER TABLE employees RENAME TO staff;</code></pre>
+        </div>
+      </div>
+    </section>
 
-UPDATE employees SET salary = salary * 1.10 WHERE dept_id = 5;
+    <section>
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">القيود (Constraints) بالتفصيل</span><span class="lang-en">Constraints In Detail</span></h2>
+      <div class="bg-white rounded-2xl border border-surface-200 overflow-hidden">
+        <table class="w-full text-sm">
+          <thead class="bg-blue-600 text-white">
+            <tr><th class="p-3 text-left">Constraint</th><th class="p-3 text-right lang-ar">الغرض</th><th class="p-3 text-left lang-en">Purpose</th></tr>
+          </thead>
+          <tbody class="divide-y divide-surface-100">
+            <tr><td class="p-3 font-mono text-blue-700 font-bold">NOT NULL</td><td class="p-3 lang-ar">لا يسمح بقيمة NULL</td><td class="p-3 lang-en">Disallows NULL values</td></tr>
+            <tr class="bg-surface-50/50"><td class="p-3 font-mono text-blue-700 font-bold">UNIQUE</td><td class="p-3 lang-ar">قيمة فريدة (لكن يسمح NULL)</td><td class="p-3 lang-en">Unique values (NULLs allowed)</td></tr>
+            <tr><td class="p-3 font-mono text-blue-700 font-bold">PRIMARY KEY</td><td class="p-3 lang-ar">UNIQUE + NOT NULL + فهرس</td><td class="p-3 lang-en">UNIQUE + NOT NULL + index</td></tr>
+            <tr class="bg-surface-50/50"><td class="p-3 font-mono text-blue-700 font-bold">FOREIGN KEY</td><td class="p-3 lang-ar">مرجع لجدول آخر</td><td class="p-3 lang-en">Reference to another table</td></tr>
+            <tr><td class="p-3 font-mono text-blue-700 font-bold">CHECK</td><td class="p-3 lang-ar">شرط مخصص</td><td class="p-3 lang-en">Custom condition</td></tr>
+            <tr class="bg-surface-50/50"><td class="p-3 font-mono text-blue-700 font-bold">EXCLUSION</td><td class="p-3 lang-ar">لا تعارض بين صفوف (مثل حجوزات)</td><td class="p-3 lang-en">No overlap between rows (e.g., bookings)</td></tr>
+            <tr><td class="p-3 font-mono text-blue-700 font-bold">DEFAULT</td><td class="p-3 lang-ar">قيمة افتراضية</td><td class="p-3 lang-en">Default value</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
 
-DELETE FROM employees WHERE hire_date &lt; '2020-01-01';
-
-SELECT e.name, d.dept_name
-FROM employees e
-JOIN departments d ON d.id = e.dept_id
-WHERE e.salary &gt; 60000
-ORDER BY e.name;
-
--- DCL: Data Control Language
-GRANT SELECT ON employees TO analyst;
-REVOKE UPDATE ON employees FROM alice;
-
--- TCL: Transaction Control Language
+    <section>
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">Transactions و Savepoints</span><span class="lang-en">Transactions & Savepoints</span></h2>
+      <div class="bg-white rounded-2xl border border-surface-200 p-6">
+        <div class="relative group" dir="ltr">
+          <button onclick="copyCode(this)" class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 bg-surface-700 text-white text-xs px-2.5 py-1.5 rounded-lg z-10">Copy</button>
+<pre class="!bg-surface-900 !rounded-xl !p-5"><code class="language-sql">-- Basic transaction
 BEGIN;
   UPDATE accounts SET balance = balance - 100 WHERE id = 1;
-  SAVEPOINT before_credit;
   UPDATE accounts SET balance = balance + 100 WHERE id = 2;
-  -- oops, wrong account — rollback partial
-  -- ROLLBACK TO before_credit;
+COMMIT;  -- or ROLLBACK;
+
+-- With savepoints (partial rollback)
+BEGIN;
+  INSERT INTO orders (customer_id, total) VALUES (42, 200);
+  SAVEPOINT after_order;
+
+  INSERT INTO order_items VALUES (...);
+  -- oh no, wrong data
+  ROLLBACK TO SAVEPOINT after_order;   -- undo items but keep order
+
+  INSERT INTO order_items VALUES (...);  -- correct this time
+COMMIT;
+
+-- Isolation levels (default: READ COMMITTED)
+BEGIN ISOLATION LEVEL REPEATABLE READ;
+  -- inside this tx, snapshots are consistent
+COMMIT;
+
+BEGIN ISOLATION LEVEL SERIALIZABLE;
+  -- strongest — like being alone with the DB
+COMMIT;
+
+-- Read-only transaction (safer, faster)
+BEGIN READ ONLY;
+  SELECT ...;
 COMMIT;</code></pre>
         </div>
       </div>
     </section>
 
     <section>
-      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">Joins</span><span class="lang-en">SQL Joins</span></h2>
-      <div class="bg-white rounded-2xl border border-surface-200 p-6">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-          <div class="bg-blue-50 border border-blue-200 rounded-xl p-4"><h4 class="font-bold text-sm"><span class="lang-ar">INNER JOIN</span><span class="lang-en">INNER JOIN</span></h4><p class="text-xs mt-1 lang-ar">فقط الصفوف المطابقة في الجدولين</p><p class="text-xs mt-1 lang-en">Only matching rows in both tables</p></div>
-          <div class="bg-blue-50 border border-blue-200 rounded-xl p-4"><h4 class="font-bold text-sm"><span class="lang-ar">LEFT JOIN</span><span class="lang-en">LEFT JOIN</span></h4><p class="text-xs mt-1 lang-ar">كل صفوف الجدول الأيسر + المطابق</p><p class="text-xs mt-1 lang-en">All left rows + matches</p></div>
-          <div class="bg-blue-50 border border-blue-200 rounded-xl p-4"><h4 class="font-bold text-sm"><span class="lang-ar">RIGHT JOIN</span><span class="lang-en">RIGHT JOIN</span></h4><p class="text-xs mt-1 lang-ar">كل صفوف الجدول الأيمن + المطابق</p><p class="text-xs mt-1 lang-en">All right rows + matches</p></div>
-          <div class="bg-blue-50 border border-blue-200 rounded-xl p-4"><h4 class="font-bold text-sm"><span class="lang-ar">FULL OUTER JOIN</span><span class="lang-en">FULL OUTER JOIN</span></h4><p class="text-xs mt-1 lang-ar">كل الصفوف من الجدولين</p><p class="text-xs mt-1 lang-en">All rows from both</p></div>
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">Views و Materialized Views</span><span class="lang-en">Views & Materialized Views</span></h2>
+      <div class="bg-white rounded-2xl border border-surface-200 p-6 space-y-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="bg-blue-50 border-2 border-blue-200 rounded-xl p-4">
+            <h4 class="font-bold mb-2">VIEW</h4>
+            <p class="text-sm text-surface-700 mb-2 lang-ar">استعلام محفوظ — يُنفذ في كل مرة.</p>
+            <p class="text-sm text-surface-700 mb-2 lang-en">Saved query — re-executes each time.</p>
+            <ul class="text-xs text-surface-600 space-y-1">
+              <li class="lang-ar">✓ دائماً بيانات محدثة</li>
+              <li class="lang-en">✓ Always fresh data</li>
+              <li class="lang-ar">✗ بطيء للاستعلامات المعقدة</li>
+              <li class="lang-en">✗ Slow for complex queries</li>
+            </ul>
+          </div>
+          <div class="bg-purple-50 border-2 border-purple-200 rounded-xl p-4">
+            <h4 class="font-bold mb-2">MATERIALIZED VIEW</h4>
+            <p class="text-sm text-surface-700 mb-2 lang-ar">جدول فعلي مبني على استعلام — يُحدّث يدوياً.</p>
+            <p class="text-sm text-surface-700 mb-2 lang-en">Physical table from a query — refreshed manually.</p>
+            <ul class="text-xs text-surface-600 space-y-1">
+              <li class="lang-ar">✓ سريع جداً</li>
+              <li class="lang-en">✓ Very fast</li>
+              <li class="lang-ar">✗ بيانات قد تكون قديمة</li>
+              <li class="lang-en">✗ Data may be stale</li>
+            </ul>
+          </div>
         </div>
 
         <div class="relative group" dir="ltr">
           <button onclick="copyCode(this)" class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 bg-surface-700 text-white text-xs px-2.5 py-1.5 rounded-lg z-10">Copy</button>
-<pre class="!bg-surface-900 !rounded-xl !p-5"><code class="language-sql">-- Customers with their orders
-SELECT c.name, o.order_date, o.total
+<pre class="!bg-surface-900 !rounded-xl !p-5"><code class="language-sql">-- Regular VIEW
+CREATE VIEW active_customers AS
+SELECT c.*, COUNT(o.id) AS order_count
 FROM customers c
 LEFT JOIN orders o ON o.customer_id = c.id
-ORDER BY c.name, o.order_date;
+WHERE c.status = 'active'
+GROUP BY c.id;
 
--- Customers who never ordered
-SELECT c.name
-FROM customers c
-LEFT JOIN orders o ON o.customer_id = c.id
-WHERE o.id IS NULL;</code></pre>
+SELECT * FROM active_customers;
+
+-- MATERIALIZED VIEW
+CREATE MATERIALIZED VIEW sales_summary AS
+SELECT DATE_TRUNC('day', order_date) AS day,
+       COUNT(*) AS orders,
+       SUM(total) AS revenue
+FROM orders
+GROUP BY day
+WITH DATA;
+
+-- Create index on it (for speed)
+CREATE UNIQUE INDEX ON sales_summary(day);
+
+-- Refresh when data changes
+REFRESH MATERIALIZED VIEW sales_summary;
+
+-- Refresh without blocking reads (needs unique index!)
+REFRESH MATERIALIZED VIEW CONCURRENTLY sales_summary;</code></pre>
         </div>
       </div>
     </section>
 
     <section>
-      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">Indexes و Explain</span><span class="lang-en">Indexes & Explain</span></h2>
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">أنواع الـ Joins</span><span class="lang-en">Join Types</span></h2>
       <div class="bg-white rounded-2xl border border-surface-200 p-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
+          <div class="bg-blue-50 border border-blue-200 rounded-xl p-3"><h4 class="font-bold text-sm mb-1">INNER JOIN</h4><p class="text-xs text-surface-600 lang-ar">فقط الصفوف المطابقة في الجدولين</p><p class="text-xs text-surface-600 lang-en">Only matching rows in both</p></div>
+          <div class="bg-blue-50 border border-blue-200 rounded-xl p-3"><h4 class="font-bold text-sm mb-1">LEFT OUTER JOIN</h4><p class="text-xs text-surface-600 lang-ar">كل من اليسار + المطابق من اليمين</p><p class="text-xs text-surface-600 lang-en">All left + matches from right</p></div>
+          <div class="bg-blue-50 border border-blue-200 rounded-xl p-3"><h4 class="font-bold text-sm mb-1">RIGHT OUTER JOIN</h4><p class="text-xs text-surface-600 lang-ar">كل من اليمين + المطابق من اليسار</p><p class="text-xs text-surface-600 lang-en">All right + matches from left</p></div>
+          <div class="bg-blue-50 border border-blue-200 rounded-xl p-3"><h4 class="font-bold text-sm mb-1">FULL OUTER JOIN</h4><p class="text-xs text-surface-600 lang-ar">كل الصفوف من الجدولين</p><p class="text-xs text-surface-600 lang-en">All rows from both</p></div>
+          <div class="bg-blue-50 border border-blue-200 rounded-xl p-3"><h4 class="font-bold text-sm mb-1">CROSS JOIN</h4><p class="text-xs text-surface-600 lang-ar">ضرب ديكارتي — كل تركيبة</p><p class="text-xs text-surface-600 lang-en">Cartesian product — all combinations</p></div>
+          <div class="bg-blue-50 border border-blue-200 rounded-xl p-3"><h4 class="font-bold text-sm mb-1">LATERAL JOIN</h4><p class="text-xs text-surface-600 lang-ar">استعلام يستخدم قيم الصف السابق</p><p class="text-xs text-surface-600 lang-en">Subquery uses prior row values</p></div>
+        </div>
+
         <div class="relative group" dir="ltr">
           <button onclick="copyCode(this)" class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 bg-surface-700 text-white text-xs px-2.5 py-1.5 rounded-lg z-10">Copy</button>
-<pre class="!bg-surface-900 !rounded-xl !p-5"><code class="language-sql">-- Create indexes
-CREATE INDEX idx_orders_customer ON orders(customer_id);
-CREATE UNIQUE INDEX idx_users_email ON users(email);
-CREATE INDEX idx_orders_date_brin ON orders USING BRIN(order_date);
-CREATE INDEX idx_products_data ON products USING GIN(metadata);
+<pre class="!bg-surface-900 !rounded-xl !p-5"><code class="language-sql">-- INNER JOIN — matching only
+SELECT c.name, o.total
+FROM customers c
+JOIN orders o ON o.customer_id = c.id;
 
--- Partial index (only recent rows)
+-- LEFT JOIN — include customers without orders
+SELECT c.name, COALESCE(SUM(o.total), 0) AS total_spent
+FROM customers c
+LEFT JOIN orders o ON o.customer_id = c.id
+GROUP BY c.name;
+
+-- Customers who NEVER ordered (common pattern)
+SELECT c.name
+FROM customers c
+LEFT JOIN orders o ON o.customer_id = c.id
+WHERE o.id IS NULL;
+
+-- LATERAL — for each customer, get their latest 3 orders
+SELECT c.name, recent.order_date, recent.total
+FROM customers c
+CROSS JOIN LATERAL (
+  SELECT order_date, total
+  FROM orders o
+  WHERE o.customer_id = c.id
+  ORDER BY order_date DESC
+  LIMIT 3
+) AS recent;</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">الفهارس — ٦ أنواع</span><span class="lang-en">Indexes — 6 Types</span></h2>
+      <div class="bg-white rounded-2xl border border-surface-200 overflow-hidden">
+        <table class="w-full text-sm">
+          <thead class="bg-blue-600 text-white">
+            <tr><th class="p-3 text-left">Type</th><th class="p-3 text-right lang-ar">الاستخدام</th><th class="p-3 text-left lang-en">Use case</th></tr>
+          </thead>
+          <tbody class="divide-y divide-surface-100">
+            <tr><td class="p-3 font-mono text-blue-700 font-bold">B-Tree</td><td class="p-3 lang-ar">الافتراضي — &lt;, =, &gt;، BETWEEN، ORDER BY</td><td class="p-3 lang-en">Default — &lt;, =, &gt;, BETWEEN, ORDER BY</td></tr>
+            <tr class="bg-surface-50/50"><td class="p-3 font-mono text-blue-700 font-bold">Hash</td><td class="p-3 lang-ar">مساواة فقط (=) — أسرع قليلاً من B-tree</td><td class="p-3 lang-en">Equality only (=) — slightly faster</td></tr>
+            <tr><td class="p-3 font-mono text-blue-700 font-bold">GIN</td><td class="p-3 lang-ar">JSONB، arrays، full-text search</td><td class="p-3 lang-en">JSONB, arrays, full-text search</td></tr>
+            <tr class="bg-surface-50/50"><td class="p-3 font-mono text-blue-700 font-bold">GiST</td><td class="p-3 lang-ar">بيانات جغرافية، ranges</td><td class="p-3 lang-en">Geospatial, ranges</td></tr>
+            <tr><td class="p-3 font-mono text-blue-700 font-bold">SP-GiST</td><td class="p-3 lang-ar">بيانات غير متساوية التوزيع</td><td class="p-3 lang-en">Non-balanced data</td></tr>
+            <tr class="bg-surface-50/50"><td class="p-3 font-mono text-blue-700 font-bold">BRIN</td><td class="p-3 lang-ar">جداول ضخمة مرتبة (timestamps، logs)</td><td class="p-3 lang-en">Huge ordered tables (timestamps, logs)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="mt-4 bg-white rounded-2xl border border-surface-200 p-6">
+        <div class="relative group" dir="ltr">
+          <button onclick="copyCode(this)" class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 bg-surface-700 text-white text-xs px-2.5 py-1.5 rounded-lg z-10">Copy</button>
+<pre class="!bg-surface-900 !rounded-xl !p-5"><code class="language-sql">-- Basic B-tree
+CREATE INDEX idx_orders_customer ON orders(customer_id);
+
+-- Unique
+CREATE UNIQUE INDEX idx_users_email ON users(email);
+
+-- Multi-column (order matters!)
+CREATE INDEX idx_orders_cust_date ON orders(customer_id, order_date);
+
+-- Partial — index only a subset (saves space)
 CREATE INDEX idx_orders_recent ON orders(customer_id)
 WHERE order_date &gt; '2024-01-01';
 
--- Analyze query plan
+-- Expression (functional index)
+CREATE INDEX idx_email_lower ON users (LOWER(email));
+-- Now WHERE LOWER(email) = 'x' uses the index
+
+-- GIN on JSONB column
+CREATE INDEX idx_products_meta ON products USING GIN(metadata);
+-- Now WHERE metadata @&gt; '{"category": "book"}' is fast
+
+-- BRIN on huge time-series table
+CREATE INDEX idx_logs_time_brin ON logs USING BRIN(created_at);
+-- 1000x smaller than B-tree for time-sorted data
+
+-- INCLUDE (covering index) — avoid heap reads
+CREATE INDEX idx_orders_cust_inc ON orders(customer_id) INCLUDE (total, order_date);
+
+-- Concurrent build (no locks — for live production)
+CREATE INDEX CONCURRENTLY idx_new ON orders(status);
+
+-- Drop
+DROP INDEX idx_orders_customer;
+DROP INDEX CONCURRENTLY idx_orders_customer;</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">EXPLAIN — قراءة خطط التنفيذ</span><span class="lang-en">EXPLAIN — Reading Execution Plans</span></h2>
+      <div class="bg-white rounded-2xl border border-surface-200 p-6">
+        <div class="relative group" dir="ltr">
+          <button onclick="copyCode(this)" class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 bg-surface-700 text-white text-xs px-2.5 py-1.5 rounded-lg z-10">Copy</button>
+<pre class="!bg-surface-900 !rounded-xl !p-5"><code class="language-sql">-- EXPLAIN — shows plan without running
 EXPLAIN SELECT * FROM orders WHERE customer_id = 42;
 
--- Actual execution with timings
-EXPLAIN (ANALYZE, BUFFERS)
-SELECT c.name, SUM(o.total) FROM customers c
-JOIN orders o ON o.customer_id = c.id
-GROUP BY c.name;</code></pre>
+-- EXPLAIN ANALYZE — actually runs + real timings
+EXPLAIN ANALYZE SELECT * FROM orders WHERE customer_id = 42;
+
+-- Full details
+EXPLAIN (ANALYZE, BUFFERS, VERBOSE, FORMAT text)
+SELECT c.name, SUM(o.total)
+FROM customers c JOIN orders o ON o.customer_id = c.id
+WHERE c.created_at &gt; '2024-01-01'
+GROUP BY c.name;
+
+-- Common plan node types to recognize:
+-- * Seq Scan       — full table read (bad if large table!)
+-- * Index Scan     — uses index (good)
+-- * Index Only Scan — uses only the index (best!)
+-- * Bitmap Heap Scan — intermediate, for multiple indexes
+-- * Hash Join      — builds hash table (good for medium tables)
+-- * Nested Loop    — good for small outer + indexed inner
+-- * Merge Join     — good for pre-sorted inputs
+-- * Sort           — explicit sorting (watch memory!)</code></pre>
         </div>
 
-        <div class="mt-4 grid grid-cols-2 md:grid-cols-4 gap-2 text-xs">
-          <div class="bg-blue-50 rounded-lg p-2 text-center"><div class="font-mono font-bold">B-Tree</div><div class="text-surface-600 lang-ar">عام</div><div class="text-surface-600 lang-en">general</div></div>
-          <div class="bg-blue-50 rounded-lg p-2 text-center"><div class="font-mono font-bold">Hash</div><div class="text-surface-600 lang-ar">مساواة فقط</div><div class="text-surface-600 lang-en">equality only</div></div>
-          <div class="bg-blue-50 rounded-lg p-2 text-center"><div class="font-mono font-bold">GIN</div><div class="text-surface-600 lang-ar">JSON/Array</div><div class="text-surface-600 lang-en">JSON/Array</div></div>
-          <div class="bg-blue-50 rounded-lg p-2 text-center"><div class="font-mono font-bold">BRIN</div><div class="text-surface-600 lang-ar">بيانات كبيرة</div><div class="text-surface-600 lang-en">large data</div></div>
+        <div class="mt-4 flex gap-3 p-4 bg-blue-50 border border-blue-200 rounded-xl">
+          <i data-lucide="lightbulb" class="w-5 h-5 text-blue-600 shrink-0 mt-0.5"></i>
+          <div class="text-sm">
+            <strong class="text-blue-800 lang-ar">كيف تقرأ الخطة؟</strong>
+            <strong class="text-blue-800 lang-en">How to read plans?</strong>
+            <span class="text-blue-700 lang-ar"> من <strong>الداخل للخارج ومن الأسفل للأعلى</strong>. الأرقام: cost=<em>startup..total</em>، rows=<em>توقع</em>، actual rows=<em>الفعلي</em>. إذا الفرق كبير = إحصائيات قديمة (نفذ ANALYZE).</span>
+            <span class="text-blue-700 lang-en"> <strong>Inside-out, bottom-up</strong>. Numbers: cost=<em>startup..total</em>, rows=<em>estimate</em>, actual rows=<em>real</em>. Big gap = stale stats (run ANALYZE).</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUIZ -->
+    <section>
+      <div class="mb-6">
+        <span class="text-sm font-bold text-blue-600 uppercase tracking-wider"><span class="lang-ar">اختبر فهمك</span><span class="lang-en">Test Your Knowledge</span></span>
+        <h2 class="text-3xl font-bold text-surface-900 mt-2 mb-3"><span class="lang-ar">كويز الوحدة ١١ 🎯</span><span class="lang-en">Module 11 Quiz 🎯</span></h2>
+      </div>
+
+      <div id="quiz" class="space-y-4">
+        <div class="quiz-card bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="flex items-center gap-2 mb-3"><span class="w-7 h-7 rounded-full bg-blue-600 text-white font-bold text-sm flex items-center justify-center">1</span></div>
+          <p class="font-semibold mb-4 lang-ar">للأموال، أي نوع بيانات تختار؟</p>
+          <p class="font-semibold mb-4 lang-en">For money values, which data type?</p>
+          <div class="space-y-2">
+            <button onclick="pick(this,1)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-blue-300"><span class="font-mono">float / real</span></button>
+            <button onclick="pick(this,1)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-blue-300" data-correct="true"><span class="font-mono">numeric(p,s)</span></button>
+            <button onclick="pick(this,1)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-blue-300"><span class="font-mono">double precision</span></button>
+          </div>
+          <div class="feedback hidden mt-3 p-3 rounded-xl text-sm"></div>
+        </div>
+
+        <div class="quiz-card bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="flex items-center gap-2 mb-3"><span class="w-7 h-7 rounded-full bg-blue-600 text-white font-bold text-sm flex items-center justify-center">2</span></div>
+          <p class="font-semibold mb-4 lang-ar">الفرق بين json و jsonb:</p>
+          <p class="font-semibold mb-4 lang-en">Difference between json and jsonb:</p>
+          <div class="space-y-2">
+            <button onclick="pick(this,2)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-blue-300"><span class="lang-ar">لا فرق</span><span class="lang-en">No difference</span></button>
+            <button onclick="pick(this,2)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-blue-300" data-correct="true"><span class="lang-ar">jsonb مخزّن ثنائياً، أسرع للاستعلام، يدعم فهرسة GIN</span><span class="lang-en">jsonb is binary-stored, faster to query, supports GIN indexes</span></button>
+            <button onclick="pick(this,2)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-blue-300"><span class="lang-ar">json أحدث، jsonb قديم</span><span class="lang-en">json is newer, jsonb is old</span></button>
+          </div>
+          <div class="feedback hidden mt-3 p-3 rounded-xl text-sm"></div>
+        </div>
+
+        <div class="quiz-card bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="flex items-center gap-2 mb-3"><span class="w-7 h-7 rounded-full bg-blue-600 text-white font-bold text-sm flex items-center justify-center">3</span></div>
+          <p class="font-semibold mb-4 lang-ar">لإيجاد عملاء لم يشتروا شيئاً أبداً:</p>
+          <p class="font-semibold mb-4 lang-en">To find customers who never ordered:</p>
+          <div class="space-y-2">
+            <button onclick="pick(this,3)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-blue-300"><span class="font-mono">INNER JOIN + HAVING</span></button>
+            <button onclick="pick(this,3)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-blue-300" data-correct="true"><span class="font-mono">LEFT JOIN + WHERE orders.id IS NULL</span></button>
+            <button onclick="pick(this,3)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-blue-300"><span class="font-mono">RIGHT JOIN + DISTINCT</span></button>
+          </div>
+          <div class="feedback hidden mt-3 p-3 rounded-xl text-sm"></div>
+        </div>
+
+        <div class="quiz-card bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="flex items-center gap-2 mb-3"><span class="w-7 h-7 rounded-full bg-blue-600 text-white font-bold text-sm flex items-center justify-center">4</span></div>
+          <p class="font-semibold mb-4 lang-ar">ما الفرق بين VIEW و MATERIALIZED VIEW؟</p>
+          <p class="font-semibold mb-4 lang-en">Difference between VIEW and MATERIALIZED VIEW?</p>
+          <div class="space-y-2">
+            <button onclick="pick(this,4)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-blue-300"><span class="lang-ar">لا فرق</span><span class="lang-en">No difference</span></button>
+            <button onclick="pick(this,4)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-blue-300" data-correct="true"><span class="lang-ar">VIEW استعلام محفوظ؛ MATERIALIZED تخزن النتيجة</span><span class="lang-en">VIEW is stored query; MATERIALIZED caches the result</span></button>
+            <button onclick="pick(this,4)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-blue-300"><span class="lang-ar">VIEW للقراءة، MATERIALIZED للكتابة</span><span class="lang-en">VIEW for read, MATERIALIZED for write</span></button>
+          </div>
+          <div class="feedback hidden mt-3 p-3 rounded-xl text-sm"></div>
+        </div>
+
+        <div class="quiz-card bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="flex items-center gap-2 mb-3"><span class="w-7 h-7 rounded-full bg-blue-600 text-white font-bold text-sm flex items-center justify-center">5</span></div>
+          <p class="font-semibold mb-4 lang-ar">لفهرسة عمود JSONB، أي نوع فهرس مناسب؟</p>
+          <p class="font-semibold mb-4 lang-en">To index a JSONB column, which index type?</p>
+          <div class="space-y-2">
+            <button onclick="pick(this,5)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-blue-300"><span class="font-mono">B-Tree</span></button>
+            <button onclick="pick(this,5)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-blue-300" data-correct="true"><span class="font-mono">GIN</span></button>
+            <button onclick="pick(this,5)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-blue-300"><span class="font-mono">Hash</span></button>
+            <button onclick="pick(this,5)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-blue-300"><span class="font-mono">BRIN</span></button>
+          </div>
+          <div class="feedback hidden mt-3 p-3 rounded-xl text-sm"></div>
+        </div>
+
+        <div class="quiz-card bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="flex items-center gap-2 mb-3"><span class="w-7 h-7 rounded-full bg-blue-600 text-white font-bold text-sm flex items-center justify-center">6</span></div>
+          <p class="font-semibold mb-4 lang-ar">لإنشاء فهرس في الإنتاج بدون قفل الجدول:</p>
+          <p class="font-semibold mb-4 lang-en">To build an index in production without locking the table:</p>
+          <div class="space-y-2">
+            <button onclick="pick(this,6)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-blue-300"><span class="font-mono">CREATE INDEX ASYNC</span></button>
+            <button onclick="pick(this,6)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-blue-300" data-correct="true"><span class="font-mono">CREATE INDEX CONCURRENTLY</span></button>
+            <button onclick="pick(this,6)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-blue-300"><span class="font-mono">CREATE INDEX NOWAIT</span></button>
+          </div>
+          <div class="feedback hidden mt-3 p-3 rounded-xl text-sm"></div>
+        </div>
+
+        <div class="quiz-card bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="flex items-center gap-2 mb-3"><span class="w-7 h-7 rounded-full bg-blue-600 text-white font-bold text-sm flex items-center justify-center">7</span></div>
+          <p class="font-semibold mb-4 lang-ar">رؤية "Seq Scan" في EXPLAIN على جدول كبير عادةً:</p>
+          <p class="font-semibold mb-4 lang-en">Seeing "Seq Scan" in EXPLAIN on a large table usually means:</p>
+          <div class="space-y-2">
+            <button onclick="pick(this,7)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-blue-300"><span class="lang-ar">أداء ممتاز</span><span class="lang-en">Great performance</span></button>
+            <button onclick="pick(this,7)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-blue-300" data-correct="true"><span class="lang-ar">مشكلة محتملة — فهرس مفقود أو إحصائيات قديمة</span><span class="lang-en">Potential issue — missing index or stale stats</span></button>
+            <button onclick="pick(this,7)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-blue-300"><span class="lang-ar">يعني الاستعلام خاطئ</span><span class="lang-en">Query is wrong</span></button>
+          </div>
+          <div class="feedback hidden mt-3 p-3 rounded-xl text-sm"></div>
+        </div>
+
+        <div class="quiz-card bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="flex items-center gap-2 mb-3"><span class="w-7 h-7 rounded-full bg-blue-600 text-white font-bold text-sm flex items-center justify-center">8</span></div>
+          <p class="font-semibold mb-4 lang-ar">أي مستوى isolation هو الأقوى؟</p>
+          <p class="font-semibold mb-4 lang-en">Which isolation level is strongest?</p>
+          <div class="space-y-2">
+            <button onclick="pick(this,8)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-blue-300"><span class="font-mono">READ COMMITTED</span></button>
+            <button onclick="pick(this,8)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-blue-300"><span class="font-mono">REPEATABLE READ</span></button>
+            <button onclick="pick(this,8)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-blue-300" data-correct="true"><span class="font-mono">SERIALIZABLE</span></button>
+          </div>
+          <div class="feedback hidden mt-3 p-3 rounded-xl text-sm"></div>
+        </div>
+
+        <div id="quiz-result" class="hidden bg-gradient-to-br from-blue-600 to-blue-800 text-white rounded-2xl p-6 text-center">
+          <i data-lucide="award" class="w-12 h-12 mx-auto mb-3"></i>
+          <h3 class="text-2xl font-bold mb-2"><span class="lang-ar">نتيجتك</span><span class="lang-en">Your Score</span></h3>
+          <div class="text-5xl font-bold my-3"><span id="score">0</span><span class="text-2xl opacity-70">/8</span></div>
+          <p id="result-msg" class="text-blue-100"></p>
+          <button onclick="resetQuiz()" class="mt-4 bg-white text-blue-700 font-semibold px-6 py-2 rounded-lg hover:bg-blue-50"><span class="lang-ar">إعادة المحاولة</span><span class="lang-en">Try Again</span></button>
         </div>
       </div>
     </section>
@@ -217,12 +544,12 @@ GROUP BY c.name;</code></pre>
       <div class="bg-gradient-to-br from-blue-600 via-blue-700 to-blue-900 text-white rounded-2xl p-6 md:p-8 shadow-xl">
         <div class="flex items-center gap-3 mb-6"><div class="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center"><i data-lucide="bookmark-check" class="w-6 h-6"></i></div><h2 class="text-2xl font-bold"><span class="lang-ar">ملخص الوحدة</span><span class="lang-en">Module Summary</span></h2></div>
         <ul class="grid grid-cols-1 md:grid-cols-2 gap-3">
-          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-blue-300 shrink-0 mt-0.5"></i><span class="lang-ar">أنواع بيانات غنية ومرنة</span><span class="lang-en">Rich and flexible data types</span></li>
-          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-blue-300 shrink-0 mt-0.5"></i><span class="lang-ar">DDL/DML/DCL/TCL للعمليات</span><span class="lang-en">DDL/DML/DCL/TCL operations</span></li>
-          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-blue-300 shrink-0 mt-0.5"></i><span class="lang-ar">Transactions للاتساق</span><span class="lang-en">Transactions for consistency</span></li>
-          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-blue-300 shrink-0 mt-0.5"></i><span class="lang-ar">Joins لدمج الجداول</span><span class="lang-en">Joins for combining tables</span></li>
-          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-blue-300 shrink-0 mt-0.5"></i><span class="lang-ar">Indexes لتسريع الاستعلامات</span><span class="lang-en">Indexes to speed up queries</span></li>
-          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-blue-300 shrink-0 mt-0.5"></i><span class="lang-ar">EXPLAIN ANALYZE لفهم الأداء</span><span class="lang-en">EXPLAIN ANALYZE for performance</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-blue-300 shrink-0 mt-0.5"></i><span class="lang-ar">أنواع بيانات غنية (JSON، arrays، UUID...)</span><span class="lang-en">Rich data types (JSON, arrays, UUID...)</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-blue-300 shrink-0 mt-0.5"></i><span class="lang-ar">numeric للأموال، timestamptz للوقت</span><span class="lang-en">numeric for money, timestamptz for time</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-blue-300 shrink-0 mt-0.5"></i><span class="lang-ar">7 أنواع قيود</span><span class="lang-en">7 constraint types</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-blue-300 shrink-0 mt-0.5"></i><span class="lang-ar">Savepoints للتراجع الجزئي</span><span class="lang-en">Savepoints for partial rollback</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-blue-300 shrink-0 mt-0.5"></i><span class="lang-ar">6 أنواع فهارس لأحمال مختلفة</span><span class="lang-en">6 index types for different workloads</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-blue-300 shrink-0 mt-0.5"></i><span class="lang-ar">EXPLAIN ANALYZE لتحسين الأداء</span><span class="lang-en">EXPLAIN ANALYZE for optimization</span></li>
         </ul>
       </div>
     </section>
@@ -234,7 +561,7 @@ GROUP BY c.name;</code></pre>
       </a>
       <a href="ch12.html" class="flex-1 bg-gradient-to-br from-blue-600 to-blue-700 text-white rounded-xl p-4 hover:shadow-xl transition-all">
         <div class="text-xs text-blue-200 mb-1 text-end"><span class="lang-ar">التالي</span><span class="lang-en">Next</span></div>
-        <div class="flex items-center justify-end gap-2 font-bold"><span class="lang-ar">النسخ الاحتياطي</span><span class="lang-en">Backup & Recovery</span><i data-lucide="arrow-left" class="w-4 h-4 lang-ar"></i><i data-lucide="arrow-right" class="w-4 h-4 lang-en"></i></div>
+        <div class="flex items-center justify-end gap-2 font-bold"><span class="lang-ar">النسخ الاحتياطي</span><span class="lang-en">Backup</span><i data-lucide="arrow-left" class="w-4 h-4 lang-ar"></i><i data-lucide="arrow-right" class="w-4 h-4 lang-en"></i></div>
       </a>
     </nav>
   </main>
@@ -244,6 +571,10 @@ GROUP BY c.name;</code></pre>
   <script>
     function setLang(lang){document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';localStorage.setItem('pgCourseLang',lang);document.querySelectorAll('.lang-btn').forEach(b=>{b.classList.remove('bg-blue-600','text-white','shadow-md');b.classList.add('text-surface-600','hover:bg-surface-100');});const a=document.getElementById('btn-'+lang);a.classList.add('bg-blue-600','text-white','shadow-md');a.classList.remove('text-surface-600','hover:bg-surface-100');}
     function copyCode(btn){const c=btn.nextElementSibling.querySelector('code').textContent;navigator.clipboard.writeText(c);btn.textContent='✓';setTimeout(()=>btn.textContent='Copy',2000);}
+    const total=8;const answers={};
+    function pick(btn,q){const card=btn.closest('.quiz-card');card.querySelectorAll('.quiz-opt').forEach(o=>o.disabled=true);const correct=btn.dataset.correct==='true';btn.classList.add(correct?'correct':'wrong');if(!correct)card.querySelector('[data-correct="true"]').classList.add('correct');const fb=card.querySelector('.feedback');fb.classList.remove('hidden');const lang=document.documentElement.lang;fb.className='feedback mt-3 p-3 rounded-xl text-sm '+(correct?'bg-green-50 text-green-800 border border-green-200':'bg-red-50 text-red-800 border border-red-200');fb.innerHTML=correct?(lang==='ar'?'✓ ممتاز!':'✓ Correct!'):(lang==='ar'?'✗ خطأ — الإجابة بالأخضر':'✗ Wrong — answer in green');answers[q]=correct;if(Object.keys(answers).length===total)showResult();}
+    function showResult(){const s=Object.values(answers).filter(Boolean).length;document.getElementById('score').textContent=s;const m=document.getElementById('result-msg');const l=document.documentElement.lang;m.textContent=s===total?(l==='ar'?'🎉 إتقان كامل!':'🎉 Perfect!'):s>=Math.ceil(total*0.7)?(l==='ar'?'👍 ممتاز!':'👍 Great!'):(l==='ar'?'📚 راجع':'📚 Review');const r=document.getElementById('quiz-result');r.classList.remove('hidden');r.scrollIntoView({behavior:'smooth',block:'center'});}
+    function resetQuiz(){Object.keys(answers).forEach(k=>delete answers[k]);document.querySelectorAll('.quiz-opt').forEach(b=>{b.disabled=false;b.classList.remove('correct','wrong');});document.querySelectorAll('.feedback').forEach(f=>f.classList.add('hidden'));document.getElementById('quiz-result').classList.add('hidden');document.getElementById('quiz').scrollIntoView({behavior:'smooth',block:'start'});}
     setLang(localStorage.getItem('pgCourseLang')||'ar');lucide.createIcons();Prism.highlightAll();
   </script>
 </body>

@@ -13,7 +13,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-sql.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
-  <style>body{font-family:'IBM Plex Sans Arabic',sans-serif}html[lang="ar"] .lang-en{display:none!important}html[lang="en"] .lang-ar{display:none!important}pre[class*="language-"]{border-radius:.75rem;font-size:.875rem;direction:ltr}code[class*="language-"]{font-family:'JetBrains Mono',monospace}</style>
+  <style>body{font-family:'IBM Plex Sans Arabic',sans-serif}html[lang="ar"] .lang-en{display:none!important}html[lang="en"] .lang-ar{display:none!important}pre[class*="language-"]{border-radius:.75rem;font-size:.875rem;direction:ltr}code[class*="language-"]{font-family:'JetBrains Mono',monospace}.quiz-opt.correct{border-color:#059669!important;background:#ecfdf5!important}.quiz-opt.wrong{border-color:#dc2626!important;background:#fef2f2!important}.quiz-opt:disabled{cursor:not-allowed}</style>
 </head>
 <body class="bg-surface-50 text-surface-800 antialiased min-h-screen">
 
@@ -35,22 +35,21 @@
         <span class="lang-ar">١١ صفحة</span><span class="lang-en">11 pages</span>
       </div>
       <h1 class="text-3xl md:text-5xl font-bold mb-4"><span class="lang-ar">تحميل البيانات</span><span class="lang-en">Data Loading</span></h1>
-      <p class="text-lg text-pink-100 max-w-3xl lang-ar">تعلم أمر COPY — الطريقة الأسرع لتحميل وتصدير البيانات في PostgreSQL.</p>
-      <p class="text-lg text-pink-100 max-w-3xl lang-en">Master the COPY command — the fastest way to load and export data in PostgreSQL.</p>
+      <p class="text-lg text-pink-100 max-w-3xl lang-ar">COPY، \copy، COPY FREEZE، UNLOGGED tables، وحيل تسريع التحميل الضخم.</p>
+      <p class="text-lg text-pink-100 max-w-3xl lang-en">COPY, \copy, COPY FREEZE, UNLOGGED tables, and bulk load tricks.</p>
     </div>
   </header>
 
   <section class="max-w-6xl mx-auto px-4 sm:px-6 py-10">
     <div class="bg-white rounded-2xl shadow-sm border border-surface-200 p-6 md:p-8">
-      <div class="flex items-center gap-3 mb-6">
-        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-pink-500 to-pink-700 flex items-center justify-center text-white"><i data-lucide="upload-cloud" class="w-6 h-6"></i></div>
-        <h2 class="text-2xl font-bold"><span class="lang-ar">أهداف الوحدة</span><span class="lang-en">Module Objectives</span></h2>
-      </div>
+      <div class="flex items-center gap-3 mb-6"><div class="w-12 h-12 rounded-xl bg-gradient-to-br from-pink-500 to-pink-700 flex items-center justify-center text-white"><i data-lucide="upload-cloud" class="w-6 h-6"></i></div><h2 class="text-2xl font-bold"><span class="lang-ar">أهداف الوحدة</span><span class="lang-en">Module Objectives</span></h2></div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
-        <div class="flex gap-2 p-3 rounded-xl bg-pink-50 border border-pink-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-pink-600 shrink-0"></i><span class="lang-ar">تحميل الـ Flat Files</span><span class="lang-en">Loading Flat Files</span></div>
-        <div class="flex gap-2 p-3 rounded-xl bg-pink-50 border border-pink-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-pink-600 shrink-0"></i><span class="lang-ar">استخدام COPY للاستيراد/التصدير</span><span class="lang-en">COPY for import/export</span></div>
-        <div class="flex gap-2 p-3 rounded-xl bg-pink-50 border border-pink-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-pink-600 shrink-0"></i><span class="lang-ar">أمثلة على COPY</span><span class="lang-en">COPY Examples</span></div>
-        <div class="flex gap-2 p-3 rounded-xl bg-pink-50 border border-pink-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-pink-600 shrink-0"></i><span class="lang-ar">COPY FREEZE للأداء</span><span class="lang-en">COPY FREEZE for performance</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-pink-50 border border-pink-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-pink-600 shrink-0"></i><span class="lang-ar">الأنماط الشائعة للـ bulk load</span><span class="lang-en">Common bulk load patterns</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-pink-50 border border-pink-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-pink-600 shrink-0"></i><span class="lang-ar">COPY vs INSERT</span><span class="lang-en">COPY vs INSERT</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-pink-50 border border-pink-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-pink-600 shrink-0"></i><span class="lang-ar">COPY server-side vs \copy client-side</span><span class="lang-en">COPY server vs \copy client</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-pink-50 border border-pink-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-pink-600 shrink-0"></i><span class="lang-ar">COPY FREEZE</span><span class="lang-en">COPY FREEZE</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-pink-50 border border-pink-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-pink-600 shrink-0"></i><span class="lang-ar">UNLOGGED tables</span><span class="lang-en">UNLOGGED tables</span></div>
+        <div class="flex gap-2 p-3 rounded-xl bg-pink-50 border border-pink-100"><i data-lucide="check-circle-2" class="w-5 h-5 text-pink-600 shrink-0"></i><span class="lang-ar">حيل الأداء للملايين من الصفوف</span><span class="lang-en">Tips for millions of rows</span></div>
       </div>
     </div>
   </section>
@@ -58,120 +57,285 @@
   <main class="max-w-6xl mx-auto px-4 sm:px-6 pb-12 space-y-12">
 
     <section>
-      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">ما هو Flat File؟</span><span class="lang-en">What is a Flat File?</span></h2>
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">لماذا COPY بدل INSERT؟</span><span class="lang-en">Why COPY instead of INSERT?</span></h2>
       <div class="bg-white rounded-2xl border border-surface-200 p-6 space-y-4">
-        <p class="text-surface-700 lang-ar">الـ <strong>Flat File</strong> هو ملف نصي بسيط يحتوي سجل واحد لكل سطر، مثل CSV أو TSV.</p>
-        <p class="text-surface-700 lang-en">A <strong>Flat File</strong> is a simple text file with one record per line, such as CSV or TSV.</p>
+        <p class="text-surface-700 lang-ar">عند تحميل آلاف أو ملايين الصفوف، <strong>INSERT</strong> بطيء جداً لأنه يعمل parsing لكل سطر و commit عادة لكل واحد. <strong>COPY</strong> يتجاوز كل ذلك ويكتب مباشرة.</p>
+        <p class="text-surface-700 lang-en">For thousands/millions of rows, <strong>INSERT</strong> is slow — parsing each statement, often committing each. <strong>COPY</strong> bypasses all that and writes directly.</p>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div class="bg-pink-50 border border-pink-200 rounded-xl p-5">
-            <h4 class="font-bold text-sm mb-2"><span class="lang-ar">مثال CSV:</span><span class="lang-en">CSV example:</span></h4>
-            <pre class="text-xs font-mono text-surface-700 bg-white p-3 rounded border" dir="ltr">id,name,email
-1,Alice,alice@ex.com
-2,Bob,bob@ex.com
-3,Carol,carol@ex.com</pre>
-          </div>
-          <div class="bg-pink-50 border border-pink-200 rounded-xl p-5">
-            <h4 class="font-bold text-sm mb-2"><span class="lang-ar">مثال TSV (tab-separated):</span><span class="lang-en">TSV example:</span></h4>
-            <pre class="text-xs font-mono text-surface-700 bg-white p-3 rounded border" dir="ltr">1	Alice	alice@ex.com
-2	Bob	bob@ex.com
-3	Carol	carol@ex.com</pre>
-          </div>
+        <div class="bg-gradient-to-br from-pink-50 to-white rounded-xl p-5 border border-pink-200">
+          <h4 class="font-bold mb-3"><span class="lang-ar">قياس أداء نموذجي (مليون صف):</span><span class="lang-en">Typical benchmark (1M rows):</span></h4>
+          <table class="w-full text-sm">
+            <thead><tr class="text-surface-700"><th class="text-start p-1">Method</th><th class="text-start p-1 lang-ar">الزمن</th><th class="text-start p-1 lang-en">Time</th><th class="text-start p-1 lang-ar">النسبة</th><th class="text-start p-1 lang-en">Ratio</th></tr></thead>
+            <tbody>
+              <tr class="border-t border-pink-100"><td class="p-1 font-mono">INSERT single-row</td><td class="p-1" colspan="2">~15 min</td><td class="p-1" colspan="2">1×</td></tr>
+              <tr class="border-t border-pink-100"><td class="p-1 font-mono">INSERT multi-row (batch 1000)</td><td class="p-1" colspan="2">~60 sec</td><td class="p-1" colspan="2">15× faster</td></tr>
+              <tr class="border-t border-pink-100 bg-green-50"><td class="p-1 font-mono">COPY</td><td class="p-1 font-bold" colspan="2">~5 sec</td><td class="p-1 font-bold" colspan="2">200× faster!</td></tr>
+              <tr class="border-t border-pink-100 bg-green-50"><td class="p-1 font-mono">COPY FREEZE + UNLOGGED</td><td class="p-1 font-bold" colspan="2">~2 sec</td><td class="p-1 font-bold" colspan="2">500× faster!</td></tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </section>
 
     <section>
-      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">أمر COPY</span><span class="lang-en">The COPY Command</span></h2>
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">COPY — الأساسي</span><span class="lang-en">COPY — The Basics</span></h2>
       <div class="bg-white rounded-2xl border border-surface-200 p-6">
-        <p class="text-surface-700 mb-4 lang-ar"><strong>COPY</strong> أسرع بكثير من INSERT لأنه يتخطى جدول الـ parser ويكتب البيانات مباشرة.</p>
-        <p class="text-surface-700 mb-4 lang-en"><strong>COPY</strong> is much faster than INSERT — it bypasses the parser and writes data directly.</p>
-
         <div class="relative group" dir="ltr">
           <button onclick="copyCode(this)" class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 bg-surface-700 text-white text-xs px-2.5 py-1.5 rounded-lg z-10">Copy</button>
-<pre class="!bg-surface-900 !rounded-xl !p-5"><code class="language-sql">-- Import from server-side file (superuser only)
+<pre class="!bg-surface-900 !rounded-xl !p-5"><code class="language-sql">-- =========== IMPORT ===========
+
+-- Simplest: CSV with header, server-side file
 COPY customers(id, name, email)
 FROM '/var/data/customers.csv'
-WITH (FORMAT csv, HEADER true, DELIMITER ',');
-
--- Export to server-side file
-COPY customers TO '/var/data/export.csv'
 WITH (FORMAT csv, HEADER true);
 
--- Import with complex options
+-- Full options
 COPY orders FROM '/tmp/orders.csv' WITH (
   FORMAT csv,
   HEADER true,
   DELIMITER ',',
-  NULL 'NULL',
   QUOTE '"',
   ESCAPE '\\',
-  ENCODING 'UTF8'
+  NULL 'NULL',           -- treat this string as NULL
+  ENCODING 'UTF8',
+  FORCE_NOT_NULL (email) -- these columns never NULL
 );
 
--- From STDIN (used with psql \copy)
+-- From STDIN (useful with pipes)
 COPY customers FROM STDIN WITH (FORMAT csv, HEADER true);
--- then type or pipe data, end with \.
+-- then enter data, end with \.
 
--- Export specific columns with WHERE clause
-COPY (SELECT name, email FROM customers WHERE active = true)
-TO '/tmp/active_users.csv'
-WITH (FORMAT csv, HEADER true);</code></pre>
+-- =========== EXPORT ===========
+
+-- Export table to CSV
+COPY customers TO '/var/data/export.csv'
+WITH (FORMAT csv, HEADER true);
+
+-- Export a query result
+COPY (
+  SELECT name, email
+  FROM customers
+  WHERE status = 'active'
+) TO '/tmp/active.csv' WITH (FORMAT csv, HEADER true);
+
+-- Export as binary (fastest for round-trip to Postgres)
+COPY big_table TO '/tmp/big.bin' WITH (FORMAT binary);</code></pre>
         </div>
 
-        <div class="mt-4 flex gap-3 p-4 bg-pg-50 border border-pg-200 rounded-xl">
-          <i data-lucide="info" class="w-5 h-5 text-pg-600 shrink-0 mt-0.5"></i>
-          <div>
-            <strong class="text-pg-800 lang-ar">ملاحظة:</strong>
-            <strong class="text-pg-800 lang-en">Note:</strong>
-            <span class="text-pg-700 lang-ar"> <span dir="ltr" class="font-mono">COPY</span> يحتاج صلاحية superuser للوصول لملفات السيرفر. للمستخدمين العاديين، استخدم <span dir="ltr" class="font-mono">\copy</span> في psql (ينقل من client-side).</span>
-            <span class="text-pg-700 lang-en"> <span class="font-mono">COPY</span> requires superuser to access server files. Regular users should use <span class="font-mono">\copy</span> in psql (client-side).</span>
+        <div class="mt-4 flex gap-3 p-4 bg-amber-50 border border-amber-200 rounded-xl">
+          <i data-lucide="alert-triangle" class="w-5 h-5 text-amber-600 shrink-0 mt-0.5"></i>
+          <div class="text-sm">
+            <strong class="text-amber-800 lang-ar">مهم:</strong>
+            <strong class="text-amber-800 lang-en">Important:</strong>
+            <span class="text-amber-700 lang-ar"> <span dir="ltr" class="font-mono">COPY ... FROM '/path'</span> يقرأ من سيرفر PostgreSQL، يتطلب superuser، والمسار لا بد يكون موجود على السيرفر.</span>
+            <span class="text-amber-700 lang-en"> <span class="font-mono">COPY ... FROM '/path'</span> reads from the PostgreSQL server, needs superuser, and path must exist on server.</span>
           </div>
         </div>
       </div>
     </section>
 
     <section>
-      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">\copy في psql</span><span class="lang-en">\copy in psql</span></h2>
-      <div class="bg-white rounded-2xl border border-surface-200 p-6">
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">\copy — من جانب العميل</span><span class="lang-en">\copy — Client-Side</span></h2>
+      <div class="bg-white rounded-2xl border border-surface-200 p-6 space-y-4">
+        <p class="text-surface-700 lang-ar">في psql، <span dir="ltr" class="font-mono">\copy</span> يقرأ/يكتب ملفات من جهاز <strong>العميل</strong>، لا من السيرفر. لا يحتاج superuser.</p>
+        <p class="text-surface-700 lang-en">In psql, <span class="font-mono">\copy</span> reads/writes files on the <strong>client</strong> machine, not server. No superuser needed.</p>
+
         <div class="relative group" dir="ltr">
           <button onclick="copyCode(this)" class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 bg-surface-700 text-white text-xs px-2.5 py-1.5 rounded-lg z-10">Copy</button>
-<pre class="!bg-surface-900 !rounded-xl !p-5"><code class="language-bash"># From psql session
-\copy customers FROM 'customers.csv' WITH (FORMAT csv, HEADER true);
-\copy customers TO 'export.csv' WITH (FORMAT csv, HEADER true);
+<pre class="!bg-surface-900 !rounded-xl !p-5"><code class="language-bash"># Inside psql session
+\copy customers FROM 'customers.csv' WITH (FORMAT csv, HEADER true)
+\copy customers TO 'export.csv' WITH (FORMAT csv, HEADER true)
 
-# From command line (one-liner)
-psql -d mydb -c "\copy customers FROM 'customers.csv' CSV HEADER"
+# From shell — one-liner
+psql -d mydb -c "\copy customers FROM 'data.csv' CSV HEADER"
 
-# Using pipe (import from URL or other source)
-curl https://example.com/data.csv | \
-  psql -d mydb -c "\copy customers FROM STDIN WITH (FORMAT csv, HEADER true)"</code></pre>
+# Stream from URL
+curl -s https://example.com/data.csv | \
+  psql -d mydb -c "\copy customers FROM STDIN WITH (FORMAT csv, HEADER true)"
+
+# Export and gzip on the fly
+psql -d mydb -c "\copy (SELECT * FROM orders) TO STDOUT CSV HEADER" | \
+  gzip &gt; orders.csv.gz
+
+# Stream from one DB to another
+psql -h source -d mydb -c "\copy customers TO STDOUT" | \
+  psql -h target -d mydb -c "\copy customers FROM STDIN"</code></pre>
+        </div>
+
+        <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-3">
+          <div class="bg-red-50 border border-red-200 rounded-xl p-3"><h4 class="font-bold text-sm mb-1 lang-ar">COPY (server)</h4><h4 class="font-bold text-sm mb-1 lang-en">COPY (server)</h4><ul class="text-xs space-y-0.5 text-surface-700"><li>✓ <span class="lang-ar">أسرع (لا طبقة شبكة)</span><span class="lang-en">Faster (no net layer)</span></li><li>✗ <span class="lang-ar">يتطلب superuser</span><span class="lang-en">Requires superuser</span></li><li>✗ <span class="lang-ar">الملف على السيرفر</span><span class="lang-en">File on server</span></li></ul></div>
+          <div class="bg-green-50 border border-green-200 rounded-xl p-3"><h4 class="font-bold text-sm mb-1 lang-ar">\copy (client)</h4><h4 class="font-bold text-sm mb-1 lang-en">\copy (client)</h4><ul class="text-xs space-y-0.5 text-surface-700"><li>✓ <span class="lang-ar">لا يحتاج superuser</span><span class="lang-en">No superuser needed</span></li><li>✓ <span class="lang-ar">الملف محلياً</span><span class="lang-en">File is local</span></li><li>✗ <span class="lang-ar">أبطأ قليلاً</span><span class="lang-en">Slightly slower</span></li></ul></div>
         </div>
       </div>
     </section>
 
     <section>
-      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">COPY FREEZE للأداء</span><span class="lang-en">COPY FREEZE for Performance</span></h2>
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">COPY FREEZE — الأسرع!</span><span class="lang-en">COPY FREEZE — The Fastest!</span></h2>
       <div class="bg-white rounded-2xl border border-surface-200 p-6 space-y-4">
-        <p class="text-surface-700 lang-ar"><strong>COPY FREEZE</strong> يضع الصفوف في حالة <span dir="ltr" class="font-mono">frozen</span> مباشرة — يتجنب VACUUM FREEZE لاحقاً، مفيد جداً لتحميل كميات كبيرة دفعة واحدة.</p>
-        <p class="text-surface-700 lang-en"><strong>COPY FREEZE</strong> inserts rows as <span class="font-mono">frozen</span> immediately — avoids later VACUUM FREEZE, great for bulk loads.</p>
+        <p class="text-surface-700 lang-ar"><strong>COPY FREEZE</strong> يدخل الصفوف في حالة <em>frozen</em> مباشرة — يتجنب أول VACUUM FREEZE. مناسب لتحميل البيانات الأولية.</p>
+        <p class="text-surface-700 lang-en"><strong>COPY FREEZE</strong> inserts rows as <em>frozen</em> immediately — avoids the first VACUUM FREEZE. Great for initial data load.</p>
 
         <div class="relative group" dir="ltr">
           <button onclick="copyCode(this)" class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 bg-surface-700 text-white text-xs px-2.5 py-1.5 rounded-lg z-10">Copy</button>
-<pre class="!bg-surface-900 !rounded-xl !p-5"><code class="language-sql">-- Requirements: table must be created or truncated in same transaction
+<pre class="!bg-surface-900 !rounded-xl !p-5"><code class="language-sql">-- Requirement: table created/truncated in SAME transaction
 BEGIN;
-  TRUNCATE staging_data;  -- or CREATE TABLE
-  COPY staging_data FROM '/data/big_file.csv' WITH (FORMAT csv, FREEZE);
+  CREATE TABLE huge_import (...);
+  COPY huge_import FROM '/data/huge.csv' WITH (FORMAT csv, FREEZE);
 COMMIT;
 
--- Bonus: maximize bulk load performance
+-- Or
 BEGIN;
-  CREATE UNLOGGED TABLE bulk_load (...);  -- no WAL
-  COPY bulk_load FROM '/data/huge.csv' WITH (FORMAT csv);
-  -- Index and constraints AFTER load
-  CREATE INDEX ON bulk_load (id);
-  ALTER TABLE bulk_load SET LOGGED;  -- enable WAL after
+  TRUNCATE staging;
+  COPY staging FROM '/data/daily.csv' WITH (FORMAT csv, FREEZE);
 COMMIT;</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">UNLOGGED — للتسريع الأقصى</span><span class="lang-en">UNLOGGED — For Maximum Speed</span></h2>
+      <div class="bg-white rounded-2xl border border-surface-200 p-6">
+        <p class="text-surface-700 mb-3 lang-ar">الجداول UNLOGGED لا تُكتب إلى WAL — تحميلها أسرع بـ 2-3× لكن تُفقد عند crash.</p>
+        <p class="text-surface-700 mb-3 lang-en">UNLOGGED tables aren't written to WAL — 2-3× faster loading but lost on crash.</p>
+
+        <div class="relative group" dir="ltr">
+          <button onclick="copyCode(this)" class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 bg-surface-700 text-white text-xs px-2.5 py-1.5 rounded-lg z-10">Copy</button>
+<pre class="!bg-surface-900 !rounded-xl !p-5"><code class="language-sql">-- Perfect pattern for mega-load
+BEGIN;
+  -- 1. Create UNLOGGED table (no WAL = faster)
+  CREATE UNLOGGED TABLE bulk_stage (LIKE real_table);
+
+  -- 2. Fast load
+  COPY bulk_stage FROM '/data/big.csv' WITH (FORMAT csv, FREEZE);
+
+  -- 3. Create indexes AFTER load (much faster this way)
+  CREATE INDEX ON bulk_stage (id);
+  CREATE INDEX ON bulk_stage (created_at);
+
+  -- 4. Make it durable (converts to logged)
+  ALTER TABLE bulk_stage SET LOGGED;
+
+  -- 5. Rename into place
+  ALTER TABLE real_table RENAME TO real_table_old;
+  ALTER TABLE bulk_stage RENAME TO real_table;
+COMMIT;
+
+DROP TABLE real_table_old;</code></pre>
+        </div>
+
+        <div class="mt-4 flex gap-3 p-4 bg-red-50 border border-red-200 rounded-xl">
+          <i data-lucide="alert-triangle" class="w-5 h-5 text-red-600 shrink-0 mt-0.5"></i>
+          <div class="text-sm">
+            <strong class="text-red-800 lang-ar">تحذير:</strong>
+            <strong class="text-red-800 lang-en">Warning:</strong>
+            <span class="text-red-700 lang-ar"> UNLOGGED tables تُمحى عند أي crash للسيرفر! استخدمها فقط للبيانات المؤقتة أو كخطوة وسيطة.</span>
+            <span class="text-red-700 lang-en"> UNLOGGED tables are wiped on any server crash! Use only for temp data or intermediate staging.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-3xl font-bold text-surface-900 mb-6"><span class="lang-ar">٩ حيل لتسريع bulk load</span><span class="lang-en">9 Bulk Load Acceleration Tricks</span></h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+        <div class="bg-green-50 border border-green-200 rounded-xl p-4 flex gap-3"><i data-lucide="check" class="w-5 h-5 text-green-600 shrink-0 mt-0.5"></i><div class="text-sm"><strong class="lang-ar">١. COPY بدل INSERT</strong><strong class="lang-en">1. COPY instead of INSERT</strong><span class="text-surface-600 lang-ar"> — أسرع 100-200×</span><span class="text-surface-600 lang-en"> — 100-200× faster</span></div></div>
+        <div class="bg-green-50 border border-green-200 rounded-xl p-4 flex gap-3"><i data-lucide="check" class="w-5 h-5 text-green-600 shrink-0 mt-0.5"></i><div class="text-sm"><strong class="lang-ar">٢. أنشئ الفهارس بعد التحميل</strong><strong class="lang-en">2. Create indexes after load</strong><span class="text-surface-600 lang-ar"> — لا تحدثها أثناء التحميل</span><span class="text-surface-600 lang-en"> — don't update during load</span></div></div>
+        <div class="bg-green-50 border border-green-200 rounded-xl p-4 flex gap-3"><i data-lucide="check" class="w-5 h-5 text-green-600 shrink-0 mt-0.5"></i><div class="text-sm"><strong class="lang-ar">٣. الغِ FK constraints مؤقتاً</strong><strong class="lang-en">3. Drop FK constraints temporarily</strong><span class="text-surface-600 lang-ar"> — أعدها بعد</span><span class="text-surface-600 lang-en"> — restore after</span></div></div>
+        <div class="bg-green-50 border border-green-200 rounded-xl p-4 flex gap-3"><i data-lucide="check" class="w-5 h-5 text-green-600 shrink-0 mt-0.5"></i><div class="text-sm"><strong class="lang-ar">٤. ارفع maintenance_work_mem</strong><strong class="lang-en">4. Increase maintenance_work_mem</strong><span class="text-surface-600 lang-ar"> — 1GB أو أكثر</span><span class="text-surface-600 lang-en"> — 1GB or more</span></div></div>
+        <div class="bg-green-50 border border-green-200 rounded-xl p-4 flex gap-3"><i data-lucide="check" class="w-5 h-5 text-green-600 shrink-0 mt-0.5"></i><div class="text-sm"><strong class="lang-ar">٥. max_wal_size أكبر</strong><strong class="lang-en">5. Larger max_wal_size</strong><span class="text-surface-600 lang-ar"> — قلل checkpoints</span><span class="text-surface-600 lang-en"> — fewer checkpoints</span></div></div>
+        <div class="bg-green-50 border border-green-200 rounded-xl p-4 flex gap-3"><i data-lucide="check" class="w-5 h-5 text-green-600 shrink-0 mt-0.5"></i><div class="text-sm"><strong class="lang-ar">٦. UNLOGGED لـ staging</strong><strong class="lang-en">6. UNLOGGED for staging</strong><span class="text-surface-600 lang-ar"> — ثم SET LOGGED</span><span class="text-surface-600 lang-en"> — then SET LOGGED</span></div></div>
+        <div class="bg-green-50 border border-green-200 rounded-xl p-4 flex gap-3"><i data-lucide="check" class="w-5 h-5 text-green-600 shrink-0 mt-0.5"></i><div class="text-sm"><strong class="lang-ar">٧. COPY FREEZE إذا ممكن</strong><strong class="lang-en">7. COPY FREEZE when possible</strong><span class="text-surface-600 lang-ar"> — يتجنب VACUUM لاحقاً</span><span class="text-surface-600 lang-en"> — avoids later VACUUM</span></div></div>
+        <div class="bg-green-50 border border-green-200 rounded-xl p-4 flex gap-3"><i data-lucide="check" class="w-5 h-5 text-green-600 shrink-0 mt-0.5"></i><div class="text-sm"><strong class="lang-ar">٨. psql -F binary للـ Postgres→Postgres</strong><strong class="lang-en">8. psql -F binary for PG→PG</strong><span class="text-surface-600 lang-ar"> — بدون تحويل نصي</span><span class="text-surface-600 lang-en"> — no text conversion</span></div></div>
+        <div class="bg-green-50 border border-green-200 rounded-xl p-4 flex gap-3"><i data-lucide="check" class="w-5 h-5 text-green-600 shrink-0 mt-0.5"></i><div class="text-sm"><strong class="lang-ar">٩. ANALYZE بعد التحميل</strong><strong class="lang-en">9. ANALYZE after load</strong><span class="text-surface-600 lang-ar"> — إحصائيات محدثة للـ planner</span><span class="text-surface-600 lang-en"> — fresh stats for planner</span></div></div>
+      </div>
+    </section>
+
+    <!-- QUIZ -->
+    <section>
+      <div class="mb-6">
+        <span class="text-sm font-bold text-pink-600 uppercase tracking-wider"><span class="lang-ar">اختبر فهمك</span><span class="lang-en">Test Your Knowledge</span></span>
+        <h2 class="text-3xl font-bold text-surface-900 mt-2 mb-3"><span class="lang-ar">كويز الوحدة ١٤ 🎯</span><span class="lang-en">Module 14 Quiz 🎯</span></h2>
+      </div>
+
+      <div id="quiz" class="space-y-4">
+        <div class="quiz-card bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="flex items-center gap-2 mb-3"><span class="w-7 h-7 rounded-full bg-pink-600 text-white font-bold text-sm flex items-center justify-center">1</span></div>
+          <p class="font-semibold mb-4 lang-ar">الفرق بين COPY و \copy:</p>
+          <p class="font-semibold mb-4 lang-en">Difference between COPY and \copy:</p>
+          <div class="space-y-2">
+            <button onclick="pick(this,1)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-pink-300"><span class="lang-ar">\copy أحدث إصدار</span><span class="lang-en">\copy is newer</span></button>
+            <button onclick="pick(this,1)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-pink-300" data-correct="true"><span class="lang-ar">COPY يقرأ من السيرفر، \copy من جهاز العميل</span><span class="lang-en">COPY reads from server, \copy from client</span></button>
+            <button onclick="pick(this,1)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-pink-300"><span class="lang-ar">لا فرق أبداً</span><span class="lang-en">No difference</span></button>
+          </div>
+          <div class="feedback hidden mt-3 p-3 rounded-xl text-sm"></div>
+        </div>
+
+        <div class="quiz-card bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="flex items-center gap-2 mb-3"><span class="w-7 h-7 rounded-full bg-pink-600 text-white font-bold text-sm flex items-center justify-center">2</span></div>
+          <p class="font-semibold mb-4 lang-ar">لتحميل مليون صف، أسرع طريقة:</p>
+          <p class="font-semibold mb-4 lang-en">To load 1M rows, fastest method:</p>
+          <div class="space-y-2">
+            <button onclick="pick(this,2)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-pink-300"><span class="font-mono">INSERT ... VALUES (row by row)</span></button>
+            <button onclick="pick(this,2)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-pink-300"><span class="font-mono">INSERT batched (1000 per call)</span></button>
+            <button onclick="pick(this,2)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-pink-300" data-correct="true"><span class="font-mono">COPY (with FREEZE if possible)</span></button>
+          </div>
+          <div class="feedback hidden mt-3 p-3 rounded-xl text-sm"></div>
+        </div>
+
+        <div class="quiz-card bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="flex items-center gap-2 mb-3"><span class="w-7 h-7 rounded-full bg-pink-600 text-white font-bold text-sm flex items-center justify-center">3</span></div>
+          <p class="font-semibold mb-4 lang-ar">UNLOGGED tables:</p>
+          <p class="font-semibold mb-4 lang-en">UNLOGGED tables:</p>
+          <div class="space-y-2">
+            <button onclick="pick(this,3)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-pink-300"><span class="lang-ar">أبطأ من العادية</span><span class="lang-en">Slower than regular</span></button>
+            <button onclick="pick(this,3)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-pink-300" data-correct="true"><span class="lang-ar">أسرع لكن تُفقد عند crash</span><span class="lang-en">Faster but lost on crash</span></button>
+            <button onclick="pick(this,3)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-pink-300"><span class="lang-ar">مكتوبة للـ WAL مرتين</span><span class="lang-en">Written to WAL twice</span></button>
+          </div>
+          <div class="feedback hidden mt-3 p-3 rounded-xl text-sm"></div>
+        </div>
+
+        <div class="quiz-card bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="flex items-center gap-2 mb-3"><span class="w-7 h-7 rounded-full bg-pink-600 text-white font-bold text-sm flex items-center justify-center">4</span></div>
+          <p class="font-semibold mb-4 lang-ar">COPY FREEZE يتطلب:</p>
+          <p class="font-semibold mb-4 lang-en">COPY FREEZE requires:</p>
+          <div class="space-y-2">
+            <button onclick="pick(this,4)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-pink-300"><span class="lang-ar">superuser فقط</span><span class="lang-en">Superuser only</span></button>
+            <button onclick="pick(this,4)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-pink-300" data-correct="true"><span class="lang-ar">الجدول مُنشأ/مُقطّع في نفس الـ transaction</span><span class="lang-en">Table created/truncated in same transaction</span></button>
+            <button onclick="pick(this,4)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-pink-300"><span class="lang-ar">تعطيل autovacuum</span><span class="lang-en">Disabling autovacuum</span></button>
+          </div>
+          <div class="feedback hidden mt-3 p-3 rounded-xl text-sm"></div>
+        </div>
+
+        <div class="quiz-card bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="flex items-center gap-2 mb-3"><span class="w-7 h-7 rounded-full bg-pink-600 text-white font-bold text-sm flex items-center justify-center">5</span></div>
+          <p class="font-semibold mb-4 lang-ar">للأداء الأقصى، متى تنشئ الفهارس؟</p>
+          <p class="font-semibold mb-4 lang-en">For best perf, when do you create indexes?</p>
+          <div class="space-y-2">
+            <button onclick="pick(this,5)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-pink-300"><span class="lang-ar">قبل التحميل</span><span class="lang-en">Before loading</span></button>
+            <button onclick="pick(this,5)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-pink-300" data-correct="true"><span class="lang-ar">بعد التحميل</span><span class="lang-en">After loading</span></button>
+            <button onclick="pick(this,5)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-pink-300"><span class="lang-ar">لا فرق</span><span class="lang-en">No difference</span></button>
+          </div>
+          <div class="feedback hidden mt-3 p-3 rounded-xl text-sm"></div>
+        </div>
+
+        <div class="quiz-card bg-white rounded-2xl border border-surface-200 p-6">
+          <div class="flex items-center gap-2 mb-3"><span class="w-7 h-7 rounded-full bg-pink-600 text-white font-bold text-sm flex items-center justify-center">6</span></div>
+          <p class="font-semibold mb-4 lang-ar">لتصدير نتيجة استعلام مباشرة إلى ملف CSV مضغوط:</p>
+          <p class="font-semibold mb-4 lang-en">To export a query result directly to a gzipped CSV:</p>
+          <div class="space-y-2">
+            <button onclick="pick(this,6)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-pink-300" data-correct="true"><span class="font-mono">psql -c "\copy (...) TO STDOUT CSV" | gzip &gt; f.csv.gz</span></button>
+            <button onclick="pick(this,6)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-pink-300"><span class="font-mono">COPY ... TO 'file.gz' WITH GZIP</span></button>
+            <button onclick="pick(this,6)" class="quiz-opt w-full text-start p-3 rounded-xl border-2 border-surface-200 hover:border-pink-300"><span class="font-mono">pg_dump --gzip</span></button>
+          </div>
+          <div class="feedback hidden mt-3 p-3 rounded-xl text-sm"></div>
+        </div>
+
+        <div id="quiz-result" class="hidden bg-gradient-to-br from-pink-600 to-pink-800 text-white rounded-2xl p-6 text-center">
+          <i data-lucide="award" class="w-12 h-12 mx-auto mb-3"></i>
+          <h3 class="text-2xl font-bold mb-2"><span class="lang-ar">نتيجتك</span><span class="lang-en">Your Score</span></h3>
+          <div class="text-5xl font-bold my-3"><span id="score">0</span><span class="text-2xl opacity-70">/6</span></div>
+          <p id="result-msg" class="text-pink-100"></p>
+          <button onclick="resetQuiz()" class="mt-4 bg-white text-pink-700 font-semibold px-6 py-2 rounded-lg hover:bg-pink-50"><span class="lang-ar">إعادة المحاولة</span><span class="lang-en">Try Again</span></button>
         </div>
       </div>
     </section>
@@ -180,12 +344,12 @@ COMMIT;</code></pre>
       <div class="bg-gradient-to-br from-pink-600 via-pink-700 to-pink-900 text-white rounded-2xl p-6 md:p-8 shadow-xl">
         <div class="flex items-center gap-3 mb-6"><div class="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center"><i data-lucide="bookmark-check" class="w-6 h-6"></i></div><h2 class="text-2xl font-bold"><span class="lang-ar">ملخص الوحدة</span><span class="lang-en">Module Summary</span></h2></div>
         <ul class="grid grid-cols-1 md:grid-cols-2 gap-3">
-          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-pink-300 shrink-0 mt-0.5"></i><span class="lang-ar">COPY أسرع من INSERT بكثير</span><span class="lang-en">COPY much faster than INSERT</span></li>
-          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-pink-300 shrink-0 mt-0.5"></i><span class="lang-ar">COPY (server) vs \copy (client)</span><span class="lang-en">COPY (server) vs \copy (client)</span></li>
-          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-pink-300 shrink-0 mt-0.5"></i><span class="lang-ar">دعم CSV، TSV، binary</span><span class="lang-en">Supports CSV, TSV, binary</span></li>
-          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-pink-300 shrink-0 mt-0.5"></i><span class="lang-ar">COPY FREEZE للـ bulk loads</span><span class="lang-en">COPY FREEZE for bulk loads</span></li>
-          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-pink-300 shrink-0 mt-0.5"></i><span class="lang-ar">UNLOGGED tables لأسرع تحميل</span><span class="lang-en">UNLOGGED tables for fastest load</span></li>
-          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-pink-300 shrink-0 mt-0.5"></i><span class="lang-ar">أنشئ Indexes بعد التحميل</span><span class="lang-en">Create indexes after load</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-pink-300 shrink-0 mt-0.5"></i><span class="lang-ar">COPY &gt;&gt;&gt; INSERT للـ bulk</span><span class="lang-en">COPY &gt;&gt;&gt; INSERT for bulk</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-pink-300 shrink-0 mt-0.5"></i><span class="lang-ar">COPY (server) vs \copy (client)</span><span class="lang-en">COPY vs \copy</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-pink-300 shrink-0 mt-0.5"></i><span class="lang-ar">COPY FREEZE لأسرع تحميل</span><span class="lang-en">COPY FREEZE for fastest</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-pink-300 shrink-0 mt-0.5"></i><span class="lang-ar">UNLOGGED tables للـ staging</span><span class="lang-en">UNLOGGED for staging</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-pink-300 shrink-0 mt-0.5"></i><span class="lang-ar">فهارس بعد التحميل</span><span class="lang-en">Indexes after load</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-pink-300 shrink-0 mt-0.5"></i><span class="lang-ar">ANALYZE بعد كل bulk load</span><span class="lang-en">ANALYZE after every bulk</span></li>
         </ul>
       </div>
     </section>
@@ -197,7 +361,7 @@ COMMIT;</code></pre>
       </a>
       <a href="ch15.html" class="flex-1 bg-gradient-to-br from-pink-600 to-pink-700 text-white rounded-xl p-4 hover:shadow-xl transition-all">
         <div class="text-xs text-pink-200 mb-1 text-end"><span class="lang-ar">التالي</span><span class="lang-en">Next</span></div>
-        <div class="flex items-center justify-end gap-2 font-bold"><span class="lang-ar">النسخ المتماثل والتوافر العالي</span><span class="lang-en">Replication & HA</span><i data-lucide="arrow-left" class="w-4 h-4 lang-ar"></i><i data-lucide="arrow-right" class="w-4 h-4 lang-en"></i></div>
+        <div class="flex items-center justify-end gap-2 font-bold"><span class="lang-ar">النسخ المتماثل</span><span class="lang-en">Replication</span><i data-lucide="arrow-left" class="w-4 h-4 lang-ar"></i><i data-lucide="arrow-right" class="w-4 h-4 lang-en"></i></div>
       </a>
     </nav>
   </main>
@@ -207,6 +371,10 @@ COMMIT;</code></pre>
   <script>
     function setLang(lang){document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';localStorage.setItem('pgCourseLang',lang);document.querySelectorAll('.lang-btn').forEach(b=>{b.classList.remove('bg-pink-600','text-white','shadow-md');b.classList.add('text-surface-600','hover:bg-surface-100');});const a=document.getElementById('btn-'+lang);a.classList.add('bg-pink-600','text-white','shadow-md');a.classList.remove('text-surface-600','hover:bg-surface-100');}
     function copyCode(btn){const c=btn.nextElementSibling.querySelector('code').textContent;navigator.clipboard.writeText(c);btn.textContent='✓';setTimeout(()=>btn.textContent='Copy',2000);}
+    const total=6;const answers={};
+    function pick(btn,q){const card=btn.closest('.quiz-card');card.querySelectorAll('.quiz-opt').forEach(o=>o.disabled=true);const correct=btn.dataset.correct==='true';btn.classList.add(correct?'correct':'wrong');if(!correct)card.querySelector('[data-correct="true"]').classList.add('correct');const fb=card.querySelector('.feedback');fb.classList.remove('hidden');const lang=document.documentElement.lang;fb.className='feedback mt-3 p-3 rounded-xl text-sm '+(correct?'bg-green-50 text-green-800 border border-green-200':'bg-red-50 text-red-800 border border-red-200');fb.innerHTML=correct?(lang==='ar'?'✓ ممتاز!':'✓ Correct!'):(lang==='ar'?'✗ خطأ — الإجابة بالأخضر':'✗ Wrong — answer in green');answers[q]=correct;if(Object.keys(answers).length===total)showResult();}
+    function showResult(){const s=Object.values(answers).filter(Boolean).length;document.getElementById('score').textContent=s;const m=document.getElementById('result-msg');const l=document.documentElement.lang;m.textContent=s===total?(l==='ar'?'🎉 إتقان كامل!':'🎉 Perfect!'):s>=Math.ceil(total*0.7)?(l==='ar'?'👍 ممتاز!':'👍 Great!'):(l==='ar'?'📚 راجع':'📚 Review');const r=document.getElementById('quiz-result');r.classList.remove('hidden');r.scrollIntoView({behavior:'smooth',block:'center'});}
+    function resetQuiz(){Object.keys(answers).forEach(k=>delete answers[k]);document.querySelectorAll('.quiz-opt').forEach(b=>{b.disabled=false;b.classList.remove('correct','wrong');});document.querySelectorAll('.feedback').forEach(f=>f.classList.add('hidden'));document.getElementById('quiz-result').classList.add('hidden');document.getElementById('quiz').scrollIntoView({behavior:'smooth',block:'start'});}
     setLang(localStorage.getItem('pgCourseLang')||'ar');lucide.createIcons();Prism.highlightAll();
   </script>
 </body>
